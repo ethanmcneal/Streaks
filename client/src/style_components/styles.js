@@ -1,0 +1,9 @@
+export const PRIMARY_COLOR = '#1DB19D'
+export const SECONDARY_COLOR = '#2241AC'
+export const TERTIARY_COLOR = '#AD9ABA'
+export const TEXT_COLOR = 'black'
+export const INV_TEXT_COLOR = 'white'
+export const ALERT_COLOR = '#BE2929'
+export const FONT = {small: '.5em', medium: '1em', large: '1.5em'}
+export const PADDING = '10px'
+export const CARD_COLOR = '#A1A1A1'

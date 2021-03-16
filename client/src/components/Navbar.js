@@ -14,6 +14,11 @@ const NavBar = () => {
                 About
             </Menu.Item>
             </Link>
+            <Link to='/styled'>
+            <Menu.Item >
+                Style Components
+            </Menu.Item>
+            </Link>
         </Menu>
     )
 }
