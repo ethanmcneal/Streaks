@@ -1,6 +1,6 @@
 export const PRIMARY_COLOR = '#1DB19D'
 export const SECONDARY_COLOR = '#2241AC'
-export const TERTIARY_COLOR = '#AD9ABA'
+export const TERTIARY_COLOR = '#DAE6E8'
 export const TEXT_COLOR = 'black'
 export const INV_TEXT_COLOR = 'white'
 export const ALERT_COLOR = '#BE2929'
