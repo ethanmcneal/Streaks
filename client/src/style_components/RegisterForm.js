@@ -9,7 +9,6 @@ const RegisterForm = () =>{
     // const [password, setPassword] = useState('')
     const [alert, setAlert] = useState(false)
 
-    var format = /!@#%&/
     var x =''
     //Me and Max were trying to figure this bit out for awhile, and eventually found that if you use the match function on this pattern, it would require both a symbol and a letter to pass the validation
 

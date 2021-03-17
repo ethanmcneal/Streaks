@@ -10,12 +10,14 @@ import StyledComponents from './style_components/StyledComponents';
 function App() {
   return (
     <>
+    <div style={{backgroundColor: '#E4DFE0'}}>
     <NavBar />
    <Switch>
      <Route exact path='/' component={Home} />
      <Route exact path='/about' component={About} />
      <Route exact path='/styled' component={StyledComponents} />
    </Switch>
+   </div>
    </>
   )
 }
