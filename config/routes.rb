@@ -3,5 +3,6 @@ Rails.application.routes.draw do
 
   namespace :api do
     get '/api_test', to: 'static#api_test'
+    get '/api_test_2', to: 'static#api_test_2'
   end
 end

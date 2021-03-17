@@ -3,7 +3,7 @@ import { Menu } from 'semantic-ui-react'
 
 const NavBar = () => {
     return(
-        <Menu>
+        <Menu inverted>
             <Link to='/'>
             <Menu.Item >
                 Home
