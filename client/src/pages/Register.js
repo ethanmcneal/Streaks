@@ -1,4 +1,5 @@
 import { useContext, useState } from "react"
+import { useHistory } from "react-router-dom"
 import { Form } from "semantic-ui-react"
 import { AuthContext } from "../providers/AuthProvider"
 import Button from "../style_components/Button"
@@ -8,19 +9,28 @@ import Input from "../style_components/Input"
 const Register = () => {
     const {handleRegister} = useContext(AuthContext)
     const [email, setEmail] = useState('ethan.mcneal@gmail.com')
+    const [nickname, setNickname] = useState('ethan.mcneal')
     const [password, setPassword] = useState('thisisapassword')
     const [passwordConfirmation, setPasswordConfirmation] = useState('thisisapassword')
-    // const history = useHistory()
+    const history = useHistory()
 
     const handleSubmit=(e)=>{
         e.preventDefault()
-        console.log({email, password, passwordConfirmation})
-        handleRegister({email, password, passwordConfirmation})
+        console.log({nickname, email, password, passwordConfirmation})
+        handleRegister({nickname, email, password, passwordConfirmation}, history)
     } 
     return(
         <CardContainer>
             <h1>Register</h1>
         <Form onSubmit={handleSubmit}>
+            <p>UserName</p>
+        <Input
+            label='UserName'
+            value={nickname}
+             autoFocus
+             required
+             name='nickname'
+             onChange={(e)=> setNickname(e.target.value)}/>
             <p>Email</p>
             <Input
             label='Email'

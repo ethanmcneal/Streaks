@@ -6,6 +6,7 @@ import NavBar from './components/Navbar';
 import About from './components/About'
 import StyledComponents from './style_components/StyledComponents';
 import Register from './pages/Register';
+import Login from './pages/Login';
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
      <Route exact path='/about' component={About} />
      <Route exact path='/styled' component={StyledComponents} />
      <Route exact path='/register' component={Register} />
+     <Route exact path='/login' component={Login} />
    </Switch>
    </div>
    </>

@@ -1,11 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react'
 import axios from 'axios'
 import { AuthContext } from '../providers/AuthProvider'
+import CardContainer from '../style_components/CardContainer'
 
 const Home = () =>{
 
     const [test, setTest] = useState([])
-    const {x} = useContext(AuthContext)
+    const {user} = useContext(AuthContext)
 
     useEffect(()=>{
         getTest()
@@ -24,7 +25,10 @@ const Home = () =>{
     return(
         <div>
         <h1>Home Page Here</h1>
-        <h2>{x}</h2>
+       {user && <CardContainer>
+            <h1>Welcome back!</h1>
+            <h3>How are you today {user.nickname}?</h3>
+        </CardContainer> }
         
         </div>
     )
