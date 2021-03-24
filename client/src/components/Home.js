@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import axios from 'axios'
+import { AuthContext } from '../providers/AuthProvider'
 
 const Home = () =>{
 
     const [test, setTest] = useState([])
+    const {x} = useContext(AuthContext)
 
     useEffect(()=>{
         getTest()
@@ -21,7 +23,8 @@ const Home = () =>{
     }
     return(
         <div>
-        <h1>Home Page Here {`${test}`}</h1>
+        <h1>Home Page Here</h1>
+        <h2>{x}</h2>
         
         </div>
     )

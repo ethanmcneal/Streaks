@@ -19,6 +19,14 @@ const NavBar = () => {
                 Style Components
             </Menu.Item>
             </Link>
+            <Menu.Menu position='right'>
+                <Link to='/register'>
+                <Menu.Item>
+                Register
+                </Menu.Item>
+                </Link>
+
+            </Menu.Menu>
         </Menu>
     )
 }
