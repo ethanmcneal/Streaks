@@ -7,6 +7,8 @@ import About from './components/About'
 import StyledComponents from './style_components/StyledComponents';
 import Register from './pages/Register';
 import Login from './pages/Login';
+import ProtectedRoute from './components/ProtectedRoute';
+import FetchUser from './components/FetchUser';
 
 
 function App() {
@@ -14,13 +16,15 @@ function App() {
     <>
     <div style={{backgroundColor: '#E4DFE0'}}>
     <NavBar />
+    <FetchUser>
    <Switch>
-     <Route exact path='/' component={Home} />
+   <ProtectedRoute exact path='/' component={Home} />
      <Route exact path='/about' component={About} />
      <Route exact path='/styled' component={StyledComponents} />
      <Route exact path='/register' component={Register} />
      <Route exact path='/login' component={Login} />
    </Switch>
+   </FetchUser>
    </div>
    </>
   )
