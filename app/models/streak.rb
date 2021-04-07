@@ -1,0 +1,2 @@
+class Streak < ApplicationRecord
+end

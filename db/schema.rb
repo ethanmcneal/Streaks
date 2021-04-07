@@ -10,10 +10,46 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_24_202957) do
+ActiveRecord::Schema.define(version: 2021_04_07_201730) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "comments", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "streak_id", null: false
+    t.string "comment"
+    t.string "media"
+    t.integer "cheer"
+    t.integer "laugh"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["streak_id"], name: "index_comments_on_streak_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "streaks", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.datetime "timeline"
+    t.string "reward"
+    t.string "punishment"
+    t.string "category"
+    t.boolean "open"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "user_streaks", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "streak_id", null: false
+    t.string "status"
+    t.string "media"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["streak_id"], name: "index_user_streaks_on_streak_id"
+    t.index ["user_id"], name: "index_user_streaks_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "provider", default: "email", null: false
@@ -39,10 +75,16 @@ ActiveRecord::Schema.define(version: 2021_03_24_202957) do
     t.datetime "last_sign_in_at"
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
+    t.integer "wins", default: 0
+    t.integer "losses", default: 0
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
+  add_foreign_key "comments", "streaks"
+  add_foreign_key "comments", "users"
+  add_foreign_key "user_streaks", "streaks"
+  add_foreign_key "user_streaks", "users"
 end

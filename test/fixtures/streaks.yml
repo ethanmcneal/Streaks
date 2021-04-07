@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyString
+  timeline: 2021-04-07 14:06:08
+  reward: MyString
+  punishment: MyString
+  category: MyString
+  open: false
+
+two:
+  name: MyString
+  description: MyString
+  timeline: 2021-04-07 14:06:08
+  reward: MyString
+  punishment: MyString
+  category: MyString
+  open: false
