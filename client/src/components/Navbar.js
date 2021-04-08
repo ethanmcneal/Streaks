@@ -18,6 +18,11 @@ const NavBar = () => {
             </Menu.Item>
             </Link>
             <Link to='/styled'>
+            <Link to='/streaks'>
+            <Menu.Item >
+                Streaks
+            </Menu.Item>
+            </Link>
             <Menu.Item >
                 Style Components
             </Menu.Item>
