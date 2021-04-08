@@ -23,7 +23,8 @@ class Api::StreaksController < ApplicationController
     end
 
     def update
-        if @streak.update(streak_params)
+        streak = Streak.find(params[:id])
+        if streak.update(streak_params)
             render json: @streak
         else
            render json: { errors: streak.errors }, status: :unprocessable_entity
@@ -44,6 +45,6 @@ class Api::StreaksController < ApplicationController
     end
 
     def streak_params
-        params.require(:streak).permit(:name, :description, :timeline, :reward, :punishment, :category, :open)
+        params.require(:streak).permit(:name, :description, :timeline, :reward, :punishment, :category, :open, :id, :created_at, :updated_at)
     end
 end
