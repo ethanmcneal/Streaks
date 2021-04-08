@@ -18,7 +18,7 @@ class Api::StreaksController < ApplicationController
         if streak.save
             render json: streak
         else
-            render json: { errors: main.errors }, status: :unprocessable_entity
+            render json: { errors: streak.errors }, status: :unprocessable_entity
         end
     end
 
@@ -26,7 +26,7 @@ class Api::StreaksController < ApplicationController
         if @streak.update(streak_params)
             render json: @streak
         else
-           render json: { errors: main.errors }, status: :unprocessable_entity
+           render json: { errors: streak.errors }, status: :unprocessable_entity
         end
     end
 
