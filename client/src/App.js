@@ -9,6 +9,7 @@ import Register from './pages/Register';
 import Login from './pages/Login';
 import ProtectedRoute from './components/ProtectedRoute';
 import FetchUser from './components/FetchUser';
+import Streaks from './streaks/StreaksShow';
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
    <Switch>
    <ProtectedRoute exact path='/' component={Home} />
      <Route exact path='/about' component={About} />
+     <Route exact path='/streaks' component={Streaks} />
      <Route exact path='/styled' component={StyledComponents} />
      <Route exact path='/register' component={Register} />
      <Route exact path='/login' component={Login} />
