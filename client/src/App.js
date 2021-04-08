@@ -10,6 +10,7 @@ import Login from './pages/Login';
 import ProtectedRoute from './components/ProtectedRoute';
 import FetchUser from './components/FetchUser';
 import StreakForm from './streaks/StreakForm';
+import StreakEditForm from './streaks/StreakEditForm';
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
      <Route exact path='/register' component={Register} />
      <Route exact path='/login' component={Login} />
      <Route exact path='/streaks/form' component={StreakForm} />
+     <Route exact path='/streaks/edit/:id' component={StreakEditForm} />
    </Switch>
    </FetchUser>
    </div>
