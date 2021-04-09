@@ -16,3 +16,4 @@ export const NOTIFY_TEXT_COLOR = 'blue';
 export const NOTIFY_BACKGROUND = 'lightblue';
 export const PADDING2_EVEN_LARGE = '1em';
 export const BOX_SHADOW_COLOR = 'rgba(0, 0, 255, .2)';
+export const MEDIUM_SPACING = '.5em';
