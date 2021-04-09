@@ -12,6 +12,7 @@ import FetchUser from './components/FetchUser';
 import Streaks from './streaks/StreaksShow';
 import StreakForm from './streaks/StreakForm';
 import StreakEditForm from './streaks/StreakEditForm';
+import Streak from './streaks/Streak';
 
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
      <Route exact path='/login' component={Login} />
      <Route exact path='/streaks/form' component={StreakForm} />
      <Route exact path='/streaks/edit/:id' component={StreakEditForm} />
+     <Route exact path='/streaks/:id' component={Streak} />
    </Switch>
    </FetchUser>
    </div>

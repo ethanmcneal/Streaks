@@ -37,7 +37,8 @@ class Api::StreaksController < ApplicationController
     end
 
     def destroy
-        @streak.delete
+        streak = Streak.find(params[:id])
+        render json: streak.destroy
     end
 
 

@@ -1,6 +1,6 @@
 class Streak < ApplicationRecord
     #comment erin
-    has_many :user_streaks
+    has_many :user_streaks, dependent: :destroy
     has_many :users, through: :user_streaks
 
     def self.streak_all_comments(streak_id)
@@ -10,5 +10,5 @@ class Streak < ApplicationRecord
           inner join streaks s on s.id = c.streak_id')
         .where("s.id = ?", "#{streak_id}")
     end
-
+    has_many :comments, dependent: :destroy
 end
