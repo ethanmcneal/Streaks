@@ -8,6 +8,11 @@ class Api::StreaksController < ApplicationController
         streaks = Streak.all
         render json: streaks
     end
+
+    def streak_comments
+        streak_id = params[:streak_id]
+        render json: Streak.streak_all_comments(streak_id)
+    end
     
     def show
         render json: @streak
