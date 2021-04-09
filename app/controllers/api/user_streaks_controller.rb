@@ -3,10 +3,9 @@ class Api::UserStreaksController < ApplicationController
   before_action :set_user_streak, only: [:show, :destroy]
 
   def index
-    # @user_streak= UserStreak.every_streak
-    # streaked = UserStreak.every_streak
     render json: UserStreak.every_streak
   end 
+
 
   def show 
     render json: @user_streak
@@ -22,7 +21,6 @@ class Api::UserStreaksController < ApplicationController
   end
   
   def update 
-    # user_streak = UserStreak.find(@user)
     if @user_streak.update(user_streak_params)
       render json: @user_streak
     else 
