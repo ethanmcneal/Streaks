@@ -10,6 +10,5 @@ class UserStreak < ApplicationRecord
     .joins('inner join users u on u.id = us.user_id 
       inner join streaks s on s.id = us.streak_id')
   end 
-
   
 end

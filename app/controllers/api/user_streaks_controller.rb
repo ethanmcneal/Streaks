@@ -6,6 +6,7 @@ class Api::UserStreaksController < ApplicationController
     render json: UserStreak.every_streak
   end 
 
+
   def show 
     render json: @user_streak
   end
