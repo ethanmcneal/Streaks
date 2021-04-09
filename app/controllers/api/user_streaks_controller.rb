@@ -5,7 +5,7 @@ class Api::UserStreaksController < ApplicationController
   def index
     # @user_streak= UserStreak.every_streak
     # streaked = UserStreak.every_streak
-    render json: UserStreak.all
+    render json: UserStreak.every_streak
   end 
 
   def show 
