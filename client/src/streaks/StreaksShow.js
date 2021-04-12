@@ -11,7 +11,7 @@ import CommentsStreak from '../comments/CommentsStreak';
 const Streaks = (props)=>{
     const { id } = useParams()
     const [streaks, setStreaks] = useState(null);
-    // const { data, loading, error} = useAxiosOnMount(`/api/streaks`)
+
 
     useEffect(() => {
         getStreaks()
