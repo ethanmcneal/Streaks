@@ -8,6 +8,11 @@ class Api::StreaksController < ApplicationController
         streaks = Streak.all
         render json: streaks
     end
+
+    def streak_comments
+        streak_id = params[:streak_id]
+        render json: Streak.streak_all_comments(streak_id)
+    end
     
     def show
         render json: @streak
@@ -18,7 +23,7 @@ class Api::StreaksController < ApplicationController
         if streak.save
             render json: streak
         else
-            render json: { errors: main.errors }, status: :unprocessable_entity
+            render json: { errors: streak.errors }, status: :unprocessable_entity
         end
     end
 
@@ -27,12 +32,13 @@ class Api::StreaksController < ApplicationController
         if streak.update(streak_params)
             render json: @streak
         else
-           render json: { errors: main.errors }, status: :unprocessable_entity
+           render json: { errors: streak.errors }, status: :unprocessable_entity
         end
     end
 
     def destroy
-        @streak.delete
+        streak = Streak.find(params[:id])
+        render json: streak.destroy
     end
 
 
