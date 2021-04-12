@@ -1,28 +1,35 @@
-import React from 'react'
-import { Segment } from 'semantic-ui-react'
-
-const SegmentExampleSegments = () => (
-    <>
+import axios from "axios"
+import { Icon, Menu, Segment } from "semantic-ui-react"
+import Streak from "../streaks/Streak"
 
 
+const UserStreak = (props) => {
 
-  <Segment.Group>
-  <Segment.Group horizontal>
-    <Segment>Streak</Segment>
-    <Segment># of Participants</Segment>
-    <Segment>Created</Segment>
-    <Segment>Wager</Segment>
-    <Segment>Status</Segment>
-    <Segment>Actions</Segment>
-  </Segment.Group>
+const {streakName, streakReward, createdAt, status, userStreakId} = props
 
-    <Segment>Top</Segment>
-    <Segment>Middle</Segment>
-    <Segment>Middle</Segment>
-    <Segment>Middle</Segment>
-    <Segment>Bottom</Segment>
-  </Segment.Group>
-  </>
-)
+const changeStatus = async(id, s) => {
+    try {
+        let res = await axios.patch(`/api/user_streaks/${id}`, {status: s == 'ongoing' ? 'paused' : 'ongoing'})
+        console.log(res)
+        window.location.reload()
+    } catch (error) {
+        console.log(error)
+    }
+}
 
-export default SegmentExampleSegments
+    return(
+            <Segment style={{display: 'flex', justifyContent:'space-between', textAlign:'center'}}>
+                <h4>{streakName}</h4>
+                <h4># of Participants?</h4>
+                <h4>{createdAt}</h4>
+                <h4>{streakReward}</h4>
+                <h4> {status} </h4>
+                <div>
+                <Icon onClick={()=>changeStatus(userStreakId, status)}name={status == 'ongoing' ? 'pause' : 'play'} />
+                <Icon name='times'/>
+                </div>  
+            </Segment>
+    )
+}
+
+export default UserStreak

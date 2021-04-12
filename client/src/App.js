@@ -13,6 +13,9 @@ import Streaks from './streaks/StreaksShow';
 import StreakForm from './streaks/StreakForm';
 import StreakEditForm from './streaks/StreakEditForm';
 import Streak from './streaks/Streak';
+import UserStreakShow from './user_streak/UserStreak';
+import UserStreak from './user_streak/UserStreaks'
+import MyDashBoard from './pages/MyDashBoard';
 import Comment from './comments/Comment';
 import CommentsStreak from './comments/CommentsStreak';
 import UserStreak from './user_streak/UserStreak'
@@ -21,11 +24,12 @@ import UserStreak from './user_streak/UserStreak'
 function App() {
   return (
     <>
-    <div style={{backgroundColor: '#E4DFE0'}}>
+    <div>
     <NavBar />
     <FetchUser>
    <Switch>
    <ProtectedRoute exact path='/' component={Home} />
+   <ProtectedRoute exact path='/dashboard' component={MyDashBoard} />
      <Route exact path='/about' component={About} />
      <Route exact path='/streaks' component={Streaks} />
      <Route exact path='/styled' component={StyledComponents} />
