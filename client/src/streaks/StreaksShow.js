@@ -1,10 +1,11 @@
 
-import useAxiosOnMount from '../hooks/useAxiosOnMount'
 import {Link, useParams} from 'react-router-dom'
 import axios from 'axios'
 import { useContext, useEffect, useState } from 'react';
 import { Button, Card, CardGroup } from 'semantic-ui-react';
 import { AuthContext } from '../providers/AuthProvider';
+import { Card, CardGroup } from 'semantic-ui-react';
+import CommentsStreak from '../comments/CommentsStreak';
 
 
 
@@ -66,7 +67,11 @@ const Streaks = (props)=>{
          <CardGroup>
              {streaks && renderStreak()}
         </CardGroup>
-          </>
+         {/* <div fullError loading={loading} error={error} loaderMessage={'Loading URL, please wait'}>
+               {data && renderStreak()}
+        </div> */}
+       
+        </>
      )
 }
 
