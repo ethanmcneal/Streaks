@@ -3,7 +3,7 @@ import useAxiosOnMount from '../hooks/useAxiosOnMount'
 import {Link, useParams} from 'react-router-dom'
 import axios from 'axios'
 import { useEffect, useState } from 'react';
-import { Card, CardGroup } from 'semantic-ui-react';
+import { Button, Card, CardGroup } from 'semantic-ui-react';
 
 
 
@@ -27,6 +27,7 @@ const Streaks = (props)=>{
             alert(err)
         }
     }
+
 
     const renderStreak = () => {
         return streaks.map((streak) => {

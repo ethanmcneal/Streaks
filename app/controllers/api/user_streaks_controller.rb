@@ -7,8 +7,14 @@ class Api::UserStreaksController < ApplicationController
   end 
 
 
-  def show 
-    render json: @user_streak
+  # def show 
+  #   render json: @user_streak
+  # end
+
+
+  def current_user_streaks
+    user_id = params[:user_id] 
+    render json: UserStreak.every_streak(user_id)
   end
   
   def create 
