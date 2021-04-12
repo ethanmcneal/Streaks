@@ -1,5 +1,4 @@
 
-import useAxiosOnMount from '../hooks/useAxiosOnMount'
 import {useParams} from 'react-router-dom'
 import axios from 'axios'
 import { useEffect, useState } from 'react';
@@ -9,7 +8,7 @@ import { useEffect, useState } from 'react';
 const Streaks = (props)=>{
     const { id } = useParams()
     const [streaks, setStreaks] = useState(null);
-    // const { data, loading, error} = useAxiosOnMount(`/api/streaks`)
+
 
     useEffect(() => {
         getStreaks()
@@ -51,9 +50,6 @@ const Streaks = (props)=>{
          <div>
              {streaks && renderStreak()}
          </div>
-         {/* <div fullError loading={loading} error={error} loaderMessage={'Loading URL, please wait'}>
-               {data && renderStreak()}
-        </div> */}
           </>
      )
 }
