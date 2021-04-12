@@ -10,7 +10,7 @@ import { Button, Card, CardGroup } from 'semantic-ui-react';
 const Streaks = (props)=>{
     const { id } = useParams()
     const [streaks, setStreaks] = useState(null);
-    // const { data, loading, error} = useAxiosOnMount(`/api/streaks`)
+
 
     useEffect(() => {
         getStreaks()
@@ -55,9 +55,6 @@ const Streaks = (props)=>{
          <CardGroup>
              {streaks && renderStreak()}
         </CardGroup>
-         {/* <div fullError loading={loading} error={error} loaderMessage={'Loading URL, please wait'}>
-               {data && renderStreak()}
-        </div> */}
           </>
      )
 }

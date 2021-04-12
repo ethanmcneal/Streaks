@@ -14,6 +14,7 @@ import StreakForm from './streaks/StreakForm';
 import StreakEditForm from './streaks/StreakEditForm';
 import Streak from './streaks/Streak';
 import UserStreakShow from './user_streaks/UserStreakShow';
+import UserStreak from './user_streak/UserStreak'
 
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
      <Route exact path='/streaks/edit/:id' component={StreakEditForm} />
      <Route exact path='/streaks/:id' component={Streak} />
      <Route exact path='/test' component={UserStreakShow} />
+     <Route exact path='/user' component={UserStreak} />
    </Switch>
    </FetchUser>
    </div>
