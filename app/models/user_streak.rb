@@ -3,7 +3,7 @@ class UserStreak < ApplicationRecord
   belongs_to :streak
     
   def self.every_streak(user_id)
-    select('us.status, u.name as user_name, u.nickname, u.image, u.email, u.wins, u.losses, 
+    select('us.created_at, us.id, us.status, u.name as user_name, u.nickname, u.image, u.email, u.wins, u.losses, 
        s.name as streak_name, s.timeline, s.description, s.category, s.reward, s.open as pub,
        s.punishment, us.media, s.id as streak_id, u.id as user_id')
     .from('user_streaks as us')

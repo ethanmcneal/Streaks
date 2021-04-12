@@ -13,18 +13,20 @@ import Streaks from './streaks/StreaksShow';
 import StreakForm from './streaks/StreakForm';
 import StreakEditForm from './streaks/StreakEditForm';
 import Streak from './streaks/Streak';
-import UserStreakShow from './user_streaks/UserStreakShow';
-import UserStreak from './user_streak/UserStreak'
+import UserStreakShow from './user_streak/UserStreak';
+import UserStreak from './user_streak/UserStreaks'
+import MyDashBoard from './pages/MyDashBoard';
 
 
 function App() {
   return (
     <>
-    <div style={{backgroundColor: '#E4DFE0'}}>
+    <div>
     <NavBar />
     <FetchUser>
    <Switch>
    <ProtectedRoute exact path='/' component={Home} />
+   <ProtectedRoute exact path='/dashboard' component={MyDashBoard} />
      <Route exact path='/about' component={About} />
      <Route exact path='/streaks' component={Streaks} />
      <Route exact path='/styled' component={StyledComponents} />
@@ -33,8 +35,6 @@ function App() {
      <Route exact path='/streaks/form' component={StreakForm} />
      <Route exact path='/streaks/edit/:id' component={StreakEditForm} />
      <Route exact path='/streaks/:id' component={Streak} />
-     <Route exact path='/test' component={UserStreakShow} />
-     <Route exact path='/user' component={UserStreak} />
    </Switch>
    </FetchUser>
    </div>
