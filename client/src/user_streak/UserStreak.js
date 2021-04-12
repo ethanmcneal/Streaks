@@ -1,10 +1,21 @@
 import React from 'react'
-import { Segment } from 'semantic-ui-react'
+import { Container, Segment } from 'semantic-ui-react'
+import DashTest from './DashTest'
 
-const SegmentExampleSegments = () => (
+const App = ({ children }) => (
+    <Container style={{ margin: 20 }}>
+  
+      {children}
+    </Container>
+  );
+
+const DashSeg = () => (
+
     <>
 
-
+<App>
+    <DashTest />
+  </App>,
 
   <Segment.Group>
   <Segment.Group horizontal>
@@ -25,4 +36,4 @@ const SegmentExampleSegments = () => (
   </>
 )
 
-export default SegmentExampleSegments
+export default DashSeg

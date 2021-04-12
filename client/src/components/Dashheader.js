@@ -2,9 +2,8 @@ import { useContext } from "react"
 import { Link } from "react-router-dom"
 import { Menu } from 'semantic-ui-react'
 import { AuthContext } from "../providers/AuthProvider"
-import HeaderDropdown from './HeaderDropdown'
 
-const NavBar = () => {
+const DashHeader = () => {
 
     const {user, handleLogout} = useContext(AuthContext)
     return(
@@ -47,4 +46,4 @@ const NavBar = () => {
     )
 }
 
-export default NavBar
+export default DashHeader
