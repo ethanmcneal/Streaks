@@ -8,5 +8,6 @@ Rails.application.routes.draw do
     resources :user_streaks
 
     get 'streak/:streak_id', to: 'streaks#streak_comments'
+    get 'comment/:user_id', to: 'comments#every_comment'
   end
 end

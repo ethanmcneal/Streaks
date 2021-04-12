@@ -13,6 +13,8 @@ import Streaks from './streaks/StreaksShow';
 import StreakForm from './streaks/StreakForm';
 import StreakEditForm from './streaks/StreakEditForm';
 import Streak from './streaks/Streak';
+import Comment from './comments/Comment';
+import CommentsStreak from './comments/CommentsStreak';
 
 
 function App() {
@@ -31,6 +33,7 @@ function App() {
      <Route exact path='/streaks/form' component={StreakForm} />
      <Route exact path='/streaks/edit/:id' component={StreakEditForm} />
      <Route exact path='/streaks/:id' component={Streak} />
+     {/* <Route exact path='/streak/:id' component={CommentsStreak} /> */}
    </Switch>
    </FetchUser>
    </div>

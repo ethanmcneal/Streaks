@@ -2,6 +2,7 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 import { Link, useParams } from "react-router-dom"
 import { Button, Header } from "semantic-ui-react"
+import CommentsStreak from "../comments/CommentsStreak"
 import CardContainer from "../style_components/CardContainer"
 
 const Streak = () => {
@@ -44,6 +45,10 @@ const Streak = () => {
             <h4>Failure = {streak.punishment}</h4>
                 <Button onClick={deleteStreak}>Delete</Button>
             </CardContainer>}
+            <div>
+        <h2>Comments streak show</h2>
+         <CommentsStreak />
+         </div>
         </div>
     )
 }
