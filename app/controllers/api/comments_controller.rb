@@ -8,6 +8,11 @@ class Api::CommentsController < ApplicationController
   def show 
     render json: @comment
   end
+
+  def user_comments
+    user_id = params[:user_id]
+    render json: Comment.comments_by_user(user_id)
+  end
   
   def create 
     comment = Comment.new(comment_params)
