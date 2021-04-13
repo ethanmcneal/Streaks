@@ -7,7 +7,7 @@ import CardContainer from '../style_components/CardContainer'
 const CommentForm = () => {
   return (
     <div>
-      <h1>CommentForm.js: this will house the actual form maybe, thoughts.  </h1>
+      <h1>CommentForm.js: this will house the actual form maybe, thoughts. </h1>
     </div>
   )
 }

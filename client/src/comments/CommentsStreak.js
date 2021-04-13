@@ -22,8 +22,17 @@ const CommentsStreak = () => {
       alert(err)
     }
   }
+  // /api/comments/:id
+  const deleteComment = async(id) => {
+    try{
+      let res = await axios.delete(`/api/comments/${id}`)
+      window.location.reload()
+    }catch(err){
+      alert('error in deleteComment')
+    }
+  }
 
-
+{/* <Button onClick={() => deleteParty(party.party_id)}variant='secondary'>Trash Party</Button> */}
   
   const renderFullComments = () => {
    return(
@@ -31,6 +40,7 @@ const CommentsStreak = () => {
         {comments && comments.map( comment => 
           <Card>
             <h1>nickname: {comment.nickname}</h1>
+            <Button onClick={() => deleteComment(comment.comment_id)}>Delete</Button>
             <img src={comment.image}/>
             <h1>comment: {comment.comment}</h1>
             <h1>media: {comment.media}</h1>
