@@ -8,20 +8,6 @@ const Home = () =>{
     const [test, setTest] = useState([])
     const {user} = useContext(AuthContext)
 
-    useEffect(()=>{
-        getTest()
-    },[])
-    const getTest = async() => {
-        try { 
-        let res = await axios.get('/api/api_test')
-        setTest(res.data.hello)
-        console.log(res.data.hello)
-            
-        } catch (error) {
-            alert(error)
-            
-        }
-    }
     return(
         <div>
         <h1>Home Page Here</h1>

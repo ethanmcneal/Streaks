@@ -1,15 +1,16 @@
 
-import useAxiosOnMount from '../hooks/useAxiosOnMount'
 import {Link, useParams} from 'react-router-dom'
 import axios from 'axios'
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { Button, Card, CardGroup } from 'semantic-ui-react';
+import { AuthContext } from '../providers/AuthProvider';
 import { Card, CardGroup } from 'semantic-ui-react';
 import CommentsStreak from '../comments/CommentsStreak';
 
 
 
 const Streaks = (props)=>{
-    const { id } = useParams()
+    const { user } = useContext(AuthContext)
     const [streaks, setStreaks] = useState(null);
 
 
@@ -29,6 +30,16 @@ const Streaks = (props)=>{
         }
     }
 
+    const addToUserStreaks = async(id) => {
+        try {
+            let res = await axios.post(`/api/user_streaks/`, {status: 'ongoing', user_id: user.id, streak_id: id})
+            console.log(res)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+
     const renderStreak = () => {
         return streaks.map((streak) => {
         return(
@@ -40,6 +51,7 @@ const Streaks = (props)=>{
             <h3>The challenge = {streak.description}</h3>
             <h4>Success = {streak.reward}</h4>
             <h4>Failure = {streak.punishment}</h4>
+            <Button onClick={()=>addToUserStreaks(streak.id)}>Start Streak!</Button>
            <br/>
            </Card>
             </>
