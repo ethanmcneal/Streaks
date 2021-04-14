@@ -1,7 +1,7 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
 import { Link, useParams } from "react-router-dom"
-import { Button, CardGroup, Header } from "semantic-ui-react"
+import { Button, CardGroup, Header, Segment } from "semantic-ui-react"
 import CommentNew from "../comments/CommentNew"
 import CommentsStreak from "../comments/CommentsStreak"
 import CardContainer from "../style_components/CardContainer"
