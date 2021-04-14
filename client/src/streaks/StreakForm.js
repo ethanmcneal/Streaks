@@ -1,6 +1,7 @@
 import axios from "axios"
-import { useState } from "react"
-import { Button, Card, Dropdown, Form, Input } from "semantic-ui-react"
+import { useContext, useState } from "react"
+import {Button, Form} from 'react-bootstrap'
+import { AuthContext } from "../providers/AuthProvider"
 
 const StreakForm = () => {
 
@@ -9,6 +10,8 @@ const StreakForm = () => {
     // const [reward, setReward] = useState(null)
     // const [punishment, setPunishment] = useState(null)
     // const [category, setCategory] = useState(null)
+
+    const user = useContext(AuthContext)
 
     let [streak, setStreak] = useState({name:null, description:null, reward:null, punishment:null, category:null})
 
@@ -23,10 +26,13 @@ const StreakForm = () => {
         { key: 'Physical Feat', text: 'Physical Feat', value: 'Physical Feat' },
         { key: 'Cuisine', text: 'Cuisine', value: 'Cuisine' },
       ]
-
+      
       const handleSubmit = async() => {
           try {
+              submitStreak()
               let res = await axios.post('/api/streaks/', streak)
+              let res2 = await axios.post(`/api/user_streaks/`, {status: 'upcoming', user_id: user.id, streak_id: res.data.id} )
+              
               console.log(res)
           } catch (error) {
               console.log(error)
@@ -34,46 +40,54 @@ const StreakForm = () => {
 
       }
 
-      const handleDropDown = (e, data) => {
-          setStreak({...streak, ['category']: data.value})
-          console.log(data.value)
+      const handleDropDown = (data) => {
+          setStreak({...streak, ['category']: data})
+          console.log(data)
       }
 
       const handleChange = (e) => {
         setStreak({...streak, [e.target.name]: e.target.value})
       }
     return(
-        <div style={{display: 'flex', justifyContent:'center'}}>
+        <div style={{backgroundColor:'white', margin: '3em 300px 200px'}}>
+            <div style={{padding: '20px 60px'}}>
         <Form onSubmit={handleSubmit}>
-            <p> Name </p>
-            <Input 
+        <Form.Label> category </Form.Label>
+            <Form.Control as='select' placeholder='category' fluid selection onChange={(e)=> handleDropDown(e.target.value)}>
+            <option>Sports</option>
+            <option>Health</option>
+            </Form.Control>
+            <Form.Label> Streak Name </Form.Label>
+            <Form.Control 
             placeholder='name'
             name='name'
             value={streak.name}
             onChange={handleChange}/>
-            <p> description </p>
-            <Input 
+            <Form.Label> description </Form.Label>
+            <Form.Control 
             placeholder='description'
             name='description'
             value={streak.description}
             onChange={handleChange}/>
-            <p> reward </p>
-            <Input 
+            <Form.Label> reward </Form.Label>
+            <Form.Control 
             placeholder='reward'
             name='reward'
             value={streak.reward}
             onChange={handleChange}/>            
-            <p> punishment </p>
-            <Input 
+            <Form.Label> punishment </Form.Label>
+            <Form.Control 
             placeholder='punishment'
             name='punishment'
             value={streak.punishment}
             onChange={handleChange}/>
-            <p> category </p>
-            <Dropdown placeholder='category' fluid selection options={options} onChange={handleDropDown} />
+            
+            
             <Button type='submit'>Add</Button>
         </Form>
         </div>
+        </div>
+        
     )
 }
 
