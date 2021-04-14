@@ -2,8 +2,10 @@ import { useContext } from "react"
 import { Link } from "react-router-dom"
 import { Menu } from 'semantic-ui-react'
 import { AuthContext } from "../providers/AuthProvider"
+import HeaderDropdown from './HeaderDropdown'
 
 const NavBar = () => {
+
     const {user, handleLogout} = useContext(AuthContext)
     return(
         <Menu inverted>
@@ -24,16 +26,10 @@ const NavBar = () => {
             </Link>
         {!user &&    <Menu.Menu position='right'>
                 
-            <Link to='/register'>
                 <Menu.Item>
-                Register
+                     <HeaderDropdown />
                 </Menu.Item>
-                </Link>
-                <Link to='/login'>
-                <Menu.Item>
-                Login
-                </Menu.Item>
-                </Link>
+
 
             </Menu.Menu> }
           {user && <Menu.Menu position='right'>
@@ -52,6 +48,8 @@ const NavBar = () => {
 
             </Menu.Menu>}
         </Menu>
+
+
     )
 }
 

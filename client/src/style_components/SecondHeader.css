@@ -1,0 +1,11 @@
+.ui.menu {
+    margin: 0% !important;
+    max-height: 3em;
+    border-radius: 0 !important;
+
+}
+
+.ui.search .prompt {
+    border-radius: 0rem !important;
+    padding: .2rem !important;
+}
