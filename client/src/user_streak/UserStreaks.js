@@ -39,7 +39,7 @@ const UserStreaks = () => {
 
   return(
     <>
-  <Segment.Group style={{margin: '0px 300px 0px 300px'}}>
+  <Segment.Group style={{margin: '0px 3em 0px 3em'}}>
   <Segment.Group horizontal >
     <Segment>Streak</Segment>
     <Segment># of Participants</Segment>

@@ -6,6 +6,7 @@ import { Link, useParams } from "react-router-dom"
 import CommentNew from "../comments/CommentNew"
 import CommentsStreak from "../comments/CommentsStreak"
 import Thumbnail from "../components/Thumbnail"
+import Timer from "../components/Timer"
 import CardContainer from "../style_components/CardContainer"
 
 const Streak = () => {
@@ -62,43 +63,8 @@ const Streak = () => {
            {streak && <Container className="mt-5 mb-5 justify-content-center">
         <Card style={{width:"50em", marginLeft:'10em'}} >
           {/* <Thumbnail url={streak.name} /> */}
-          <Carousel>
-  <Carousel.Item>
-    <img style={{maxHeight: '400px'}}
-      className="d-block w-100"
-      src="https://via.placeholder.com/100"
-      alt="First slide"
-    />
-    <Carousel.Caption>
-      <h3>First slide label</h3>
-      <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-    </Carousel.Caption>
-  </Carousel.Item>
-  <Carousel.Item>
-    <img style={{maxHeight: '400px'}}
-      className="d-block w-100"
-      src="https://via.placeholder.com/100"
-      alt="Second slide"
-    />
-
-    <Carousel.Caption>
-      <h3>Second slide label</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-    </Carousel.Caption>
-  </Carousel.Item>
-  <Carousel.Item>
-    <img style={{maxHeight: '400px'}}
-      className="d-block w-100"
-      src="https://via.placeholder.com/100"
-      alt="Third slide"
-    />
-
-    <Carousel.Caption>
-      <h3>Third slide label</h3>
-      <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-    </Carousel.Caption>
-  </Carousel.Item>
-</Carousel>
+          <Timer />
+          
           <Card.Body>
             <Card.Title><h4>{streak.name}</h4></Card.Title>
             <Card.Text>
