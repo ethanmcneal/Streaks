@@ -24,14 +24,12 @@ const NavBar = () => {
                 Streaks
             </Menu.Item>
             </Link>
-        {!user &&    <Menu.Menu position='right'>
+        {/* {user &&    <Menu.Menu position='right'>
                 
-                <Menu.Item>
-                     <HeaderDropdown />
-                </Menu.Item>
+                
 
 
-            </Menu.Menu> }
+            </Menu.Menu> } */}
           {user && <Menu.Menu position='right'>
 
             <Link to='/dashboard'>
@@ -43,6 +41,9 @@ const NavBar = () => {
             
                 <Menu.Item onClick={handleLogout}>
                 Logout
+                </Menu.Item>
+                <Menu.Item>
+                     <HeaderDropdown />
                 </Menu.Item>
                
 

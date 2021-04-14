@@ -28,7 +28,7 @@ class Api::UserStreaksController < ApplicationController
   def create 
     user_streak = UserStreak.new(user_streak_params)
     if (user_streak.save)
-      render json: @user_streak
+      render json: user_streak
     else 
       render json: { errors: user_streak.errors }, status: :unprocessable_entity
     end 
