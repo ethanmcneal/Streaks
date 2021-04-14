@@ -16,6 +16,7 @@ import Streak from './streaks/Streak';
 import Comment from './comments/Comment';
 import CommentsStreak from './comments/CommentsStreak';
 import UserStreak from './user_streak/UserStreak'
+import DashHeader from './components/Secondheader';
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
     <>
     <div style={{backgroundColor: '#E4DFE0'}}>
     <NavBar />
+    <DashHeader/>
     <FetchUser>
    <Switch>
    <ProtectedRoute exact path='/' component={Home} />
