@@ -29,7 +29,6 @@ const StreakForm = () => {
       
       const handleSubmit = async() => {
           try {
-              submitStreak()
               let res = await axios.post('/api/streaks/', streak)
               let res2 = await axios.post(`/api/user_streaks/`, {status: 'upcoming', user_id: user.id, streak_id: res.data.id} )
               
