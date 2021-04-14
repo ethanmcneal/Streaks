@@ -16,7 +16,7 @@ import Streak from './streaks/Streak';
 import UserStreakShow from './user_streak/UserStreak';
 import UserStreak from './user_streak/UserStreaks'
 import MyDashBoard from './pages/MyDashBoard';
-import Comment from './comments/Comment';
+// import Comment from './comments/Comment';
 import CommentsStreak from './comments/CommentsStreak';
 
 

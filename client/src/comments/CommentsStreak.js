@@ -1,9 +1,11 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useReducer} from 'react'
 import axios from 'axios'
 import {Link, useParams} from 'react-router-dom'
 import {Button, Card, Header, Image} from 'semantic-ui-react'
 import CardContainer from '../style_components/CardContainer'
 import CommentEdit from './CommentEdit'
+import ReactDOM from "react-dom";
+import CheerLaughCounter from './CheerLaughCounter'
 
 const CommentsStreak = () => {
   const [comments, setComments] = useState('')
@@ -33,34 +35,30 @@ const CommentsStreak = () => {
       alert('error in deleteComment')
     }
   }
-
-{/* <Button onClick={() => deleteParty(party.party_id)}variant='secondary'>Trash Party</Button> */}
-  
+      
   const renderFullComments = () => {
-   return(
-      <Card>
-        {comments && comments.map( comment => 
-          <Card>
-            <h1>nickname: {comment.nickname}</h1>
-            {/* todo: make delete and edit only visible to curernt user for their comments */}
-            <Button onClick={() => deleteComment(comment.comment_id)}>Delete</Button>
-            
+    return(
+       <Card>
+         {comments && comments.map( comment => 
+           <Card>
+             <h1>nickname: {comment.nickname}</h1>
+             {/* todo: make delete and edit only visible to curernt user for their comments */}
+             <Button onClick={() => deleteComment(comment.comment_id)}>Delete</Button>
              
-             <Button onClick={()=> {setHideEditFields(!hideEditFields)}}>{hideEditFields ? 'Cancel Edit' : 'Edit'}</Button>
-             {hideEditFields && <CommentEdit defaultInfo={comment.info} defaultMedia={comment.media} defaultCheer={comment.cheer} defaultLaugh={comment.laugh} defaultCommentID={comment.comment_id}/>}
-            <img src={comment.image}/>
-            <h1>comment: {comment.info}</h1>
-            <h1>media: {comment.media}</h1>
-            <h1>cheer: {comment.cheer}</h1>
-            <h1>laugh: {comment.laugh}</h1>
-         </Card>     
-    )}
-    </Card>
-   )
-  }
-
-
-
+              
+              <Button onClick={()=> {setHideEditFields(!hideEditFields)}}>{hideEditFields ? 'Cancel Edit' : 'Edit'}</Button>
+              {hideEditFields && <CommentEdit defaultInfo={comment.info} defaultMedia={comment.media} defaultCheer={comment.cheer} defaultLaugh={comment.laugh} defaultCommentID={comment.comment_id}/>}
+             <img src={comment.image}/>
+             <h1>comment: {comment.info}</h1>
+             <h1>media: {comment.media}</h1>
+             <h1>cheer: {comment.cheer}</h1>
+             <h1>laugh: {comment.laugh}</h1>
+             <div><CheerLaughCounter defaultCommentID={comment.comment_id} initCheer={comment.cheer} initLaugh={comment.laugh}/></div>
+          </Card>     
+     )}
+     </Card>
+    )
+   }
   
 
 
@@ -72,12 +70,18 @@ const CommentsStreak = () => {
         
     </div>
     <div>{renderFullComments()}</div>
+    
     </>
   )
 }
 
 
 export default CommentsStreak
+
+
+
+
+
 
 
  {/* <Link to={{pathname:`/CommentEdit/${comment.id}/${comment.info}/${comment.media}/${comment.user_id}/${comment.streak_id}/${comment.cheer}/${comment.laugh}`}}> */}
