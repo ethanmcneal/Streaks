@@ -8,18 +8,28 @@ import { AuthContext } from '../providers/AuthProvider'
 const CommentNew = () => {
   const history = useHistory()
   const {user} = useContext(AuthContext)
-  const [streak_id, setStreak_id] = useState()
-  const [user_id, setUser_id] = useState()
-  const [comment, setComment] = useState('')
-  const [media, setMedia] = useState('')
+  const {id} = useParams()
+  const [newComment, setNewComment] = useState({
+    user_id: user.id,
+    streak_id: id,
+    info: "", 
+    media: "",
+    cheer: "0", 
+    laugh: "0"
+  })
 
   const handleNewComment = async(e) => {
+    e.preventDefault()
     try{
-      let res = await axios.post('/api/comments')
+      let res = await axios.post('/api/comments', newComment)
       history.push('/comments')
     }catch(err){
       alert('err in handleNewComment')
     }
+  }
+
+  const handleChange = (e) => {
+    setNewComment({...newComment, [e.target.name]: e.target.value})
   }
   
   return (
@@ -28,11 +38,12 @@ const CommentNew = () => {
       <h1>CommentNew.js for creating a new comment</h1>
     </div>
     <div>
-      <for
-      <input value={comment} label='Comment:' placeholder='Comment' name='comment' onChange={(e)=>setComment(e.target.value)}/>
+      <form onSubmit={handleNewComment}>
+      <input value={newComment.info} label='Comment:' placeholder='Comment' name='info' onChange={handleChange}/>
       <br/>
-      <input value={media} label='Other Media:' placeholder='media' name='media' onChange={(e)=>setMedia(e.target.value)}/>
-      <Button>Post Comment</Button>
+      <input value={newComment.media} label='Other Media:' placeholder='media' name='media' onChange={handleChange}/>
+      <Button type='submit'>Post Comment</Button>
+      </form>
     </div>
     </>
   )

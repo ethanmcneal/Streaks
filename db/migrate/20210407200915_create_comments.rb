@@ -3,7 +3,7 @@ class CreateComments < ActiveRecord::Migration[6.1]
     create_table :comments do |t|
       t.belongs_to :user, null: false, foreign_key: true
       t.belongs_to :streak, null: false, foreign_key: true
-      t.string :comment
+      t.string :info
       t.string :media
       t.integer :cheer
       t.integer :laugh

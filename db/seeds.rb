@@ -25,7 +25,7 @@ category_opt = [
 ]
 # category_opt.sample
 
-5.times do 
+10.times do 
     # num_category = rand(0..category_opt.length)
     name = Faker::Verb.simple_present
     description = Faker::ChuckNorris.fact
@@ -42,14 +42,15 @@ end
     User.create(password:'123456', name: name, nickname: nickname, email: email, image: avatar)
 end
 
-5.times do |i|
+10.times do |i|
     status = 'ongoing'
     UserStreak.create(user_id: i, streak_id: i, status: status)
 end
 
 10.times do |i|
     comment = Faker::Music::Rush.album 
-    Comment.create(user_id: i, streak_id: i, comment: comment)
+    Comment.create(user_id: i, streak_id: i, info: comment)
+    puts "seeded #{i} datas"
 end
 
 
