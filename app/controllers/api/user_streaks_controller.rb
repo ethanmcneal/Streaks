@@ -1,14 +1,20 @@
 class Api::UserStreaksController < ApplicationController
 
-  before_action :set_user_streak, only: [:show, :destroy]
+  before_action :set_user_streak, only: [:show, :destroy, :update]
 
   def index
     render json: UserStreak.every_streak
   end 
 
 
-  def show 
-    render json: @user_streak
+  # def show 
+  #   render json: @user_streak
+  # end
+
+
+  def current_user_streaks
+    user_id = params[:user_id] 
+    render json: UserStreak.every_streak(user_id)
   end
   
   def create 
