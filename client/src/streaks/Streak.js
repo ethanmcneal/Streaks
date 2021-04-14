@@ -60,7 +60,7 @@ const Streak = () => {
             <div style={{display: 'flex', justifyContent:'space-between'}}>
             {users && <ListGroup>{renderUsers()}</ListGroup>}
            {streak && <Container className="mt-5 mb-5 justify-content-center">
-        <Card style={{width:"1000px", marginLeft:'10em'}} >
+        <Card style={{width:"50em", marginLeft:'10em'}} >
           {/* <Thumbnail url={streak.name} /> */}
           <Carousel>
   <Carousel.Item>
