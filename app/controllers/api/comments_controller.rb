@@ -1,5 +1,5 @@
 class Api::CommentsController < ApplicationController
-  before_action :set_comment, only: [:show, :destroy]
+  before_action :set_comment, only: [:show, :destroy, :update]
 
   def index
     render json: Comment.every_comment
@@ -39,7 +39,7 @@ class Api::CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:user_id, :streak_id, :info, :media, :cheer, :laugh)
+    params.require(:comment).permit(:id, :created_at, :updated_at, :user_id, :streak_id, :info, :media, :cheer, :laugh)
   end
   
   def set_comment

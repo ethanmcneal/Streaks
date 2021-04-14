@@ -22,7 +22,8 @@ const CommentNew = () => {
     e.preventDefault()
     try{
       let res = await axios.post('/api/comments', newComment)
-      history.push('/comments')
+      history.push(`/streaks/${id}`)
+      window.location.reload()
     }catch(err){
       alert('err in handleNewComment')
     }
