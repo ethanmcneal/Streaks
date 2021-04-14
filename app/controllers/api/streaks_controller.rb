@@ -18,6 +18,10 @@ class Api::StreaksController < ApplicationController
         render json: @streak
     end
 
+    def search_streaks
+        render json: Streak.search(params[:query])
+      end
+
     def create
         streak = Streak.new(streak_params)
         if streak.save

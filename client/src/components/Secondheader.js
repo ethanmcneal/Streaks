@@ -2,7 +2,10 @@ import { useContext } from "react"
 import { Link } from "react-router-dom"
 import { Button, Menu, Search } from 'semantic-ui-react'
 import { AuthContext } from "../providers/AuthProvider"
+import { QueryContext } from "../providers/QueryProvider";
 import '../style_components/SecondHeader.css';
+import SearchBar from "./SearchBar";
+
 
 
 
@@ -20,10 +23,10 @@ const DashHeader = () => {
             <Menu.Item >
                 # of active streaks
             </Menu.Item>
-        {!user &&    <Menu.Menu position='right'>
+        {user &&    <Menu.Menu position='right'>
 
             <Menu.Item>
-                <Search/>
+                <SearchBar/>
             </Menu.Item>
                 
                 <Menu.Item>

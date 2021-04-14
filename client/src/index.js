@@ -8,13 +8,16 @@ import "semantic-ui-css/semantic.min.css"
 import {BrowserRouter} from 'react-router-dom'
 import AuthProvider from './providers/AuthProvider';
 import {initMiddleware} from 'devise-axios';
+import QueryProvider from './providers/QueryProvider';
 
 initMiddleware()
 ReactDOM.render(
   <AuthProvider>
+    <QueryProvider>
   <BrowserRouter>
     <App />
   </BrowserRouter>
+  </QueryProvider>
   </AuthProvider>,
   document.getElementById('root')
 );
