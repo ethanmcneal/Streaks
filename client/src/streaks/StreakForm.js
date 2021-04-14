@@ -27,17 +27,29 @@ const StreakForm = () => {
         { key: 'Cuisine', text: 'Cuisine', value: 'Cuisine' },
       ]
       
-      const handleSubmit = async() => {
+      const handleSubmit = async(e) => {
+          e.preventDefault()
           try {
               let res = await axios.post('/api/streaks/', streak)
               let res2 = await axios.post(`/api/user_streaks/`, {status: 'upcoming', user_id: user.id, streak_id: res.data.id} )
-              
               console.log(res)
           } catch (error) {
+              
               console.log(error)
           }
+          }
 
-      }
+        //   const handleSubmit = async() => {
+        //       axios.post('/api/streaks/', streak).then(response => {
+        //           debugger
+        //           console.log(response)
+        //           axios.post(`/api/user_streaks/`, {status: 'upcoming', user_id: user.id, streak_id: response.data.id} )}
+        //       ).catch(error => {
+        //           console.log(error)
+        //       })
+        //   }
+
+      
 
       const handleDropDown = (data) => {
           setStreak({...streak, ['category']: data})
