@@ -15,6 +15,16 @@ const changeStatus = async(id, s) => {
     } catch (error) {
         console.log(error)
     }
+        }
+
+    const quitStreak = async(id) => {
+        try {
+            let res = await axios.patch(`/api/user_streaks/${id}`, {status: 'quit'})
+            console.log(res)
+            window.location.reload()
+        } catch (error) {
+            console.log(error)
+        }
 }
 
     return(
@@ -26,7 +36,7 @@ const changeStatus = async(id, s) => {
                 <h4> {status} </h4>
                 <div>
                 <Icon onClick={()=>changeStatus(userStreakId, status)}name={status == 'ongoing' ? 'pause' : 'play'} />
-                <Icon name='times'/>
+                <Icon name='times' onClick={()=>quitStreak(userStreakId)}/>
                 </div>  
             </Segment>
     )
