@@ -15,6 +15,10 @@ import StreakEditForm from './streaks/StreakEditForm';
 import Streak from './streaks/Streak';
 import UserStreak from './user_streak/UserStreaks'
 import MyDashBoard from './pages/MyDashBoard';
+import Comment from './comments/Comment';
+import CommentsStreak from './comments/CommentsStreak';
+// import UserStreak from './user_streak/UserStreak'
+
 
 
 function App() {

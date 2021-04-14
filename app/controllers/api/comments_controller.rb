@@ -17,7 +17,7 @@ class Api::CommentsController < ApplicationController
   def create 
     comment = Comment.new(comment_params)
     if (comment.save)
-      render json: @comment
+      render json: comment
     else 
       render json: { errors: comment.errors }, status: :unprocessable_entity
     end 
@@ -39,7 +39,7 @@ class Api::CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:user_id, :streak_id, :comment, :media, :cheer, :laugh)
+    params.require(:comment).permit(:user_id, :streak_id, :info, :media, :cheer, :laugh)
   end
   
   def set_comment

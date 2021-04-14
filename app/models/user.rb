@@ -10,4 +10,5 @@ class User < ActiveRecord::Base
 
   has_many :user_streaks
   has_many :streaks, through: :user_streaks
+  has_many :comments
 end

@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 2021_04_07_201730) do
   create_table "comments", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "streak_id", null: false
-    t.string "comment"
+    t.string "info"
     t.string "media"
     t.integer "cheer"
     t.integer "laugh"
