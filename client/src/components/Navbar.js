@@ -33,6 +33,12 @@ const NavBar = () => {
 
             </Menu.Menu> }
           {user && <Menu.Menu position='right'>
+
+            <Link to='/dashboard'>
+            <Menu.Item>
+                {user.nickname}
+                </Menu.Item>
+                </Link>
                 
             
                 <Menu.Item onClick={handleLogout}>
