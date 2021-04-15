@@ -4,7 +4,7 @@ import { Menu, MenuItem } from 'semantic-ui-react'
 import { AuthContext } from "../providers/AuthProvider"
 import HeaderDropdown from './HeaderDropdown'
 import img from './FakeLogo.png'
-import '../style_components/NavBar.css';
+import '../style_components/NavBar.css'
 
 const NavBar = () => {
 
