@@ -33,7 +33,7 @@ const CommentsUser = () => {
         {comments && comments.map( comment => 
           <Card>
             <h1>{comment.streak_name}</h1>
-            <h1>{comment.comment}</h1>
+            <h1>{comment.info}</h1>
             <h1>media: {comment.media}</h1>
             <h1>cheer: {comment.cheer}</h1>
             <h1>laugh: {comment.laugh}</h1>

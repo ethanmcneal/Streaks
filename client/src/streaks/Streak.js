@@ -1,9 +1,11 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
+import { Button, Card, CardGroup, Carousel, Container, ListGroup, ListGroupItem } from "react-bootstrap"
 import { Link, useParams } from "react-router-dom"
-import { Button, CardGroup, Header } from "semantic-ui-react"
+// import { Button, CardGroup, Header, Segment } from "semantic-ui-react"
 import CommentNew from "../comments/CommentNew"
 import CommentsStreak from "../comments/CommentsStreak"
+import Thumbnail from "../components/Thumbnail"
 import CardContainer from "../style_components/CardContainer"
 
 const Streak = () => {
@@ -40,28 +42,79 @@ const Streak = () => {
         return users.map(user => {
             return(
                 <div>
-                    <Segment.Group horizontal>
-                        <Segment>{user.nickname}</Segment>
-                        <Segment>{user.email}</Segment>
-                    </Segment.Group>
+                    <ListGroup horizontal>
+                        <ListGroup.Item>{user.nickname}</ListGroup.Item>
+                        <ListGroup.Item>{user.email}</ListGroup.Item>
+                    </ListGroup>
                 </div>
             )
         })
     }
     return(
         <div>
+            
             <Link to='/streaks'>
             <Button>Back to streaks</Button>
             </Link>
             <h1>Streak show</h1>
-           {streak && <CardContainer>
-                <h1>{streak.name}</h1>
-                <h3>The challenge = {streak.description}</h3>
-            <h4>Success = {streak.reward}</h4>
-            <h4>Failure = {streak.punishment}</h4>
-                <Button onClick={deleteStreak}>Delete</Button>
-            </CardContainer>}
-            {users && <Segment.Group>{renderUsers()}</Segment.Group>}
+            <div style={{display: 'flex', justifyContent:'space-between'}}>
+            {users && <ListGroup>{renderUsers()}</ListGroup>}
+           {streak && <Container className="mt-5 mb-5 justify-content-center">
+        <Card style={{width:"50em", marginLeft:'10em'}} >
+          {/* <Thumbnail url={streak.name} /> */}
+          <Carousel>
+  <Carousel.Item>
+    <img style={{maxHeight: '400px'}}
+      className="d-block w-100"
+      src="https://via.placeholder.com/100"
+      alt="First slide"
+    />
+    <Carousel.Caption>
+      <h3>First slide label</h3>
+      <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+    </Carousel.Caption>
+  </Carousel.Item>
+  <Carousel.Item>
+    <img style={{maxHeight: '400px'}}
+      className="d-block w-100"
+      src="https://via.placeholder.com/100"
+      alt="Second slide"
+    />
+
+    <Carousel.Caption>
+      <h3>Second slide label</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    </Carousel.Caption>
+  </Carousel.Item>
+  <Carousel.Item>
+    <img style={{maxHeight: '400px'}}
+      className="d-block w-100"
+      src="https://via.placeholder.com/100"
+      alt="Third slide"
+    />
+
+    <Carousel.Caption>
+      <h3>Third slide label</h3>
+      <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+    </Carousel.Caption>
+  </Carousel.Item>
+</Carousel>
+          <Card.Body>
+            <Card.Title><h4>{streak.name}</h4></Card.Title>
+            <Card.Text>
+              {streak.description}
+            </Card.Text>
+          </Card.Body>
+          <ListGroup className="list-group-flush">
+            <ListGroupItem>{streak.reward}</ListGroupItem>
+            <ListGroupItem>{streak.punishment}</ListGroupItem>
+          </ListGroup>
+          <Card.Body>
+          </Card.Body>
+        </Card>
+        </Container>}
+            
+            </div>
             <div>
             <CardGroup>
                 <CommentNew />
@@ -70,6 +123,14 @@ const Streak = () => {
          <CommentsStreak />
          </div>
         </div>
+
+// <CardContainer>
+// <h1>{streak.name}</h1>
+// <h3>The challenge = {streak.description}</h3>
+// <h4>Success = {streak.reward}</h4>
+// <h4>Failure = {streak.punishment}</h4>
+// <Button onClick={deleteStreak}>Delete</Button>
+// </CardContainer>
     )
 }
 

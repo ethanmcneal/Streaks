@@ -20,7 +20,7 @@ const DashHeader = () => {
             <Menu.Item >
                 # of active streaks
             </Menu.Item>
-        {!user &&    <Menu.Menu position='right'>
+        {user &&    <Menu.Menu position='right'>
 
             <Menu.Item>
                 <Search/>

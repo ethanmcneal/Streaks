@@ -1,6 +1,5 @@
 
 import React from 'react'
-import { Container, Segment } from 'semantic-ui-react'
 import axios from "axios"
 import { Icon, Menu, Segment } from "semantic-ui-react"
 import Streak from "../streaks/Streak"
