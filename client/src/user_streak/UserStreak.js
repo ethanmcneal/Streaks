@@ -1,10 +1,28 @@
+
+import React from 'react'
 import axios from "axios"
 import { Icon, Menu, Segment } from "semantic-ui-react"
 import Streak from "../streaks/Streak"
 
 
-const UserStreak = (props) => {
 
+const UserStreak = (props) => {
+// todo: please fix :)
+// olive
+// const DashSeg = () => (
+    
+
+//     <>
+//   <Segment.Group>
+//   <Segment.Group horizontal>
+//     <Segment>Streak</Segment>
+//     <Segment># of Participants</Segment>
+//     <Segment>Created</Segment>
+//     <Segment>Wager</Segment>
+//     <Segment>Status</Segment>
+//     <Segment>Actions</Segment>
+//   </Segment.Group>
+// //=======end
 const {streakName, streakReward, createdAt, status, userStreakId} = props
 
 const changeStatus = async(id, s) => {
@@ -17,6 +35,7 @@ const changeStatus = async(id, s) => {
     }
         }
 
+
     const quitStreak = async(id) => {
         try {
             let res = await axios.patch(`/api/user_streaks/${id}`, {status: 'quit'})
@@ -26,6 +45,7 @@ const changeStatus = async(id, s) => {
             console.log(error)
         }
 }
+
 
     return(
             <Segment style={{display: 'flex', justifyContent:'space-between', textAlign:'center'}}>
@@ -43,3 +63,4 @@ const changeStatus = async(id, s) => {
 }
 
 export default UserStreak
+// master end

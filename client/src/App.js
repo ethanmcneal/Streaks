@@ -18,6 +18,7 @@ import UserStreak from './user_streak/UserStreaks'
 import MyDashBoard from './pages/MyDashBoard';
 // import Comment from './comments/Comment';
 import CommentsStreak from './comments/CommentsStreak';
+import DashHeader from './components/Secondheader';
 
 
 
@@ -26,7 +27,9 @@ function App() {
     <>
     <div>
     <NavBar />
+    <DashHeader/>
     <FetchUser>
+      <div style={{margin: '0px 200px 0px'}}>
    <Switch>
    <ProtectedRoute exact path='/' component={Home} />
    <ProtectedRoute exact path='/dashboard' component={MyDashBoard} />
@@ -41,6 +44,7 @@ function App() {
      {/* <Route exact path='/streak/:id' component={CommentsStreak} /> */}
      <Route exact path='/user' component={UserStreak} />
    </Switch>
+   </div>
    </FetchUser>
    </div>
    </>

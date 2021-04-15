@@ -2,8 +2,10 @@ import { useContext } from "react"
 import { Link } from "react-router-dom"
 import { Menu } from 'semantic-ui-react'
 import { AuthContext } from "../providers/AuthProvider"
+import HeaderDropdown from './HeaderDropdown'
 
 const NavBar = () => {
+
     const {user, handleLogout} = useContext(AuthContext)
     return(
         <Menu inverted>
@@ -22,20 +24,12 @@ const NavBar = () => {
                 Streaks
             </Menu.Item>
             </Link>
-        {!user &&    <Menu.Menu position='right'>
+        {/* {user &&    <Menu.Menu position='right'>
                 
-            <Link to='/register'>
-                <Menu.Item>
-                Register
-                </Menu.Item>
-                </Link>
-                <Link to='/login'>
-                <Menu.Item>
-                Login
-                </Menu.Item>
-                </Link>
+                
 
-            </Menu.Menu> }
+
+            </Menu.Menu> } */}
           {user && <Menu.Menu position='right'>
 
             <Link to='/dashboard'>
@@ -48,10 +42,15 @@ const NavBar = () => {
                 <Menu.Item onClick={handleLogout}>
                 Logout
                 </Menu.Item>
+                <Menu.Item>
+                     <HeaderDropdown />
+                </Menu.Item>
                
 
             </Menu.Menu>}
         </Menu>
+
+
     )
 }
 
