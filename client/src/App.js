@@ -19,15 +19,18 @@ import MyDashBoard from './pages/MyDashBoard';
 // import Comment from './comments/Comment';
 import CommentsStreak from './comments/CommentsStreak';
 import DashHeader from './components/Secondheader';
+import { useContext } from 'react';
+import { AuthContext } from './providers/AuthProvider';
 
 
 
 function App() {
+  const {user} = useContext(AuthContext)
   return (
     <>
     <div>
     <NavBar />
-    <DashHeader/>
+    {user && <DashHeader/>}
     <FetchUser>
       <div style={{margin: '0px 200px 0px'}}>
    <Switch>
