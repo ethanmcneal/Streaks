@@ -24,21 +24,20 @@ const NavBar = () => {
                 Streaks
             </Menu.Item>
             </Link>
-        {/* {user &&    <Menu.Menu position='right'>
+        {!user &&    <Menu.Menu position='right'>
                 
-                
-
-
-            </Menu.Menu> } */}
+        <Link to='/register'>
+            <Menu.Item >
+                Register
+            </Menu.Item>
+            </Link>
+            <Link to='/login'>
+            <Menu.Item >
+                Login
+            </Menu.Item>
+            </Link>
+            </Menu.Menu> }
           {user && <Menu.Menu position='right'>
-
-            <Link to='/dashboard'>
-            <Menu.Item>
-                {user.nickname}
-                </Menu.Item>
-                </Link>
-                
-            
                 <Menu.Item onClick={handleLogout}>
                 Logout
                 </Menu.Item>

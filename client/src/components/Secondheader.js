@@ -11,15 +11,16 @@ import SearchBar from "./SearchBar";
 
 const DashHeader = () => {
 
-    const {user} = useContext(AuthContext)
+    const {user, handleLogout} = useContext(AuthContext)
     return(
         <Menu>
 
-            <Link to=''>
-            <Menu.Item >
+<Link to='/dashboard'>
+            <Menu.Item>
                 User
-            </Menu.Item>
-            </Link>
+                {/* {user.nickname}  glitchy on callies comp?*/}
+                </Menu.Item>
+                </Link>
             <Menu.Item >
                 # of active streaks
             </Menu.Item>
@@ -35,6 +36,7 @@ const DashHeader = () => {
                     </Link>
                      
                 </Menu.Item>
+                
 
 
             </Menu.Menu> }
