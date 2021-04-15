@@ -3,7 +3,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { Segment } from 'semantic-ui-react'
 import { AuthContext } from '../providers/AuthProvider'
 import Streak from '../streaks/Streak'
-import UserStreak from './UserStreak'
+import UserStreak from './UserStreaks'
 
 
 

@@ -13,7 +13,7 @@ import Streaks from './streaks/StreaksShow';
 import StreakForm from './streaks/StreakForm';
 import StreakEditForm from './streaks/StreakEditForm';
 import Streak from './streaks/Streak';
-import UserStreakShow from './user_streak/UserStreak';
+import UserStreakShow from './user_streak/UserStreaks';
 import UserStreak from './user_streak/UserStreaks'
 import MyDashBoard from './pages/MyDashBoard';
 // import Comment from './comments/Comment';
