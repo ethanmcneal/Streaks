@@ -28,6 +28,7 @@ function App() {
     <NavBar />
     <DashHeader/>
     <FetchUser>
+      <div style={{margin: '0px 200px 0px'}}>
    <Switch>
    <ProtectedRoute exact path='/' component={Home} />
    <ProtectedRoute exact path='/dashboard' component={MyDashBoard} />
@@ -42,6 +43,7 @@ function App() {
      {/* <Route exact path='/streak/:id' component={CommentsStreak} /> */}
      <Route exact path='/user' component={UserStreak} />
    </Switch>
+   </div>
    </FetchUser>
    </div>
    </>
