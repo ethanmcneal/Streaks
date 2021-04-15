@@ -32,7 +32,7 @@ const Streak = () => {
         try {
             let res = await axios.get(`/api/streaks_users/${id}`)
             console.log(res.data)
-            setStreak({name: res.data[0].streak_name, description:res.data[0].description, reward:res.data[0].reward, punishment:res.data[0].punishment })
+            setStreak({name: res.data[0].streak_name, description:res.data[0].description, reward:res.data[0].reward, punishment:res.data[0].punishment, created_at:res.data[0].created_at})
             setUsers(res.data)
         } catch (error) {
             console.log(error)
@@ -63,7 +63,7 @@ const Streak = () => {
            {streak && <Container className="mt-5 mb-5 justify-content-center">
         <Card style={{width:"50em", marginLeft:'10em'}} >
           {/* <Thumbnail url={streak.name} /> */}
-          <Timer />
+          <Timer created_at={streak.created_at}/>
           
           <Card.Body>
             <Card.Title><h4>{streak.name}</h4></Card.Title>

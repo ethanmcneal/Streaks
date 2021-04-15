@@ -1,27 +1,40 @@
 import moment from 'moment'
+import { useEffect, useState } from 'react'
 
 const Timer = (props) => {
+    const {created_at} = props
+
+    const [timeElapsed, setTimeElapsed] = useState(null)
+
+    useEffect(()=> {
+        const interval = setInterval(()=> {
+            getTimeElapsed()
+        },1000);
+        return() => {
+            clearInterval(interval);
+        }; 
+        
+    },[]);
 
 // const {created_at} = props
-    const created_at = '2021-04-11T18:11:50.905Z'
+    
 
     const getTimeElapsed = () => {
-        let f1 = created_at.split('-')
-        let f2 = f1[2].split('T')
-        let createdAt = moment([f1[0], (f1[1]-1), f2[0]]) 
-        console.log(createdAt.from(moment()))
-        return(
-            <h1>{createdAt.from(moment(), true)}</h1>
-            // <h1>{createdAt.toNow()}</h1>
-        )
+        let createdAt = new Date(created_at) 
+        let today = new Date()
+        let difference = today.getTime() - createdAt.getTime()
+        let days = Math.floor(difference / 8.64e7)
+        let hours = Math.floor(difference % 8.64e7 / 3.6e6)
+        let minutes = Math.floor(difference % 3.6e6 / 6e4)
+        let seconds = Math.floor(difference % 6e4 / 1e3)
+        // console.log(timeElapsed)
+        setTimeElapsed({days: days, hours: hours, minutes: minutes, seconds: seconds})
     }
 
     return(
         <div>
         <div style={{textAlign: 'center', padding:'10em'}}>
-        {getTimeElapsed()}
-        
-
+         {timeElapsed && <h3>{timeElapsed.days} days, {timeElapsed.hours} hours, {timeElapsed.minutes} minutes, and {timeElapsed.seconds} seconds</h3> }
         </div>
         <div style={{backgroundColor:'darkblue', padding:'1.5em'}}>
         </div>
