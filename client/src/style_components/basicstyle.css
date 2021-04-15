@@ -1,0 +1,16 @@
+.btn {
+    min-width: fit-content  !important;
+}
+
+.ui.container {
+    align-items: initial !important;
+    background: rgb(255, 255, 255) !important;
+    border-radius: 10px !important;
+    min-width: fit-content !important;
+    
+}
+
+body {
+    background: rgb(233, 233, 233) !important;
+}
+

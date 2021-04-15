@@ -2,6 +2,7 @@ import React from 'react'
 import { Dropdown } from 'semantic-ui-react'
 
 const DropdownHeader = () => (
+
   <Dropdown
     text=' '
     icon='user'
@@ -12,9 +13,12 @@ const DropdownHeader = () => (
   >
     <Dropdown.Menu>
 
-      <Dropdown.Item href="/">Your Streaks</Dropdown.Item>
-      <Dropdown.Item href="/login">Login</Dropdown.Item>
-      <Dropdown.Item href="/register">Register</Dropdown.Item>
+      <Dropdown.Item href="/">Home</Dropdown.Item>
+      <Dropdown.Item href="/about">About</Dropdown.Item>
+      <Dropdown.Item href="/streaks">Streaks</Dropdown.Item>
+
+      {/* make logout work and delete logout from navbar */}
+      <Dropdown.Item href="">Logout</Dropdown.Item>
       
     </Dropdown.Menu>
   </Dropdown>

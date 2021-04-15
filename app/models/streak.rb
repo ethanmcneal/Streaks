@@ -10,5 +10,12 @@ class Streak < ApplicationRecord
           inner join streaks s on s.id = c.streak_id')
         .where("s.id = ?", "#{streak_id}")
     end
+
+    def self.search(search) #class.search outside, pass params into ()
+      if search.length >= 3
+        Streak.where('name ILIKE ?', "%#{search}%")
+          .or(Streak.where('description ILIKE ?', "%#{search}%"))
+      end
+    end
     has_many :comments, dependent: :destroy
 end
