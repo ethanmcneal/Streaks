@@ -25,32 +25,25 @@ const NavBar = () => {
             </Menu.Item>
             </Link>
         {/* {user &&    <Menu.Menu position='right'>
-                
-                
-
-
             </Menu.Menu> } */}
-          {user && <Menu.Menu position='right'>
-
-            <Link to='/dashboard'>
+           {!user &&    <Menu.Menu position='right'>
+        <Link to='/register'>
             <Menu.Item>
-                {user.nickname}
-                </Menu.Item>
-                </Link>
-                
-            
-                <Menu.Item onClick={handleLogout}>
-                Logout
-                </Menu.Item>
-                <Menu.Item>
-                     <HeaderDropdown />
-                </Menu.Item>
-               
-
-            </Menu.Menu>}
-        </Menu>
-
-
+            Register
+            </Menu.Item>
+            </Link>
+            <Link to='/login'>
+            <Menu.Item>
+            Login
+            </Menu.Item>
+            </Link>
+        </Menu.Menu> }
+        {user &&    <Menu.Menu position='right'>
+        <Menu.Item>
+            <HeaderDropdown />
+        </Menu.Item>
+        </Menu.Menu> }
+     </Menu>
     )
 }
 

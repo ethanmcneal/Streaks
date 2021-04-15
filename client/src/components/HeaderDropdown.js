@@ -1,7 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Dropdown } from 'semantic-ui-react'
+import { AuthContext } from '../providers/AuthProvider'
 
-const DropdownHeader = () => (
+const DropdownHeader = () => {
+  const {handleLogout} = useContext(AuthContext)
+  return(
   <Dropdown
     text=' '
     icon='user'
@@ -12,12 +15,13 @@ const DropdownHeader = () => (
   >
     <Dropdown.Menu>
 
-      <Dropdown.Item href="/">Your Streaks</Dropdown.Item>
-      <Dropdown.Item href="/login">Login</Dropdown.Item>
-      <Dropdown.Item href="/register">Register</Dropdown.Item>
+    <Dropdown.Item href="/">Your Streaks</Dropdown.Item>
+    <Dropdown.Item >User Settings</Dropdown.Item>
+    <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
       
     </Dropdown.Menu>
   </Dropdown>
-)
+  )
+}
 
 export default DropdownHeader

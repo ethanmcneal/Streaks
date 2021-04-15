@@ -13,7 +13,7 @@ const CommentsStreak = () => {
   const [hideEditFields, setHideEditFields] = useState(false)
   const {id} = useParams()
   const [hideDeleteButt, setHideDeleteButt] = useState(false)
-  const {user} = useContext(AuthContext)
+  // const {user} = useContext(AuthContext)
   
   useEffect(()=>{
     getComments()
@@ -46,8 +46,8 @@ const CommentsStreak = () => {
            <Card>
              <h1>nickname: {comment.nickname}</h1>
              {/* todo: make delete and edit only visible to curernt user for their comments */}
-             <Button onClick={() => deleteComment(comment.comment_id)}>Delete</Button>
-              Use
+             <Button onClick={() => deleteComment(comment.comment_id)}>{hideDeleteButt ? '' : 'Delete'}</Button>
+               user.id ===
               <Button onClick={()=> {setHideEditFields(!hideEditFields)}}>{hideEditFields ? 'Cancel Edit' : 'Edit'}</Button>
               {hideEditFields && <CommentEdit defaultInfo={comment.info} defaultMedia={comment.media} defaultCheer={comment.cheer} defaultLaugh={comment.laugh} defaultCommentID={comment.comment_id}/>}
              <img src={comment.image}/>
