@@ -14,7 +14,7 @@ const changeStatus = async(id, s) => {
     try {
         let res = await axios.patch(`/api/user_streaks/${id}`, {status: s == 'ongoing' ? 'paused' : 'ongoing'})
         console.log(res)
-        window.location.reload()
+        // window.location.reload()
     } catch (error) {
         console.log(error)
     }
@@ -25,7 +25,7 @@ const changeStatus = async(id, s) => {
         try {
             let res = await axios.patch(`/api/user_streaks/${id}`, {status: 'quit'})
             console.log(res)
-            window.location.reload()
+            // window.location.reload()
         } catch (error) {
             console.log(error)
         }
