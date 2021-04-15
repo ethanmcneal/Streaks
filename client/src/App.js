@@ -13,9 +13,10 @@ import Streaks from './streaks/StreaksShow';
 import StreakForm from './streaks/StreakForm';
 import StreakEditForm from './streaks/StreakEditForm';
 import Streak from './streaks/Streak';
+import UserStreakShow from './user_streak/UserStreak';
 import UserStreak from './user_streak/UserStreaks'
 import MyDashBoard from './pages/MyDashBoard';
-import Comment from './comments/Comment';
+// import Comment from './comments/Comment';
 import CommentsStreak from './comments/CommentsStreak';
 import DashHeader from './components/Secondheader';
 
@@ -24,7 +25,7 @@ import DashHeader from './components/Secondheader';
 function App() {
   return (
     <>
-    <div style={{backgroundColor:'#e1e7ed'}}>
+    <div>
     <NavBar />
     <DashHeader/>
     <FetchUser>
