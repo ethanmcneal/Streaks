@@ -1,7 +1,9 @@
 import axios from "axios"
 import { useContext, useState } from "react"
 import {Button, Form, Table} from 'react-bootstrap'
+import { Container } from "semantic-ui-react";
 import { AuthContext } from "../providers/AuthProvider"
+import '../style_components/basicstyle.css';
 
 const StreakForm = () => {
 
@@ -62,8 +64,9 @@ const StreakForm = () => {
     return(
         <div>
         <h1 style={{marginLeft: '3em'}}>New Streak</h1>
-        <div style={{backgroundColor:'white', margin: '3em 7em 3em'}}>
-            <div style={{padding: '20px 60px'}}>
+        <div style={{ margin: '3em 7em 3em'}}>
+            <div >
+                <Container>
         <Form onSubmit={handleSubmit}>
         <Form.Label> Category </Form.Label>
             <Form.Control as='select' placeholder='category' selection onChange={(e)=> handleDropDown(e.target.value)} style={{width: '250px'}}>
@@ -108,12 +111,15 @@ const StreakForm = () => {
             <Button type='submit' variant="success" style={{width: '125px'}}>Publish Streak</Button>
             </div>
         </Form>
+        </Container>
         </div>
+        
        
 
         </div>
         <h1 style={{margin: '3em 3em 0em'}}>Templates</h1>
-        <div style={{backgroundColor:'white', margin: '3em 7em 3em'}}>
+        <div style={{ margin: '3em 7em 3em'}}>
+            <Container>
             
             <Table bordered hover>
                     <thead>
@@ -151,6 +157,7 @@ const StreakForm = () => {
                         </tr>
                     </tbody>
                     </Table>
+                    </Container>
         </div>
         </div>
         

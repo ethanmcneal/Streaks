@@ -12,21 +12,19 @@ import CommentsStreak from '../comments/CommentsStreak';
 const Streaks = (props)=>{
     const { user } = useContext(AuthContext)
     const [streaks, setStreaks] = useState(null);
-    // const [filteredStreaks, setFilteredStreaks] = useState(null)
 
 
     useEffect(() => {
-        getData()
-        
+        getStreaks()
     },[])
 
 
-      const getData = async()=>{
+      const getStreaks = async()=>{
         try{
-          let res = await axios.get(`/api/distinct_streaks/${user.id}`)
+          let res = await axios.get(`/api/streaks`)
           setStreaks(res.data)
+
           console.log(res.data)
-            
         }catch(err){
             alert(err)
         }
@@ -41,53 +39,31 @@ const Streaks = (props)=>{
         }
     }
 
-    // let filteredStreaks = []
-
-
-    // const filterStreak = () => {
-    //     console.log(userStreakIds)
-    //     userStreakIds.map(id => {
-    //     streaks.filter(s => id !== s.id ? filteredStreaks.push(s) : '')
-        
-        
-    //     }
-   
-    //     )
-    //     console.log(filteredStreaks, 'filtered')
-    // }
-        
-    
-    
 
     const renderStreak = () => {
-        // filterStreak()
-        return streaks.map((streak)=>{
-                return (
-                <>
-              <Card>
-                   <Link to={`streaks/${streak.streak_id}`}>
-                <h2>{streak.streak_name}</h2>
-                     </Link>
-                <h3>The challenge = {streak.description}</h3>
-                <h4>Success = {streak.reward}</h4>
-                <h4>Failure = {streak.punishment}</h4>
-                <p>{streak.id}</p>
-                <Button onClick={()=>addToUserStreaks(streak.streak_id)}>Start Streak</Button>
-               <br/>
-               </Card> 
-                </> )
-            })}
-        
-                
-           
-    
+        return streaks.map((streak) => {
+        return(
+            <>
+           <Card className="StreaksCards">
+               <Link to={`streaks/${streak.id}`}>
+            <h2>{streak.name}</h2>
+                 </Link>
+            <h3>The challenge = {streak.description}</h3>
+            <h4>Success = {streak.reward}</h4>
+            <h4>Failure = {streak.punishment}</h4>
+            <Button onClick={()=>addToUserStreaks(streak.id)}>Start Streak!</Button>
+           <br/>
+           </Card>
+            </>
+        )}
+   
+        )
+   
+    }
 
     return (
         <>
          <h1>Challenges </h1>
-         <Link to='/streaks/form'>
-         <Button>Add Streak</Button>
-         </Link>
          <CardGroup>
              {streaks && renderStreak()}
         </CardGroup>
