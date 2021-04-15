@@ -2,8 +2,7 @@ import axios from 'axios'
 import React, { useContext, useEffect, useState } from 'react'
 import { Segment } from 'semantic-ui-react'
 import { AuthContext } from '../providers/AuthProvider'
-import Streak from '../streaks/Streak'
-import UserStreak from './UserStreaks'
+import UserStreak from './UserStreak'
 
 
 
@@ -19,6 +18,7 @@ const UserStreaks = () => {
 
   const getData = async() => {
     try {
+      debugger
       console.log(user.id)
       let res = await axios.get(`/api/users_streaks/${user.id}`)
       setUserStreaks(res.data)
@@ -48,7 +48,9 @@ const UserStreaks = () => {
     <Segment>Status</Segment>
     <Segment>Actions</Segment>
     </Segment.Group>
+    <Segment.Group>
     {userStreaks && <div>{renderUserStreak()} </div>}
+    </Segment.Group>
   </Segment.Group>
   
   </>)
