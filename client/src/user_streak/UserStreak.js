@@ -7,22 +7,7 @@ import Streak from "../streaks/Streak"
 
 
 const UserStreak = (props) => {
-// todo: please fix :)
-// olive
-// const DashSeg = () => (
-    
 
-//     <>
-//   <Segment.Group>
-//   <Segment.Group horizontal>
-//     <Segment>Streak</Segment>
-//     <Segment># of Participants</Segment>
-//     <Segment>Created</Segment>
-//     <Segment>Wager</Segment>
-//     <Segment>Status</Segment>
-//     <Segment>Actions</Segment>
-//   </Segment.Group>
-// //=======end
 const {streakName, streakReward, createdAt, status, userStreakId} = props
 
 const changeStatus = async(id, s) => {
@@ -63,4 +48,3 @@ const changeStatus = async(id, s) => {
 }
 
 export default UserStreak
-// master end

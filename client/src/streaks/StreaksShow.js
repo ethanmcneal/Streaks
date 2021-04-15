@@ -4,6 +4,10 @@ import axios from 'axios'
 import { useContext, useEffect, useState } from 'react';
 import { Button, Card, CardGroup } from 'semantic-ui-react';
 import { AuthContext } from '../providers/AuthProvider';
+<<<<<<< HEAD
+=======
+import CommentsStreak from '../comments/CommentsStreak';
+>>>>>>> 619df1e4e1d31daa72aac1f4264eb70e2298ba06
 
 import CommentsStreak from '../comments/CommentsStreak';
 
