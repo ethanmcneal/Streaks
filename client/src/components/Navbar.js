@@ -1,29 +1,20 @@
 import { useContext } from "react"
 import { Link } from "react-router-dom"
-import { Menu } from 'semantic-ui-react'
+import { Menu, MenuItem } from 'semantic-ui-react'
 import { AuthContext } from "../providers/AuthProvider"
 import HeaderDropdown from './HeaderDropdown'
+import img from './FakeLogo.png'
+import '../style_components/NavBar.css';
 
 const NavBar = () => {
 
     const {user, handleLogout} = useContext(AuthContext)
     return(
         <Menu inverted>
-            <Link to='/'>
-            <Menu.Item >
-                Home
-            </Menu.Item>
-            </Link>
-            <Link to='/about'>
-            <Menu.Item >
-                About
-            </Menu.Item>
-            </Link>
-            <Link to='/streaks'>
-            <Menu.Item >
-                Streaks
-            </Menu.Item>
-            </Link>
+            <MenuItem>
+            <img src={img}/>
+            </MenuItem>
+
         {!user &&    <Menu.Menu position='right'>
                 
         <Link to='/register'>

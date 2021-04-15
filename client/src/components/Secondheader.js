@@ -32,7 +32,7 @@ const DashHeader = () => {
                 
                 <Menu.Item>
                     <Link to='/streaks/form'> 
-                    <Button>+ Add a Streak</Button>
+                    <Button>+ New Streak</Button>
                     </Link>
                      
                 </Menu.Item>

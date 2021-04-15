@@ -2,11 +2,7 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 import { Button, Card, CardGroup, Carousel, Container, ListGroup, ListGroupItem } from "react-bootstrap"
 import { Link, useParams } from "react-router-dom"
-<<<<<<< HEAD
-import { Button, CardGroup, Header, Segment } from "semantic-ui-react"
-=======
 // import { Button, CardGroup, Header, Segment } from "semantic-ui-react"
->>>>>>> 7126bc146f4084a413bc4cd88f6f7b53764f4e15
 import CommentNew from "../comments/CommentNew"
 import CommentsStreak from "../comments/CommentsStreak"
 import Thumbnail from "../components/Thumbnail"

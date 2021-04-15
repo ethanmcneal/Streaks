@@ -13,8 +13,9 @@ const DropdownHeader = () => (
   >
     <Dropdown.Menu>
 
-      <Dropdown.Item href="/">Your Streaks</Dropdown.Item>
-      <Dropdown.Item href="">Stats</Dropdown.Item>
+      <Dropdown.Item href="/">Home</Dropdown.Item>
+      <Dropdown.Item href="/about">About</Dropdown.Item>
+      <Dropdown.Item href="/streaks">Streaks</Dropdown.Item>
 
       {/* make logout work and delete logout from navbar */}
       <Dropdown.Item href="">Logout</Dropdown.Item>
