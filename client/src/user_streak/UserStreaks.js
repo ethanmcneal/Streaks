@@ -39,7 +39,11 @@ const UserStreaks = () => {
 
   return(
     <>
+<<<<<<< HEAD
   <Segment.Group style={{margin: ''}}>
+=======
+  <Segment.Group style={{margin: '0px 3em 0px 3em'}}>
+>>>>>>> 51007695aece6d4f281b098ec866564071244007
   <Segment.Group horizontal >
     <Segment>Streak</Segment>
     <Segment># of Participants</Segment>
