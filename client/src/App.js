@@ -21,10 +21,11 @@ import CommentsStreak from './comments/CommentsStreak';
 import DashHeader from './components/Secondheader';
 
 
+
 function App() {
   return (
     <>
-    <div>
+    <div style={{backgroundColor:'#e1e7ed'}}>
     <NavBar />
     <DashHeader/>
     <FetchUser>
