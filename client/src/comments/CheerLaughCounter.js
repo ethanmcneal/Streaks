@@ -1,31 +1,32 @@
 import React, {useState, useEffect, useReducer} from 'react'
 import axios from 'axios'
-import {Link, useParams} from 'react-router-dom'
+import {Link, useHistory, useParams} from 'react-router-dom'
 import {Button, Header} from 'semantic-ui-react'
 import CardContainer from '../style_components/CardContainer'
 
 const CheerLaughCounter = (props) => {
-  
+  let history = useHistory()
   const {initCheer, initLaugh, defaultCommentID} = props
   const HANDLE_CHEER = Symbol("HANDLE_CHEER");
   const HANDLE_LAUGH = Symbol("HANDLE_LAUGH");
+  const {id} = useParams();
   const initialState = {
     cheers: initCheer,
     laughs: initLaugh,
     active: null
   };
-  const [editCheerLaugh, setEditCheerLaugh] = useState({
-    cheer: initCheer, 
-    laugh: initLaugh,
-    // comment_id: defaultCommentID
-  })
+  // const [editCheerLaugh, setEditCheerLaugh] = useState({
+  //   cheer: initCheer, 
+  //   laugh: initLaugh,
+  //   // comment_id: defaultCommentID
+  // })
 
-  const handleCheerLaugh = async(e) => {
+  const handleCheerLaugh = async(state) => {
     console.log('handleCheerLaugh called')
     // e.preventDefault()
     try{
       console.log('def comm id', defaultCommentID)
-      let res = await axios.put(`/api/comments/${defaultCommentID}`, editCheerLaugh)
+      let res = await axios.put(`/api/comments/${defaultCommentID}`, {cheer: state.cheers, laugh: state.laughs})
       // history.push(`/streaks/${id}`)
       // window.location.reload()
     }catch(err){
@@ -33,13 +34,14 @@ const CheerLaughCounter = (props) => {
     }
   }
 
-  const handleChange = (e) => {
-    console.log('handle change called')
-    setEditCheerLaugh({...editCheerLaugh, [e.target.name]: e.target.value})
-    console.log('cheere', editCheerLaugh.cheer)
-    console.log('laugh', editCheerLaugh.laugh)
-    handleCheerLaugh()
-  }
+  // TODO fix state line 40, button not working!
+  // const handleChange = (state) => {
+  //   console.log('handle change called')
+  //   setEditCheerLaugh({...state, [e.target.name]: e.target.value})
+  //   console.log('cheere', editCheerLaugh.cheer)
+  //   console.log('laugh', editCheerLaugh.laugh)
+  //   handleCheerLaugh()
+  // }
  
 
 
@@ -47,6 +49,10 @@ const CheerLaughCounter = (props) => {
     const { cheers, laughs, active } = state;
     switch (action.type) {
       case HANDLE_CHEER:
+        handleCheerLaugh({...state,
+          cheers: state.cheers + 1,
+          laughs: active === "laugh" ? laughs - 1 : laughs,
+          })
         return {
           ...state,
           cheers: state.cheers + 1,
@@ -56,6 +62,11 @@ const CheerLaughCounter = (props) => {
           name:'cheer'
         };
       case HANDLE_LAUGH:
+        handleCheerLaugh({...state,
+          cheers: active === "cheer" ? cheers - 1 : cheers,
+          active: "laugh",
+          laughs: state.laughs + 1
+        })
         return {
           ...state,
           cheers: active === "cheer" ? cheers - 1 : cheers,
@@ -87,9 +98,7 @@ const CheerLaughCounter = (props) => {
             marginRight: "10px"
           }}
           onClick={() =>
-            active !== "cheer" ? dispatch({ type: HANDLE_CHEER }) : null,
-            // handleCheerLaugh,
-            handleChange
+            active !== "cheer" ? dispatch({ type: HANDLE_CHEER }) : null
           }
         
         >
@@ -102,9 +111,7 @@ const CheerLaughCounter = (props) => {
         <button
           style={{ color: active === "laugh" ? "red" : "black" }}
           onClick={() =>
-            active !== "laugh" ? dispatch({ type: HANDLE_LAUGH }) : null,
-            // handleCheerLaugh,
-            handleChange
+            active !== "laugh" ? dispatch({ type: HANDLE_LAUGH }) : null
           }
           // onChange={handleChange}
           value={28888}
