@@ -21,6 +21,7 @@ import CommentsStreak from './comments/CommentsStreak';
 import DashHeader from './components/Secondheader';
 import { useContext } from 'react';
 import { AuthContext } from './providers/AuthProvider';
+import SearchResults from './components/SearchResults';
 
 
 
@@ -46,6 +47,7 @@ function App() {
      <Route exact path='/streaks/:id' component={Streak} />
      {/* <Route exact path='/streak/:id' component={CommentsStreak} /> */}
      <Route exact path='/user' component={UserStreak} />
+     <Route exact path='/results' component={SearchResults} />
    </Switch>
    </div>
    </FetchUser>
