@@ -66,7 +66,7 @@ const CommentsStreak = () => {
   return (
     <>
     <div>
-      <h1>Comments.js : this will show all of the comments for a specific streak</h1>
+
      
         
     </div>

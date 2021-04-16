@@ -32,7 +32,7 @@ function App() {
     <NavBar />
     {user && <DashHeader/>}
     <FetchUser>
-      <div style={{margin: '0px 200px 0px'}}>
+      <div>
    <Switch>
    <ProtectedRoute exact path='/' component={Home} />
    <ProtectedRoute exact path='/dashboard' component={MyDashBoard} />

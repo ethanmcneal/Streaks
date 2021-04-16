@@ -7,7 +7,8 @@ const MyDashBoard = () => {
     const {user} = useContext(AuthContext)
     return(
         <div>
-            <h1>{user.nickname}'s DashBoard</h1>
+            {/* <h1>{user.nickname}'s DashBoard</h1> */}
+            <br></br>
         
 
         <UserStreaks />
