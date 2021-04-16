@@ -1,5 +1,5 @@
 import axios from "axios"
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { Button, Card, CardGroup, Carousel, Container, ListGroup, ListGroupItem } from "react-bootstrap"
 import { Link, useParams } from "react-router-dom"
 // import { Button, CardGroup, Header, Segment } from "semantic-ui-react"
@@ -7,6 +7,7 @@ import CommentNew from "../comments/CommentNew"
 import CommentsStreak from "../comments/CommentsStreak"
 import Thumbnail from "../components/Thumbnail"
 import Timer from "../components/Timer"
+import { AuthContext } from "../providers/AuthProvider"
 import CardContainer from "../style_components/CardContainer"
 
 const Streak = () => {
@@ -15,6 +16,7 @@ const Streak = () => {
 
     const [streak, setStreak] = useState(null)
     const [users, setUsers] = useState(null)
+    const {user} = useContext(AuthContext)
 
     useEffect(()=> {
         getStreak()
@@ -40,12 +42,12 @@ const Streak = () => {
     }
 
     const renderUsers = () => {
-        return users.map(user => {
+        return users.map(uzer => {
             return(
                 <div>
                     <ListGroup horizontal>
-                        <ListGroup.Item>{user.nickname}</ListGroup.Item>
-                        <ListGroup.Item>{user.email}</ListGroup.Item>
+                        <ListGroup.Item>{uzer.nickname}</ListGroup.Item>
+                        <ListGroup.Item>{uzer.email}</ListGroup.Item>
                     </ListGroup>
                 </div>
             )

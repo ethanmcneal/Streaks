@@ -21,8 +21,8 @@ class Api::UserStreaksController < ApplicationController
   end
 
   def some_streaks
-    user_id = params[:user_id] 
-    render json: UserStreak.some_streak(user_id)
+    # user_id = params[:user_id] 
+    render json: UserStreak.some_streak
   end
   
   def create 
