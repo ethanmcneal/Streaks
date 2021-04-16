@@ -1,12 +1,11 @@
-import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
-import { Button, Grid, Segment } from "semantic-ui-react";
+import React, { useContext} from "react";
+import {Grid} from "semantic-ui-react";
 import { AuthContext } from "../providers/AuthProvider";
 import styled from "styled-components";
 import { QueryContext } from "../providers/QueryProvider";
 const SearchResults = () => {
   const { user } = useContext(AuthContext);
-  const { query, setQuery, results } = useContext(QueryContext);
+  const {  results } = useContext(QueryContext);
   const renderResults = () => {
     if (results.length > 0) {
       return results.map((r) => {
