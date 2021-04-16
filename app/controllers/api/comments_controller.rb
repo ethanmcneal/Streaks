@@ -15,8 +15,19 @@ class Api::CommentsController < ApplicationController
   end
   
   def create 
-    comment = Comment.new(comment_params)
-    if (comment.save)
+    # comment = Comment.new(comment_params)
+    file = params[:media]
+    
+    if file
+      begin
+        cloud_image = Cloudinary::Uploader.upload(file, public_id: file.original_filename, secure: true, resource_type: :auto)
+        comment = Comment.new(media: cloud_image['secure_url'], created_at: params[:created_at], user_id: params[:user_id], streak_id: params[:streak_id], info: params[:info], cheer: params[:cheer], laugh: params[:laugh])
+      rescue => e
+        render json: { errors: e }, status: 422
+        return
+      end
+    end 
+    if comment.save
       render json: comment
     else 
       render json: { errors: comment.errors }, status: :unprocessable_entity
@@ -24,10 +35,15 @@ class Api::CommentsController < ApplicationController
   end
   
   def update 
-    if @comment.update(comment_params)
-      render json: @comment
-    else 
-      render json: { errors: comment.errors }, status: :unprocessable_entity
+    file = params[:media]
+    if file
+      begin
+        cloud_image = Cloudinary::Uploader.upload(file, public_id: file.original_filename, secure: true, resource_type: :auto)
+        @comment.update(media: cloud_image['secure_url'], user_id: params[:user_id], streak_id: params[:streak_id], info: params[:info], cheer: params[:cheer], laugh: params[:laugh])
+      rescue => e
+        render json: { errors: e }, status: 422
+        return
+      end
     end 
   end 
 
@@ -39,7 +55,7 @@ class Api::CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:id, :created_at, :updated_at, :user_id, :streak_id, :info, :media, :cheer, :laugh)
+    params.permit(:id, :created_at, :updated_at, :user_id, :streak_id, :info, :media, :cheer, :laugh)
   end
   
   def set_comment
