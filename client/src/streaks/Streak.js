@@ -37,7 +37,7 @@ const Streak = () => {
         try {
             let res = await axios.get(`/api/streaks_users/${id}`)
             console.log(res.data)
-            setStreak({name: res.data[0].streak_name, description:res.data[0].description, reward:res.data[0].reward, punishment:res.data[0].punishment, created_at:res.data[0].created_at})
+            setStreak({name: res.data[0].streak_name, description:res.data[0].description, reward:res.data[0].reward, punishment:res.data[0].punishment, timeline:res.data[0].timeline})
             setUsers(res.data)
         } catch (error) {
             console.log(error)
@@ -73,7 +73,7 @@ const Streak = () => {
              
         <Card className="timer" >
           {/* <Thumbnail url={streak.name} /> */}
-          <Timer created_at={streak.created_at}/>
+          <Timer timeline={streak.timeline}/>
           
           <Card.Body>
             <Card.Title><h4>{streak.name}</h4></Card.Title>

@@ -3,7 +3,9 @@ import { useContext, useState } from "react"
 import {Button, Form, Table} from 'react-bootstrap'
 import { Container } from "semantic-ui-react";
 import { AuthContext } from "../providers/AuthProvider"
+import DatePicker from 'react-datepicker'
 import '../style_components/basicstyle.css';
+import "react-datepicker/dist/react-datepicker.css"
 
 const StreakForm = () => {
 
@@ -14,8 +16,9 @@ const StreakForm = () => {
     // const [category, setCategory] = useState(null)
 
     const {user} = useContext(AuthContext)
+    // const [startDate, setStartDate] = useState(null);
 
-    let [streak, setStreak] = useState({name:null, description:null, reward:null, punishment:null, category:null})
+    let [streak, setStreak] = useState({name:null, description:null, reward:null, punishment:null, category:null, timeline:null})
 
 
     const options = [
@@ -61,6 +64,11 @@ const StreakForm = () => {
       const handleChange = (e) => {
         setStreak({...streak, [e.target.name]: e.target.value})
       }
+
+      const handleDateChange = (e) => {
+        setStreak({...streak, timeline: e})
+        console.log(e)
+      }
     return(
         <div>
         <h1 style={{marginLeft: '3em'}}>New Streak</h1>
@@ -92,26 +100,37 @@ const StreakForm = () => {
             name='description'
             value={streak.description}
             onChange={handleChange}/>
+             
+            
             <Form.Label> reward </Form.Label>
             <Form.Control style={{width: '500px'}}
             placeholder='e.g. A Steak Dinner'
             name='reward'
             value={streak.reward}
-            onChange={handleChange}/> 
-                     
+            onChange={handleChange}/>       
             <Form.Label> punishment </Form.Label>
             <div style={{display: 'flex', justifyContent: 'space-between'}}>
             <Form.Control style={{width: '500px'}}
             placeholder='e.g. All losers must pay for the winners steak dinner'
             name='punishment'
             value={streak.punishment}
-            onChange={handleChange}/>
-            
-            
+            onChange={handleChange}/>        
             <Button type='submit' variant="success" style={{width: '125px'}}>Publish Streak</Button>
             </div>
+            <Form.Label>Start Date</Form.Label>
+            <br />
+            <DatePicker
+                selected={streak.timeline}
+                onChange={handleDateChange}
+                showTimeSelect
+                dateFormat="Pp" />
+                <br />
+            
+            
         </Form>
+        
         </Container>
+        
         </div>
         
        
