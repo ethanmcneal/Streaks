@@ -8,7 +8,7 @@ import '../style_components/NavBar.css'
 
 const NavBar = () => {
 
-    const {user, handleLogout} = useContext(AuthContext)
+    const {user} = useContext(AuthContext)
     return(
         <Menu inverted>
             <MenuItem>

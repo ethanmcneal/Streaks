@@ -1,11 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-// import {
-//   Search,
-//   SearchBarContainer,
-//   SearchIcon,
-// } from "../../styles/LandingPageStyle";
-// import searchicon from "../../icons/searchicon.png";
 import Axios from "axios";
 import { QueryContext} from "../providers/QueryProvider";
 import { Search } from "semantic-ui-react";
