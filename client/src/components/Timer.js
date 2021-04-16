@@ -35,7 +35,8 @@ const Timer = (props) => {
         <div style={{textAlign: 'center', padding:'10em'}}>
          {timeElapsed && <h3>{timeElapsed.days} days, {timeElapsed.hours} hours, {timeElapsed.minutes} minutes, and {timeElapsed.seconds} seconds</h3> }
         </div>
-        <div style={{backgroundColor:'darkblue', padding:'1.5em'}}>
+        <div className="spacer">
+            <br/><br/>
         </div>
         </div>
         
