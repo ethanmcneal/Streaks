@@ -51,7 +51,7 @@ const CommentsStreak = () => {
               {hideEditFields && <CommentEdit defaultInfo={comment.info} defaultMedia={comment.media} defaultCheer={comment.cheer} defaultLaugh={comment.laugh} defaultCommentID={comment.comment_id}/>}
              <img src={comment.image}/>
              <h1>comment: {comment.info}</h1>
-             <h1>media: {comment.media}</h1>
+             <img src={comment.media}/>
              <h1>cheer: {comment.cheer}</h1>
              <h1>laugh: {comment.laugh}</h1>
              <div><CheerLaughCounter defaultCommentID={comment.comment_id} initCheer={comment.cheer} initLaugh={comment.laugh}/></div>
