@@ -25,6 +25,7 @@ import SearchResults from './components/SearchResults';
 
 
 
+
 function App() {
   const {user} = useContext(AuthContext)
   return (

@@ -12,6 +12,7 @@ import CommentsStreak from '../comments/CommentsStreak';
 const Streaks = (props)=>{
     const { user } = useContext(AuthContext)
     const [streaks, setStreaks] = useState(null);
+    const [usersStreakIds, setUsersStreakIds] = useState(null)
 
 
     useEffect(() => {
@@ -22,6 +23,9 @@ const Streaks = (props)=>{
       const getStreaks = async()=>{
         try{
           let res = await axios.get(`/api/streaks`)
+          let res2 = await axios.get(`/api/users_streaks/${user.id}`)
+          setUsersStreakIds([...new Set(res2.data.map(us => us.streak_id))])
+          console.log([...new Set(res2.data.map(us => us.streak_id))])
           setStreaks(res.data)
 
           console.log(res.data)
@@ -51,7 +55,7 @@ const Streaks = (props)=>{
             <h3>The challenge = {streak.description}</h3>
             <h4>Success = {streak.reward}</h4>
             <h4>Failure = {streak.punishment}</h4>
-            <Button onClick={()=>addToUserStreaks(streak.id)}>Start Streak!</Button>
+            {usersStreakIds.includes(streak.id) == false ? <Button onClick={()=>addToUserStreaks(streak.id)}>Start Streak!</Button> : ''}
            <br/>
            </Card>
             </>
