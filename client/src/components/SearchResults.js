@@ -4,15 +4,17 @@ import { Button, Grid, Segment } from "semantic-ui-react";
 import { AuthContext } from "../providers/AuthProvider";
 import styled from "styled-components";
 import { QueryContext } from "../providers/QueryProvider";
-const SearchResults = ({ results }) => {
+const SearchResults = () => {
   const { user } = useContext(AuthContext);
-  const { query, setQuery } = useContext(QueryContext);
+  const { query, setQuery, results } = useContext(QueryContext);
   const renderResults = () => {
-    if (results) {
-      return results?.map((r) => {
+    if (results.length > 0) {
+      return results.map((r) => {
         return (
           <div style={{ marginRight: 30 }}>
-              <h1>here</h1>
+              <h1>{r.name}</h1>
+              <h1>{r.punishment}</h1>
+            {/* <ContributingProject key={r.id} project_id={r.id} /> */}
           </div>
         );
       });

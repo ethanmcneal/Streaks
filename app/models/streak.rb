@@ -12,7 +12,7 @@ class Streak < ApplicationRecord
     end
 
     def self.search(search) #class.search outside, pass params into ()
-      if search.length >= 3
+      if search.length >= 2
         Streak.where('name ILIKE ?', "%#{search}%")
           .or(Streak.where('description ILIKE ?', "%#{search}%"))
       end
