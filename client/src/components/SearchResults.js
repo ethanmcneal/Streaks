@@ -1,14 +1,12 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { Button, Grid, Segment } from "semantic-ui-react";
-// import ContributingProject from "../pages/profile/ContributingProject";
 import { AuthContext } from "../providers/AuthProvider";
 import styled from "styled-components";
 import { QueryContext } from "../providers/QueryProvider";
 const SearchResults = () => {
   const { user } = useContext(AuthContext);
   const { query, setQuery, results } = useContext(QueryContext);
-
   const renderResults = () => {
     if (results.length > 0) {
       return results.map((r) => {
@@ -29,7 +27,6 @@ const SearchResults = () => {
       <Grid>
         <Grid.Row>
           <Grid.Column width={12}>
-            {/* {renderProjectFormModal()} */}
             <Flex>{renderResults()}</Flex>
           </Grid.Column>
           <Grid.Column width={4}></Grid.Column>

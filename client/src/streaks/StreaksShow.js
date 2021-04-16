@@ -21,7 +21,7 @@ const Streaks = (props)=>{
 
       const getStreaks = async()=>{
         try{
-          let res = await axios.get(`/api/distinct_streaks/${user.id}`)
+          let res = await axios.get(`/api/streaks`)
           setStreaks(res.data)
 
           console.log(res.data)
@@ -46,7 +46,7 @@ const Streaks = (props)=>{
             <>
            <Card className="StreaksCards">
                <Link to={`streaks/${streak.id}`}>
-            <h2>{streak.streak_name}</h2>
+            <h2>{streak.name}</h2>
                  </Link>
             <h3>The challenge = {streak.description}</h3>
             <h4>Success = {streak.reward}</h4>

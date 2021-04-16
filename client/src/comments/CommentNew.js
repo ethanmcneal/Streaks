@@ -36,7 +36,7 @@ const CommentNew = () => {
   return (
     <>
     <div>
-      <h1>CommentNew.js for creating a new comment</h1>
+
     </div>
     <div>
       <form onSubmit={handleNewComment}>

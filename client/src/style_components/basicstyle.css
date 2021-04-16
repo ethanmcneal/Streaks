@@ -14,3 +14,54 @@ body {
     background: rgb(233, 233, 233) !important;
 }
 
+.ui.card {
+    padding: 1em !important;
+    margin: 1em  !important;
+    border-radius: 0px !important;
+}
+
+.ui.horizontal.segments>.segment {
+    background: rgb(230, 230, 230) !important;
+    border: none !important;
+    /* height: 1em !important; */
+    color: rgb(180, 180, 180);
+    border-radius: 0px !important;
+
+
+}
+
+.ui.segments.apple {
+    background: rgb(245, 245, 245) !important;
+    margin-left: 10vw !important;
+    width: 80vw;
+    border: none;
+}
+
+.ui.segment {
+    background: rgb(245, 245, 245) !important;
+    border-radius: 0px !important;
+    margin: 0rem !important;
+}
+div.ui.segments {
+
+    box-shadow: none;
+
+}
+div.orange {
+    color: gray;
+
+}
+
+.card.peopleList {
+    color: rgb(216, 216, 216);
+    background: rgb(33, 34, 41);
+    width: fit-content;
+    margin: 10px;
+}
+.list-group-item {
+    background: transparent;
+    border: none;
+}
+.spacer {
+    background: rgb(85, 85, 85);
+}
