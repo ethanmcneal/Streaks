@@ -12,5 +12,6 @@ Rails.application.routes.draw do
     get 'streaks_users/:streak_id', to: 'user_streaks#current_streaks_users'
     get 'distinct_streaks', to: 'user_streaks#some_streaks'
     get 'comment/:user_id', to: 'comments#every_comment'
+    get 'search_streaks', to: 'streaks#search_streaks'
   end
 end

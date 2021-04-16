@@ -26,7 +26,6 @@ const Streaks = (props)=>{
           let res2 = await axios.get(`/api/users_streaks/${user.id}`)
           setUsersStreakIds([...new Set(res2.data.map(us => us.streak_id))])
           console.log([...new Set(res2.data.map(us => us.streak_id))])
-
           setStreaks(res.data)
 
           console.log(res.data)

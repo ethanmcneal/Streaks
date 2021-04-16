@@ -3,6 +3,9 @@ import React, { useContext, useEffect, useState } from 'react'
 import { Segment } from 'semantic-ui-react'
 import { AuthContext } from '../providers/AuthProvider'
 import UserStreak from './UserStreak'
+import '../style_components/basicstyle.css'
+import TabComponent from '../components/TabComponent'
+
 
 
 
@@ -38,7 +41,8 @@ const UserStreaks = () => {
 
   return(
     <>
-  <Segment.Group style={{margin: '0px 3em 0px 3em'}}>
+  <Segment.Group className="apple" >
+    <TabComponent></TabComponent>
   <Segment.Group horizontal >
     <Segment>Streak</Segment>
     <Segment># of Participants</Segment>
@@ -47,9 +51,9 @@ const UserStreaks = () => {
     <Segment>Status</Segment>
     <Segment>Actions</Segment>
     </Segment.Group>
-    <Segment.Group>
-    {userStreaks && <div>{renderUserStreak()} </div>}
-    </Segment.Group>
+    {/* <Segment.Group> */}
+    {userStreaks && <div className="orange">{renderUserStreak()} </div>}
+    {/* </Segment.Group> */}
   </Segment.Group>
   
   </>)

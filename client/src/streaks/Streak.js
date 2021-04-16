@@ -9,6 +9,9 @@ import Thumbnail from "../components/Thumbnail"
 import Timer from "../components/Timer"
 import { AuthContext } from "../providers/AuthProvider"
 import CardContainer from "../style_components/CardContainer"
+import '../style_components/basicstyle.css'
+import TabComponent from "../components/TabComponent"
+import CommentTab from "../components/CommentTab"
 
 const Streak = () => {
 
@@ -42,12 +45,13 @@ const Streak = () => {
     }
 
     const renderUsers = () => {
-        return users.map(uzer => {
+        return users.map(user => {
             return(
                 <div>
                     <ListGroup horizontal>
-                        <ListGroup.Item>{uzer.nickname}</ListGroup.Item>
-                        <ListGroup.Item>{uzer.email}</ListGroup.Item>
+                    <ListGroup.Item>{user.avatar}</ListGroup.Item>
+                        <ListGroup.Item>{user.nickname}</ListGroup.Item>
+                        <ListGroup.Item>{user.email}</ListGroup.Item>
                     </ListGroup>
                 </div>
             )
@@ -59,11 +63,15 @@ const Streak = () => {
             <Link to='/streaks'>
             <Button>Back to streaks</Button>
             </Link>
-            <h1>Streak show</h1>
-            <div style={{display: 'flex', justifyContent:'space-between'}}>
+           
+            <div>
+              <Card className="peopleList">
+            <h3>Participants</h3>
             {users && <ListGroup>{renderUsers()}</ListGroup>}
+            </Card>
            {streak && <Container className="mt-5 mb-5 justify-content-center">
-        <Card style={{width:"50em", marginLeft:'10em'}} >
+             
+        <Card className="timer" >
           {/* <Thumbnail url={streak.name} /> */}
           <Timer created_at={streak.created_at}/>
           
@@ -78,18 +86,13 @@ const Streak = () => {
             <ListGroupItem>{streak.punishment}</ListGroupItem>
           </ListGroup>
           <Card.Body>
+            <CommentTab></CommentTab>
           </Card.Body>
         </Card>
         </Container>}
             
             </div>
-            <div>
-            <CardGroup>
-                <CommentNew />
-            </CardGroup>
-        <h2>Comments streak show</h2>
-         <CommentsStreak />
-         </div>
+            
         </div>
 
 // <CardContainer>

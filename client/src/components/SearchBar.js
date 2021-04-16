@@ -1,14 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-// import {
-//   Search,
-//   SearchBarContainer,
-//   SearchIcon,
-// } from "../../styles/LandingPageStyle";
-// import searchicon from "../../icons/searchicon.png";
 import Axios from "axios";
 import { QueryContext} from "../providers/QueryProvider";
 import { Search } from "semantic-ui-react";
+
 const SearchBar = () => {
 
   const [loading, setLoading] = useState(true);
@@ -17,14 +12,14 @@ const SearchBar = () => {
   const [error, setError] = useState(null);
   const [query, setQuery] = useState(null);
   let history = useHistory();
-  const handleChange = (e) => {
+  const handleChange = (e) => {         //<-- searchbar string before submit
     let keyword = e.target.value;
     console.log(keyword)
-    setQuery(keyword);
+    setQuery(keyword);                  //<-- query => keyword
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    getResults(query)
+    getResults(query)                   //<-- 
     history.push(`/results`);
   };
   return (
@@ -33,7 +28,7 @@ const SearchBar = () => {
         <Search
           type="text"
           placeholder="Search streaks"
-          onSearchChange={  handleChange}
+          onSearchChange={handleChange}
           value={query}
         />
         

@@ -21,6 +21,8 @@ import CommentsStreak from './comments/CommentsStreak';
 import DashHeader from './components/Secondheader';
 import { useContext } from 'react';
 import { AuthContext } from './providers/AuthProvider';
+import SearchResults from './components/SearchResults';
+
 
 
 
@@ -32,7 +34,7 @@ function App() {
     <NavBar />
     {user && <DashHeader/>}
     <FetchUser>
-      <div style={{margin: '0px 200px 0px'}}>
+      <div>
    <Switch>
    <ProtectedRoute exact path='/' component={Home} />
    <ProtectedRoute exact path='/dashboard' component={MyDashBoard} />
@@ -46,6 +48,7 @@ function App() {
      <Route exact path='/streaks/:id' component={Streak} />
      {/* <Route exact path='/streak/:id' component={CommentsStreak} /> */}
      <Route exact path='/user' component={UserStreak} />
+     <Route exact path='/results' component={SearchResults} />
    </Switch>
    </div>
    </FetchUser>
