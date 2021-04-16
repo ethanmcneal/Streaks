@@ -10,7 +10,6 @@ import SearchBar from "./SearchBar";
 
 
 const DashHeader = () => {
-
     const {user, handleLogout} = useContext(AuthContext)
     return(
         <Menu>
@@ -25,25 +24,16 @@ const DashHeader = () => {
                 # of active streaks
             </Menu.Item>
         {user &&    <Menu.Menu position='right'>
-
             <Menu.Item>
                 <SearchBar/>
             </Menu.Item>
-                
                 <Menu.Item>
                     <Link to='/streaks/form'> 
                     <Button>+ New Streak</Button>
                     </Link>
-                     
                 </Menu.Item>
-                
-
-
             </Menu.Menu> }
         </Menu>
-
-
     )
-}
-
+    }
 export default DashHeader;
