@@ -29,9 +29,7 @@ const NavBar = () => {
             </Link>
             </Menu.Menu> }
           {user && <Menu.Menu position='right'>
-                <Menu.Item onClick={handleLogout}>
-                Logout
-                </Menu.Item>
+
                 <Menu.Item>
                      <HeaderDropdown />
                 </Menu.Item>
