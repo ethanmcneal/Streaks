@@ -17,7 +17,7 @@ const UserStreaks = () => {
 
   useEffect(()=> {
     getData()
-  },[])
+  },)
 
   const getData = async() => {
     try {

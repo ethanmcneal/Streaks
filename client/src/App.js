@@ -36,7 +36,7 @@ function App() {
     <FetchUser>
       <div>
    <Switch>
-   <ProtectedRoute exact path='/' component={Home} />
+   <Route exact path='/' component={Home} />
    <ProtectedRoute exact path='/dashboard' component={MyDashBoard} />
      <Route exact path='/about' component={About} />
      <Route exact path='/streaks' component={Streaks} />

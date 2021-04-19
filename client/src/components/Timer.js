@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react'
 
 const Timer = (props) => {
-    const {created_at} = props
+    const {timeline} = props
 
     const [timeElapsed, setTimeElapsed] = useState(null)
+    const [upcoming, setUpcoming] = useState(false)
+    let difference = 0
 
     useEffect(()=> {
         const interval = setInterval(()=> {
@@ -19,9 +21,16 @@ const Timer = (props) => {
     
 
     const getTimeElapsed = () => {
-        let createdAt = new Date(created_at) 
+        let createdAt = new Date(timeline) 
         let today = new Date()
-        let difference = today.getTime() - createdAt.getTime()
+        // let difference = today.getTime() - createdAt.getTime()
+        if((today.getTime() - createdAt.getTime()) > 0){
+            difference = today.getTime() - createdAt.getTime()
+        }else{
+            difference = createdAt.getTime() - today.getTime()
+            setUpcoming(true)
+        }
+        
         let days = Math.floor(difference / 8.64e7)
         let hours = Math.floor(difference % 8.64e7 / 3.6e6)
         let minutes = Math.floor(difference % 3.6e6 / 6e4)
@@ -33,6 +42,7 @@ const Timer = (props) => {
     return(
         <div>
         <div style={{textAlign: 'center', padding:'10em'}}>
+            {upcoming ? <h2>Streak starts in:</h2> : <h2>Streak has been going for:</h2>}
          {timeElapsed && <h3>{timeElapsed.days} days, {timeElapsed.hours} hours, {timeElapsed.minutes} minutes, and {timeElapsed.seconds} seconds</h3> }
         </div>
         <div className="spacer">

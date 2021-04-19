@@ -24,6 +24,7 @@ const getResults = (query) => {
     .finally(() => {
       setLoading(false);
     });
+    
 };
   return (
     <QueryContext.Provider
