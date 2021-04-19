@@ -60,7 +60,7 @@ const About = () => {
 
                 <Item.Content>
                     <Item.Header>Erin Zimmerman</Item.Header>
-                    <Item.Description>Erin has found a passion in web development and feels she can make a difference while leading a fulfilling work-life balance. Previously a Training Specialist at UHEAA and a Trainer at Cotiviti. Experience training call center agents and record evaluation systems. Experience in public speaking, basic data analysis, technical writing, learning development and design, leadership, and more.
+                    <Item.Description>Erin has found a passion in web development and feels she can make a difference while leading a fulfilling work-life balance. Previously a Training Specialist at UHEAA and a Trainer at Cotiviti. Experience training call center agents and record evaluation systems agents. Experience in public speaking, basic data analysis, technical writing, instructional design, leadership, and more.
                     </Item.Description>
                     <a target="_blank" href='https://www.linkedin.com/in/erin-zimmerman'><Icon link size="large" color="blue" name="linkedin square" /></a>
                 </Item.Content>
