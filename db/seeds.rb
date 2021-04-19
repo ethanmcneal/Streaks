@@ -27,11 +27,12 @@ category_opt = [
 
 10.times do 
     # num_category = rand(0..category_opt.length)
-    name = Faker::Verb.simple_present
+    name = "Dont eat #{Faker::Food.dish}"
     description = Faker::ChuckNorris.fact
     reward = Faker::Games::ElderScrolls.weapon
     punishment = Faker::Games::DnD.monster
-    Streak.create(name: name, description: description, reward: reward, punishment: punishment, category: category_opt.sample(1) )
+    timeline = Faker::Date.between(from: 2.years.ago, to: Date.today)
+    Streak.create(name: name, description: description, reward: reward, punishment: punishment, category: category_opt.sample(1), timeline: timeline )
 end
 
 20.times do
