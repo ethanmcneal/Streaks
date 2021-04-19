@@ -14,7 +14,7 @@ const SearchBar = () => {
   let history = useHistory();
   const handleChange = (e) => {         //<-- searchbar string before submit
     let keyword = e.target.value;
-    console.log(keyword)
+    // console.log(keyword)
     setQuery(keyword);                  //<-- query => keyword
   };
   const handleSubmit = (e) => {

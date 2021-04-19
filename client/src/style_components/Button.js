@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { FONT, INV_TEXT_COLOR, PRIMARY_COLOR, SECONDARY_COLOR, TEXT_COLOR } from './styles'
+import { FONT, INV_TEXT_COLOR, PRIMARY_COLOR, TEXT_COLOR } from './styles'
 
 
 const Button = styled.button `

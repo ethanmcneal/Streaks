@@ -25,6 +25,7 @@ const SearchResults = () => {
               <h4>Punishment: {r.punishment}</h4>
               <h4>Status: {r.open ? 'open' : 'closed'}</h4>
               <h4>Created At: {r.created_at}</h4>
+              {/* {usersStreakIds.includes(streak.id) == false ? <Button onClick={()=>addToUserStreaks(streak.id)}>Start Streak!</Button> : ''} */}
             {/* <ContributingProject key={r.id} project_id={r.id} /> */}
             {/* </div> */}
             </Card>

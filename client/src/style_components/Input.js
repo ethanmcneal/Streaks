@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { INV_TEXT_COLOR, TERTIARY_COLOR, TEXT_COLOR } from "./styles";
+import { TERTIARY_COLOR, TEXT_COLOR } from "./styles";
 
 const Input = styled.input `
 width: 80%;
