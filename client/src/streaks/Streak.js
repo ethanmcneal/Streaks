@@ -10,7 +10,6 @@ import Timer from "../components/Timer"
 import { AuthContext } from "../providers/AuthProvider"
 import CardContainer from "../style_components/CardContainer"
 import '../style_components/basicstyle.css'
-import TabComponent from "../components/TabComponent"
 import CommentTab from "../components/CommentTab"
 
 const Streak = () => {

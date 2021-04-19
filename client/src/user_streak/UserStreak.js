@@ -42,9 +42,9 @@ const changeStatus = async(id, s) => {
                 <h4>{formattedDate}</h4>
                 <h4>{streakReward}</h4>
                 <h4> {status} </h4>
-               {status !== 'quit' || status !== 'won' ? <div>
+               {status !== 'quit' && status !== 'won' ? <div>
                 {status !== 'upcoming' && <Icon onClick={()=>changeStatus(userStreakId, status)}name={status === 'ongoing' ? 'pause' : 'play'} /> }
-                <Icon name='times' onClick={()=>quitStreak(userStreakId)}/> 
+                <Icon name='times' onClick={()=>quitStreak(userStreakId)} /> 
                 </div> : ''} 
             </Segment>
     )
