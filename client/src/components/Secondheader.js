@@ -1,8 +1,7 @@
 import { useContext } from "react"
 import { Link } from "react-router-dom"
-import { Button, Menu, Search } from 'semantic-ui-react'
+import { Button, Menu} from 'semantic-ui-react'
 import { AuthContext } from "../providers/AuthProvider"
-import { QueryContext } from "../providers/QueryProvider";
 import '../style_components/SecondHeader.css';
 import SearchBar from "./SearchBar";
 
@@ -10,7 +9,7 @@ import SearchBar from "./SearchBar";
 
 
 const DashHeader = () => {
-    const {user, handleLogout} = useContext(AuthContext)
+    const {user} = useContext(AuthContext)
     return(
         <Menu>
 
