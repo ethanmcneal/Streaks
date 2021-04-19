@@ -1,15 +1,13 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
-import Axios from "axios";
 import { QueryContext} from "../providers/QueryProvider";
 import { Search } from "semantic-ui-react";
 
 const SearchBar = () => {
 
-  const [loading, setLoading] = useState(true);
+
   const {getResults} = useContext(QueryContext)
-  const [results, setResults] = useState([]);
-  const [error, setError] = useState(null);
+
   const [query, setQuery] = useState(null);
   let history = useHistory();
   const handleChange = (e) => {         //<-- searchbar string before submit
