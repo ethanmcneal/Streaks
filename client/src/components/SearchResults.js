@@ -1,8 +1,6 @@
-
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { Button, Card, CardGroup, Grid, Segment } from "semantic-ui-react";
-import React, { useContext} from "react";
 import { AuthContext } from "../providers/AuthProvider";
 import styled from "styled-components";
 import { QueryContext } from "../providers/QueryProvider";
