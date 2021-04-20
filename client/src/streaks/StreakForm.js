@@ -1,11 +1,13 @@
 import axios from "axios"
-import { useContext, useState } from "react"
+import { useContext, useState} from "react"
 import {Button, Form, Table} from 'react-bootstrap'
 import { Container } from "semantic-ui-react";
 import { AuthContext } from "../providers/AuthProvider"
 import DatePicker from 'react-datepicker'
+import moment from 'moment'
 import '../style_components/basicstyle.css';
 import "react-datepicker/dist/react-datepicker.css"
+import {useHistory} from 'react-router-dom'
 
 const StreakForm = () => {
 
@@ -19,7 +21,7 @@ const StreakForm = () => {
     // const [startDate, setStartDate] = useState(null);
 
     let [streak, setStreak] = useState({name:null, description:null, reward:null, punishment:null, category:null, timeline:null})
-
+    const history = useHistory()
 
     const options = [
         { key: 'Sport', text: 'Sport', value: 'Sport' },
@@ -38,6 +40,7 @@ const StreakForm = () => {
               let res = await axios.post('/api/streaks/', streak)
               let res2 = await axios.post(`/api/user_streaks/`, {user_id: user.id, streak_id: res.data.id, status: 'upcoming'} )
               console.log(res)
+              history.push('/dashboard')
           } catch (error) {
               
               console.log(error)
@@ -123,7 +126,10 @@ const StreakForm = () => {
                 selected={streak.timeline}
                 onChange={handleDateChange}
                 showTimeSelect
-                dateFormat="Pp" />
+                dateFormat="Pp" 
+                filterDate = {(date) => {
+                    return moment() < date;
+                  }}/>
                 <br />
             
             
