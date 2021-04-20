@@ -36,7 +36,7 @@ const StreakForm = () => {
       
       const handleSubmit = async(e) => {
           e.preventDefault()
-          if(streak.name && streak.description && streak.reward && streak.punishment){
+          if(streak.name && streak.description && streak.reward && streak.punishment && streak.timeline){
           try {
               let res = await axios.post('/api/streaks/', streak)
               let res2 = await axios.post(`/api/user_streaks/`, {user_id: user.id, streak_id: res.data.id, status: 'upcoming'} )
