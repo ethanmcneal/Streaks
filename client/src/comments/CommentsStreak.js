@@ -52,8 +52,8 @@ const CommentsStreak = () => {
              <img src={comment.image}/>
              <h1>comment: {comment.info}</h1>
              <img src={comment.media}/>
-             <h1>cheer: {comment.cheer}</h1>
-             <h1>laugh: {comment.laugh}</h1>
+             {/* <h1>cheer: {comment.cheer}</h1>
+             <h1>laugh: {comment.laugh}</h1> */}
              <div><CheerLaughCounter defaultCommentID={comment.comment_id} initCheer={comment.cheer} initLaugh={comment.laugh}/></div>
           </Card>     
      )}
