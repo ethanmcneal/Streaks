@@ -3,11 +3,17 @@ import {Card, CardGroup, Container, ListGroup, ListGroupItem, Image, Row, Col, J
 import React from 'react'
 import { Icon, Image as ImageComponent, Item } from 'semantic-ui-react'
 import '../style_components/basicstyle.css'
+import NavBar from './Navbar'
+import { useContext } from 'react';
+import { AuthContext } from '../providers/AuthProvider'
 
 
 const About = () => {
+    const {user} = useContext(AuthContext)
+
     return (
         <>
+        {!user && <NavBar /> }
         <br />
         <Container>
             <h1>The Team</h1>
