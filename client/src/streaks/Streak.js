@@ -1,7 +1,7 @@
 import axios from "axios"
 import { useContext, useEffect, useState } from "react"
 import { Button, Card, CardGroup, Carousel, Container, ListGroup, ListGroupItem } from "react-bootstrap"
-import { Link, useParams } from "react-router-dom"
+import { Link, useHistory, useParams } from "react-router-dom"
 // import { Button, CardGroup, Header, Segment } from "semantic-ui-react"
 import CommentNew from "../comments/CommentNew"
 import CommentsStreak from "../comments/CommentsStreak"
@@ -10,12 +10,12 @@ import Timer from "../components/Timer"
 import { AuthContext } from "../providers/AuthProvider"
 import CardContainer from "../style_components/CardContainer"
 import '../style_components/basicstyle.css'
-import TabComponent from "../components/TabComponent"
 import CommentTab from "../components/CommentTab"
 
 const Streak = () => {
 
     const {id} = useParams()
+    const history = useHistory()
 
     const [streak, setStreak] = useState(null)
     const [users, setUsers] = useState(null)
@@ -37,7 +37,7 @@ const Streak = () => {
         try {
             let res = await axios.get(`/api/streaks_users/${id}`)
             console.log(res.data)
-            setStreak({name: res.data[0].streak_name, description:res.data[0].description, reward:res.data[0].reward, punishment:res.data[0].punishment, created_at:res.data[0].created_at})
+            setStreak({name: res.data[0].streak_name, description:res.data[0].description, reward:res.data[0].reward, punishment:res.data[0].punishment, timeline:res.data[0].timeline})
             setUsers(res.data)
         } catch (error) {
             console.log(error)
@@ -59,11 +59,7 @@ const Streak = () => {
     }
     return(
         <div>
-            
-            <Link to='/streaks'>
-            <Button>Back to streaks</Button>
-            </Link>
-           
+            <Button onClick={history.goBack}>Back</Button>
             <div>
               <Card className="peopleList">
             <h3>Participants</h3>
@@ -73,7 +69,7 @@ const Streak = () => {
              
         <Card className="timer" >
           {/* <Thumbnail url={streak.name} /> */}
-          <Timer created_at={streak.created_at}/>
+          <Timer timeline={streak.timeline}/>
           
           <Card.Body>
             <Card.Title><h4>{streak.name}</h4></Card.Title>

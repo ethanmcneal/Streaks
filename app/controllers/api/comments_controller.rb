@@ -38,7 +38,7 @@ class Api::CommentsController < ApplicationController
   
   def update 
     file = params[:media]
-    if file
+    if !file.to_s.empty?
       begin
         cloud_image = Cloudinary::Uploader.upload(file, public_id: file.original_filename, secure: true, resource_type: :auto)
         @comment.update(media: cloud_image['secure_url'], user_id: params[:user_id], streak_id: params[:streak_id], info: params[:info], cheer: params[:cheer], laugh: params[:laugh])
@@ -46,6 +46,7 @@ class Api::CommentsController < ApplicationController
         render json: { errors: e }, status: 422
         return
       end
+    else @comment.update(comment_params)
     end 
   end 
 

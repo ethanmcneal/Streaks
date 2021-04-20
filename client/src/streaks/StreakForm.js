@@ -1,9 +1,13 @@
 import axios from "axios"
-import { useContext, useState } from "react"
+import { useContext, useState} from "react"
 import {Button, Form, Table} from 'react-bootstrap'
 import { Container } from "semantic-ui-react";
 import { AuthContext } from "../providers/AuthProvider"
+import DatePicker from 'react-datepicker'
+import moment from 'moment'
 import '../style_components/basicstyle.css';
+import "react-datepicker/dist/react-datepicker.css"
+import {useHistory} from 'react-router-dom'
 
 const StreakForm = () => {
 
@@ -14,9 +18,10 @@ const StreakForm = () => {
     // const [category, setCategory] = useState(null)
 
     const {user} = useContext(AuthContext)
+    // const [startDate, setStartDate] = useState(null);
 
-    let [streak, setStreak] = useState({name:null, description:null, reward:null, punishment:null, category:null})
-
+    let [streak, setStreak] = useState({name:null, description:null, reward:null, punishment:null, category:null, timeline:null})
+    const history = useHistory()
 
     const options = [
         { key: 'Sport', text: 'Sport', value: 'Sport' },
@@ -35,6 +40,7 @@ const StreakForm = () => {
               let res = await axios.post('/api/streaks/', streak)
               let res2 = await axios.post(`/api/user_streaks/`, {user_id: user.id, streak_id: res.data.id, status: 'upcoming'} )
               console.log(res)
+              history.push('/dashboard')
           } catch (error) {
               
               console.log(error)
@@ -60,6 +66,11 @@ const StreakForm = () => {
 
       const handleChange = (e) => {
         setStreak({...streak, [e.target.name]: e.target.value})
+      }
+
+      const handleDateChange = (e) => {
+        setStreak({...streak, timeline: e})
+        console.log(e)
       }
     return(
         <div>
@@ -92,26 +103,40 @@ const StreakForm = () => {
             name='description'
             value={streak.description}
             onChange={handleChange}/>
+             
+            
             <Form.Label> reward </Form.Label>
             <Form.Control style={{width: '500px'}}
             placeholder='e.g. A Steak Dinner'
             name='reward'
             value={streak.reward}
-            onChange={handleChange}/> 
-                     
+            onChange={handleChange}/>       
             <Form.Label> punishment </Form.Label>
             <div style={{display: 'flex', justifyContent: 'space-between'}}>
             <Form.Control style={{width: '500px'}}
             placeholder='e.g. All losers must pay for the winners steak dinner'
             name='punishment'
             value={streak.punishment}
-            onChange={handleChange}/>
-            
-            
+            onChange={handleChange}/>        
             <Button type='submit' variant="success" style={{width: '125px'}}>Publish Streak</Button>
             </div>
+            <Form.Label>Start Date</Form.Label>
+            <br />
+            <DatePicker
+                selected={streak.timeline}
+                onChange={handleDateChange}
+                showTimeSelect
+                dateFormat="Pp" 
+                filterDate = {(date) => {
+                    return moment() < date;
+                  }}/>
+                <br />
+            
+            
         </Form>
+        
         </Container>
+        
         </div>
         
        

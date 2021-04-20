@@ -65,6 +65,7 @@ div.orange {
 .spacer {
     background: rgb(85, 85, 85);
 }
+<<<<<<< HEAD
 div.landing {
     text-align: center;
     color: #3793fb;
@@ -100,4 +101,49 @@ img.small-logo {
     width: 15%;
     border-radius: 20vw;
     
+=======
+
+.flex-about-img-left {
+    display: flex;
+    flex: 1 !important;
+    border-radius: 10px !important;
+    position: left;
+}
+.flex-about-small-pics {
+    display: flex;
+    flex: 1 !important;
+    border-radius: 10px !important;
+}
+.flex-about-information {
+    display: flex;
+    border-radius: 10px !important;
+    margin-right: 20px !important;
+    
+}
+.carousel-item-all {
+    background: rgb(245, 245, 245) !important;
+    padding: 7%;
+    display: flex;
+    align-items: stretch;
+}
+.about-right-content{
+    color: dodgerblue;
+    padding: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: auto;
+}
+.about-small-images{
+    display: flex;
+    flex-direction: row;
+    /* justify-content: space-evenly; */
+    width: 75px;
+    height: 75px;
+   
+    /* padding: 100px; */
+}
+.small-img-about{
+    border-radius: 50%;
+>>>>>>> d34e0493e3534db1ce6062920018ed651f2250a5
 }
