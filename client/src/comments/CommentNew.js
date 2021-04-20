@@ -57,24 +57,22 @@ const CommentNew = () => {
   
   return (
     <>
-    <div>
-
-    </div>
-    <div>
-      <form onSubmit={handleNewComment}>
-      <input value={newComment.info} label='Comment:' placeholder='Comment' name='info' onChange={handleChange}/>
-      <br/>
-      {/* <input value={newComment.media} label='Other Media:' placeholder='media' name='media' onChange={handleChange}/> */}
-      <FilePond
-            files={files}
-            onupdatefiles={handleUpdate}
-            allowMultiple={false}
-            name="media"
-            labelIdle='Drag  Drop your files or <span class="filepond--label-action">Browse</span>'
+      <div>
+        <h2>Add New Comment:</h2>
+        <form onSubmit={handleNewComment}>
+          <input value={newComment.info} label='Comment:' placeholder='Comment' name='info' onChange={handleChange}/>
+          <br/>
+          <h4>Attach Media:</h4>
+          <FilePond
+                files={files}
+                onupdatefiles={handleUpdate}
+                allowMultiple={false}
+                name="media"
+                labelIdle='Drag  Drop your files or <span class="filepond--label-action">Browse</span>'
           />
-      <Button type='submit'>Post Comment</Button>
-      </form>
-    </div>
+          <Button type='submit'>Post Comment</Button>
+        </form>
+      </div>
     </>
   )
 }

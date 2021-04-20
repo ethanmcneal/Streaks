@@ -6,18 +6,18 @@ import { Search } from "semantic-ui-react";
 const SearchBar = () => {
 
 
-  const {getResults} = useContext(QueryContext)
-
+  const {results, setResults, getResults} = useContext(QueryContext)
   const [query, setQuery] = useState(null);
   let history = useHistory();
   const handleChange = (e) => {         //<-- searchbar string before submit
     let keyword = e.target.value;
-    // console.log(keyword)
     setQuery(keyword);                  //<-- query => keyword
+    getResults(keyword) 
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    getResults(query)                   //<-- 
+    getResults(query);    
+    setResults("");               
     history.push(`/results`);
   };
   return (
@@ -28,6 +28,7 @@ const SearchBar = () => {
           placeholder="Search streaks"
           onSearchChange={handleChange}
           value={query}
+          showNoResults={false}
         />
         
       </form>

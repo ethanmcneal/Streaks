@@ -31,6 +31,7 @@ const getResults = (query) => {
       value={{
         getResults:getResults,
         results:results,
+        setResults:setResults,
         query:query,
         setQuery:setQuery,
       }}

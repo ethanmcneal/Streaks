@@ -1,5 +1,6 @@
 import axios from "axios"
 import { useContext, useState } from "react"
+import { useHistory } from 'react-router-dom'
 import {Button, Form, Table} from 'react-bootstrap'
 import { Container } from "semantic-ui-react";
 import { AuthContext } from "../providers/AuthProvider"
@@ -8,7 +9,8 @@ import '../style_components/basicstyle.css';
 import "react-datepicker/dist/react-datepicker.css"
 
 const StreakForm = () => {
-
+    const [validated, setValidated] = useState(false);
+    const history = useHistory()
     // const [name, setName] = useState(null)
     // const [description, setDescription] = useState(null)
     // const [reward, setReward] = useState(null)
@@ -38,6 +40,8 @@ const StreakForm = () => {
               let res = await axios.post('/api/streaks/', streak)
               let res2 = await axios.post(`/api/user_streaks/`, {user_id: user.id, streak_id: res.data.id, status: 'upcoming'} )
               console.log(res)
+              setValidated(true);
+              history.push(`/streaks`);
           } catch (error) {
               
               console.log(error)
@@ -75,7 +79,7 @@ const StreakForm = () => {
         <div style={{ margin: '3em 7em 3em'}}>
             <div >
                 <Container>
-        <Form onSubmit={handleSubmit}>
+        <Form noValidate validated={validated} onSubmit={handleSubmit}>
         <Form.Label> Category </Form.Label>
             <Form.Control as='select' placeholder='category' selection onChange={(e)=> handleDropDown(e.target.value)} style={{width: '250px'}}>
             <option>Select a Category</option>
@@ -89,13 +93,15 @@ const StreakForm = () => {
             <option>Cuisine</option>
             </Form.Control>
             <Form.Label> Streak Name </Form.Label>
-            <Form.Control style={{width: '500px'}}
+            <Form.Control required style={{width: '500px'}}
+            minLength='2'
             placeholder='e.g. Workout Daily'
             name='name'
             value={streak.name}
+
             onChange={handleChange}/>
             <Form.Label> description </Form.Label>
-            <Form.Control style={{width: '500px'}}
+            <Form.Control required style={{width: '500px'}}
             placeholder='e.g. A pact to work out daily'
             name='description'
             value={streak.description}
@@ -103,14 +109,14 @@ const StreakForm = () => {
              
             
             <Form.Label> reward </Form.Label>
-            <Form.Control style={{width: '500px'}}
+            <Form.Control required style={{width: '500px'}}
             placeholder='e.g. A Steak Dinner'
             name='reward'
             value={streak.reward}
             onChange={handleChange}/>       
             <Form.Label> punishment </Form.Label>
             <div style={{display: 'flex', justifyContent: 'space-between'}}>
-            <Form.Control style={{width: '500px'}}
+            <Form.Control required style={{width: '500px'}}
             placeholder='e.g. All losers must pay for the winners steak dinner'
             name='punishment'
             value={streak.punishment}
