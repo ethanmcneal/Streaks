@@ -1,11 +1,13 @@
-import React, {useState, useContext, useEffect} from 'react'
+import React, {useState, useContext, useEffect, useReducer} from 'react'
 import axios from 'axios'
 import {useParams} from 'react-router-dom'
-import {Carousel} from 'react-bootstrap'
+import {Carousel, Image} from 'react-bootstrap'
+import '../style_components/basicstyle.css'
 
 const CommentMedia = () => {
   const [comments, setComments] = useState('')
   const {id} = useParams()
+ 
 
   useEffect(()=> {
     getCommentMedia()
@@ -19,26 +21,26 @@ const CommentMedia = () => {
     }
   }
   
-  const renderCommentMedia = () => {
-    return (
-      <>
-       <Carousel>
-         {comments && comments.map( comment => 
-             <Carousel.Item>
-                <img 
-                className="d-block w-100"
-                //todo make it so that the media is formatted nicely. full height within 150px maybe. 
-                src={comment.media}/>
-              </Carousel.Item>
-           )}  
-       </Carousel>
-      </> 
-  )}
+  const notNullMedia = () => {
+    if (comments){let filterMedia = comments.filter(comment => comment.media !== "")
+      console.log("filtermedia", filterMedia)
+     return( filterMedia.map( comment => 
+        <Carousel.Item>
+            <Image
+            className="comments-media-carousel"
+            src={comment.media}/>
+          </Carousel.Item>
+       ))
+    }
+  }
 
   return (
-    <div>
-      {renderCommentMedia()}
-    </div>
+    <>
+    <h2>All Comment Media</h2>
+     <Carousel>
+       {notNullMedia()}
+     </Carousel>
+    </> 
   )
 }
 

@@ -15,8 +15,7 @@ const DashHeader = () => {
 
 <Link to='/dashboard'>
             <Menu.Item>
-                User
-                {/* {user.nickname}  glitchy on callies comp?*/}
+               {user.nickname} 
                 </Menu.Item>
                 </Link>
             <Menu.Item >

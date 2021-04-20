@@ -7,6 +7,7 @@ import CommentEdit from './CommentEdit'
 import ReactDOM from "react-dom";
 import CheerLaughCounter from './CheerLaughCounter'
 import { AuthContext } from '../providers/AuthProvider'
+import '../style_components/basicstyle.css'
 
 const CommentsStreak = () => {
   const [comments, setComments] = useState('')
@@ -22,10 +23,10 @@ const CommentsStreak = () => {
   const getComments = async () => {
     try{let res =  await axios.get(`/api/streak/${id}`)
       setComments(res.data)
-      console.log(res.data)
+      console.log('res.data in comments streak', res.data)
       
     } catch(err) {
-      console.log(id)
+      console.log('get comments id for commentsstreak in getcomments', id)
       alert(err)
     }
   }
@@ -53,7 +54,7 @@ const CommentsStreak = () => {
              
              {/* <img src={comment.image}/> */}
              <Comment.Text>Comment: <br/>{comment.info}</Comment.Text>
-             <img src={comment.media}/>
+             <img className="comments-media-carousel" src={comment.media}/>
              {/* <h1>cheers: {comment.cheer}</h1>
              <h1><laughs: {comment.laugh}</h1> */}
              <div><CheerLaughCounter defaultCommentID={comment.comment_id} initCheer={comment.cheer} initLaugh={comment.laugh}/></div>
