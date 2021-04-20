@@ -36,27 +36,21 @@ const StreakForm = () => {
       
       const handleSubmit = async(e) => {
           e.preventDefault()
+          if(streak.name && streak.description && streak.reward && streak.punishment){
           try {
               let res = await axios.post('/api/streaks/', streak)
               let res2 = await axios.post(`/api/user_streaks/`, {user_id: user.id, streak_id: res.data.id, status: 'upcoming'} )
               console.log(res)
-              setValidated(true);
-              history.push(`/streaks`);
+              setValidated(true) 
+              history.push(`/streaks`);  
           } catch (error) {
-              
               console.log(error)
           }
-          }
-
-        //   const handleSubmit = async() => {
-        //       axios.post('/api/streaks/', streak).then(response => {
-        //           debugger
-        //           console.log(response)
-        //           axios.post(`/api/user_streaks/`, {status: 'upcoming', user_id: user.id, streak_id: response.data.id} )}
-        //       ).catch(error => {
-        //           console.log(error)
-        //       })
-        //   }
+        } else {
+            alert("in handle Submit")
+            setValidated(false)
+            }
+        }
 
       
 
@@ -67,11 +61,19 @@ const StreakForm = () => {
 
       const handleChange = (e) => {
         setStreak({...streak, [e.target.name]: e.target.value})
+        // console.log(e.target.value.length)
+        console.log(streak.description)
+        if(e.target.value.length >= 2){
+            setValidated(true)
+        }else{
+            setValidated(false)
+        }
+
       }
 
       const handleDateChange = (e) => {
         setStreak({...streak, timeline: e})
-        console.log(e)
+        // console.log(e)
       }
     return(
         <div>
@@ -80,7 +82,7 @@ const StreakForm = () => {
             <div >
                 <Container>
         <Form noValidate validated={validated} onSubmit={handleSubmit}>
-        <Form.Label> Category </Form.Label>
+            <Form.Label> Category </Form.Label>
             <Form.Control as='select' placeholder='category' selection onChange={(e)=> handleDropDown(e.target.value)} style={{width: '250px'}}>
             <option>Select a Category</option>
             <option>Sports</option>
@@ -92,16 +94,18 @@ const StreakForm = () => {
             <option>Physical Feat</option>
             <option>Cuisine</option>
             </Form.Control>
+
             <Form.Label> Streak Name </Form.Label>
             <Form.Control required style={{width: '500px'}}
-            minLength='2'
+            minlength="2"
             placeholder='e.g. Workout Daily'
             name='name'
             value={streak.name}
-
             onChange={handleChange}/>
+
             <Form.Label> description </Form.Label>
             <Form.Control required style={{width: '500px'}}
+            minlength="2"
             placeholder='e.g. A pact to work out daily'
             name='description'
             value={streak.description}
@@ -109,28 +113,33 @@ const StreakForm = () => {
              
             
             <Form.Label> reward </Form.Label>
-            <Form.Control required style={{width: '500px'}}
-            placeholder='e.g. A Steak Dinner'
-            name='reward'
-            value={streak.reward}
-            onChange={handleChange}/>       
+                <Form.Control required style={{width: '500px'}}
+                minlength="2"
+                placeholder='e.g. A Steak Dinner'
+                name='reward'
+                value={streak.reward}
+                onChange={handleChange}/>
+
             <Form.Label> punishment </Form.Label>
             <div style={{display: 'flex', justifyContent: 'space-between'}}>
-            <Form.Control required style={{width: '500px'}}
-            placeholder='e.g. All losers must pay for the winners steak dinner'
-            name='punishment'
-            value={streak.punishment}
-            onChange={handleChange}/>        
-            <Button type='submit' variant="success" style={{width: '125px'}}>Publish Streak</Button>
+                <Form.Control required style={{width: '500px'}}
+                minlength="2"
+                placeholder='e.g. All losers must pay for the winners steak dinner'
+                name='punishment'
+                value={streak.punishment}
+                onChange={handleChange}/>  
+
+            <Button disabled={!validated} type='submit' variant="success" style={{width: '125px'}}>Publish Streak</Button>
             </div>
+
             <Form.Label>Start Date</Form.Label>
-            <br />
-            <DatePicker
-                selected={streak.timeline}
-                onChange={handleDateChange}
-                showTimeSelect
-                dateFormat="Pp" />
                 <br />
+                <DatePicker
+                    selected={streak.timeline}
+                    onChange={handleDateChange}
+                    showTimeSelect
+                    dateFormat="Pp" />
+                    <br />
             
             
         </Form>
@@ -190,16 +199,3 @@ const StreakForm = () => {
 }
 
 export default StreakForm
-
-
-// create_table "streaks", force: :cascade do |t|
-//     t.string "name"
-//     t.string "description"
-//     t.datetime "timeline"
-//     t.string "reward"
-//     t.string "punishment"
-//     t.string "category"
-//     t.boolean "open"
-//     t.datetime "created_at", precision: 6, null: false
-//     t.datetime "updated_at", precision: 6, null: false
-//   end
