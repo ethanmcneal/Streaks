@@ -3,15 +3,16 @@ import axios from 'axios'
 import {useParams} from 'react-router-dom'
 import {Carousel} from 'react-bootstrap'
 
-const CommentMedia = () => {
+const WinnersLosers = () => {
   const [comments, setComments] = useState('')
   const {id} = useParams()
 
   useEffect(()=> {
-    getCommentMedia()
+    getWinLoseMedia()
   }, [])
 
-  const getCommentMedia = async() =>{
+  const getWinLoseMedia = async() =>{
+    //todo this needs to be for the user_streak media for the streak and user match where the status is winner or loser. 
     try{let res =  await axios.get(`/api/streak/${id}`)
       setComments(res.data)
     } catch(err) {
@@ -19,7 +20,7 @@ const CommentMedia = () => {
     }
   }
   
-  const renderCommentMedia = () => {
+  const renderWinndersLosersMedia = () => {
     return (
       <>
        <Carousel>
@@ -37,11 +38,9 @@ const CommentMedia = () => {
 
   return (
     <div>
-      {renderCommentMedia()}
+      {renderWinndersLosersMedia()}
     </div>
   )
 }
 
-export default CommentMedia
-
-
+export default WinnersLosers
