@@ -16,13 +16,13 @@ const Streak = () => {
 
     const {id} = useParams()
     const history = useHistory()
-
+    const [winner, setWinner] = useState(null)
     const [streak, setStreak] = useState(null)
     const [users, setUsers] = useState(null)
     const {user} = useContext(AuthContext)
 
     useEffect(()=> {
-        getStreak()
+        getStreak();
     },[])
 
     const deleteStreak = async() => {
@@ -39,8 +39,31 @@ const Streak = () => {
             console.log(res.data)
             setStreak({name: res.data[0].streak_name, description:res.data[0].description, reward:res.data[0].reward, punishment:res.data[0].punishment, timeline:res.data[0].timeline})
             setUsers(res.data)
+            winnerCheck(res.data)
         } catch (error) {
             console.log(error)
+        } finally {
+            
+        }
+    }
+    const setChampion = async(champion) => {
+        try {
+            setWinner(champion) 
+            let res = await axios.patch(`/api/user_streaks/${champion.id}`, {status: 'won'})
+            console.log(res.data)
+            // window.location.reload()
+          } catch(error) {
+              console.log(error)
+            }
+    }
+
+    let ongoingUsers = []
+
+    const winnerCheck = (participants) => {
+      participants.map(user => user.status == 'ongoing' || user.status == 'won' ?
+      ongoingUsers.push({name: user.nickname, id:user.user_id}) : '')
+        if(ongoingUsers.length == 1){
+            setChampion(ongoingUsers[0])
         }
     }
 
@@ -52,6 +75,8 @@ const Streak = () => {
                     <ListGroup.Item>{user.avatar}</ListGroup.Item>
                         <ListGroup.Item>{user.nickname}</ListGroup.Item>
                         <ListGroup.Item>{user.email}</ListGroup.Item>
+                        <ListGroup.Item>{user.status}</ListGroup.Item>
+
                     </ListGroup>
                 </div>
             )
@@ -69,7 +94,12 @@ const Streak = () => {
              
         <Card className="timer" >
           {/* <Thumbnail url={streak.name} /> */}
-          <Timer timeline={streak.timeline}/>
+         {winner ? <div><div style={{textAlign: 'center', padding:'10em'}}>
+                    <h2>{winner.name} is the winner!</h2>
+                    </div>
+                     <div className="spacer">
+                          <br/><br/>
+                        </div> </div>: <Timer timeline={streak.timeline}/>}
           
           <Card.Body>
             <Card.Title><h4>{streak.name}</h4></Card.Title>

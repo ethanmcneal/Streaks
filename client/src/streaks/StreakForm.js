@@ -23,7 +23,6 @@ const StreakForm = () => {
 
     let [streak, setStreak] = useState({name:null, description:null, reward:null, punishment:null, category:null, timeline:null})
 
-
     const options = [
         { key: 'Sport', text: 'Sport', value: 'Sport' },
         { key: 'Health', text: 'Health', value: 'Health' },

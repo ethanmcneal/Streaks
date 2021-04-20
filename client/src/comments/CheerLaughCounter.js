@@ -103,7 +103,7 @@ const CheerLaughCounter = (props) => {
         
         >
 
-          <strong>cheers</strong>
+          <strong><span role="img" aria-label="raising hands">🙌</span></strong>
           &nbsp;|&nbsp;
           {cheers}
 
@@ -118,7 +118,7 @@ const CheerLaughCounter = (props) => {
           name='laugh'
         >
 
-          <strong>laughs</strong>
+          <strong><span role="img" aria-label="grinning squinting face">😆</span></strong>
           &nbsp;|&nbsp;
           {laughs}
         </button>
