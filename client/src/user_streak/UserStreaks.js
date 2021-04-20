@@ -1,10 +1,12 @@
 import axios from 'axios'
 import React, { useContext, useEffect, useState } from 'react'
-import { Segment } from 'semantic-ui-react'
+import { Segment, Tab } from 'semantic-ui-react'
 import { AuthContext } from '../providers/AuthProvider'
 import UserStreak from './UserStreak'
 import '../style_components/basicstyle.css'
-import TabComponent from '../components/TabComponent'
+import { render } from 'react-dom'
+import StreakListHeader from '../components/StreakListHeader'
+
 
 
 
@@ -17,7 +19,7 @@ const UserStreaks = () => {
 
   useEffect(()=> {
     getData()
-  },)
+  },[])
 
   const getData = async() => {
     try {
@@ -31,28 +33,59 @@ const UserStreaks = () => {
     }
   }
 
+  const panes = [
+    {
+      menuItem: 'Active',
+      render: () => <Tab.Pane attached={false}>{renderUserStreak()}</Tab.Pane>,
+    },
+    {
+      menuItem: 'Completed',
+      render: () => <Tab.Pane attached={false}>{renderFinishedStreaks()}</Tab.Pane>,
+    },
+  ]
+
   const renderUserStreak = () => {
-    return userStreaks.map(userStreak => <UserStreak streakName={userStreak.streak_name} 
+    return(
+      <div>
+      <StreakListHeader />
+    <Segment.Group>
+        {userStreaks.map(userStreak => userStreak.status !== 'quit' && userStreak.status !== 'won' ? <UserStreak streakName={userStreak.streak_name} 
                                                       streakReward={userStreak.reward}
                                                       createdAt={userStreak.created_at}
                                                       status={userStreak.status}
-                                                      userStreakId={userStreak.id}/>)
+                                                      userStreakId={userStreak.id}
+                                                      streakId={userStreak.streak_id}/> : '')}
+    </Segment.Group>
+    </div>
+    )
+    
+  } 
+
+  const renderFinishedStreaks = () => {
+    return(
+      <div>
+      <StreakListHeader />
+    <Segment.Group>
+        {userStreaks.map(userStreak => userStreak.status == 'quit' || userStreak.status == 'won' ? <UserStreak streakName={userStreak.streak_name} 
+                                                      streakReward={userStreak.reward}
+                                                      createdAt={userStreak.created_at}
+                                                      status={userStreak.status}
+                                                      userStreakId={userStreak.id}
+                                                      streakId={userStreak.streak_id}/> : '')}
+    </Segment.Group>
+    </div>
+    )
+    
   } 
 
   return(
     <>
   <Segment.Group className="apple" >
-    <TabComponent></TabComponent>
-  <Segment.Group horizontal >
-    <Segment>Streak</Segment>
-    <Segment># of Participants</Segment>
-    <Segment>Created</Segment>
-    <Segment>Wager</Segment>
-    <Segment>Status</Segment>
-    <Segment>Actions</Segment>
-    </Segment.Group>
+  
+  
+    {userStreaks && <Tab menu={{ secondary: true, pointing: true }} panes={panes} /> }
     {/* <Segment.Group> */}
-    {userStreaks && <div className="orange">{renderUserStreak()} </div>}
+    {/* {userStreaks && <div className="orange">{renderUserStreak()} </div>} */}
     {/* </Segment.Group> */}
   </Segment.Group>
   

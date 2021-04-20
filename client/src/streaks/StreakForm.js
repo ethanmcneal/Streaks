@@ -5,8 +5,10 @@ import {Button, Form, Table} from 'react-bootstrap'
 import { Container } from "semantic-ui-react";
 import { AuthContext } from "../providers/AuthProvider"
 import DatePicker from 'react-datepicker'
+import moment from 'moment'
 import '../style_components/basicstyle.css';
 import "react-datepicker/dist/react-datepicker.css"
+import {useHistory} from 'react-router-dom'
 
 const StreakForm = () => {
     const [validated, setValidated] = useState(false);
@@ -21,7 +23,7 @@ const StreakForm = () => {
     // const [startDate, setStartDate] = useState(null);
 
     let [streak, setStreak] = useState({name:null, description:null, reward:null, punishment:null, category:null, timeline:null})
-
+    const history = useHistory()
 
     const options = [
         { key: 'Sport', text: 'Sport', value: 'Sport' },
@@ -133,15 +135,16 @@ const StreakForm = () => {
             </div>
 
             <Form.Label>Start Date</Form.Label>
-                <br />
-                <DatePicker
-                    selected={streak.timeline}
-                    onChange={handleDateChange}
-                    showTimeSelect
-                    dateFormat="Pp" />
-                    <br />
-            
-            
+
+            <br />
+            <DatePicker
+                selected={streak.timeline}
+                onChange={handleDateChange}
+                showTimeSelect
+                dateFormat="Pp" 
+                filterDate = {(date) => {
+                    return moment() < date;
+                  }}/>
         </Form>
         
         </Container>
