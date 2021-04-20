@@ -45,12 +45,12 @@ const CommentsStreak = () => {
        <Comment.Group>
          {comments && comments.map( comment => 
            <Comment>
-             <Comment.Avatar src=''/>
+             <Comment.Avatar src={comment.image}/>
              <Comment.Content>
              <Comment.Author>{comment.nickname}</Comment.Author>
              <Comment.Metadata>
-          <div>Yesterday at 12:30AM</div>
-        </Comment.Metadata>
+              <div>Yesterday at 12:30AM</div>
+             </Comment.Metadata>
              
              {/* <img src={comment.image}/> */}
              <Comment.Text>Comment: <br/>{comment.info}</Comment.Text>

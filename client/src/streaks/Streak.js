@@ -72,7 +72,7 @@ const Streak = () => {
             return(
                 <div>
                     <ListGroup horizontal>
-                    <ListGroup.Item>{user.avatar}</ListGroup.Item>
+                    <ListGroup.Item>{user.image}</ListGroup.Item>
                         <ListGroup.Item>{user.nickname}</ListGroup.Item>
                         <ListGroup.Item>{user.email}</ListGroup.Item>
                         <ListGroup.Item>{user.status}</ListGroup.Item>
