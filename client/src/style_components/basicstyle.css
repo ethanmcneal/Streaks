@@ -65,7 +65,6 @@ div.orange {
 .spacer {
     background: rgb(85, 85, 85);
 }
-<<<<<<< HEAD
 div.landing {
     text-align: center;
     color: #3793fb;
@@ -101,8 +100,7 @@ img.small-logo {
     width: 15%;
     border-radius: 20vw;
     
-=======
-
+}
 .flex-about-img-left {
     display: flex;
     flex: 1 !important;
@@ -145,5 +143,4 @@ img.small-logo {
 }
 .small-img-about{
     border-radius: 50%;
->>>>>>> d34e0493e3534db1ce6062920018ed651f2250a5
 }

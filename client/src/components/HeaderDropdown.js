@@ -14,12 +14,8 @@ const DropdownHeader = () => {
       <Dropdown.Item href="/">Home</Dropdown.Item>
       <Dropdown.Item href="/about">About</Dropdown.Item>
       <Dropdown.Item href="/streaks">Streaks</Dropdown.Item>
-<<<<<<< HEAD
-      <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
-=======
       <Dropdown.Item href="/users">Users</Dropdown.Item>
       <Dropdown.Item href="/" onClick={handleLogout}>Logout</Dropdown.Item>
->>>>>>> d34e0493e3534db1ce6062920018ed651f2250a5
     </Dropdown.Menu>
   </Dropdown>
   )
