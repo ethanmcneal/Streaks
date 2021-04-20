@@ -65,3 +65,39 @@ div.orange {
 .spacer {
     background: rgb(85, 85, 85);
 }
+div.landing {
+    text-align: center;
+    color: #3793fb;
+    background: #ddecfd !important;
+    height: 100vh !important;
+    
+}
+.ui.button.sign-up {
+    background: #3793fb !important;
+    border-color: #3793fb !important;
+}
+img.circular-logo {
+    display: inline ;
+    width: 15%;
+    border-radius: 20vw;
+    
+}
+div.landing-menu {
+    color: #3793fb !important;
+    background: #ddecfd !important;
+    border: none !important;
+}
+
+div.landing-menu.item {
+    color: #3793fb !important;
+    background: #ddecfd !important;
+    border: none !important;
+}
+div.item::before {
+    content: none !important;
+}
+img.small-logo {
+    width: 15%;
+    border-radius: 20vw;
+    
+}

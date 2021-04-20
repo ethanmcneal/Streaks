@@ -1,7 +1,7 @@
 import React, {useState, useEffect, useReducer, useContext} from 'react'
 import axios from 'axios'
 import {Link, useParams} from 'react-router-dom'
-import {Button, Card, Header, Image} from 'semantic-ui-react'
+import {Button, Card, Comment, Header, Image} from 'semantic-ui-react'
 import CardContainer from '../style_components/CardContainer'
 import CommentEdit from './CommentEdit'
 import ReactDOM from "react-dom";
@@ -41,23 +41,32 @@ const CommentsStreak = () => {
       
   const renderFullComments = () => {
     return(
-       <Card>
+       <Comment.Group>
          {comments && comments.map( comment => 
-           <Card>
-             <h1>nickname: {comment.nickname}</h1>
+           <Comment>
+             <Comment.Avatar src=''/>
+             <Comment.Content>
+             <Comment.Author>{comment.nickname}</Comment.Author>
+             <Comment.Metadata>
+          <div>Yesterday at 12:30AM</div>
+        </Comment.Metadata>
+             
+             {/* <img src={comment.image}/> */}
+             <Comment.Text>Comment: <br/>{comment.info}</Comment.Text>
+             <img src={comment.media}/>
+             {/* <h1>cheers: {comment.cheer}</h1>
+             <h1><laughs: {comment.laugh}</h1> */}
+             <div><CheerLaughCounter defaultCommentID={comment.comment_id} initCheer={comment.cheer} initLaugh={comment.laugh}/></div>
              {/* todo: make delete and edit only visible to curernt user for their comments */}
+             <br/>
              {user.id === comment.user_id && <Button onClick={() => deleteComment(comment.comment_id)}>Delete</Button>}
              {user.id === comment.user_id && <Button onClick={()=> {setHideEditFields(!hideEditFields)}}>{hideEditFields ? 'Cancel Edit' : 'Edit'}</Button>}
               {hideEditFields && <CommentEdit defaultInfo={comment.info} defaultMedia={comment.media} defaultCheer={comment.cheer} defaultLaugh={comment.laugh} defaultCommentID={comment.comment_id}/>}
-             <img src={comment.image}/>
-             <h1>comment: {comment.info}</h1>
-             <img src={comment.media}/>
-             <h1>cheer: {comment.cheer}</h1>
-             <h1>laugh: {comment.laugh}</h1>
-             <div><CheerLaughCounter defaultCommentID={comment.comment_id} initCheer={comment.cheer} initLaugh={comment.laugh}/></div>
-          </Card>     
+             </Comment.Content>
+             <br/>
+          </Comment>     
      )}
-     </Card>
+     </Comment.Group>
     )
    }
   

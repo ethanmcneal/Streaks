@@ -12,7 +12,7 @@ const NavBar = () => {
     return(
         <Menu inverted>
             <MenuItem>
-            <img src={img}/>
+            <img src={img} className="small-logo"/>
             </MenuItem>
 
         {!user &&    <Menu.Menu position='right'>
