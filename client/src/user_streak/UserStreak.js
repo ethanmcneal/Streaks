@@ -2,6 +2,7 @@ import React from 'react'
 import axios from "axios"
 import { Icon, Segment } from "semantic-ui-react"
 import { Link } from 'react-router-dom'
+import { Button } from 'react-bootstrap'
 
 
 
@@ -45,7 +46,7 @@ const changeStatus = async(id, s) => {
                {status !== 'quit' && status !== 'won' ? <div>
                 {status !== 'upcoming' && <Icon onClick={()=>changeStatus(userStreakId, status)}name={status === 'ongoing' ? 'pause' : 'play'} /> }
                 <Icon name='times' onClick={()=>quitStreak(userStreakId)} /> 
-                </div> : ''} 
+                </div> : <Button>Upload Media</Button>} 
             </Segment>
     )
 }
