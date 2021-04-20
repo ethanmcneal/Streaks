@@ -1,5 +1,6 @@
 import axios from "axios"
-import { useContext, useState} from "react"
+import { useContext, useState } from "react"
+import { useHistory } from 'react-router-dom'
 import {Button, Form, Table} from 'react-bootstrap'
 import { Container } from "semantic-ui-react";
 import { AuthContext } from "../providers/AuthProvider"
@@ -10,7 +11,8 @@ import "react-datepicker/dist/react-datepicker.css"
 import {useHistory} from 'react-router-dom'
 
 const StreakForm = () => {
-
+    const [validated, setValidated] = useState(false);
+    const history = useHistory()
     // const [name, setName] = useState(null)
     // const [description, setDescription] = useState(null)
     // const [reward, setReward] = useState(null)
@@ -36,26 +38,21 @@ const StreakForm = () => {
       
       const handleSubmit = async(e) => {
           e.preventDefault()
+          if(streak.name && streak.description && streak.reward && streak.punishment && streak.timeline){
           try {
               let res = await axios.post('/api/streaks/', streak)
               let res2 = await axios.post(`/api/user_streaks/`, {user_id: user.id, streak_id: res.data.id, status: 'upcoming'} )
               console.log(res)
-              history.push('/dashboard')
+              setValidated(true) 
+              history.push(`/streaks`);  
           } catch (error) {
-              
               console.log(error)
           }
-          }
-
-        //   const handleSubmit = async() => {
-        //       axios.post('/api/streaks/', streak).then(response => {
-        //           debugger
-        //           console.log(response)
-        //           axios.post(`/api/user_streaks/`, {status: 'upcoming', user_id: user.id, streak_id: response.data.id} )}
-        //       ).catch(error => {
-        //           console.log(error)
-        //       })
-        //   }
+        } else {
+            alert("in handle Submit")
+            setValidated(false)
+            }
+        }
 
       
 
@@ -66,11 +63,19 @@ const StreakForm = () => {
 
       const handleChange = (e) => {
         setStreak({...streak, [e.target.name]: e.target.value})
+        // console.log(e.target.value.length)
+        console.log(streak.description)
+        if(e.target.value.length >= 2){
+            setValidated(true)
+        }else{
+            setValidated(false)
+        }
+
       }
 
       const handleDateChange = (e) => {
         setStreak({...streak, timeline: e})
-        console.log(e)
+        // console.log(e)
       }
     return(
         <div>
@@ -78,8 +83,8 @@ const StreakForm = () => {
         <div style={{ margin: '3em 7em 3em'}}>
             <div >
                 <Container>
-        <Form onSubmit={handleSubmit}>
-        <Form.Label> Category </Form.Label>
+        <Form noValidate validated={validated} onSubmit={handleSubmit}>
+            <Form.Label> Category </Form.Label>
             <Form.Control as='select' placeholder='category' selection onChange={(e)=> handleDropDown(e.target.value)} style={{width: '250px'}}>
             <option>Select a Category</option>
             <option>Sports</option>
@@ -91,14 +96,18 @@ const StreakForm = () => {
             <option>Physical Feat</option>
             <option>Cuisine</option>
             </Form.Control>
+
             <Form.Label> Streak Name </Form.Label>
-            <Form.Control style={{width: '500px'}}
+            <Form.Control required style={{width: '500px'}}
+            minlength="2"
             placeholder='e.g. Workout Daily'
             name='name'
             value={streak.name}
             onChange={handleChange}/>
+
             <Form.Label> description </Form.Label>
-            <Form.Control style={{width: '500px'}}
+            <Form.Control required style={{width: '500px'}}
+            minlength="2"
             placeholder='e.g. A pact to work out daily'
             name='description'
             value={streak.description}
@@ -106,21 +115,27 @@ const StreakForm = () => {
              
             
             <Form.Label> reward </Form.Label>
-            <Form.Control style={{width: '500px'}}
-            placeholder='e.g. A Steak Dinner'
-            name='reward'
-            value={streak.reward}
-            onChange={handleChange}/>       
+                <Form.Control required style={{width: '500px'}}
+                minlength="2"
+                placeholder='e.g. A Steak Dinner'
+                name='reward'
+                value={streak.reward}
+                onChange={handleChange}/>
+
             <Form.Label> punishment </Form.Label>
             <div style={{display: 'flex', justifyContent: 'space-between'}}>
-            <Form.Control style={{width: '500px'}}
-            placeholder='e.g. All losers must pay for the winners steak dinner'
-            name='punishment'
-            value={streak.punishment}
-            onChange={handleChange}/>        
-            <Button type='submit' variant="success" style={{width: '125px'}}>Publish Streak</Button>
+                <Form.Control required style={{width: '500px'}}
+                minlength="2"
+                placeholder='e.g. All losers must pay for the winners steak dinner'
+                name='punishment'
+                value={streak.punishment}
+                onChange={handleChange}/>  
+
+            <Button disabled={!validated} type='submit' variant="success" style={{width: '125px'}}>Publish Streak</Button>
             </div>
+
             <Form.Label>Start Date</Form.Label>
+
             <br />
             <DatePicker
                 selected={streak.timeline}
@@ -130,9 +145,6 @@ const StreakForm = () => {
                 filterDate = {(date) => {
                     return moment() < date;
                   }}/>
-                <br />
-            
-            
         </Form>
         
         </Container>
@@ -190,16 +202,3 @@ const StreakForm = () => {
 }
 
 export default StreakForm
-
-
-// create_table "streaks", force: :cascade do |t|
-//     t.string "name"
-//     t.string "description"
-//     t.datetime "timeline"
-//     t.string "reward"
-//     t.string "punishment"
-//     t.string "category"
-//     t.boolean "open"
-//     t.datetime "created_at", precision: 6, null: false
-//     t.datetime "updated_at", precision: 6, null: false
-//   end
