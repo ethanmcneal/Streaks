@@ -11,6 +11,7 @@ import { AuthContext } from "../providers/AuthProvider"
 import CardContainer from "../style_components/CardContainer"
 import '../style_components/basicstyle.css'
 import CommentTab from "../components/CommentTab"
+import upcoming from '../components/Timer'
 
 const Streak = () => {
 
@@ -33,17 +34,26 @@ const Streak = () => {
         }
     }
 
+
     const getStreak = async() => {
         try {
             let res = await axios.get(`/api/streaks_users/${id}`)
             console.log(res.data)
-            setStreak({name: res.data[0].streak_name, description:res.data[0].description, reward:res.data[0].reward, punishment:res.data[0].punishment, timeline:res.data[0].timeline})
+            setStreak({name: res.data[0].streak_name, description:res.data[0].description, reward:res.data[0].reward, punishment:res.data[0].punishment, timeline:res.data[0].timeline, streak_id:res.data[0].streak_id, open:res.data[0].public})
             setUsers(res.data)
             winnerCheck(res.data)
         } catch (error) {
             console.log(error)
         } finally {
             
+        }
+    }
+
+    const closeStreak = async() => {
+        try {
+            let res = axios.patch(`/api/streaks/${streak.streak_id}`, {open: false})
+        } catch (error) {
+            console.log(error)
         }
     }
     const setChampion = async(champion) => {
@@ -61,7 +71,7 @@ const Streak = () => {
 
     const winnerCheck = (participants) => {
       participants.map(user => user.status == 'ongoing' || user.status == 'won' ?
-      ongoingUsers.push({name: user.nickname, id:user.user_id}) : '')
+      ongoingUsers.push({name: user.nickname, id:user.id}) : '')
         if(ongoingUsers.length == 1){
             setChampion(ongoingUsers[0])
         }
@@ -98,8 +108,10 @@ const Streak = () => {
                     <h2>{winner.name} is the winner!</h2>
                     </div>
                      <div className="spacer">
-                          <br/><br/>
-                        </div> </div>: <Timer timeline={streak.timeline}/>}
+                          <br/>
+                          <br/>
+                    </div> 
+                    </div>: <Timer timeline={streak.timeline} users={users} closeStreak={closeStreak} open={streak.open}/>}
           
           <Card.Body>
             <Card.Title><h4>{streak.name}</h4></Card.Title>
@@ -108,8 +120,10 @@ const Streak = () => {
             </Card.Text>
           </Card.Body>
           <ListGroup className="list-group-flush">
+          <ListGroupItem>{streak.open == true ? 'joinable' : 'private'}</ListGroupItem>
             <ListGroupItem>{streak.reward}</ListGroupItem>
             <ListGroupItem>{streak.punishment}</ListGroupItem>
+            <Button onClick={closeStreak}>Close Streak</Button>
           </ListGroup>
           <Card.Body>
             <CommentTab></CommentTab>
