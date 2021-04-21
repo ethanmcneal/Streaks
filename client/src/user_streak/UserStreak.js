@@ -9,7 +9,7 @@ import UploadMediaModal from '../components/UploadMediaModal'
 
 const UserStreak = (props) => {
 
-const {streakName, streakReward, createdAt, status, userStreakId, streakId, streakPunishment} = props
+const {streakName, streakReward, createdAt, status, userStreakId, streakId, streakPunishment, media} = props
 
 const [modalShow, setModalShow] = useState(false)
 
@@ -49,7 +49,8 @@ const changeStatus = async(id, s) => {
                {status !== 'quit' && status !== 'won' ? <div>
                 {status !== 'upcoming' && <Icon onClick={()=>changeStatus(userStreakId, status)}name={status === 'ongoing' ? 'pause' : 'play'} /> }
                 <Icon name='times' onClick={()=>quitStreak(userStreakId)} /> 
-                </div> : <Button onClick={() => setModalShow(true)}>Upload Media</Button>} 
+                </div> : ''} 
+                {status == 'quit' && media == null ? <Button onClick={() => setModalShow(true)}>Upload Media</Button> : '' }
                 <UploadMediaModal 
                 show={modalShow}
                 onHide={() => setModalShow(false)}

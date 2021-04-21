@@ -55,7 +55,8 @@ const UserStreaks = () => {
                                                       createdAt={userStreak.created_at}
                                                       status={userStreak.status}
                                                       userStreakId={userStreak.id}
-                                                      streakId={userStreak.streak_id}/> : '')}
+                                                      streakId={userStreak.streak_id}
+                                                      media={userStreak.media}/> : '')}
     </Segment.Group>
     </div>
     )
@@ -73,7 +74,8 @@ const UserStreaks = () => {
                                                       createdAt={userStreak.created_at}
                                                       status={userStreak.status}
                                                       userStreakId={userStreak.id}
-                                                      streakId={userStreak.streak_id}/> : '')}
+                                                      streakId={userStreak.streak_id}
+                                                      media={userStreak.media}/> : '')}
     </Segment.Group>
     </div>
     )
