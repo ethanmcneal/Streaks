@@ -2,7 +2,7 @@ class Api::CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :destroy, :update]
 
   def index
-    render json: Comment.every_comment
+    paginate json: Comment.every_comment
   end 
 
   def show 

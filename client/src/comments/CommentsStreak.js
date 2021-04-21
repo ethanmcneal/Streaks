@@ -8,6 +8,7 @@ import ReactDOM from "react-dom";
 import CheerLaughCounter from './CheerLaughCounter'
 import { AuthContext } from '../providers/AuthProvider'
 import '../style_components/basicstyle.css'
+import InfiniteScroll from 'react-infinite-scroller'
 
 const CommentsStreak = () => {
   const [comments, setComments] = useState('')
@@ -15,14 +16,18 @@ const CommentsStreak = () => {
   const {id} = useParams()
   const [hideDeleteButt, setHideDeleteButt] = useState(false)
   const {user} = useContext(AuthContext)
+  const [currentPage, setCurrentPage] = useState(1)
+  const [totalPages, setTotalPages] = useState(null)
   
   useEffect(()=>{
     getComments()
     },[])
 
-  const getComments = async () => {
-    try{let res =  await axios.get(`/api/streak/${id}`)
+  const getComments = async (page = 1) => {
+    try{let res =  await axios.get(`/api/streak/${id}?page=${page}`)
       setComments(res.data)
+      setCurrentPage(page)
+      setTotalPages(res.data.total_pages)
       console.log('res.data in comments streak', res.data)
       
     } catch(err) {
@@ -40,47 +45,47 @@ const CommentsStreak = () => {
     }
   }
       
-  const renderFullComments = () => {
-    return(
-       <Comment.Group>
-         {comments && comments.map( comment => 
-           <Comment>
-             <Comment.Avatar src={comment.image}/>
-             <Comment.Content>
-             <Comment.Author>{comment.nickname}</Comment.Author>
-             <Comment.Metadata>
-              <div>Yesterday at 12:30AM</div>
-             </Comment.Metadata>
+  // const renderFullComments = () => {
+  //   return(
+  //      <Comment.Group>
+  //        {comments && comments.map( comment => 
+  //          <Comment>
+  //            <Comment.Avatar src={comment.image}/>
+  //            <Comment.Content>
+  //            <Comment.Author>{comment.nickname}</Comment.Author>
+  //            <Comment.Metadata>
+  //             <div>Yesterday at 12:30AM</div>
+  //            </Comment.Metadata>
              
-             {/* <img src={comment.image}/> */}
-             <Comment.Text>Comment: <br/>{comment.info}</Comment.Text>
-             <img className="comments-media-carousel" src={comment.media}/>
-             {/* <h1>cheers: {comment.cheer}</h1>
-             <h1><laughs: {comment.laugh}</h1> */}
-             <div><CheerLaughCounter defaultCommentID={comment.comment_id} initCheer={comment.cheer} initLaugh={comment.laugh}/></div>
-             {/* todo: make delete and edit only visible to curernt user for their comments */}
-             <br/>
-             {user.id === comment.user_id && <Button onClick={() => deleteComment(comment.comment_id)}>Delete</Button>}
-             {user.id === comment.user_id && <Button onClick={()=> {setHideEditFields(!hideEditFields)}}>{hideEditFields ? 'Cancel Edit' : 'Edit'}</Button>}
-              {hideEditFields && <CommentEdit defaultInfo={comment.info} defaultMedia={comment.media} defaultCheer={comment.cheer} defaultLaugh={comment.laugh} defaultCommentID={comment.comment_id}/>}
-             </Comment.Content>
-             <br/>
-          </Comment>     
-     )}
-     </Comment.Group>
-    )
-   }
+  //            {/* <img src={comment.image}/> */}
+  //            <Comment.Text>Comment: <br/>{comment.info}</Comment.Text>
+  //            <img className="comments-media-carousel" src={comment.media}/>
+  //            {/* <h1>cheers: {comment.cheer}</h1>
+  //            <h1><laughs: {comment.laugh}</h1> */}
+  //            <div><CheerLaughCounter defaultCommentID={comment.comment_id} initCheer={comment.cheer} initLaugh={comment.laugh}/></div>
+  //            {/* todo: make delete and edit only visible to curernt user for their comments */}
+  //            <br/>
+  //            {user.id === comment.user_id && <Button onClick={() => deleteComment(comment.comment_id)}>Delete</Button>}
+  //            {user.id === comment.user_id && <Button onClick={()=> {setHideEditFields(!hideEditFields)}}>{hideEditFields ? 'Cancel Edit' : 'Edit'}</Button>}
+  //             {hideEditFields && <CommentEdit defaultInfo={comment.info} defaultMedia={comment.media} defaultCheer={comment.cheer} defaultLaugh={comment.laugh} defaultCommentID={comment.comment_id}/>}
+  //            </Comment.Content>
+  //            <br/>
+  //         </Comment>     
+  //    )}
+  //    </Comment.Group>
+  //   )
+  //  }
   
 
 
   return (
     <>
     <div>
-
+    {/* <InfiniteScroll>{renderFullComments()}</InfiniteScroll> */}
      
         
     </div>
-    <div>{renderFullComments()}</div>
+    {/* <div>{renderFullComments()}</div> */}
     
     </>
   )

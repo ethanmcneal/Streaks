@@ -48,7 +48,7 @@ end
     UserStreak.create(user_id: i, streak_id: i, status: status)
 end
 
-10.times do |i|
+50.times do |i|
     comment = Faker::Music::Rush.album 
     Comment.create(user_id: i, streak_id: i, info: comment)
     puts "seeded #{i} datas"
