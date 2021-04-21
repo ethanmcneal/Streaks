@@ -1,24 +1,28 @@
 import axios from "axios"
-import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
-import { Button, Card, Dropdown, Form, Input } from "semantic-ui-react"
+import { useContext, useState, useEffect } from "react"
+import { useHistory, useParams } from 'react-router-dom'
+import {Button, Form, Table} from 'react-bootstrap'
+import { Container } from "semantic-ui-react";
+import { AuthContext } from "../providers/AuthProvider"
+import DatePicker from 'react-datepicker'
+import moment from 'moment'
+import '../style_components/basicstyle.css';
+import "react-datepicker/dist/react-datepicker.css"
+
 
 const StreakEditForm = () => {
-
-    // const [name, setName] = useState(null)
-    // const [description, setDescription] = useState(null)
-    // const [reward, setReward] = useState(null)
-    // const [punishment, setPunishment] = useState(null)
-    // const [category, setCategory] = useState(null)
-
-    let [streak, setStreak] = useState({name:null, description:null, reward:null, punishment:null, category:null})
-
+    
+    const [validated, setValidated] = useState(false);
+    const history = useHistory()
     const {id} = useParams()
+    const {user} = useContext(AuthContext)
+    let [streak, setStreak] = useState({name:null, description:null, reward:null, punishment:null, category:null, timeline:null, open:true, owner: user.id})
 
     useEffect(() => {
-        getStreak()
-        console.log(id)
-    },[])
+            getStreak()
+            console.log(id)
+        },[])
+
     const getStreak = async() => {
         try {
             let res = await axios.get(`/api/streaks/${id}`)
@@ -26,8 +30,7 @@ const StreakEditForm = () => {
             console.log(res.data)
         } catch (error) {
             console.log(error)
-        }
-    }
+        }}
 
     const options = [
         { key: 'Sport', text: 'Sport', value: 'Sport' },
@@ -38,76 +41,128 @@ const StreakEditForm = () => {
         { key: 'Game', text: 'Game', value: 'Game' },
         { key: 'Physical Feat', text: 'Physical Feat', value: 'Physical Feat' },
         { key: 'Cuisine', text: 'Cuisine', value: 'Cuisine' },
-      ]
+        ]
 
-      const handleSubmit = async() => {
-          try {
-              let res = await axios.put(`/api/streaks/${id}`, streak)
-              console.log(res)
-          } catch (error) {
-              console.log(error)
-          }
+    const handleSubmit = async(e) => {
+        e.preventDefault()
+        if(streak.name && streak.description && streak.reward && streak.punishment && streak.timeline){
+            try {
+                let res = await axios.put(`/api/streaks/${id}`, streak)
+                console.log(res)
+                setValidated(true) 
+                history.push(`/streaks/${id}`)
+            } catch (error) {
+                console.log(error)
+            }
+        } else {
+            alert("in handle Submit")
+            setValidated(false)
+        }}
 
-      }
+    const handleDropDown = (data) => {
+        setStreak({...streak, ['category']: data})
+        console.log('handleDropdown streakeditform', data)
+        }
 
-      const handleDropDown = (e, data) => {
-          setStreak({...streak, ['category']: data.value})
-          console.log(data.value)
-      }
-
-      const handleChange = (e) => {
+    const handleChange = (e) => {
         setStreak({...streak, [e.target.name]: e.target.value})
-      }
+        console.log(streak.description)
+        if(e.target.value.length >= 2){
+            setValidated(true)
+        }else{
+            setValidated(false)
+        }}
+
+    const handleDateChange = (e) => {
+        setStreak({...streak, timeline: e})
+        }
+
     return(
-        <div style={{display: 'flex', justifyContent:'center'}}>
-        {streak && <Form onSubmit={handleSubmit}>
-            <p> Name </p>
-            <Input 
-            placeholder='name'
-            name='name'
-            defaultValue={streak.name}
-            value={streak.name}
-            onChange={handleChange}/>
-            <p> description </p>
-            <Input 
-            placeholder='description'
-            name='description'
-            defaultValue={streak.description}
-            value={streak.description}
-            onChange={handleChange}/>
-            <p> reward </p>
-            <Input 
-            placeholder='reward'
-            name='reward'
-            defaultValue={streak.reward}
-            value={streak.reward}
-            onChange={handleChange}/>            
-            <p> punishment </p>
-            <Input 
-            placeholder='punishment'
-            name='punishment'
-            defaultValue={streak.punishment}
-            value={streak.punishment}
-            onChange={handleChange}/>
-            <p> category </p>
-            <Dropdown placeholder='category' fluid selection options={options} onChange={handleDropDown} />
-            <Button type='submit'>Add</Button>
-        </Form> }
+        <div>
+        <h1 style={{marginLeft: '3em'}}>Edit Streak</h1>
+        <div style={{ margin: '3em 7em 3em'}}>
+            <div >
+                <Container>
+            <Form noValidate validated={validated} onSubmit={handleSubmit}>
+            <Form.Label> Category </Form.Label>
+            <Form.Control as='select' placeholder='category' selection onChange={(e)=> handleDropDown(e.target.value)} style={{width: '250px'}}>
+                <option>{streak.category}</option>
+                <option>Sports</option>
+                <option>Health</option>
+                <option>Habit</option>
+                <option>Intellect</option>
+                <option>Art</option>
+                <option>Game</option>
+                <option>Physical Feat</option>
+                <option>Cuisine</option>
+            </Form.Control>
+
+            <Form.Label> Streak Name </Form.Label>
+            <Form.Control required style={{width: '500px'}}
+                minlength="2"
+                placeholder='e.g. Workout Daily'
+                defaultValue={streak.name}
+                name='name'
+                value={streak.name}
+                onChange={handleChange}/>
+           
+
+            <Form.Label> Description </Form.Label>
+            <Form.Control required style={{width: '500px'}}
+                minlength="2"
+                placeholder='e.g. A pact to work out daily'
+                name='description'
+                value={streak.description}
+                defaultValue={streak.description}
+                onChange={handleChange}/>
+             
+            
+            <Form.Label> Reward </Form.Label>
+                <Form.Control required style={{width: '500px'}}
+                minlength="2"
+                placeholder='e.g. A Steak Dinner'
+                name='reward'
+                defaultValue={streak.reward}
+                value={streak.reward}
+                onChange={handleChange}/>
+
+            <Form.Label> Punishment </Form.Label>
+            <div style={{display: 'flex', justifyContent: 'space-between'}}>
+                <Form.Control required style={{width: '500px'}}
+                minlength="2"
+                placeholder='e.g. All losers must pay for the winners steak dinner'
+                name='punishment'
+                defaultValue={streak.punishment}
+                value={streak.punishment}
+                onChange={handleChange}/>  
+
+            <Button disabled={!validated} type='submit' variant="success" style={{width: '125px'}}>Update Streak</Button>
+            </div>
+
+            <Form.Label>Start Date</Form.Label>
+
+            <br />
+            <DatePicker
+                selected={new Date(streak.timeline)}
+                onChange={handleDateChange}
+                showTimeSelect
+                dateFormat="Pp" 
+                filterDate = {(date) => {
+                    return moment() < date;
+                  }}/>
+        </Form>
+        
+        </Container>
+        
         </div>
+        
+       
+
+        </div>
+        
+        </div>
+        
     )
 }
 
 export default StreakEditForm
-
-
-// create_table "streaks", force: :cascade do |t|
-//     t.string "name"
-//     t.string "description"
-//     t.datetime "timeline"
-//     t.string "reward"
-//     t.string "punishment"
-//     t.string "category"
-//     t.boolean "open"
-//     t.datetime "created_at", precision: 6, null: false
-//     t.datetime "updated_at", precision: 6, null: false
-//   end
