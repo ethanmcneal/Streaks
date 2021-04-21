@@ -36,7 +36,7 @@ const Streaks = (props)=>{
 
     const addToUserStreaks = async(id) => {
         try {
-            let res = await axios.post(`/api/user_streaks/`, {status: 'ongoing', user_id: user.id, streak_id: id})
+            let res = await axios.post(`/api/user_streaks/`, {status: 'upcoming', user_id: user.id, streak_id: id})
             console.log(res)
         } catch (error) {
             console.log(error)
@@ -55,7 +55,8 @@ const Streaks = (props)=>{
             <h3>The challenge = {streak.description}</h3>
             <h4>Success = {streak.reward}</h4>
             <h4>Failure = {streak.punishment}</h4>
-            {usersStreakIds.includes(streak.id) == false ? <Button onClick={()=>addToUserStreaks(streak.id)}>Start Streak!</Button> : ''}
+            <h4>{streak.open ? 'open' : 'private' }</h4>
+            {usersStreakIds.includes(streak.id) == false && streak.open == true ? <Button onClick={()=>addToUserStreaks(streak.id)}>Start Streak!</Button> : ''}
            <br/>
            </Card>
             </>

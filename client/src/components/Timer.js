@@ -1,7 +1,8 @@
+import axios from 'axios'
 import { useEffect, useState } from 'react'
 
 const Timer = (props) => {
-    const {timeline} = props
+    const {timeline, users, closeStreak, open} = props
 
     const [timeElapsed, setTimeElapsed] = useState(null)
     const [upcoming, setUpcoming] = useState(false)
@@ -19,6 +20,16 @@ const Timer = (props) => {
 
 // const {created_at} = props
     
+    const checkUpcoming = () => {
+        try {
+            users.map(user => user.status == 'upcoming' && upcoming == false ? 
+            axios.patch(`/api/user_streaks/${user.id}`, {status: 'ongoing'}) : '')
+            if(open && upcoming == false){
+            closeStreak()}
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
     const getTimeElapsed = () => {
         let createdAt = new Date(timeline) 
@@ -37,6 +48,9 @@ const Timer = (props) => {
         let seconds = Math.floor(difference % 6e4 / 1e3)
         // console.log(timeElapsed)
         setTimeElapsed({days: days, hours: hours, minutes: minutes, seconds: seconds})
+    }
+    if(timeElapsed){
+        checkUpcoming()
     }
 
     return(
