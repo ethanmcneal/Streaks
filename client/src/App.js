@@ -22,6 +22,7 @@ import DashHeader from './components/Secondheader';
 import { useContext } from 'react';
 import { AuthContext } from './providers/AuthProvider';
 import SearchResults from './components/SearchResults';
+import UserEdit from './pages/UserEdit';
 
 
 
@@ -44,6 +45,7 @@ function App() {
      <Route exact path='/styled' component={StyledComponents} />
      <Route exact path='/register' component={Register} />
      <Route exact path='/login' component={Login} />
+     <Route exact path='/userEdit' component={UserEdit} />
      <Route exact path='/streaks/form' component={StreakForm} />
      <Route exact path='/streaks/edit/:id' component={StreakEditForm} />
      <Route exact path='/streaks/:id' component={Streak} />

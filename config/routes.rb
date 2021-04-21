@@ -13,5 +13,8 @@ Rails.application.routes.draw do
     get 'distinct_streaks', to: 'user_streaks#some_streaks'
     get 'comment/:user_id', to: 'comments#every_comment'
     get 'search_streaks', to: 'streaks#search_streaks'
+    get 'user/:id', to: 'users#show'
+    put 'user/:id', to: 'users#update'
+    # delete 'user/:id', to: 'users#destroy' <----DO WE EVEN NEED THIS?!?!?
   end
 end
