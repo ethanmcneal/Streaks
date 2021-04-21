@@ -11,6 +11,7 @@ import { AuthContext } from "../providers/AuthProvider"
 import CardContainer from "../style_components/CardContainer"
 import '../style_components/basicstyle.css'
 import CommentTab from "../components/CommentTab"
+import StreakEditForm from "./StreakEditForm"
 
 const Streak = () => {
 
@@ -28,6 +29,7 @@ const Streak = () => {
     const deleteStreak = async() => {
         try {
             await axios.delete(`/api/streaks/${id}`)
+            history.push('/streaks')
         } catch (error) {
             console.log(error)
         }
@@ -36,10 +38,12 @@ const Streak = () => {
     const getStreak = async() => {
         try {
             let res = await axios.get(`/api/streaks_users/${id}`)
-            console.log(res.data)
-            setStreak({name: res.data[0].streak_name, description:res.data[0].description, reward:res.data[0].reward, punishment:res.data[0].punishment, timeline:res.data[0].timeline})
+            console.log('getstreak', res.data)
+            setStreak({name: res.data[0].streak_name, description:res.data[0].description, reward:res.data[0].reward, punishment:res.data[0].punishment, timeline:res.data[0].timeline, owner:res.data[0].owner})
             setUsers(res.data)
             winnerCheck(res.data)
+            console.log('user id', user.id)
+            console.log('streak.owner1', streak.owner)
         } catch (error) {
             console.log(error)
         } finally {
@@ -80,11 +84,16 @@ const Streak = () => {
                     </ListGroup>
                 </div>
             )
+           
         })
+        
     }
     return(
+        <>
+         
         <div>
             <Button onClick={history.goBack}>Back</Button>
+           
             <div>
               <Card className="peopleList">
             <h3>Participants</h3>
@@ -100,9 +109,12 @@ const Streak = () => {
                      <div className="spacer">
                           <br/><br/>
                         </div> </div>: <Timer timeline={streak.timeline}/>}
+                       
           
           <Card.Body>
             <Card.Title><h4>{streak.name}</h4></Card.Title>
+            <p>{console.log('streak.owner2', streak.owner)}</p>
+            <p>{console.log('streaknalone', streak)}</p>
             <Card.Text>
               {streak.description}
             </Card.Text>
@@ -110,6 +122,8 @@ const Streak = () => {
           <ListGroup className="list-group-flush">
             <ListGroupItem>{streak.reward}</ListGroupItem>
             <ListGroupItem>{streak.punishment}</ListGroupItem>
+            {user.id === streak.owner && <Button onClick={deleteStreak}>Delete Streak</Button>}
+            {user.id === streak.owner && <Button onClick={StreakEditForm}>Edit Streak</Button>}
           </ListGroup>
           <Card.Body>
             <CommentTab></CommentTab>
@@ -121,6 +135,13 @@ const Streak = () => {
             
         </div>
 
+
+</>
+    )
+}
+
+export default Streak
+
 // <CardContainer>
 // <h1>{streak.name}</h1>
 // <h3>The challenge = {streak.description}</h3>
@@ -128,7 +149,3 @@ const Streak = () => {
 // <h4>Failure = {streak.punishment}</h4>
 // <Button onClick={deleteStreak}>Delete</Button>
 // </CardContainer>
-    )
-}
-
-export default Streak
