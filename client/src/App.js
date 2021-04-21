@@ -31,8 +31,8 @@ function App() {
   return (
     <>
     <div>
-    {/* {user && <NavBar />} */}
-    <NavBar />
+    {user && <NavBar />}
+    {/* <NavBar /> */}
     {user && <DashHeader/>}
     <FetchUser>
       <div>

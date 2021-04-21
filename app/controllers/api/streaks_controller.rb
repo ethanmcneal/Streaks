@@ -55,6 +55,6 @@ class Api::StreaksController < ApplicationController
     end
 
     def streak_params
-        params.require(:streak).permit(:name, :description, :timeline, :reward, :punishment, :category, :open, :id, :created_at, :updated_at)
+        params.require(:streak).permit(:name, :description, :timeline, :reward, :punishment, :category, :open, :id, :created_at, :updated_at, :owner)
     end
 end

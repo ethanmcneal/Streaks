@@ -32,7 +32,7 @@ category_opt = [
     reward = Faker::Games::ElderScrolls.weapon
     punishment = Faker::Games::DnD.monster
     timeline = Faker::Date.between(from: 2.years.ago, to: Date.today)
-    Streak.create(name: name, description: description, reward: reward, punishment: punishment, category: category_opt.sample(1), timeline: timeline )
+    Streak.create(name: name, description: description, reward: reward, punishment: punishment, category: category_opt.sample(1), timeline: timeline, owner: rand(1..20) )
 end
 
 20.times do
