@@ -1,5 +1,4 @@
 class Api::UsersController < ApplicationController
-  # before_action :get_user, :authenticate_user!, only: [:show, :update, :destroy] <---- Previous Code -- 
   before_action :authenticate_user!, except: [:show, :update]
   before_action :get_user, only: [:show, :update]
 
@@ -26,13 +25,6 @@ class Api::UsersController < ApplicationController
     end
 
     def update
-        # user = User.find(params[:id])
-        # if user.update(user_params)
-        #     render json: @user
-        # else
-        #    render json: { errors: user.errors }, status: :unprocessable_entity  <-------  PREVIOUS CODE, may delete  ---
-        # end
-
         file = params[:image]
         if !file.to_s.empty?
             begin 

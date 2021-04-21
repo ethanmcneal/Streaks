@@ -24,14 +24,13 @@ import React,{useState,useContext} from 'react'
 import { Form, Button, Col } from "react-bootstrap";
 import { AuthContext } from "../providers/AuthProvider";
 
-const UserEdit = ({ hide }) => {
+const UserEdit = (props) => {
   const { user, handleUserEdit } = useContext(AuthContext);
   const [userState, setUserState] = useState(user);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleUserEdit(userState);
-    hide();
+    handleUserEdit(userState, props.history)
   };
 
   const handleChange = (e) => {
@@ -62,12 +61,12 @@ const UserEdit = ({ hide }) => {
       
       <Form.Group as={Col}>
           <Form.Label>Media</Form.Label>
-          <Form.Control
+          {/* <Form.Control
             name="image"
             type="text"
             value={userState.image}
             onChange={handleChange}
-          />
+          /> */}
         </Form.Group>
 
       <br></br>

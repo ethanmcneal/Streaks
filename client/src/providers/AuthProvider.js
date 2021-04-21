@@ -40,13 +40,25 @@ const AuthProvider = (props) =>{
             console.log(error)
         }
     }
+
+    const handleUserEdit = async(user, history) => {
+        try{
+            let res = await axios.put(`/api/user/${user.id}`, user)
+            setUser(res.data);
+            history.push('/')
+        }catch(err) {
+          console.log(err);
+        }
+    }
+
     return(
         <AuthContext.Provider value={{
             user: user,
             setUser: setUser,
             handleRegister: handleRegister,
             handleLogin: handleLogin,
-            handleLogout: handleLogout}}>
+            handleLogout: handleLogout,
+            handleUserEdit: handleUserEdit}}>
             {props.children}
         </AuthContext.Provider>
     )
