@@ -8,11 +8,9 @@ import CommentsStreak from "../comments/CommentsStreak"
 import Thumbnail from "../components/Thumbnail"
 import Timer from "../components/Timer"
 import { AuthContext } from "../providers/AuthProvider"
-import CardContainer from "../style_components/CardContainer"
 import '../style_components/basicstyle.css'
 import CommentTab from "../components/CommentTab"
 import StreakEditForm from "./StreakEditForm"
-import upcoming from '../components/Timer'
 
 
 const Streak = () => {
