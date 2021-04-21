@@ -12,6 +12,7 @@ import '../style_components/basicstyle.css'
 import CommentTab from "../components/CommentTab"
 import StreakEditForm from "./StreakEditForm"
 
+
 const Streak = () => {
 
     const {id} = useParams()
@@ -134,7 +135,7 @@ const Streak = () => {
             <ListGroupItem>{streak.reward}</ListGroupItem>
             <ListGroupItem>{streak.punishment}</ListGroupItem>
             {user.id === streak.owner && <Button onClick={deleteStreak}>Delete Streak</Button>}
-            {user.id === streak.owner && <Button onClick={StreakEditForm}>Edit Streak</Button>}
+            {user.id === streak.owner && <Link to={`/streaks/edit/${id}`}>Edit Streak</Link>}
             <Button onClick={closeStreak}>Close Streak</Button>
           </ListGroup>
           <Card.Body>
