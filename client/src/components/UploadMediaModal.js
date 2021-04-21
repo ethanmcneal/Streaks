@@ -1,13 +1,24 @@
+import axios from "axios";
 import { useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
 
 const UploadMediaModal = (props) => {
-   const {streakPunishment} = props
+   const {streakPunishment, userStreakId} = props
 
    const [media, setMedia] = useState(null)
 
    const handleChange = (e) => {
         setMedia(e.target.value)
+        console.log(e.target.value)
+   }
+
+   const handleSubmit = async() => {
+       try {
+           let res = await axios.patch(`api/user_streaks/${userStreakId}`, {media: media})
+           console.log(res.data)
+       } catch (error) {
+           console.log(error)
+       }
    }
     return (
         <Modal
@@ -29,11 +40,11 @@ const UploadMediaModal = (props) => {
             <p>
                 add a link to a YouTube, TikTok, or Imgur link below
             </p>
-            <Form onSubmit={han}>
+            <Form onSubmit={handleSubmit}>
                 <Form.Label>Media URL</Form.Label>
                 <Form.Control required style={{width: '500px'}} 
                 onChange={handleChange}/>
-                
+                <Button type='submit'>Submit</Button>
             </Form>
           </Modal.Body>
           <Modal.Footer>

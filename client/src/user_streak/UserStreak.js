@@ -53,7 +53,8 @@ const changeStatus = async(id, s) => {
                 <UploadMediaModal 
                 show={modalShow}
                 onHide={() => setModalShow(false)}
-                streakPunishment={streakPunishment}/>
+                streakPunishment={streakPunishment}
+                userStreakId={userStreakId}/>
             </Segment>
     )
 }
