@@ -23,7 +23,7 @@ const WinnersLosers = () => {
   const renderWinndersLosersMedia = () => {
     return (
       <>
-       <Carousel>
+       {/* <Carousel>
          {comments && comments.map( comment => 
              <Carousel.Item>
                 <img 
@@ -32,7 +32,7 @@ const WinnersLosers = () => {
                 src={comment.media}/>
               </Carousel.Item>
            )}  
-       </Carousel>
+       </Carousel> */}
       </> 
   )}
 

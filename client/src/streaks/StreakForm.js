@@ -21,7 +21,8 @@ const StreakForm = () => {
     const {user} = useContext(AuthContext)
     // const [startDate, setStartDate] = useState(null);
 
-    let [streak, setStreak] = useState({name:null, description:null, reward:null, punishment:null, category:null, timeline:null, open:true})
+    let [streak, setStreak] = useState({name:null, description:null, reward:null, punishment:null, category:null, timeline:null, open:true, owner: user.id})
+
 
     const options = [
         { key: 'Sport', text: 'Sport', value: 'Sport' },
