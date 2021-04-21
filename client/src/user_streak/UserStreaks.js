@@ -51,6 +51,7 @@ const UserStreaks = () => {
     <Segment.Group>
         {userStreaks.map(userStreak => userStreak.status !== 'quit' && userStreak.status !== 'won' ? <UserStreak streakName={userStreak.streak_name} 
                                                       streakReward={userStreak.reward}
+                                                      streakPunishment={userStreak.punishment}
                                                       createdAt={userStreak.created_at}
                                                       status={userStreak.status}
                                                       userStreakId={userStreak.id}
@@ -68,6 +69,7 @@ const UserStreaks = () => {
     <Segment.Group>
         {userStreaks.map(userStreak => userStreak.status == 'quit' || userStreak.status == 'won' ? <UserStreak streakName={userStreak.streak_name} 
                                                       streakReward={userStreak.reward}
+                                                      streakPunishment={userStreak.punishment}
                                                       createdAt={userStreak.created_at}
                                                       status={userStreak.status}
                                                       userStreakId={userStreak.id}

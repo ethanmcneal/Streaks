@@ -1,14 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import axios from "axios"
 import { Icon, Segment } from "semantic-ui-react"
 import { Link } from 'react-router-dom'
 import { Button } from 'react-bootstrap'
+import UploadMediaModal from '../components/UploadMediaModal'
 
 
 
 const UserStreak = (props) => {
 
-const {streakName, streakReward, createdAt, status, userStreakId, streakId} = props
+const {streakName, streakReward, createdAt, status, userStreakId, streakId, streakPunishment} = props
+
+const [modalShow, setModalShow] = useState(false)
 
 const changeStatus = async(id, s) => {
     try {
@@ -46,7 +49,11 @@ const changeStatus = async(id, s) => {
                {status !== 'quit' && status !== 'won' ? <div>
                 {status !== 'upcoming' && <Icon onClick={()=>changeStatus(userStreakId, status)}name={status === 'ongoing' ? 'pause' : 'play'} /> }
                 <Icon name='times' onClick={()=>quitStreak(userStreakId)} /> 
-                </div> : <Button>Upload Media</Button>} 
+                </div> : <Button onClick={() => setModalShow(true)}>Upload Media</Button>} 
+                <UploadMediaModal 
+                show={modalShow}
+                onHide={() => setModalShow(false)}
+                streakPunishment={streakPunishment}/>
             </Segment>
     )
 }
