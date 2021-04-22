@@ -12,6 +12,7 @@ const UserStreak = (props) => {
 const {streakName, streakReward, createdAt, status, userStreakId, streakId, streakPunishment, media} = props
 
 const [modalShow, setModalShow] = useState(false)
+const [participants, setParticipants] = useState(0)
 
 const changeStatus = async(id, s) => {
     try {
@@ -22,6 +23,21 @@ const changeStatus = async(id, s) => {
         console.log(error)
     }
         }
+
+    const renderParticipants = (id) => {
+        getParticipants(id)
+        return(participants)
+    }    
+
+    const getParticipants = async(id) => {
+        try {
+            let res = await axios.get(`/api/streaks_users/${id}`)
+            setParticipants(res.data.length)  
+        } catch (error) {
+            console.log(error)
+        }
+             
+    } 
 
 
     const quitStreak = async(id) => {
@@ -34,7 +50,7 @@ const changeStatus = async(id, s) => {
         }
 }
 
-        const formattedDate = new Date(createdAt).toLocaleDateString()
+        const formattedDate = new Date(createdAt).toLocaleDateString("en-US")
 
 
     return(
@@ -42,7 +58,7 @@ const changeStatus = async(id, s) => {
                 <Link to={`/streaks/${streakId}`}>
                 <h4>{streakName}</h4>
                 </Link>
-                <h4># of Participants?</h4>
+                <h4>{renderParticipants(streakId)}</h4>
                 <h4>{formattedDate}</h4>
                 <h4>{streakReward}</h4>
                 <h4> {status} </h4>
