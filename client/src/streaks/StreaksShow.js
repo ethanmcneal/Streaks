@@ -56,7 +56,9 @@ const Streaks = (props)=>{
                <Link to={`streaks/${streak.id}`}>
             <Card.Content header>{streak.name}</Card.Content>
                  </Link>
+                 <br/>
             <p className='streaks-cards'>{streak.description}</p>
+            <br/>
             <p className='streaks-cards'>Reward: {streak.reward}</p>
             <p className='streaks-cards'>Punishment: {streak.punishment}</p>
             <Card.Content extra>{streak.open ? '' : 'In Progress' }</Card.Content>
