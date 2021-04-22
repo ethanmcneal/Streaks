@@ -25,7 +25,7 @@ const CommentsStreak = () => {
 
   const getComments = async (page = 1) => {
     try{let res =  await axios.get(`/api/streak/${id}?page=${page}`)
-      setComments(res.data)
+      setComments(res.data.comments)
       setCurrentPage(page)
       setTotalPages(res.data.total_pages)
       console.log('res.data in comments streak', res.data)
@@ -44,94 +44,99 @@ const CommentsStreak = () => {
       alert('error in deleteComment')
     }
   }
-      
-  // const renderFullComments = () => {
-  //   return(
-  //      <Comment.Group>
-  //        {comments && comments.map( comment => 
-  //          <Comment>
-  //            <Comment.Avatar src={comment.image}/>
-  //            <Comment.Content>
-  //            <Comment.Author>{comment.nickname}</Comment.Author>
-  //            <Comment.Metadata>
-  //             <div>Yesterday at 12:30AM</div>
-  //            </Comment.Metadata>
-             
-  //            {/* <img src={comment.image}/> */}
-  //            <Comment.Text>Comment: <br/>{comment.info}</Comment.Text>
-  //            <img className="comments-media-carousel" src={comment.media}/>
-  //            {/* <h1>cheers: {comment.cheer}</h1>
-  //            <h1><laughs: {comment.laugh}</h1> */}
-  //            <div><CheerLaughCounter defaultCommentID={comment.comment_id} initCheer={comment.cheer} initLaugh={comment.laugh}/></div>
-  //            {/* todo: make delete and edit only visible to curernt user for their comments */}
-  //            <br/>
-  //            {user.id === comment.user_id && <Button onClick={() => deleteComment(comment.comment_id)}>Delete</Button>}
-  //            {user.id === comment.user_id && <Button onClick={()=> {setHideEditFields(!hideEditFields)}}>{hideEditFields ? 'Cancel Edit' : 'Edit'}</Button>}
-  //             {hideEditFields && <CommentEdit defaultInfo={comment.info} defaultMedia={comment.media} defaultCheer={comment.cheer} defaultLaugh={comment.laugh} defaultCommentID={comment.comment_id}/>}
-  //            </Comment.Content>
-  //            <br/>
-  //         </Comment>     
-  //    )}
-  //    </Comment.Group>
-  //   )
-  //  }
+    const loadMore = async() => {
+      let pagex = currentPage + 1
+      if (
+        comments.length > 0
+      )
+      {
+        let res = await axios.get(`/api/streak/${id}?page=${pagex}`)
+        setComments(res.data.comments)
+        setCurrentPage(pagex)
+      }
+    }  
+    const renderFullComments = () => {
+      return (
+        <Comment.Group>
+          {comments &&
+            comments.map((comment) => (
+              <Comment>
+                <Comment.Avatar src={comment.image} />
+                <Comment.Content>
+                  <Comment.Author>{comment.nickname}</Comment.Author>
+                  <Comment.Metadata>
+                    <div>Yesterday at 12:30AM</div>
+                  </Comment.Metadata>
+                  {/* <img src={comment.image}/> */}
+                  <Comment.Text>
+                    Comment: <br />
+                    {comment.info}
+                  </Comment.Text>
+                  <img className="comments-media-carousel" src={comment.media} />
+                  {/* <h1>cheers: {comment.cheer}</h1>
+               <h1><laughs: {comment.laugh}</h1> */}
+                  <div>
+                    <CheerLaughCounter
+                      defaultCommentID={comment.comment_id}
+                      initCheer={comment.cheer}
+                      initLaugh={comment.laugh}
+                    />
+                  </div>
+                  {/* todo: make delete and edit only visible to curernt user for their comments */}
+                  <br />
+                  {user.id === comment.user_id && (
+                    <Button onClick={() => deleteComment(comment.comment_id)}>
+                      Delete
+                    </Button>
+                  )}
+                  {user.id === comment.user_id && (
+                    <Button
+                      onClick={() => {
+                        setHideEditFields(!hideEditFields);
+                      }}
+                    >
+                      {hideEditFields ? "Cancel Edit" : "Edit"}
+                    </Button>
+                  )}
+                  {hideEditFields && (
+                    <CommentEdit
+                      defaultInfo={comment.info}
+                      defaultMedia={comment.media}
+                      defaultCheer={comment.cheer}
+                      defaultLaugh={comment.laugh}
+                      defaultCommentID={comment.comment_id}
+                    />
+                  )}
+                </Comment.Content>
+                <br />
+              </Comment>
+            ))}
+        </Comment.Group>
+      );
+    };
+  
   
 
 
-  return (
-    <>
-    <div>
-    {/* <InfiniteScroll>{renderFullComments()}</InfiniteScroll> */}
-     
-        
-    </div>
-    {/* <div>{renderFullComments()}</div> */}
-    
-    </>
-  )
-}
+    return (
+      <>
+        <div>
+          <InfiniteScroll
+            pageStart={currentPage}
+            loadMore={() => loadMore()}
+            hasMore={currentPage === totalPages ? false : true}
+            // loader={
+            //   <div className="loader" key={0}>
+            //     Loading ...
+            //   </div>
+            // }
+          >
+            {renderFullComments()}
+          </InfiniteScroll>
+        </div>
+      </>
+    );
+  };
 
 
 export default CommentsStreak
-
-
-
-
-
-
-
- {/* <Link to={{pathname:`/CommentEdit/${comment.id}/${comment.info}/${comment.media}/${comment.user_id}/${comment.streak_id}/${comment.cheer}/${comment.laugh}`}}> */}
-//  <Button onClick={()=> {setHideEditFields(!hideEditFields)}}>{hideEditFields ? 'Cancel Edit' : 'Edit'}</Button>
- {/* </Link> */}
-
-
-// render comments for a specific streak on the streak page
-// render comments for a specific user on the user page
-// do pagination or infinite scroller
-// focus on create and read. 
-
-//use usecontext use for creating, editing, and deleting (delete and edit button only shows for the current user)
-
-// 'c.comment, c.media, c.cheer, c.laugh, comment_id, user_name, u.nickname, u.image, u.email, u.wins, u.losses, u.id as user_id, s.name as streak_name, s.timeline, s.description, s.category, s.reward, s.open as pub, s.punishment, s.id as streak_id') 
-
-
-// category: "["Game"]"
-// cheer: null
-// comment: "Different Stages"
-// comment_id: 3
-// description: "Chuck Norris's first program was kill -9."
-// email: "samara_bartell@wolff-waelchi.info"
-// id: null
-// image: "https://robohash.org/Solon.png?size=100x100&set=set3&bgset=bg1"
-// laugh: null
-// losses: 0
-// media: null
-// nickname: "christene"
-// punishment: "Specter"
-// reward: "Nord Hero Bow"
-// streak_id: 3
-// streak_name: "ferries"
-// timeline: null
-// user_id: 3
-// user_name: "Solon"
-// wins: 0
