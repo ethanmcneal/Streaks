@@ -78,50 +78,54 @@ const StreakForm = () => {
       }
     return(
         <div>
-        <h1 style={{marginLeft: '3em'}}>New Streak</h1>
         <div style={{ margin: '3em 7em 3em'}}>
+        <h1 className='new-streak-title'>New Streak</h1>
             <div >
-                <Container>
+             <Container>
         <Form noValidate validated={validated} onSubmit={handleSubmit}>
+        <br/>
             <Form.Label> Category </Form.Label>
             <Form.Control as='select' placeholder='category' selection onChange={(e)=> handleDropDown(e.target.value)} style={{width: '250px'}}>
-            <option>Select a Category</option>
-            <option>Sports</option>
-            <option>Health</option>
-            <option>Habit</option>
-            <option>Intellect</option>
-            <option>Art</option>
-            <option>Game</option>
-            <option>Physical Feat</option>
-            <option>Cuisine</option>
+                <option>Category</option>
+                <option>Sports</option>
+                <option>Health</option>
+                <option>Habit</option>
+                <option>Intellect</option>
+                <option>Art</option>
+                <option>Game</option>
+                <option>Physical Feat</option>
+                <option>Cuisine</option>
             </Form.Control>
-
+            <br/>
+            
             <Form.Label> Streak Name </Form.Label>
             <Form.Control required style={{width: '500px'}}
-            minlength="2"
-            placeholder='e.g. Workout Daily'
-            name='name'
-            value={streak.name}
-            onChange={handleChange}/>
+                minlength="2"
+                placeholder='e.g. Workout Daily'
+                name='name'
+                value={streak.name}
+                onChange={handleChange}/>
+             <br/>
 
-            <Form.Label> description </Form.Label>
+            <Form.Label> Description </Form.Label>
             <Form.Control required style={{width: '500px'}}
-            minlength="2"
-            placeholder='e.g. A pact to work out daily'
-            name='description'
-            value={streak.description}
-            onChange={handleChange}/>
+                minlength="2"
+                placeholder='e.g. A pact to work out daily'
+                name='description'
+                value={streak.description}
+                onChange={handleChange}/>
              
-            
-            <Form.Label> reward </Form.Label>
+             <br/>
+            <Form.Label> Reward </Form.Label>
                 <Form.Control required style={{width: '500px'}}
                 minlength="2"
                 placeholder='e.g. A Steak Dinner'
                 name='reward'
                 value={streak.reward}
                 onChange={handleChange}/>
+                 <br/>
 
-            <Form.Label> punishment </Form.Label>
+            <Form.Label> Punishment </Form.Label>
             <div style={{display: 'flex', justifyContent: 'space-between'}}>
                 <Form.Control required style={{width: '500px'}}
                 minlength="2"
@@ -129,11 +133,14 @@ const StreakForm = () => {
                 name='punishment'
                 value={streak.punishment}
                 onChange={handleChange}/>  
+                 <br/>
 
-            <Button disabled={!validated} type='submit' variant="success" style={{width: '125px'}}>Publish Streak</Button>
+            <Button className='button-orange' disabled={!validated} type='submit' variant="warning" size='md' style={{width: '125px'}}>Publish Streak</Button>
             </div>
+            <br/>
 
             <Form.Label>Start Date</Form.Label>
+            
 
             <br />
             <DatePicker
@@ -144,7 +151,9 @@ const StreakForm = () => {
                 filterDate = {(date) => {
                     return moment() < date;
                   }}/>
+                   <br/>
         </Form>
+        <br/>
         
         </Container>
         
@@ -153,11 +162,13 @@ const StreakForm = () => {
        
 
         </div>
-        <h1 style={{margin: '3em 3em 0em'}}>Templates</h1>
+        
         <div style={{ margin: '3em 7em 3em'}}>
+        <h1 className='new-streak-title'>Templates</h1>
             <Container>
-            
-            <Table bordered hover>
+            <br/>
+            <Table borderless className="table-streak-form" hover>
+                
                     <thead>
                         <tr>
                         <th>Title</th>
@@ -193,6 +204,7 @@ const StreakForm = () => {
                         </tr>
                     </tbody>
                     </Table>
+                    <br/>
                     </Container>
         </div>
         </div>
