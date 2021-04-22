@@ -4,6 +4,8 @@ import { Icon, Segment } from "semantic-ui-react"
 import { Link } from 'react-router-dom'
 import { Button } from 'react-bootstrap'
 import UploadMediaModal from '../components/UploadMediaModal'
+import '../style_components/dashboard.css'
+import { PADDING } from '../style_components/styles'
 
 
 
@@ -12,6 +14,7 @@ const UserStreak = (props) => {
 const {streakName, streakReward, createdAt, status, userStreakId, streakId, streakPunishment, media} = props
 
 const [modalShow, setModalShow] = useState(false)
+const [participants, setParticipants] = useState(0)
 
 const changeStatus = async(id, s) => {
     try {
@@ -22,6 +25,21 @@ const changeStatus = async(id, s) => {
         console.log(error)
     }
         }
+
+    const renderParticipants = (id) => {
+        getParticipants(id)
+        return(participants)
+    }    
+
+    const getParticipants = async(id) => {
+        try {
+            let res = await axios.get(`/api/streaks_users/${id}`)
+            setParticipants(res.data.length)  
+        } catch (error) {
+            console.log(error)
+        }
+             
+    } 
 
 
     const quitStreak = async(id) => {
@@ -34,18 +52,32 @@ const changeStatus = async(id, s) => {
         }
 }
 
-        const formattedDate = new Date(createdAt).toLocaleDateString()
+        const formattedDate = new Date(createdAt).toLocaleDateString("en-US")
 
 
     return(
-            <Segment style={{display: 'flex', justifyContent:'space-between', textAlign:'center'}}>
+            <Segment style={{display: 'flex', justifyContent: 'space-between'}}>
+                <div className='streak-segment'>
                 <Link to={`/streaks/${streakId}`}>
-                <h4>{streakName}</h4>
+                <h3>{streakName}</h3>
                 </Link>
-                <h4># of Participants?</h4>
+                </div>
+                <div className='streak-segment'>
+                <h4>{renderParticipants(streakId)}</h4>
+                </div>
+                <div className='streak-segment'>
                 <h4>{formattedDate}</h4>
+                </div>
+                <div className='streak-segment-wager'>
                 <h4>{streakReward}</h4>
-                <h4> {status} </h4>
+                </div>
+                <div className='streak-segment'>
+                    <div className={status == 'ongoing' ? 'running-background' : 'upcoming-background'}>
+                <p> {status == 'ongoing' ? 'RUNNING' : status.toUpperCase()} </p>
+                    </div>
+                    
+                </div>
+                <div className='streak-segment'>
                {status !== 'quit' && status !== 'won' ? <div>
                 {status !== 'upcoming' && <Icon onClick={()=>changeStatus(userStreakId, status)}name={status === 'ongoing' ? 'pause' : 'play'} /> }
                 <Icon name='times' onClick={()=>quitStreak(userStreakId)} /> 
@@ -56,6 +88,7 @@ const changeStatus = async(id, s) => {
                 onHide={() => setModalShow(false)}
                 streakPunishment={streakPunishment}
                 userStreakId={userStreakId}/>
+                </div>
             </Segment>
     )
 }

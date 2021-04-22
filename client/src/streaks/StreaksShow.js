@@ -1,5 +1,5 @@
 
-import {Link, useParams} from 'react-router-dom'
+import {Link, useHistory, useParams} from 'react-router-dom'
 import axios from 'axios'
 import { useContext, useEffect, useState } from 'react';
 import {Card, CardGroup, Segment } from 'semantic-ui-react';
@@ -15,6 +15,8 @@ const Streaks = (props)=>{
     const { user } = useContext(AuthContext)
     const [streaks, setStreaks] = useState(null);
     const [usersStreakIds, setUsersStreakIds] = useState(null)
+
+    const history = useHistory()
 
 
     useEffect(() => {
@@ -40,6 +42,7 @@ const Streaks = (props)=>{
         try {
             let res = await axios.post(`/api/user_streaks/`, {status: 'upcoming', user_id: user.id, streak_id: id})
             console.log(res)
+            history.push('/dashboard')
         } catch (error) {
             console.log(error)
         }
