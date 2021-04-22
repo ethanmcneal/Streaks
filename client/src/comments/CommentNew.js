@@ -9,6 +9,7 @@ import "filepond/dist/filepond.min.css";
 import FilePondPluginImageExifOrientation from "filepond-plugin-image-exif-orientation";
 import FilePondPluginImagePreview from "filepond-plugin-image-preview";
 import "filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css";
+import { PADDING } from '../style_components/styles'
 
 registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview);
 
@@ -57,7 +58,7 @@ const CommentNew = () => {
   
   return (
     <>
-      <div>
+      <div className='newComment'>
         <h2>Add New Comment:</h2>
         <form onSubmit={handleNewComment}>
           <input value={newComment.info} label='Comment:' placeholder='Comment' name='info' onChange={handleChange}/>

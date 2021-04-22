@@ -15,7 +15,7 @@ const CommentMedia = () => {
 
   const getCommentMedia = async() =>{
     try{let res =  await axios.get(`/api/streak/${id}`)
-      setComments(res.data)
+      setComments(res.data.comments)
     } catch(err) {
       alert(err)
     }
