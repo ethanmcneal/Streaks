@@ -8,11 +8,10 @@ import CommentsStreak from "../comments/CommentsStreak"
 import Thumbnail from "../components/Thumbnail"
 import Timer from "../components/Timer"
 import { AuthContext } from "../providers/AuthProvider"
-import CardContainer from "../style_components/CardContainer"
 import '../style_components/basicstyle.css'
 import CommentTab from "../components/CommentTab"
 import StreakEditForm from "./StreakEditForm"
-import upcoming from '../components/Timer'
+
 
 const Streak = () => {
 
@@ -136,7 +135,7 @@ const Streak = () => {
             <ListGroupItem>{streak.reward}</ListGroupItem>
             <ListGroupItem>{streak.punishment}</ListGroupItem>
             {user.id === streak.owner && <Button onClick={deleteStreak}>Delete Streak</Button>}
-            {user.id === streak.owner && <Button onClick={StreakEditForm}>Edit Streak</Button>}
+            {user.id === streak.owner && <Link to={`/streaks/edit/${id}`}>Edit Streak</Link>}
             <Button onClick={closeStreak}>Close Streak</Button>
           </ListGroup>
           <Card.Body>
