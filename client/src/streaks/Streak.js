@@ -11,6 +11,7 @@ import { AuthContext } from "../providers/AuthProvider"
 import '../style_components/basicstyle.css'
 import CommentTab from "../components/CommentTab"
 import StreakEditForm from "./StreakEditForm"
+import UserAvatar from "../components/UserAvatar"
 
 
 const Streak = () => {
@@ -86,7 +87,9 @@ const Streak = () => {
             return(
                 <div>
                     <ListGroup horizontal>
-                    <ListGroup.Item>{user.image}</ListGroup.Item>
+                    <ListGroup.Item>
+                        <UserAvatar userImage={user.image}/>
+                        </ListGroup.Item>
                         <ListGroup.Item>{user.nickname}</ListGroup.Item>
                         <ListGroup.Item>{user.email}</ListGroup.Item>
                         <ListGroup.Item>{user.status}</ListGroup.Item>
@@ -135,8 +138,8 @@ const Streak = () => {
             <ListGroupItem>{streak.reward}</ListGroupItem>
             <ListGroupItem>{streak.punishment}</ListGroupItem>
             {user.id === streak.owner && <Button onClick={deleteStreak}>Delete Streak</Button>}
-            {user.id === streak.owner && <Link to={`/streaks/edit/${id}`}>Edit Streak</Link>}
-            <Button onClick={closeStreak}>Close Streak</Button>
+            {user.id === streak.owner && <Link to={`/streaks/edit/${id}`}><Button>Edit Streak</Button></Link>}
+            {user.id === streak.owner && <Button onClick={closeStreak}>Close Streak</Button> }
           </ListGroup>
           <Card.Body>
             <CommentTab></CommentTab>
