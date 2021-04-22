@@ -175,3 +175,11 @@ h1 {
     color: white !important;
     background-color: rgb(245 155 13) !important;
 }
+
+.streaks-cards{
+    color: rgb(141 129 140) !important;
+}
+
+.all-streaks-cards{
+    background: rgb(25, 53, 81) !important
+}
