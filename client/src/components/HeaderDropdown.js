@@ -1,11 +1,15 @@
 import React, { useContext } from 'react'
 import { Dropdown } from 'semantic-ui-react'
 import { AuthContext } from '../providers/AuthProvider'
-const DropdownHeader = () => {
+import UserAvatar from './UserAvatar'
+const DropdownHeader = (props) => {
+  const {user} = props
   const {handleLogout} = useContext(AuthContext)
-  return(<Dropdown
+  return(
+    <>
+    <UserAvatar userImage={user.image} />
+  <Dropdown
     text=' '
-    icon='user'
     floating
     display='right'
     className='icon'
@@ -19,6 +23,7 @@ const DropdownHeader = () => {
       <Dropdown.Item href="/" onClick={handleLogout}>Logout</Dropdown.Item>
     </Dropdown.Menu>
   </Dropdown>
+  </>
   )
 }
 export default DropdownHeader

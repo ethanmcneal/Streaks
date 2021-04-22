@@ -65,7 +65,7 @@ const CommentsStreak = () => {
                 <Comment.Content>
                   <Comment.Author>{comment.nickname}</Comment.Author>
                   <Comment.Metadata>
-                    <div>Yesterday at 12:30AM</div>
+                    <div>{comment.created_at}</div>
                   </Comment.Metadata>
                   {/* <img src={comment.image}/> */}
                   <Comment.Text>
