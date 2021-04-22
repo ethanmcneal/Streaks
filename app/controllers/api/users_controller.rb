@@ -1,6 +1,6 @@
 class Api::UsersController < ApplicationController
   before_action :authenticate_user!, except: [:show, :update]
-  before_action :get_user, only: [:show, :update]
+  before_action :get_user, only: [:show]
 
     def index
         users = User.all
@@ -34,7 +34,7 @@ class Api::UsersController < ApplicationController
                 render json: { errors: e }, status: 422
                 return
             end 
-        else @user.update(user_params)
+        else current_user.update(user_params)
         end 
     end
 
@@ -52,6 +52,6 @@ class Api::UsersController < ApplicationController
     end
 
     def user_params
-        params.require(:user).permit(:id, :name, :nickname, :email, :image)
+        params.require(:user).permit(:id, :uid, :provider, :allow_password_change, :wins, :losses, :name, :nickname, :email, :image)
     end
 end

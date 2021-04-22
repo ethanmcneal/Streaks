@@ -3,6 +3,7 @@ class Api::StreaksController < ApplicationController
     #comment here
 
     before_action :get_streak, only: [:show]
+    before_action :set_page
 
     def index
         streaks = Streak.all
@@ -11,7 +12,8 @@ class Api::StreaksController < ApplicationController
 
     def streak_comments
         streak_id = params[:streak_id]
-        render json: Streak.streak_all_comments(streak_id)
+        comments = Streak.streak_all_comments(streak_id).page(@page)
+        render json: {comments: comments, total_pages: comments.total_pages}
     end
     
     def show
@@ -49,6 +51,9 @@ class Api::StreaksController < ApplicationController
 
     private
 
+    def set_page
+    @page = params[:page] || 1
+    end
 
     def get_streak
         @streak = Streak.find(params[:id])

@@ -100,20 +100,3 @@ const CommentEdit = (props) => {
 }
 
 export default CommentEdit
-
-
- // const [info, setInfo] = useState(defaultInfo)
-  // const [cheer, setCheer] = useState(defaultCheer)
-  // const [laugh, setLaugh] = useState(defaultLaugh)
-  // const [media, setMedia] = useState(defaultMedia)
-  // const [userId, setUserId] = useState(user.id)
-  // const [streakId, setStreakId] = useState(id)
-  
-  // const [editComment, setEditComment] = useState({
-  //   user_id: user.id,
-  //   streak_id: id,
-  //   info: editComment.info, 
-  //   media: editComment.media,
-  //   cheer: "0", 
-  //   laugh: "0"
-  // })

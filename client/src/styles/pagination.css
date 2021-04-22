@@ -1,0 +1,19 @@
+#react-paginate ul {
+    display: inline-block;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  #react-paginate li {
+    display: inline-block;
+    width: 50px;
+    height: 25px;
+    cursor: pointer;
+    border: 1px solid black;
+    text-align: center;
+  }
+  #react-paginate li.selected {
+    background-color: lightblue;
+  }
+  #react-paginate .break a {
+    cursor: default;
+  }
