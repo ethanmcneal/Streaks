@@ -31,7 +31,7 @@ const NavBar = () => {
           {user && <Menu.Menu position='right'>
 
                 <Menu.Item>
-                     <HeaderDropdown />
+                     <HeaderDropdown user={user}/>
                 </Menu.Item>
                
 

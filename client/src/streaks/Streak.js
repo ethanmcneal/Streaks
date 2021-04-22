@@ -11,6 +11,7 @@ import { AuthContext } from "../providers/AuthProvider"
 import '../style_components/basicstyle.css'
 import CommentTab from "../components/CommentTab"
 import StreakEditForm from "./StreakEditForm"
+import UserAvatar from "../components/UserAvatar"
 
 
 const Streak = () => {
@@ -86,7 +87,9 @@ const Streak = () => {
             return(
                 <div>
                     <ListGroup horizontal>
-                    <ListGroup.Item>{user.image}</ListGroup.Item>
+                    <ListGroup.Item>
+                        <UserAvatar userImage={user.image}/>
+                        </ListGroup.Item>
                         <ListGroup.Item>{user.nickname}</ListGroup.Item>
                         <ListGroup.Item>{user.email}</ListGroup.Item>
                         <ListGroup.Item>{user.status}</ListGroup.Item>
