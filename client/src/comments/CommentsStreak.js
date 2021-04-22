@@ -108,7 +108,6 @@ const CommentsStreak = () => {
                     />
                   )}
                 </Comment.Content>
-                <br />
               </Comment>
             ))}
         </Comment.Group>
@@ -124,7 +123,7 @@ const CommentsStreak = () => {
           <InfiniteScroll
             pageStart={currentPage}
             loadMore={() => loadMore()}
-            hasMore={currentPage === totalPages ? false : true}
+            hasMore={currentPage >= totalPages ? false : true}
             // loader={
             //   <div className="loader" key={0}>
             //     Loading ...

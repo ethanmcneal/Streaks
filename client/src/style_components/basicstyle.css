@@ -35,6 +35,7 @@ body {
     margin-left: 10vw !important;
     width: 80vw;
     border: none;
+    padding: 0;
 }
 
 .ui.segment {
@@ -149,4 +150,11 @@ img.small-logo {
     display: block;
     margin: auto;
     height: 250px !important;
+}
+
+div.ui.segment.active.tab {
+    background: rgb(228, 238, 253) !important;
+    border-bottom-left-radius: 10px !important;
+    border-bottom-right-radius: 10px !important;
+    padding: 1em 1em;
 }
