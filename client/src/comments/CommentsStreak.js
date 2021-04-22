@@ -1,7 +1,7 @@
 import React, {useState, useEffect, useReducer, useContext} from 'react'
 import axios from 'axios'
 import {Link, useParams} from 'react-router-dom'
-import {Button, Card, Comment, Header, Image} from 'semantic-ui-react'
+import {Button, Card, Comment, Header, Image, Divider} from 'semantic-ui-react'
 import CardContainer from '../style_components/CardContainer'
 import CommentEdit from './CommentEdit'
 import ReactDOM from "react-dom";
@@ -111,6 +111,7 @@ const CommentsStreak = () => {
                 </Comment.Content>
               </Comment>
             ))}
+            <Divider/>
         </Comment.Group>
       );
     };

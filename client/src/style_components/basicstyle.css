@@ -64,7 +64,7 @@ div.orange {
     border: none;
 }
 .spacer {
-    background: rgb(85, 85, 85);
+    background: rgb(245 155 13);
 }
 div.landing {
     text-align: center;
@@ -174,4 +174,8 @@ h1 {
 .button-orange{
     color: white !important;
     background-color: rgb(245 155 13) !important;
+}
+div.timerbox {
+    text-align: center;
+    padding: 3rem;
 }

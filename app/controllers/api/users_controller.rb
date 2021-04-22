@@ -26,7 +26,6 @@ class Api::UsersController < ApplicationController
 
     def update
         file = params[:image]
-        binding.pry
         if file.to_s != "null"     #<-------------- POSSIBLE CHANGE NEEDED ------
             begin 
                 cloud_image = Cloudinary::Uploader.upload(file, public_id: file.original_filename, secure: true, resource_type: :auto)
