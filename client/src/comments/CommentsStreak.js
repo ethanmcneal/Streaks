@@ -9,6 +9,7 @@ import CheerLaughCounter from './CheerLaughCounter'
 import { AuthContext } from '../providers/AuthProvider'
 import '../style_components/basicstyle.css'
 import InfiniteScroll from 'react-infinite-scroller'
+import moment from 'moment';
 
 const CommentsStreak = () => {
   const [comments, setComments] = useState('')
@@ -65,7 +66,7 @@ const CommentsStreak = () => {
                 <Comment.Content>
                   <Comment.Author>{comment.nickname}</Comment.Author>
                   <Comment.Metadata>
-                    <div>Yesterday at 12:30AM</div>
+                    <div>{moment(comment.created_at).fromNow()}</div>
                   </Comment.Metadata>
                   {/* <img src={comment.image}/> */}
                   <Comment.Text>
