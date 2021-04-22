@@ -43,12 +43,12 @@ const StreakForm = () => {
               let res2 = await axios.post(`/api/user_streaks/`, {user_id: user.id, streak_id: res.data.id, status: 'upcoming'} )
               console.log(res)
               setValidated(true) 
-              history.push(`/streaks`);  
+              history.push(`/dashboard`);  
           } catch (error) {
               console.log(error)
           }
         } else {
-            alert("in handle Submit")
+            alert("Please fill out all fields!")
             setValidated(false)
             }
         }

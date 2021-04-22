@@ -1,0 +1,42 @@
+.streak-segment{
+    width: 16.4em;
+    height: 4em;
+    padding: 1em 0;
+    align-items: center;
+}
+
+.streak-segment-wager{
+    width: 27em;
+    padding: 1em 0;
+}
+
+.running-background{
+    background-color: orange; 
+    max-height: 1.5em;
+    max-width:75px;
+    
+    border-radius:4px;
+    
+}
+.running-background p{
+    text-align: center;
+    color: white;
+}
+
+.upcoming-background{
+    background-color: #8b8589; 
+    max-height: 1.5em;
+    max-width:90px;
+    
+    border-radius:4px;
+    
+}
+.upcoming-background p{
+    text-align: center;
+    color: white;
+}
+
+.streak-segment div{
+    margin-right: 2em;
+    text-align: left;
+}

@@ -10,7 +10,7 @@ const MyDashBoard = () => {
             {/* <h1>{user.nickname}'s DashBoard</h1> */}
             <br></br>
         
-
+        
         <UserStreaks />
         </div>
     )
