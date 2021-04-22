@@ -11,7 +11,7 @@
 }
 
 body {
-    background: rgb(233, 233, 233) !important;
+    background: rgb(25, 53, 81) !important;
 }
 
 .ui.card {
@@ -159,3 +159,19 @@ div.ui.segment.active.tab {
     padding: 1em 1em;
 }
 
+.table-streak-form{
+    font-family: 'Roboto', sans-serif !important;
+}
+
+h1 {
+    font-family: 'Roboto', sans-serif !important;
+}
+
+.new-streak-title{
+    color: white !important; 
+}
+
+.button-orange{
+    color: white !important;
+    background-color: rgb(245 155 13) !important;
+}

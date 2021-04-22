@@ -79,11 +79,13 @@ const StreakEditForm = () => {
 
     return(
         <div>
-        <h1 style={{marginLeft: '3em'}}>Edit Streak</h1>
+        
         <div style={{ margin: '3em 7em 3em'}}>
+        <h1 className='new-streak-title'>Edit Streak</h1>
             <div >
-                <Container>
+             <Container>
             <Form noValidate validated={validated} onSubmit={handleSubmit}>
+            <br/>
             <Form.Label> Category </Form.Label>
             <Form.Control as='select' placeholder='category' selection onChange={(e)=> handleDropDown(e.target.value)} style={{width: '250px'}}>
                 <option>{streak.category}</option>
@@ -96,6 +98,8 @@ const StreakEditForm = () => {
                 <option>Physical Feat</option>
                 <option>Cuisine</option>
             </Form.Control>
+            <br/>
+
 
             <Form.Label> Streak Name </Form.Label>
             <Form.Control required style={{width: '500px'}}
@@ -105,6 +109,7 @@ const StreakEditForm = () => {
                 name='name'
                 value={streak.name}
                 onChange={handleChange}/>
+                <br/>
            
 
             <Form.Label> Description </Form.Label>
@@ -115,6 +120,7 @@ const StreakEditForm = () => {
                 value={streak.description}
                 defaultValue={streak.description}
                 onChange={handleChange}/>
+                <br/>
              
             
             <Form.Label> Reward </Form.Label>
@@ -125,6 +131,7 @@ const StreakEditForm = () => {
                 defaultValue={streak.reward}
                 value={streak.reward}
                 onChange={handleChange}/>
+                <br/>
 
             <Form.Label> Punishment </Form.Label>
             <div style={{display: 'flex', justifyContent: 'space-between'}}>
@@ -135,9 +142,11 @@ const StreakEditForm = () => {
                 defaultValue={streak.punishment}
                 value={streak.punishment}
                 onChange={handleChange}/>  
+                <br/>
 
-            <Button disabled={!validated} type='submit' variant="success" style={{width: '125px'}}>Update Streak</Button>
+            <Button className='button-orange' disabled={!validated} type='submit' variant="warning" style={{width: '125px'}}>Update Streak</Button>
             </div>
+            <br/>
 
             <Form.Label>Start Date</Form.Label>
 
@@ -150,7 +159,9 @@ const StreakEditForm = () => {
                 filterDate = {(date) => {
                     return moment() < date;
                   }}/>
+                  
         </Form>
+        <br/>
         
         </Container>
         
