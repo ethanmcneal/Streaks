@@ -26,7 +26,8 @@ class Api::UsersController < ApplicationController
 
     def update
         file = params[:image]
-        if !file.to_s.empty?
+        binding.pry
+        if file.to_s != "null"     #<-------------- POSSIBLE CHANGE NEEDED ------
             begin 
                 cloud_image = Cloudinary::Uploader.upload(file, public_id: file.original_filename, secure: true, resource_type: :auto)
                 current_user.update(image: cloud_image['secure_url'], nickname: params[:nickname], email: params[:email])
@@ -52,6 +53,6 @@ class Api::UsersController < ApplicationController
     end
 
     def user_params
-        params.require(:user).permit(:id, :uid, :provider, :allow_password_change, :wins, :losses, :name, :nickname, :email, :image)
+        params.permit(:id, :uid, :provider, :allow_password_change, :wins, :losses, :name, :nickname, :email, :image)
     end
 end
