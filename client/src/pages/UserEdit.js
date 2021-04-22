@@ -20,22 +20,38 @@
 
 
 
+
 import React,{useState,useContext} from 'react'
 import { Form, Button, Col } from "react-bootstrap";
 import { AuthContext } from "../providers/AuthProvider";
+import { FilePond, registerPlugin } from "react-filepond";
+import "filepond/dist/filepond.min.css";
+import FilePondPluginImageExifOrientation from "filepond-plugin-image-exif-orientation";
+import FilePondPluginImagePreview from "filepond-plugin-image-preview";
+import "filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css";
+
+registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview);
 
 const UserEdit = (props) => {
+  const [ files, setFiles ] = useState([]) 
   const { user, handleUserEdit } = useContext(AuthContext);
   const [userState, setUserState] = useState(user);
-
+  
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleUserEdit(userState, props.history)
+    handleUserEdit(e, userState, props.history)
+  };
+
+  const handleUpdate = (fileItems) => {
+    setFiles(fileItems);
+    // appending 'file' with image info to pass can retieve in params    <--- FROM CommentEdit.js - ( CHANGE ) --
+    setUserState({ ...userState, image: fileItems[0].file });
   };
 
   const handleChange = (e) => {
     setUserState({ ...userState, [e.target.name]: e.target.value });
   };
+
 
   return (
     <Form onSubmit={handleSubmit}>
@@ -67,6 +83,13 @@ const UserEdit = (props) => {
             value={userState.image}
             onChange={handleChange}
           /> */}
+          <FilePond
+                files={files}
+                onupdatefiles={handleUpdate}
+                allowMultiple={false}
+                name="image"
+                labelIdle='Drag  Drop your files or <span class="filepond--label-action">Browse</span>'
+          />
         </Form.Group>
 
       <br></br>

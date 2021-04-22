@@ -5,9 +5,15 @@ export const AuthContext = React.createContext();
 export const AuthConsumer = AuthContext.Consumer;
 
 const AuthProvider = (props) =>{ 
-    
-
     const [user, setUser] = useState(null)
+    const {defaultNickname, defaultEmail, defaultImage} = props
+
+    const [editUser, setEditUser] = useState({
+        // id: user.id,
+        nickname: defaultNickname, 
+        email: defaultEmail, 
+        image: defaultImage
+      })
 
     const handleRegister = async(user, history) => {
         try {
@@ -41,13 +47,18 @@ const AuthProvider = (props) =>{
         }
     }
 
-    const handleUserEdit = async(user, history) => {
+    const handleUserEdit = async(e, user, history) => {
+        e.preventDefault()
+        let data = new FormData();
+        data.append("nickname", user.nickname);
+        data.append("email", user.email);
+        data.append("image", user.image);
         try{
-            let res = await axios.put(`/api/user/${user.id}`, user)
+            let res = await axios.put(`/api/user/${user.id}`, data)
             setUser(res.data);
             history.push('/')
         }catch(err) {
-          console.log(err);
+          console.log("Error in handleUserEdit in Auth");
         }
     }
 
