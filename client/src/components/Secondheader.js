@@ -28,11 +28,10 @@ const DashHeader = () => {
     }
     return(
         <Menu>
-            {/* <Link to='/dashboard'> */}
-                <Menu.Item className="burgerBell" style={{fontSize:'1.1em', marginBottom:'2px'}}>
+                <Menu.Item href="/dashboard" className="burgerBell" style={{fontSize:'1.1em', marginBottom:'2px'}}>
                     {user.nickname} 
                 </Menu.Item>
-            {/* </Link>  */}
+        
             <span className="Upright Divider"></span>
             <Menu.Item style={{fontSize:'.9em', opacity: '58%'}}>
                 {activeStreaks} Active Streaks
