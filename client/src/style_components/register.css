@@ -1,0 +1,19 @@
+
+
+.register {
+    padding: 0 40em;
+    
+}
+
+.register h1, p{
+    color: white;
+    text-align: center;
+    
+}
+
+.register Button {
+    align-self: flex-end;
+}
+.register input {
+    text-align: center;
+}
