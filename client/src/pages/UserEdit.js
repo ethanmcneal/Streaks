@@ -17,7 +17,12 @@ const UserEdit = (props) => {
   
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleUserEdit(e, userState, props.history)
+    let mailformat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    if(mailformat.test(userState.email)){
+      handleUserEdit(e, userState, props.history)
+    } else {
+      alert('You entered an invalid email address. Format test@test.com')
+    }
   };
 
   const handleUpdate = (fileItems) => {
@@ -38,7 +43,8 @@ const UserEdit = (props) => {
           <Form.Control
             name="nickname"
             type="text"
-            value={userState.nickname}
+            minLength="4"
+            value={userState.nickname} 
             onChange={handleChange}
           />
         </Form.Group>
@@ -48,6 +54,8 @@ const UserEdit = (props) => {
         <Form.Control
           name="email"
           as="textarea"
+          // type='email'
+          minLength="8"
           value={userState.email}
           onChange={handleChange}
         />

@@ -43,7 +43,7 @@ function App() {
    <ProtectedRoute exact path='/dashboard' component={MyDashBoard} />
      <Route exact path='/about' component={About} />
      <Route exact path='/streaks' component={Streaks} />
-     <Route exact path='/styled' component={StyledComponents} />
+     {/* <Route exact path='/styled' component={StyledComponents} /> */}
      <Route exact path='/register' component={Register} />
      <Route exact path='/login' component={Login} />
      <Route exact path='/userEdit' component={UserEdit} />
