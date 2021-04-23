@@ -2,9 +2,10 @@ import { useContext, useState } from "react"
 import { useHistory } from "react-router-dom"
 import { Form } from "semantic-ui-react"
 import { AuthContext } from "../providers/AuthProvider"
-import Button from "../style_components/Button"
+import {Button} from "react-bootstrap"
 import CardContainer from "../style_components/CardContainer"
 import Input from "../style_components/Input"
+import '../style_components/register.css'
 
 const Login = () => {
     const {handleLogin} = useContext(AuthContext)
@@ -18,11 +19,11 @@ const Login = () => {
         handleLogin({ email, password}, history)
     } 
     return(
-        <CardContainer>
+        <div className='register'>
             <h1>Login</h1>
         <Form onSubmit={handleSubmit}>
             <p>Email</p>
-            <Input
+            <input
             label='Email'
             value={email}
              autoFocus
@@ -30,7 +31,7 @@ const Login = () => {
              name='email'
              onChange={(e)=> setEmail(e.target.value)}/>
              <p>Password</p>
-             <Input
+             <input
             label='Password'
             value={password}
              autoFocus
@@ -38,11 +39,11 @@ const Login = () => {
              name='password'
              onChange={(e)=> setPassword(e.target.value)}/>
              
-             <Button type='submit'>Login</Button>
+             <Button style={{backgroundColor: 'rgb(245 155 13)', margin: '2em'}} type='submit'>Login</Button>
 
             
         </Form>
-        </CardContainer>
+        </div>
     )
 }
 
