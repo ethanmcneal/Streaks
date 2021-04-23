@@ -6,6 +6,7 @@ import { Button } from 'react-bootstrap'
 import UploadMediaModal from '../components/UploadMediaModal'
 import '../style_components/dashboard.css'
 import { PADDING } from '../style_components/styles'
+import '../style_components/basicstyle.css'
 
 
 
