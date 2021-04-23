@@ -1,7 +1,7 @@
 import React, {useState, useEffect, useReducer, useContext} from 'react'
 import axios from 'axios'
 import {Link, useParams} from 'react-router-dom'
-import {Button, Card, Comment, Header, Image} from 'semantic-ui-react'
+import {Button, Card, Comment, Header, Image, Divider} from 'semantic-ui-react'
 import CardContainer from '../style_components/CardContainer'
 import CommentEdit from './CommentEdit'
 import ReactDOM from "react-dom";
@@ -9,6 +9,7 @@ import CheerLaughCounter from './CheerLaughCounter'
 import { AuthContext } from '../providers/AuthProvider'
 import '../style_components/basicstyle.css'
 import InfiniteScroll from 'react-infinite-scroller'
+import moment from 'moment';
 
 const CommentsStreak = () => {
   const [comments, setComments] = useState('')
@@ -65,11 +66,11 @@ const CommentsStreak = () => {
                 <Comment.Content>
                   <Comment.Author>{comment.nickname}</Comment.Author>
                   <Comment.Metadata>
-                    <div>{comment.created_at}</div>
+                    <div>{moment(comment.created_at).fromNow()}</div>
                   </Comment.Metadata>
                   {/* <img src={comment.image}/> */}
                   <Comment.Text>
-                    Comment: <br />
+                    
                     {comment.info}
                   </Comment.Text>
                   <img className="comments-media-carousel" src={comment.media} />
@@ -107,6 +108,7 @@ const CommentsStreak = () => {
                       defaultCommentID={comment.comment_id}
                     />
                   )}
+                  <Divider/>
                 </Comment.Content>
               </Comment>
             ))}
