@@ -17,8 +17,10 @@ const Register = () => {
     const handleSubmit=(e)=>{
         e.preventDefault()
         console.log({nickname, email, password, passwordConfirmation})
-        handleRegister({nickname, email, password, passwordConfirmation}, history)
+        handleRegister({nickname, email, password, passwordConfirmation, image}, history)
     } 
+
+    let image = 'https://st4.depositphotos.com/4329009/19956/v/600/depositphotos_199564354-stock-illustration-creative-vector-illustration-default-avatar.jpg'
     return(
         <CardContainer>
             <h1>Register</h1>
