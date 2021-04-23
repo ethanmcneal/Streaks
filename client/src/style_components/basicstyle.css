@@ -41,7 +41,7 @@ body {
 
 .ui.segment {
     /* background: rgb(245, 245, 245) !important; */
-    background: rgb(25, 53, 81) !important;
+    /* background: rgb(25, 53, 81) !important; */
     border-radius: 0px !important;
     margin: 0rem !important;
 }
@@ -152,7 +152,7 @@ img.small-logo {
 .comments-media-carousel{
     display: block;
     margin: auto;
-    height: min-content !important;
+    height: 150px !important;
 }
 
 div.ui.segment.active.tab {
@@ -178,6 +178,14 @@ h1 {
 .button-orange{
     color: white !important;
     background-color: rgb(245 155 13) !important;
+}
+
+.streaks-cards{
+    color: rgb(141 129 140) !important;
+}
+
+.all-streaks-cards{
+    background: rgb(25, 53, 81) !important;
     border-style: none;
     width: fit-content;
 }
