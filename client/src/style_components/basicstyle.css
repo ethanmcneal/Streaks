@@ -41,7 +41,7 @@ body {
 
 .ui.segment {
     /* background: rgb(245, 245, 245) !important; */
-    background: rgb(25, 53, 81) !important;
+    /* background: rgb(25, 53, 81) !important; */
     border-radius: 0px !important;
     margin: 0rem !important;
 }

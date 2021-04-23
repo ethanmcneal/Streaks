@@ -68,7 +68,7 @@ const UserStreaks = () => {
     return(
       <div >
       <StreakListHeader />
-    <Segment.Group>
+    <Segment.Group style={{backgroundColor: 'white !important'}}>
         {userStreaks.map(userStreak => userStreak.status == 'quit' || userStreak.status == 'won' ? <UserStreak streakName={userStreak.streak_name} 
                                                       streakReward={userStreak.reward}
                                                       streakPunishment={userStreak.punishment}
