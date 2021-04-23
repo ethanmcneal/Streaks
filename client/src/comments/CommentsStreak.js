@@ -91,11 +91,7 @@ const CommentsStreak = () => {
                     </Button>
                   )}
                   {user.id === comment.user_id && (
-                    <Button
-                      onClick={() => {
-                        setHideEditFields(!hideEditFields);
-                      }}
-                    >
+                    <Button onClick={() => {setHideEditFields(!hideEditFields);}} >
                       {hideEditFields ? "Cancel Edit" : "Edit"}
                     </Button>
                   )}

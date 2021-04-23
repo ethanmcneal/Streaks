@@ -52,7 +52,7 @@ const CommentEdit = (props) => {
     data.append("info", editComment.info);
     data.append("media", editComment.media);
     data.append("cheer", editComment.cheer);
-    data.append("laugh", editComment.laugh);
+    data.append("laugh", editComment.laugh); 
     try{
       // todo fix the axios garbage
       console.log('def comm id', defaultCommentID)
