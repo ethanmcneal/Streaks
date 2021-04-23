@@ -6,7 +6,7 @@ import { Button } from 'react-bootstrap'
 import UploadMediaModal from '../components/UploadMediaModal'
 import '../style_components/dashboard.css'
 import { PADDING } from '../style_components/styles'
-import '../style_components/basicstyle.css'
+
 
 
 
@@ -57,7 +57,7 @@ const changeStatus = async(id, s) => {
 
 
     return(
-            <Segment style={{display: 'flex', justifyContent: 'space-between'}}>
+            <Segment style={{display: 'flex', justifyContent: 'space-between', backgroundColor: 'white !important'}}>
                 <div className='streak-segment'>
                 <Link to={`/streaks/${streakId}`}>
                 <h3>{streakName}</h3>
