@@ -152,7 +152,7 @@ img.small-logo {
 .comments-media-carousel{
     display: block;
     margin: auto;
-    height: min-content !important;
+    height: 150px !important;
 }
 
 div.ui.segment.active.tab {
