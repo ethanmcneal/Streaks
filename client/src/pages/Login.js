@@ -5,6 +5,7 @@ import { AuthContext } from "../providers/AuthProvider"
 import Button from "../style_components/Button"
 import CardContainer from "../style_components/CardContainer"
 import Input from "../style_components/Input"
+import NavBar from '../components/Navbar';
 
 const Login = () => {
     const {handleLogin} = useContext(AuthContext)
@@ -18,6 +19,8 @@ const Login = () => {
         handleLogin({ email, password}, history)
     } 
     return(
+        <>
+        <NavBar />
         <CardContainer>
             <h1>Login</h1>
         <Form onSubmit={handleSubmit}>
@@ -43,6 +46,7 @@ const Login = () => {
             
         </Form>
         </CardContainer>
+        </>
     )
 }
 

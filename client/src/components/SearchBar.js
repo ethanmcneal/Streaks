@@ -25,7 +25,7 @@ const SearchBar = () => {
       <form onSubmit={handleSubmit}>
         <Search
           type="text"
-          placeholder="Search streaks"
+          placeholder="Search"
           onSearchChange={handleChange}
           value={query}
           showNoResults={false}

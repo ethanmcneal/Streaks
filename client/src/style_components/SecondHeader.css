@@ -1,18 +1,24 @@
 .ui.menu {
     margin: 0% !important;
-    max-height: 3em;
+    max-height: 5em;
     border-radius: 0 !important;
     box-shadow: none !important;
 
 }
 
 .ui.search .prompt {
-    border-radius: 0rem !important;
+    border-radius: 4px 4px 4px 4px !important;
     padding: .2rem !important;
 }
 .ui.button {
-    color: white !important;
-    background-color: rgb(245 155 13) !important;
+    background-color: rgb(245, 155, 13) !important;
+    border-style: solid !important;
+    border-width:.1em !important;
+    border-color: rgb(255, 255, 255) !important;
+    color: honeydew !important;
+    
+    /* color: white !important;
+    background-color: rgb(245 155 13) !important; */
 
 }
 
@@ -23,11 +29,11 @@ span {
     height: .8em;
     border-left: .5px solid lightgray;
     opacity: 80%;
-    /* border-right: 1px solid lightgray; */
-    /* position:relative; */
-    /* bottom:'-5px'; */
     }
 
-.burgerBell {
-
-}
+/* #boom:hover {
+    border: none !important;
+    border-color: white !important;
+    box-shadow: none !important;
+    color: red;
+} */
