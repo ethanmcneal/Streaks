@@ -5,6 +5,7 @@ import { AuthContext } from "../providers/AuthProvider"
 import Button from "../style_components/Button"
 import CardContainer from "../style_components/CardContainer"
 import Input from "../style_components/Input"
+import NavBar from '../components/Navbar';
 
 const Register = () => {
     const {handleRegister} = useContext(AuthContext)
@@ -22,6 +23,8 @@ const Register = () => {
 
     let image = 'https://st4.depositphotos.com/4329009/19956/v/600/depositphotos_199564354-stock-illustration-creative-vector-illustration-default-avatar.jpg'
     return(
+        <>
+        <NavBar />
         <CardContainer>
             <h1>Register</h1>
         <Form onSubmit={handleSubmit}>
@@ -62,6 +65,7 @@ const Register = () => {
             
         </Form>
         </CardContainer>
+        </>
     )
 }
 
