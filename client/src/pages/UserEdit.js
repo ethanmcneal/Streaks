@@ -1,9 +1,10 @@
 
 import React,{useState,useContext} from 'react'
-import { Form, Button, Col } from "react-bootstrap";
+import { Form, Button, Col, } from "react-bootstrap";
 import { AuthContext } from "../providers/AuthProvider";
 import { FilePond, registerPlugin } from "react-filepond";
 import "filepond/dist/filepond.min.css";
+import {Container } from 'semantic-ui-react'
 import FilePondPluginImageExifOrientation from "filepond-plugin-image-exif-orientation";
 import FilePondPluginImagePreview from "filepond-plugin-image-preview";
 import "filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css";
@@ -17,7 +18,12 @@ const UserEdit = (props) => {
   
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleUserEdit(e, userState, props.history)
+    let mailformat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    if(mailformat.test(userState.email)){
+      handleUserEdit(e, userState, props.history)
+    } else {
+      alert('You entered an invalid email address. Format test@test.com')
+    }
   };
 
   const handleUpdate = (fileItems) => {
@@ -32,13 +38,22 @@ const UserEdit = (props) => {
 
 
   return (
+    <>
+    <br />
+    <div>
+    <h1 className='new-streak-title'>Edit User Information</h1>
+    <br />
+    <Container>
+      <br />
     <Form onSubmit={handleSubmit}>
         <Form.Group as={Col} style={{ width: "20em" }}>
           <Form.Label>Username</Form.Label>
           <Form.Control
             name="nickname"
+            placeholder='username'
             type="text"
-            value={userState.nickname}
+            minLength="4"
+            value={userState.nickname} 
             onChange={handleChange}
           />
         </Form.Group>
@@ -46,6 +61,7 @@ const UserEdit = (props) => {
       <Form.Group as={Col}>
         <Form.Label>Email</Form.Label>
         <Form.Control
+          placeholder='email'
           name="email"
           as="textarea"
           value={userState.email}
@@ -71,8 +87,13 @@ const UserEdit = (props) => {
         </Form.Group>
 
       <br></br>
-      <Button type="submit"> Submit </Button>
+      <Button variant='warning' className='button-orange' type="submit"> Submit </Button>
+      <br/>
     </Form>
+    <br/>
+    </Container>
+    </div>
+    </>
   );
 };
 export default UserEdit;

@@ -59,30 +59,3 @@ end
 # for when needing to reseed db. ex: streak_id: rand(16..20) instead of i
 
 
-
-    # todo create_table "comments", force: :cascade do |t|
-    # t.bigint "user_id", null: false
-    # t.bigint "streak_id", null: false
-    # t.string "comment" Faker::TvShows::Friends.quote
-    # t.string "media"
-    # t.integer "cheer" (default is zero, we can keep that as is)
-    # t.integer "laugh" (default is zero, we can keep that as is)
-
-    # todo create_table "streaks", force: :cascade do |t|
-    #   t.string "name"
-    #   t.string "description"
-    #   t.datetime "timeline"
-    #   t.string "reward"
-    #   t.string "punishment" Faker::Food.vegetables
-    #   t.string "category"
-    #   t.boolean "open"
-
-    #todo create_table "user_streaks", force: :cascade do |t|
-    #   t.bigint "user_id", null: false
-    #   t.bigint "streak_id", null: false
-    #   t.string "status"
-    #   t.string "media"
-
-    # todo users
-    # name, Faker::Name.name   
-    # nickname, email:email, avatar, win:integer, loss:integer
