@@ -1,9 +1,10 @@
 .ui.menu {
     margin: 0% !important;
     max-height: 5em;
+    border: 0px !important;
+    border-color: white;
     border-radius: 0 !important;
     box-shadow: none !important;
-
 }
 
 .ui.search .prompt {
@@ -13,13 +14,11 @@
 .ui.button {
     background-color: rgb(245, 155, 13) !important;
     border-style: solid !important;
-    border-width:.1em !important;
+    border-width: .1em !important;
     border-color: rgb(255, 255, 255) !important;
     color: honeydew !important;
-    
     /* color: white !important;
     background-color: rgb(245 155 13) !important; */
-
 }
 
 span {
