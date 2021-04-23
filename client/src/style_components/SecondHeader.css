@@ -30,3 +30,10 @@ span {
     border-left: .5px solid lightgray;
     opacity: 80%;
     }
+
+/* #boom:hover {
+    border: none !important;
+    border-color: white !important;
+    box-shadow: none !important;
+    color: red;
+} */

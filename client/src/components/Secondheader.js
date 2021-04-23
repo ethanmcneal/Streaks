@@ -24,12 +24,12 @@ const DashHeader = () => {
             setActiveStreaks(filterData.length)
         } catch (error) {
             console.log(error)
-        }
+        }                            
     }
     return(
         <Menu>
-            <Menu.Item href="/dashboard" style={{fontSize:'1.1em', marginBottom:'2px', marginLeft:'3px', color:'rgb(43, 174, 173)'}}>
-                {user.nickname} 
+            <Menu.Item id="boom" style={{fontSize:'1.1em', marginBottom:'2px', marginLeft:'3px', color:'rgb(43, 174, 173)'}}>
+                <a href="/dashboard" style={{color:'rgb(43, 174, 173)'}} >{user.nickname}</a> 
             </Menu.Item>
             <span className="Upright Divider"></span>
             <Menu.Item style={{fontSize:'.9em', opacity: '58%'}}>
