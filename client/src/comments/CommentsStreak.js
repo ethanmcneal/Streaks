@@ -70,7 +70,7 @@ const CommentsStreak = () => {
                   </Comment.Metadata>
                   {/* <img src={comment.image}/> */}
                   <Comment.Text>
-                    Comment: <br />
+                    
                     {comment.info}
                   </Comment.Text>
                   <img className="comments-media-carousel" src={comment.media} />
@@ -108,10 +108,10 @@ const CommentsStreak = () => {
                       defaultCommentID={comment.comment_id}
                     />
                   )}
+                  <Divider/>
                 </Comment.Content>
               </Comment>
             ))}
-            <Divider/>
         </Comment.Group>
       );
     };

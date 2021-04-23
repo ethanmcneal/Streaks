@@ -12,6 +12,7 @@ import '../style_components/basicstyle.css'
 import CommentTab from "../components/CommentTab"
 import StreakEditForm from "./StreakEditForm"
 import UserAvatar from "../components/UserAvatar"
+import { Segment } from "semantic-ui-react"
 
 
 const Streak = () => {
@@ -103,9 +104,11 @@ const Streak = () => {
     }
     return(
         <>
+        <Segment>
+            
          
         <div>
-            <Button onClick={history.goBack}>Back</Button>
+            <Button className='button-orange' onClick={history.goBack}>Back</Button>
            
             <div>
               <Card className="peopleList">
@@ -137,12 +140,12 @@ const Streak = () => {
           <ListGroupItem>{streak.open == true ? 'joinable' : 'private'}</ListGroupItem>
             <ListGroupItem>{streak.reward}</ListGroupItem>
             <ListGroupItem>{streak.punishment}</ListGroupItem>
-            {user.id === streak.owner && <Button onClick={deleteStreak}>Delete Streak</Button>}
-            {user.id === streak.owner && <Link to={`/streaks/edit/${id}`}><Button>Edit Streak</Button></Link>}
-            {user.id === streak.owner && <Button onClick={closeStreak}>Close Streak</Button> }
+            {user.id === streak.owner && <Button className='button-orange' onClick={deleteStreak}>Delete Streak</Button>}
+            {user.id === streak.owner && <Link  to={`/streaks/edit/${id}`}><Button>Edit Streak</Button></Link>}
+            {user.id === streak.owner && <Button className='button-orange' onClick={closeStreak}>Close Streak</Button> }
           </ListGroup>
-          <Card.Body>
-            <CommentTab></CommentTab>
+          <Card.Body >
+            <CommentTab ></CommentTab>
           </Card.Body>
         </Card>
         </Container>}
@@ -150,8 +153,7 @@ const Streak = () => {
             </div>
             
         </div>
-
-
+        </Segment>
 </>
     )
 }
