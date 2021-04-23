@@ -10,10 +10,10 @@ const Register = () => {
     const {handleRegister, emailAlert} = useContext(AuthContext)
     const [confirmationAlert, setConfirmationAlert] = useState(false)
     const [alert, setAlert] = useState(false)
-    const [email, setEmail] = useState('ethan.mcneal@gmail.com')
-    const [nickname, setNickname] = useState('ethan.mcneal')
-    const [password, setPassword] = useState('thisisapassword')
-    const [passwordConfirmation, setPasswordConfirmation] = useState('thisisapassword')
+    const [email, setEmail] = useState(null)
+    const [nickname, setNickname] = useState(null)
+    const [password, setPassword] = useState(null)
+    const [passwordConfirmation, setPasswordConfirmation] = useState(null)
     const history = useHistory()
 
     const handleSubmit=(e)=>{
@@ -54,9 +54,10 @@ const Register = () => {
              required
              name='email'
              onChange={(e)=> setEmail(e.target.value)}/>
-             <p>Password</p>
+             <p>Password (minimum of 7 characters)</p>
              <input
             label='Password'
+            type='password'
             value={password}
              autoFocus
              required
@@ -66,6 +67,7 @@ const Register = () => {
              <input
             label='Confirm Password'
             value={passwordConfirmation}
+            type='password'
              autoFocus
              required
              name='passwordConfirmation'
