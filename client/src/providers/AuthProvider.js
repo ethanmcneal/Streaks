@@ -27,6 +27,8 @@ const AuthProvider = (props) =>{
         }
     }
 
+    
+
     const handleLogin = async(user, history) => {
         try {
             let res = await axios.post('api/auth/sign_in', user)
