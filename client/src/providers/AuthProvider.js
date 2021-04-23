@@ -7,6 +7,7 @@ export const AuthConsumer = AuthContext.Consumer;
 const AuthProvider = (props) =>{ 
     const [user, setUser] = useState(null)
     const [emailAlert, setEmailAlert] = useState(false)
+    const [loginAlert, setLoginAlert] = useState(false)
     const {defaultNickname, defaultEmail, defaultImage} = props
 
     const [editUser, setEditUser] = useState({
@@ -24,8 +25,10 @@ const AuthProvider = (props) =>{
             history.push('/')
             
         } catch (error) {
+            
             console.log(error)
             setEmailAlert(true)
+            alert('email invalid or already in use')
         }
     }
 
@@ -38,6 +41,7 @@ const AuthProvider = (props) =>{
             history.push('/dashboard')
         } catch (error) {
             console.log(error)
+            setLoginAlert(true)
         }
     }
 
@@ -48,7 +52,7 @@ const AuthProvider = (props) =>{
             
         } catch (error) {
             console.log(error)
-            alert('email invalid or already in use')
+            
         }
     }
 
@@ -71,6 +75,7 @@ const AuthProvider = (props) =>{
         <AuthContext.Provider value={{
             user: user,
             emailAlert: emailAlert,
+            loginAlert: loginAlert,
             setUser: setUser,
             handleRegister: handleRegister,
             handleLogin: handleLogin,
