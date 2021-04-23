@@ -55,7 +55,7 @@ const Timer = (props) => {
 
     return(
         <div>
-        <div style={{textAlign: 'center', padding:'10em'}}>
+        <div className='timerbox'>
             {upcoming ? <h2>Streak starts in:</h2> : <h2>Streak has been going for:</h2>}
          {timeElapsed && <h3>{timeElapsed.days} days, {timeElapsed.hours} hours, {timeElapsed.minutes} minutes, and {timeElapsed.seconds} seconds</h3> }
         </div>
