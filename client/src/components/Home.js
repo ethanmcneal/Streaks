@@ -1,15 +1,16 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import { Link } from 'react-router-dom'
 import { Button, Container, Image, Menu } from 'semantic-ui-react'
-import img from './FakeLogo.png'
+import { AuthContext } from '../providers/AuthProvider'
+
 
 
 const Home = () =>{
-
+    const {user} = useContext(AuthContext)
     return(
-<>
+    <>
 
-        <Menu className="landing-menu">
+       {!user &&  <Menu className="landing-menu">
             <Menu.Item>
             {/* <img src={img} className="small-logo"/>Streaks */}
             <button className='button-landing'>Streaks</button>
@@ -32,7 +33,7 @@ const Home = () =>{
                 <Menu.Item>
                 </Menu.Item>
             </Menu.Menu> 
-        </Menu>
+        </Menu>}
 
 <div className="landing">
 
@@ -44,9 +45,10 @@ const Home = () =>{
 
 <p>Use streaks to prove yourself to friends, family, and strangers</p>
 <br></br>
+{!user && 
 <Link to='/register'> 
                     <Button   className='button-orange'>Sign up</Button>
-                    </Link>
+                    </Link>}
 </div>
 </>
     )
