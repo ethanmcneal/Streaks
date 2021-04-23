@@ -62,7 +62,7 @@ const Streaks = (props)=>{
             <p className='streaks-cards'>Reward: {streak.reward}</p>
             <p className='streaks-cards'>Punishment: {streak.punishment}</p>
             <Card.Content extra>{streak.open ? '' : 'In Progress' }</Card.Content>
-            {usersStreakIds.includes(streak.id) == false && streak.open == true ? <Button className="button-orange" onClick={()=>addToUserStreaks(streak.id)}>Start Streak</Button> : ''}
+            {usersStreakIds.includes(streak.id) == false && streak.open == true ? <Button  variant='light' className="button-orange" onClick={()=>addToUserStreaks(streak.id)}>Start Streak</Button> : ''}
            <br/>
            </Card>
             </>
@@ -85,13 +85,13 @@ const Streaks = (props)=>{
             <p className='streaks-cards'>Punishment: {streak.punishment}</p>
 
             <h4>{streak.open ? '' : 'In Progress' }</h4>
-            <Button className="button-orange" onClick={()=>addToUserStreaks(streak.id)}>Start Streak</Button> 
+            <Button variant='light' className="button-orange" onClick={()=>addToUserStreaks(streak.id)}>Start Streak</Button> 
             <br/>
             </Card> : '' )}
             </CardGroup>
             <h4>Don't see a streak you like? click the button to Create your own!</h4>
             <Link to='/streaks/form'>
-            <Button>+ Add Streak</Button>
+            <Button variant='light' className='button-orange'>+ Add Streak</Button>
             </Link>
             </div>
         )}
@@ -117,7 +117,7 @@ const Streaks = (props)=>{
 
     return (
         <>
-         <h1>Challenges </h1>
+         <h1 className='new-streak-title'>Streaks</h1>
          <Segment.Group className="apple" >
        
              {streaks && <Tab menu={{ secondary: true, pointing: true }} panes={panes} />}

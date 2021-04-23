@@ -11,7 +11,8 @@ const Home = () =>{
 
         <Menu className="landing-menu">
             <Menu.Item>
-            <img src={img} className="small-logo"/>Streaks
+            {/* <img src={img} className="small-logo"/>Streaks */}
+            <button className='button-landing'>Streaks</button>
                 </Menu.Item>
 
         <Menu.Menu position='right'>
@@ -25,12 +26,7 @@ const Home = () =>{
                 Login
                 </Menu.Item>
             </Link>
-                <Menu.Item>
-                ???
-                </Menu.Item>
-                <Menu.Item>
-                !!!
-                </Menu.Item>
+
                 <Menu.Item>
                 </Menu.Item>
                 <Menu.Item>
@@ -39,10 +35,8 @@ const Home = () =>{
         </Menu>
 
 <div className="landing">
-   <br></br>
-   <br></br>
-   {/* <Image src='https://react.semantic-ui.com/images/wireframe/square-image.png' size='medium' circular /> */}
-   <img src={img} className="circular-logo"/>
+
+   {/* <img src={img} className="circular-logo"/> */}
    <br></br>
 <h1>Streaks</h1>
 <br></br>
@@ -51,7 +45,7 @@ const Home = () =>{
 <p>Use streaks to prove yourself to friends, family, and strangers</p>
 <br></br>
 <Link to='/register'> 
-                    <Button   className="sign-up">Sign up</Button>
+                    <Button   className='button-orange'>Sign up</Button>
                     </Link>
 </div>
 </>
