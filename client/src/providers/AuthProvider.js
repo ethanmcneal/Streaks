@@ -6,13 +6,15 @@ export const AuthConsumer = AuthContext.Consumer;
 
 const AuthProvider = (props) =>{ 
     const [user, setUser] = useState(null)
-    const {defaultNickname, defaultEmail} = props
+    const [emailAlert, setEmailAlert] = useState(false)
+    const [loginAlert, setLoginAlert] = useState(false)
+    const {defaultNickname, defaultEmail, defaultImage} = props
 
     const [editUser, setEditUser] = useState({
         // id: user.id,
         nickname: defaultNickname, 
         email: defaultEmail, 
-        image: 'https://st4.depositphotos.com/4329009/19956/v/600/depositphotos_199564354-stock-illustration-creative-vector-illustration-default-avatar.jpg'
+        image: defaultImage,
       })
 
     const handleRegister = async(user, history) => {
@@ -23,7 +25,10 @@ const AuthProvider = (props) =>{
             history.push('/')
             
         } catch (error) {
+            
             console.log(error)
+            setEmailAlert(true)
+            alert('email invalid or already in use')
         }
     }
 
@@ -36,6 +41,7 @@ const AuthProvider = (props) =>{
             history.push('/dashboard')
         } catch (error) {
             console.log(error)
+            setLoginAlert(true)
         }
     }
 
@@ -46,6 +52,7 @@ const AuthProvider = (props) =>{
             
         } catch (error) {
             console.log(error)
+            
         }
     }
 
@@ -67,6 +74,8 @@ const AuthProvider = (props) =>{
     return(
         <AuthContext.Provider value={{
             user: user,
+            emailAlert: emailAlert,
+            loginAlert: loginAlert,
             setUser: setUser,
             handleRegister: handleRegister,
             handleLogin: handleLogin,
