@@ -2,11 +2,11 @@
 import {Link, useHistory, useParams} from 'react-router-dom'
 import axios from 'axios'
 import { useContext, useEffect, useState } from 'react';
-import {Card, CardGroup, Segment } from 'semantic-ui-react';
+import { CardGroup, Segment } from 'semantic-ui-react';
 import { AuthContext } from '../providers/AuthProvider';
 import CommentsStreak from '../comments/CommentsStreak';
 import { Tab } from 'semantic-ui-react';
-import { Button } from 'react-bootstrap';
+import { Button, Card, CardDeck } from 'react-bootstrap';
 
 
 
@@ -24,19 +24,18 @@ const Streaks = (props)=>{
     },[])
 
 
-      const getStreaks = async()=>{
-        try{
-          let res = await axios.get(`/api/streaks`)
-          let res2 = await axios.get(`/api/users_streaks/${user.id}`)
-          setUsersStreakIds([...new Set(res2.data.map(us => us.streak_id))])
-          console.log([...new Set(res2.data.map(us => us.streak_id))])
-          setStreaks(res.data)
+    const getStreaks = async()=>{
+    try{
+        let res = await axios.get(`/api/streaks`)
+        let res2 = await axios.get(`/api/users_streaks/${user.id}`)
+        setUsersStreakIds([...new Set(res2.data.map(us => us.streak_id))])
+        console.log([...new Set(res2.data.map(us => us.streak_id))])
+        setStreaks(res.data)
 
-          console.log(res.data)
-        }catch(err){
-            alert(err)
-        }
-    }
+        console.log(res.data)
+    }catch(err){
+        alert(err)
+    }}
 
     const addToUserStreaks = async(id) => {
         try {
@@ -50,52 +49,60 @@ const Streaks = (props)=>{
 
 
     const renderStreak = () => {
+        
         return streaks.map((streak) => {
         return(
             <>
-           <Card className="StreaksCards">
-               <Link to={`streaks/${streak.id}`}>
-            <h2>{streak.name}</h2>
+            <CardDeck>
+            <Card >
+                <Card.Body>
+                <Link to={`streaks/${streak.id}`}>
+                    <Card.Title>{streak.name}</Card.Title>
                  </Link>
-            <h3>The challenge = {streak.description}</h3>
-            <h4>Success = {streak.reward}</h4>
-            <h4>Failure = {streak.punishment}</h4>
-            <h4>{streak.open ? 'open' : 'private' }</h4>
-            {usersStreakIds.includes(streak.id) == false && streak.open == true ? <Button onClick={()=>addToUserStreaks(streak.id)}>Start Streak!</Button> : ''}
-           <br/>
-           </Card>
+                    <br/>
+                <Card.Text style={{maxWidth:"200px"}} >{streak.description}</Card.Text>
+                
+                <Card.Text >Reward: {streak.reward} 
+                 <br/>
+                    Punishment: {streak.punishment}
+                </Card.Text>
+                <Card.Footer>{streak.open ? '' : 'In Progress' }
+                {usersStreakIds.includes(streak.id) == false && streak.open == true ? <Button  variant='light' className="button-orange" onClick={()=>addToUserStreaks(streak.id)}>Start Streak</Button> : ''}</Card.Footer>
+                </Card.Body>
+            </Card>
+           </CardDeck>
             </>
         )})
     }
 
-        const renderJoinableStreaks = () => {
-            return(
-                <div>
-                <CardGroup>
-            {streaks.map((streak) => usersStreakIds.includes(streak.id) == false && streak.open == true ? 
-                   <Card className="StreaksCards">
-                   <Link to={`streaks/${streak.id}`}>
-                <h2>{streak.name}</h2>
-                     </Link>
-                <h3>The challenge = {streak.description}</h3>
-                <h4>Success = {streak.reward}</h4>
-                <h4>Failure = {streak.punishment}</h4>
-                <h4>{streak.open ? 'open' : 'private' }</h4>
-                <Button onClick={()=>addToUserStreaks(streak.id)}>Start Streak!</Button> 
-               <br/>
-               </Card> : '' )}
-                </CardGroup>
-                <h4>Don't see a streak you like? click the button to Create your own!</h4>
-                <Link to='/streaks/form'>
-                <Button>+ Add Streak</Button>
-                </Link>
-                </div>
-            )}
+    const renderJoinableStreaks = () => {
+        return(
+            <div>
+            <CardDeck>
+        {streaks.map((streak) => usersStreakIds.includes(streak.id) == false && streak.open == true ? 
+                <Card >
+                     <Card.Body>
+                <Link to={`streaks/${streak.id}`}>
+            <Card.Title>{streak.name}</Card.Title>
+                    </Link>
+            <Card.Text>{streak.description}</Card.Text>
+
+            <Card.Text>Reward: {streak.reward}</Card.Text>
+
+            <Card.Text>Punishment: {streak.punishment}</Card.Text>
+
+            <Card.Footer>{streak.open ? '' : 'In Progress' }</Card.Footer>
+            <Button variant='light' className="button-orange" onClick={()=>addToUserStreaks(streak.id)}>Start Streak</Button> 
             
-   
-        
-   
-    
+            </Card.Body>
+            </Card> : '' )}
+            </CardDeck>
+            <h4>Don't see a streak you like? click the button to Create your own!</h4>
+            <Link to='/streaks/form'>
+            <Button variant='light' className='button-orange'>+ Add Streak</Button>
+            </Link>
+            </div>
+        )}
 
     const panes = [
         {
@@ -118,7 +125,7 @@ const Streaks = (props)=>{
 
     return (
         <>
-         <h1>Challenges </h1>
+         <h1 className='new-streak-title'>Streaks</h1>
          <Segment.Group className="apple" >
        
              {streaks && <Tab menu={{ secondary: true, pointing: true }} panes={panes} />}
@@ -129,3 +136,5 @@ const Streaks = (props)=>{
 }
 
 export default Streaks
+
+// style={{width: "100px", height:"250px" }}
