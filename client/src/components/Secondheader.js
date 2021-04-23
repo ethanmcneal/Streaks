@@ -41,7 +41,7 @@ const DashHeader = () => {
             </Menu.Item>
                 <Menu.Item>
                     <Link to='/streaks/form'> 
-                    <Button style={{backgroundColor:'rgb(245, 155, 13)!important'}}>+ New Streak</Button>
+                    <Button style={{backgroundColor:'rgb(245, 155, 13)!important', paddingLeft:'12px'}}>+ &nbsp; New Streak</Button>
                     </Link>
                 </Menu.Item>
             </Menu.Menu> }
