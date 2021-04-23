@@ -1,25 +1,3 @@
-// import React,{useState,useContext} from 'react'
-// import { Form, Button, Col } from "react-bootstrap";
-
-// const UserEdit = ({ hide }) => {
-//   const [userState, setUserState] = useState(user);
-
-//   return(
-//     <h1>UserEdit.js</h1>
-//   )
-// }
-// export default UserEdit;                                  <---------- JED'S CODE ^ ^ ^ ^ 
-
-
-
-
-
-//                                         | | | |              
-// --  BELOW IS TEST DANI CODE(altered) -- V-V-V-V
-
-
-
-
 
 import React,{useState,useContext} from 'react'
 import { Form, Button, Col } from "react-bootstrap";

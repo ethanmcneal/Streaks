@@ -1,11 +1,12 @@
 import axios from 'axios'
 import React, { useContext, useEffect, useState } from 'react'
-import { Segment, Tab } from 'semantic-ui-react'
+import { Segment, SegmentGroup, Tab } from 'semantic-ui-react'
 import { AuthContext } from '../providers/AuthProvider'
 import UserStreak from './UserStreak'
 import '../style_components/basicstyle.css'
 import { render } from 'react-dom'
 import StreakListHeader from '../components/StreakListHeader'
+import '../style_components/dashboard.css'
 
 
 
@@ -36,11 +37,11 @@ const UserStreaks = () => {
   const panes = [
     {
       menuItem: 'Active',
-      render: () => <Tab.Pane attached={false}>{renderUserStreak()}</Tab.Pane>,
+      render: () => <Tab.Pane attached={true}>{renderUserStreak()}</Tab.Pane>,
     },
     {
       menuItem: 'Completed',
-      render: () => <Tab.Pane attached={false}>{renderFinishedStreaks()}</Tab.Pane>,
+      render: () => <Tab.Pane attached={true}>{renderFinishedStreaks()}</Tab.Pane>,
     },
   ]
 
@@ -48,7 +49,7 @@ const UserStreaks = () => {
     return(
       <div>
       <StreakListHeader />
-    <Segment.Group>
+    <Segment.Group style={{margin: 0}}>
         {userStreaks.map(userStreak => userStreak.status !== 'quit' && userStreak.status !== 'won' ? <UserStreak streakName={userStreak.streak_name} 
                                                       streakReward={userStreak.reward}
                                                       streakPunishment={userStreak.punishment}
@@ -65,9 +66,9 @@ const UserStreaks = () => {
 
   const renderFinishedStreaks = () => {
     return(
-      <div>
+      <div >
       <StreakListHeader />
-    <Segment.Group>
+    <Segment.Group >
         {userStreaks.map(userStreak => userStreak.status == 'quit' || userStreak.status == 'won' ? <UserStreak streakName={userStreak.streak_name} 
                                                       streakReward={userStreak.reward}
                                                       streakPunishment={userStreak.punishment}
@@ -87,7 +88,11 @@ const UserStreaks = () => {
   <Segment.Group className="apple" >
   
   
-    {userStreaks && <Tab menu={{ secondary: true, pointing: true }} panes={panes} /> }
+  
+    {userStreaks && 
+    <div>
+    <Tab style={{padding: '50px 0 0 0'}}menu={{ secondary: true, pointing: true }} panes={panes}  /> 
+    </div>}
     {/* <Segment.Group> */}
     {/* {userStreaks && <div className="orange">{renderUserStreak()} </div>} */}
     {/* </Segment.Group> */}

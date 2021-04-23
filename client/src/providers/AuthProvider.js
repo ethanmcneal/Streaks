@@ -6,13 +6,13 @@ export const AuthConsumer = AuthContext.Consumer;
 
 const AuthProvider = (props) =>{ 
     const [user, setUser] = useState(null)
-    const {defaultNickname, defaultEmail, defaultImage} = props
+    const {defaultNickname, defaultEmail} = props
 
     const [editUser, setEditUser] = useState({
         // id: user.id,
         nickname: defaultNickname, 
         email: defaultEmail, 
-        image: defaultImage
+        image: 'https://st4.depositphotos.com/4329009/19956/v/600/depositphotos_199564354-stock-illustration-creative-vector-illustration-default-avatar.jpg'
       })
 
     const handleRegister = async(user, history) => {
@@ -26,6 +26,8 @@ const AuthProvider = (props) =>{
             console.log(error)
         }
     }
+
+    
 
     const handleLogin = async(user, history) => {
         try {

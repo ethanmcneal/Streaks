@@ -9,6 +9,7 @@ import { PADDING } from '../style_components/styles'
 
 
 
+
 const UserStreak = (props) => {
 
 const {streakName, streakReward, createdAt, status, userStreakId, streakId, streakPunishment, media} = props
@@ -56,7 +57,7 @@ const changeStatus = async(id, s) => {
 
 
     return(
-            <Segment style={{display: 'flex', justifyContent: 'space-between'}}>
+            <Segment style={{display: 'flex', justifyContent: 'space-between', backgroundColor: 'white !important'}}>
                 <div className='streak-segment'>
                 <Link to={`/streaks/${streakId}`}>
                 <h3>{streakName}</h3>
