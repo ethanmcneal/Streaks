@@ -11,11 +11,23 @@
     padding: .2rem !important;
 }
 .ui.button {
-    background-color: rgb(3, 180, 3) !important;
-    border-style: solid !important;
-    border-width:.1em !important;
-    border-color: rgb(1, 150, 1) !important;
-    color: honeydew !important;
-    
+    color: white !important;
+    background-color: rgb(245 155 13) !important;
+
+}
+
+span {
+    display: flex;
+    align-self: center;
+    width: 0;
+    height: .8em;
+    border-left: .5px solid lightgray;
+    opacity: 80%;
+    /* border-right: 1px solid lightgray; */
+    /* position:relative; */
+    /* bottom:'-5px'; */
+    }
+
+.burgerBell {
 
 }

@@ -28,16 +28,16 @@ const DashHeader = () => {
     }
     return(
         <Menu>
-
-<Link to='/dashboard'>
-            <Menu.Item>
-               {user.nickname} 
+            {/* <Link to='/dashboard'> */}
+                <Menu.Item className="burgerBell" style={{fontSize:'1.1em', marginBottom:'2px'}}>
+                    {user.nickname} 
                 </Menu.Item>
-                </Link>
-            <Menu.Item >
+            {/* </Link>  */}
+            <span className="Upright Divider"></span>
+            <Menu.Item style={{fontSize:'.9em', opacity: '58%'}}>
                 {activeStreaks} Active Streaks
             </Menu.Item>
-        {user &&    <Menu.Menu position='right'>
+         {user && <Menu.Menu position='right'>
             <Menu.Item>
                 <SearchBar/>
             </Menu.Item>
@@ -49,5 +49,5 @@ const DashHeader = () => {
             </Menu.Menu> }
         </Menu>
     )
-    }
+}
 export default DashHeader;

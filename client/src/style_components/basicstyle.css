@@ -18,6 +18,7 @@ body {
     padding: 1em !important;
     margin: 1em  !important;
     border-radius: 0px !important;
+    min-width: fit-content;
 }
 
 .ui.horizontal.segments>.segment {
@@ -39,7 +40,8 @@ body {
 }
 
 .ui.segment {
-    background: rgb(245, 245, 245) !important;
+    /* background: rgb(245, 245, 245) !important; */
+    background: rgb(25, 53, 81) !important;
     border-radius: 0px !important;
     margin: 0rem !important;
 }
@@ -54,28 +56,28 @@ div.orange {
 }
 
 .card.peopleList {
-    color: rgb(216, 216, 216);
-    background: rgb(33, 34, 41);
+    color: white;
+    background: rgb(245 155 13);
     width: fit-content;
     margin: 10px;
+    border-radius: 0px;
+    float: left;
+    -moz-text-size-adjust: auto;
+    padding: 5px;
 }
 .list-group-item {
     background: transparent;
     border: none;
 }
 .spacer {
-    background: rgb(85, 85, 85);
+    background: rgb(245 155 13);
 }
 div.landing {
     text-align: center;
-    color: #3793fb;
-    background: #ddecfd !important;
+    color: white;
     height: 100vh !important;
+    padding-top: 25vh;
     
-}
-.ui.button.sign-up {
-    background: #3793fb !important;
-    border-color: #3793fb !important;
 }
 img.circular-logo {
     display: inline ;
@@ -85,12 +87,13 @@ img.circular-logo {
 }
 div.landing-menu {
     color: #3793fb !important;
-    background: #ddecfd !important;
+    background: #ffffff !important;
     border: none !important;
+    width: 75vw;
 }
 
 div.landing-menu.item {
-    color: #3793fb !important;
+    
     background: #ddecfd !important;
     border: none !important;
 }
@@ -149,7 +152,7 @@ img.small-logo {
 .comments-media-carousel{
     display: block;
     margin: auto;
-    height: 250px !important;
+    height: min-content !important;
 }
 
 div.ui.segment.active.tab {
@@ -157,6 +160,7 @@ div.ui.segment.active.tab {
     border-bottom-left-radius: 10px !important;
     border-bottom-right-radius: 10px !important;
     padding: 0;
+
 }
 
 .table-streak-form{
@@ -174,4 +178,36 @@ h1 {
 .button-orange{
     color: white !important;
     background-color: rgb(245 155 13) !important;
+    border-style: none;
+    width: fit-content;
+}
+div.timerbox {
+    text-align: center;
+    padding: 3rem;
+}
+div.ui.comments {
+    background: rgb(228, 238, 253);
+    padding: 1.25rem;
+}
+div.newComment {
+    background: rgb(255, 255, 255);
+    padding: 1.25rem;
+
+}
+div.timer.card {
+    float: right;
+    width: 50vw;
+    min-width: min-content;
+    margin-right: -5vw;
+}
+.button-landing {
+    color: transparent !important;
+    background-color: rgb(245 155 13) !important;
+    border-style: none;
+    width: fit-content;
+    border-radius: 2px;
+    padding: 3px;
+}
+div.ui.landing-menu.menu {
+    margin-left: 12vw !important;
 }
