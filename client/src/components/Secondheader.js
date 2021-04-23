@@ -24,14 +24,13 @@ const DashHeader = () => {
             setActiveStreaks(filterData.length)
         } catch (error) {
             console.log(error)
-        }
+        }                            
     }
     return(
         <Menu>
-                <Menu.Item href="/dashboard" className="burgerBell" style={{fontSize:'1.1em', marginBottom:'2px'}}>
-                    {user.nickname} 
-                </Menu.Item>
-        
+            <Menu.Item id="boom" style={{fontSize:'1.1em', marginBottom:'2px', marginLeft:'3px', color:'rgb(43, 174, 173)'}}>
+                <a href="/dashboard" style={{color:'rgb(43, 174, 173)'}} >{user.nickname}</a> 
+            </Menu.Item>
             <span className="Upright Divider"></span>
             <Menu.Item style={{fontSize:'.9em', opacity: '58%'}}>
                 {activeStreaks} Active Streaks
@@ -42,7 +41,7 @@ const DashHeader = () => {
             </Menu.Item>
                 <Menu.Item>
                     <Link to='/streaks/form'> 
-                    <Button>+ New Streak</Button>
+                    <Button style={{backgroundColor:'rgb(245, 155, 13)!important', paddingLeft:'12px'}}>+ &nbsp; New Streak</Button>
                     </Link>
                 </Menu.Item>
             </Menu.Menu> }

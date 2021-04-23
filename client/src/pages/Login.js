@@ -7,6 +7,7 @@ import CardContainer from "../style_components/CardContainer"
 import Input from "../style_components/Input"
 import '../style_components/register.css'
 import FormattedMessage from "../style_components/FormattedMessage"
+import NavBar from '../components/Navbar';
 
 const Login = () => {
     const {handleLogin, loginAlert} = useContext(AuthContext)
@@ -21,7 +22,11 @@ const Login = () => {
         handleLogin({ email, password}, history)
     } 
     return(
-        <div className='register'>
+      
+          <>
+      <NavBar />
+        <div className='register'      
+        
             <h1>Login</h1>
         <Form onSubmit={handleSubmit}>
             <p>Email</p>
@@ -42,12 +47,11 @@ const Login = () => {
              name='password'
              onChange={(e)=> setPassword(e.target.value)}/>
              <Button style={{backgroundColor: 'rgb(245 155 13)', margin: '2em'}} type='submit'>Login</Button>
-             {loginAlert && <FormattedMessage type='alert'>No users match that email and password</FormattedMessage>}
-             
-
-            
+             {loginAlert && <FormattedMessage type='alert'>No users match that email and password</FormattedMessage>}      
         </Form>
         </div>
+        </>
+
     )
 }
 
