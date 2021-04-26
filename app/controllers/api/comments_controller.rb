@@ -1,5 +1,5 @@
 class Api::CommentsController < ApplicationController
-  before_action :set_comment, only: [:show, :destroy, :update]
+  before_action :set_comment, only: [:show, :destroy, :update, :update_media]
 
   def index
     paginate json: Comment.every_comment
@@ -37,18 +37,24 @@ class Api::CommentsController < ApplicationController
   end
   
   def update 
+    @comment.update(comment_params)
+  end 
+
+  def update_media
     file = params[:media]
-    if !file.to_s.empty?
+    if file
+      
       begin
         cloud_image = Cloudinary::Uploader.upload(file, public_id: file.original_filename, secure: true, resource_type: :auto)
-        @comment.update(media: cloud_image['secure_url'], user_id: params[:user_id], streak_id: params[:streak_id], info: params[:info], cheer: params[:cheer], laugh: params[:laugh])
+
+        @comment.update(media: cloud_image['secure_url'])
+       
       rescue => e
         render json: { errors: e }, status: 422
-        return
       end
-    else @comment.update(comment_params)
-    end 
-  end 
+    end
+   
+  end
 
   def destroy
     @comment.destroy
