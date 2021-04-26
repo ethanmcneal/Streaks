@@ -177,8 +177,8 @@ const Streak = () => {
           
             {user.id === streak.owner && <Button className='button-orange' onClick={deleteStreak}>Delete Streak</Button>}
             {user.id === streak.owner && <Link  to={`/streaks/edit/${id}`}><Button>Edit Streak</Button></Link>}
-            {user.id === streak.owner && streak.open == false ? <Button className='button-orange' onClick={()=>closeStreak(true)}>Make Streak Public</Button>: 
-                                                                <Button className='button-orange' onClick={()=>closeStreak(false)}>Make Streak Private</Button> }
+            {user.id === streak.owner && streak.open == false ? <Button className='button-orange' onClick={()=>closeStreak(true)}>Make Streak Public</Button> : 
+            user.id === streak.owner ? <Button className='button-orange' onClick={()=>closeStreak(false)}>Make Streak Private</Button> : '' }
             </div>
           
           <Card.Body >
