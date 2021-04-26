@@ -10,6 +10,7 @@ import { AuthContext } from '../providers/AuthProvider'
 import '../style_components/basicstyle.css'
 import InfiniteScroll from 'react-infinite-scroller'
 import moment from 'moment';
+import CommentMediaEdit from './CommentMediaEdit'
 
 const CommentsStreak = () => {
   const [comments, setComments] = useState('')
@@ -19,7 +20,9 @@ const CommentsStreak = () => {
   const {user} = useContext(AuthContext)
   const [currentPage, setCurrentPage] = useState(1)
   const [totalPages, setTotalPages] = useState(null)
-  
+  const [modalEditMediaShow, setEditMediaModalShow] = useState(false)
+  const [modalEditCommentTextShow, setEditCommentTextShow] = useState(false)
+
   useEffect(()=>{
     getComments()
     },[])
@@ -56,6 +59,13 @@ const CommentsStreak = () => {
         setCurrentPage(pagex)
       }
     }  
+
+    
+    
+    
+   
+
+
     const renderFullComments = () => {
       return (
         <Comment.Group>
@@ -68,14 +78,12 @@ const CommentsStreak = () => {
                   <Comment.Metadata>
                     <div>{moment(comment.created_at).fromNow()}</div>
                   </Comment.Metadata>
-                  {/* <img src={comment.image}/> */}
+                  
                   <Comment.Text>
                     
                     {comment.info}
                   </Comment.Text>
                   <img className="comments-media-carousel" src={comment.media} />
-                  {/* <h1>cheers: {comment.cheer}</h1>
-               <h1><laughs: {comment.laugh}</h1> */}
                   <div>
                     <CheerLaughCounter
                       defaultCommentID={comment.comment_id}
@@ -83,7 +91,6 @@ const CommentsStreak = () => {
                       initLaugh={comment.laugh}
                     />
                   </div>
-                  {/* todo: make delete and edit only visible to curernt user for their comments */}
                   <br />
                   {user.id === comment.user_id && (
                     <Button onClick={() => deleteComment(comment.comment_id)}>
@@ -91,11 +98,26 @@ const CommentsStreak = () => {
                     </Button>
                   )}
                   {user.id === comment.user_id && (
-                    <Button onClick={() => {setHideEditFields(!hideEditFields);}} >
-                      {hideEditFields ? "Cancel Edit" : "Edit"}
+                    <>
+                    <Button variant="primary" onClick={() => setEditMediaModalShow(true)} >
+                     Edit Comment Media
                     </Button>
+                    <Button variant="primary" onClick={() => setEditCommentTextShow(true)} >
+                     Edit Comment Text
+                    </Button>
+
+                    <CommentMediaEdit
+                    defaultInfo={comment.info}
+                    defaultMedia={comment.media}
+                    defaultCheer={comment.cheer}
+                    defaultLaugh={comment.laugh}
+                    defaultCommentID={comment.comment_id}
+                    show={modalEditMediaShow}
+                    onHide={() => setEditMediaModalShow(false)}
+                  />
+                  </>
                   )}
-                  {hideEditFields && (
+                  {/* {hideEditFields && (
                     <CommentEdit
                       defaultInfo={comment.info}
                       defaultMedia={comment.media}
@@ -103,17 +125,16 @@ const CommentsStreak = () => {
                       defaultLaugh={comment.laugh}
                       defaultCommentID={comment.comment_id}
                     />
-                  )}
+                  )} */}
+                  {console.log('comment.info garbage', comment.info)}
                   <Divider/>
                 </Comment.Content>
-              </Comment>
+              </Comment> 
             ))}
         </Comment.Group>
       );
     };
   
-  
-
 
     return (
       <>
@@ -128,6 +149,7 @@ const CommentsStreak = () => {
             //   </div>
             // }
           >
+           
             {renderFullComments()}
           </InfiniteScroll>
         </div>

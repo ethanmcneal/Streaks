@@ -15,5 +15,6 @@ Rails.application.routes.draw do
     get 'search_streaks', to: 'streaks#search_streaks'
     get 'user/:id', to: 'users#show'
     put 'user/:id', to: 'users#update'
+    put 'commentmedia/:id', to: 'comments#update_media'
   end
 end

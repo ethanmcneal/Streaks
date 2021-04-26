@@ -54,6 +54,11 @@ end
     puts "seeded #{i} datas"
 end
 
+# 5.times do |i|
+#     comment = Faker::Music::Rush.album 
+#     Comment.create(user_id: i, streak_id: i, info: comment)
+#     puts "seeded #{i} datas"
+# end
 
         
 # for when needing to reseed db. ex: streak_id: rand(16..20) instead of i
