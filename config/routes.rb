@@ -16,5 +16,6 @@ Rails.application.routes.draw do
     get 'user/:id', to: 'users#show'
     put 'user/:id', to: 'users#update'
     put 'userimage/:id', to: 'users#updateUserImage'
+    put 'commentmedia/:id', to: 'comments#update_media'
   end
 end

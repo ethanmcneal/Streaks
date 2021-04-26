@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap');
+
 .btn {
     min-width: fit-content  !important;
 }
@@ -164,11 +166,11 @@ div.ui.segment.active.tab {
 }
 
 .table-streak-form{
-    font-family: 'Roboto', sans-serif !important;
+    font-family: 'Rubik' !important;
 }
 
 h1 {
-    font-family: 'Roboto', sans-serif !important;
+    font-family: 'Rubik' !important;
 }
 
 .new-streak-title{
