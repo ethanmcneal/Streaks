@@ -128,17 +128,15 @@ const Streak = () => {
     const renderUsers = () => {
         return users.map(user => {
             return(
-                <div>
-                    <ListGroup horizontal>
-                    <ListGroup.Item>
+            <div style={{width: '18em'}}>
+                <div style={{display: 'flex', margin: '1em'}} >
                         <UserAvatar userImage={user.image}/>
-                        </ListGroup.Item>
+                        <div>
                         <ListGroup.Item>{user.nickname}</ListGroup.Item>
-                        <ListGroup.Item>{user.email}</ListGroup.Item>
-                        <ListGroup.Item>{user.status}</ListGroup.Item>
-
-                    </ListGroup>
-                </div>
+                        <p style={{color: 'black', textAlign: 'left', marginLeft: '1.2em'}}>{user.status}</p>  
+                        </div>
+                </div>           
+            </div>
             )
            
         })
@@ -149,7 +147,7 @@ const Streak = () => {
             {/* <Button className='button-orange' onClick={history.goBack}>Back</Button> */}
            
             <div>
-              <Card className="peopleList">
+              <Card className="peopleList" style={{marginLeft: '10em'}}>
             <h3>Participants</h3>
             {users && <ListGroup>{renderUsers()}</ListGroup>}
             </Card>
