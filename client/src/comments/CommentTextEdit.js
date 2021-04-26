@@ -38,7 +38,6 @@ const CommentTextEdit = (props) => {
     data.append("info", editComment.info);
     try{
       let res = await axios.put(`/api/comments/${defaultCommentID}`, data)
-      debugger
       console.log('handle edit comment here', editComment.media)
       history.push(`/streaks/${id}`)
       window.location.reload()
@@ -70,6 +69,7 @@ const CommentTextEdit = (props) => {
           <form onSubmit={handleEditComment}>
           <input value={editComment.info} label='Comment:' placeholder={editComment.info} name='info' onChange={handleChange}/>
           {console.log('edit comment', editComment)}
+          <br />
           <Button  type='submit'>Edit Comment</Button>
           </form>
           </p>
