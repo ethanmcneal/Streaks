@@ -6,7 +6,7 @@ import '../style_components/register.css'
 import {Button} from 'react-bootstrap'
 import FormattedMessage from "../style_components/FormattedMessage"
 import NavBar from '../components/Navbar';
-import icon from '../images/FlameIcon'
+import icon from '../images/FlameIcon.png'
 
 
 const Register = () => {
@@ -31,7 +31,7 @@ const Register = () => {
         setAlert(false)
         setConfirmationAlert(true)
         }else{
-        handleRegister({nickname, email, password, passwordConfirmation, icon}, history)
+        handleRegister({nickname, email, password, passwordConfirmation, image:icon}, history)
         }
     } 
 
