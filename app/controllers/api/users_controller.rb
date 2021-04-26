@@ -1,5 +1,5 @@
 class Api::UsersController < ApplicationController
-  before_action :authenticate_user!, except: [:show, :update]
+  before_action :authenticate_user!, except: [:show, :update, :updateUserImage]
   before_action :get_user, only: [:show]
 
     def index
@@ -24,19 +24,26 @@ class Api::UsersController < ApplicationController
         end
     end
 
-    def update
+    def updateUserImage
         file = params[:image]
-        if file.to_s != "null"     #         <-------------- POSSIBLE CHANGE NEEDED AFTER WILL DEFAULT ICON ------
+        # if file.to_s != "https://st4.depositphotos.com/4329009/19956/v/600/depositphotos_199564354-stock-illustration-creative-vector-illustration-default-avatar.jpg"
+        # if file.to_s != false <-- user_image is NEVER false ---      --->     ^^^^^^^^-useless, only lets change once-^^^^^^^^
+        if file 
             begin 
                 cloud_image = Cloudinary::Uploader.upload(file, public_id: file.original_filename, secure: true, resource_type: :auto)
-                current_user.update(image: cloud_image['secure_url'], nickname: params[:nickname], email: params[:email])
+                current_user.update(image: cloud_image['secure_url'])
             rescue => e 
                 render json: { errors: e }, status: 422
                 return
             end 
-        else current_user.update(user_params)
         end 
     end
+
+
+    def update
+        current_user.update(user_params)
+    end 
+
 
     def destroy
         user = User.find(params[:id])
@@ -55,3 +62,4 @@ class Api::UsersController < ApplicationController
         params.permit(:id, :uid, :provider, :allow_password_change, :wins, :losses, :name, :nickname, :email, :image)
     end
 end
+

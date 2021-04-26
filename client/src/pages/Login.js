@@ -25,7 +25,7 @@ const Login = () => {
       
           <>
       <NavBar />
-        <div className='register'      
+        <div className='register'>    
         
             <h1>Login</h1>
         <Form onSubmit={handleSubmit}>

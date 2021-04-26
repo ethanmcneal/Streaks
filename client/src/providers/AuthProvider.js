@@ -71,6 +71,19 @@ const AuthProvider = (props) =>{
         }
     }
 
+    const handleUserEditImage = async(e, user, history) => {
+        e.preventDefault()
+        let data = new FormData();
+        data.append("image", user.image);
+        try{
+            let res = await axios.put(`/api/userimage/${user.id}`, data)
+            setUser(res.data);
+            history.push('/')
+        }catch(err) {
+          console.log("Error in handleUserEditImage in Auth");
+        }
+    }
+
     return(
         <AuthContext.Provider value={{
             user: user,
@@ -80,7 +93,9 @@ const AuthProvider = (props) =>{
             handleRegister: handleRegister,
             handleLogin: handleLogin,
             handleLogout: handleLogout,
-            handleUserEdit: handleUserEdit}}>
+            handleUserEdit: handleUserEdit,
+            handleUserEditImage: handleUserEditImage
+            }}>
             {props.children}
         </AuthContext.Provider>
     )

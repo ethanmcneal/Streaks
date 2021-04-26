@@ -62,7 +62,7 @@ const Register = () => {
              <p>Password (minimum of 7 characters)</p>
              <input
             label='Password'
-            type='password'
+            // type='password' <-------------------------------- commented out only for testing, keep valid for production -----
             value={password}
              autoFocus
              required
@@ -72,7 +72,7 @@ const Register = () => {
              <input
             label='Confirm Password'
             value={passwordConfirmation}
-            type='password'
+            // type='password' <-------------------------------- commented out only for testing, keep valid for production -----
              autoFocus
              required
              name='passwordConfirmation'
