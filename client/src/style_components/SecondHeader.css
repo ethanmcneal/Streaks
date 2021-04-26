@@ -17,8 +17,12 @@
     border-width: .1em !important;
     border-color: rgb(255, 255, 255) !important;
     color: honeydew !important;
-    /* color: white !important;
-    background-color: rgb(245 155 13) !important; */
+    height: 2.5em;
+    padding-bottom: 24px !important;
+}
+
+.ui.input {
+    height: 2.5em;
 }
 
 span {
