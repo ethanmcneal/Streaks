@@ -1,4 +1,5 @@
-import React, {useState, useContext} from 'react'
+import React, {useState, useContext} from 'react';
+import {Link, useHistory} from 'react-router-dom';                       //<----- try (x) filepond prob JW 
 import { Button, Form, Modal } from 'react-bootstrap';
 import { FilePond, registerPlugin } from "react-filepond";
 import "filepond/dist/filepond.min.css";
@@ -10,12 +11,13 @@ import { AuthContext } from "../providers/AuthProvider";
 
 const UserImageEdit = (props) => {
   const [ files, setFiles ] = useState([]) 
-  
+  const history = useHistory()
   const { user, handleUserEditImage } = useContext(AuthContext);
   const [userState, setUserState] = useState(user);
 
   const handleUpdate = (fileItems) => {
     setFiles(fileItems);
+    // fileItems ? setUserState({ ...userState, image: fileItems[0].file }) : setUserState({ ...userState });
     setUserState({ ...userState, image: fileItems[0].file })
     
   };
@@ -24,6 +26,10 @@ const UserImageEdit = (props) => {
     e.preventDefault();
     handleUserEditImage(e, userState, props.history)
   };
+
+  const refreshPage = () => {
+    window.location.reload(false);
+  }
 
 
     return (
@@ -51,20 +57,26 @@ const UserImageEdit = (props) => {
           <FilePond
                 files={files}
                 onupdatefiles={handleUpdate}
-                allowRemove={true}
+                allowRemove={false}
                 allowMultiple={false}
                 allowRevert={true}
+                iconRemove={true}
                 name="image"
                 labelIdle='Drag  Drop your files or <span class="filepond--label-action">Browse</span>'
           />
-          <Button type="submit"> Submit </Button>
+          <Button type="submit" style={{float:'right'}}> Submit </Button>
+          <Button onClick={refreshPage}>Abort</Button>
           </Form>
         </Modal.Body>
-        <Modal.Footer>
-          <Button onClick={props.onHide}>Close</Button>
-        </Modal.Footer>
+        {/* <Modal.Footer>
+          <Link>
+          <Button onClick={refreshPage}>Cancel</Button>
+          </Link>
+        </Modal.Footer> */}
       </Modal>
     );
 }
 
 export default UserImageEdit
+
+//  ( in close button on modal) onClick={props.onHide}
