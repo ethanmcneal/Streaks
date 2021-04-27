@@ -92,7 +92,7 @@ const CheerLaughCounter = (props) => {
     const { cheers, laughs, active } = state;
     return (
       <div style={{ display: "flex" }}>
-        <button
+        <button className='cheer-laugh'
           style={{
             color: active === "cheer" ? "green" : "black",
             marginRight: "10px"
@@ -108,7 +108,7 @@ const CheerLaughCounter = (props) => {
           {cheers}
 
         </button>
-        <button
+        <button className='cheer-laugh'
           style={{ color: active === "laugh" ? "red" : "black" }}
           onClick={() =>
             active !== "laugh" ? dispatch({ type: HANDLE_LAUGH }) : null

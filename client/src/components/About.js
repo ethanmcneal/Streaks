@@ -29,14 +29,14 @@ const About = () => {
     let JedPic = "https://media-exp1.licdn.com/dms/image/C5603AQHXuvDTbN81Rg/profile-displayphoto-shrink_400_400/0/1517834646234?e=1623888000&v=beta&t=7BGl0MZ4dWeahjJqWF0HSFG2O1vAcwRs9pyrxlXtCBY"
     let ErinPic = "https://media-exp1.licdn.com/dms/image/C4E03AQHDSXDfx0YIBQ/profile-displayphoto-shrink_400_400/0/1606851714540?e=1623888000&v=beta&t=ql_uVyueFUrdv_Sgn2hA52oRtWPfg_oxDF95O_kqqWs"
     let EthanPic="https://media-exp1.licdn.com/dms/image/C5603AQENjsik-7K77g/profile-displayphoto-shrink_400_400/0/1580252884885?e=1623888000&v=beta&t=9i06HPc8dARzVy_La7XK6tAedRannG3TUi6deDv3a5A"
-    let CalliePic="https://media-exp1.licdn.com/dms/image/C4E03AQFRdy21Mxzmxg/profile-displayphoto-shrink_200_200/0/1618801402891?e=1624492800&v=beta&t=jV1MRfLwqBXItxQlA-NLmshy36khHbfX-IcvVe85SDE"
+    let CalliePic="https://media-exp1.licdn.com/dms/image/C4D03AQFIhCfoHD0i9g/profile-displayphoto-shrink_400_400/0/1619211262500?e=1624492800&v=beta&t=7TrICl43t8hDaq0ThoyvTboDiuzw1dzomKwhonGRz3Y"
 
     return (
         <>
         {!user && <NavBar /> }
         <br />
         <Container>
-            <h1>The Team</h1>
+            <h1 className='style-white'>The Team</h1>
         </Container>
             <br />
        
@@ -110,7 +110,11 @@ const About = () => {
                         <h1>Callice Austin</h1>
                         <div>parts on website worked on here</div>
                         <div>
-                            I have always been a hardworking and fun person to be around. I love being able to take pride in the work that I do. I am a problem solver, no matter how small I'll try to figure it out.
+                            I have just begun my venture into the tech world. It is something that I am very passionate about, because I am a creative problem-solver.
+                             I fell in love with it from my first class in high school, and its been what I've wanted to do since then.
+                             <br/>
+                             I have worked hard to graduate from the DevPint Labs bootcamp, and am working to continue my never-ending education in programming. 
+                             I have excelled in leadership positions in a retail environment and can work well in a team. I can work on my own to meet deadlines without heavy supervision.
                             </div>
                             <div>
                             <a target="_blank" href='https://www.linkedin.com/in/callice-austin'><Icon link size="large" color="blue" name="linkedin square" /></a>

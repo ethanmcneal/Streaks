@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import { Button, Menu} from 'semantic-ui-react'
 import { AuthContext } from "../providers/AuthProvider"
-import '../style_components/SecondHeader.css';
+import '../style_components/basicstyle.css';
 import SearchBar from "./SearchBar";
 
 
