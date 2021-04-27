@@ -21,7 +21,7 @@ const AuthProvider = (props) =>{
         try {
             let res = await axios.post('/api/auth', user)
             setUser(res.data.data)
-            console.log(user)
+            // console.log(user)
             history.push('/')
             
         } catch (error) {

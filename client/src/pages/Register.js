@@ -6,6 +6,7 @@ import '../style_components/register.css'
 import {Button} from 'react-bootstrap'
 import FormattedMessage from "../style_components/FormattedMessage"
 import NavBar from '../components/Navbar';
+import icon from '../images/FlameIcon.png'
 
 
 const Register = () => {
@@ -30,11 +31,11 @@ const Register = () => {
         setAlert(false)
         setConfirmationAlert(true)
         }else{
-        handleRegister({nickname, email, password, passwordConfirmation, image}, history)
+        handleRegister({nickname, email, password, passwordConfirmation, image:icon}, history)
         }
     } 
 
-    let image = 'https://st4.depositphotos.com/4329009/19956/v/600/depositphotos_199564354-stock-illustration-creative-vector-illustration-default-avatar.jpg'
+    // let image = 'https://st4.depositphotos.com/4329009/19956/v/600/depositphotos_199564354-stock-illustration-creative-vector-illustration-default-avatar.jpg'
     return(
 
        <>
@@ -77,7 +78,7 @@ const Register = () => {
              required
              name='passwordConfirmation'
              onChange={(e)=> setPasswordConfirmation(e.target.value)}/>
-             {alert && <FormattedMessage type='alert'>Password must be more than 7 characters and contain at least one symbol and number*</FormattedMessage> }
+             {alert && <FormattedMessage type='alert'>Password must be more than 7 characters and contain at least one symbol, one capital, and one number*</FormattedMessage> }
              {confirmationAlert && <FormattedMessage type='alert'>Passwords do not match*</FormattedMessage> }
              <Button type='submit' style={{backgroundColor: 'rgb(245 155 13)', margin: '2em'}}>Register</Button>            
         </Form>
