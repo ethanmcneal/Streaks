@@ -18,12 +18,12 @@ const NavBar = () => {
         {!user &&    <Menu.Menu position='right'>
                 
         <Link to='/register'>
-            <Menu.Item >
+            <Menu.Item style={{color:'rgb(43, 174, 173)'}}>
                 Register
             </Menu.Item>
             </Link>
             <Link to='/login'>
-            <Menu.Item >
+            <Menu.Item style={{color:'rgb(43, 174, 173)'}}>
                 Login
             </Menu.Item>
             </Link>

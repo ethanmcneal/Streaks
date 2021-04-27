@@ -20,7 +20,7 @@ const Home = () =>{
         <Menu.Menu position='right'>
             <Link to='/about'>
                 <Menu.Item>
-                Creators
+                About
                 </Menu.Item>
             </Link>
             <Link to='/login'>
@@ -49,6 +49,10 @@ const Home = () =>{
 {!user && 
 <Link to='/register'> 
                     <Button   className='button-orange'>Sign up</Button>
+                    </Link>}
+ {user && 
+<Link to='/streaks'> 
+                    <Button   className='button-orange'>Streaks</Button>
                     </Link>}
 </div>
 </>

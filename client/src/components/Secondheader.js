@@ -27,7 +27,7 @@ const DashHeader = () => {
         }                            
     }
     return(
-        <Menu>
+        <Menu style={{backgroundColor:"rgb(245 246 248)"}}>
             <Menu.Item id="boom" style={{fontSize:'1.1em', marginBottom:'2px', marginLeft:'3px', color:'rgb(43, 174, 173)'}}>
                 <a href="/dashboard" style={{color:'rgb(43, 174, 173)'}} >{user.nickname}</a> 
             </Menu.Item>

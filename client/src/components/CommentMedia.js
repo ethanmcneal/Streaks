@@ -36,7 +36,7 @@ const CommentMedia = () => {
 
   return (
     <>
-    <h2>All Comment Media</h2>
+    <h2>Losers Carousel</h2>
      <Carousel>
        {notNullMedia()}
      </Carousel>
