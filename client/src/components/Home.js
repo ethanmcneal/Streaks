@@ -10,7 +10,6 @@ const Home = () =>{
     const {user} = useContext(AuthContext)
     return(
     <>
-
        {!user &&  <Menu className="landing-menu">
             <Menu.Item>
             {/* <img src={img} className="small-logo"/>Streaks */}
@@ -28,7 +27,6 @@ const Home = () =>{
                 Login
                 </Menu.Item>
             </Link>
-
                 <Menu.Item>
                 </Menu.Item>
                 <Menu.Item>
@@ -36,26 +34,23 @@ const Home = () =>{
             </Menu.Menu> 
         </Menu>}
 
-<div className="landing">
+        <div className="landing" style={{marginBottom: '160%'}}>
+            <br></br>
+            <img src={logo}/>
+            <br></br>
+            <p>Use streaks to prove yourself to friends, family, and strangers</p>
+            <br></br>
+            {!user && 
+            <Link to='/register'> 
+                                <Button   className='button-orange'>Sign up</Button>
+                                </Link>}
+            {user && 
+            <Link to='/streaks'> 
+                                <Button   className='button-orange'>Streaks</Button>
+                                </Link>}
+        </div>
 
-   {/* <img src={img} className="circular-logo"/> */}
-   <br></br>
-<img src={logo}/>
-<br></br>
-
-
-<p>Use streaks to prove yourself to friends, family, and strangers</p>
-<br></br>
-{!user && 
-<Link to='/register'> 
-                    <Button   className='button-orange'>Sign up</Button>
-                    </Link>}
- {user && 
-<Link to='/streaks'> 
-                    <Button   className='button-orange'>Streaks</Button>
-                    </Link>}
-</div>
-</>
+    </>
     )
 }
 
