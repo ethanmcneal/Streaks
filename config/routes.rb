@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   mount_devise_token_auth_for 'User', at: 'api/auth'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  get '*other', to: 'static#index'
+  
   namespace :api do
     resources :streaks
     resources :comments
@@ -19,4 +19,5 @@ Rails.application.routes.draw do
     put 'commentmedia/:id', to: 'comments#update_media'
     
   end
+  get '*other', to: 'static#index'
 end
