@@ -19,27 +19,12 @@ const CommentTextEdit = (props) => {
     comment_id: defaultCommentID
   })
 
-  useEffect(()=>{
-    getComments()
-  },[])
-
-  const getComments = async() => {
-    try {
-      let res =  await axios.get(`/api/comments/${defaultCommentID}`)
-
-      setEditComment(res.data)
-    }catch (err){
-      alert('error in getComments for Comment Text Edit')
-    }
-  }
-
   const handleEditComment = async(e) => {
     e.preventDefault()
     let data = new FormData();
     data.append("info", editComment.info);
     try{
       let res = await axios.put(`/api/comments/${defaultCommentID}`, data)
-      console.log('handle edit comment here', editComment.media)
       history.push(`/streaks/${id}`)
       window.location.reload()
     }catch(err){
@@ -61,15 +46,13 @@ const CommentTextEdit = (props) => {
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
-            Edit Comment Text
+            Edit Comment
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-       
           <p>
           <form onSubmit={handleEditComment}>
-          <input value={editComment.info} label='Comment:' placeholder={editComment.info} name='info' onChange={handleChange}/>
-          {console.log('edit comment', editComment)}
+          <input value={editComment.info} label='Comment:' placeholder={defaultInfo} name='info' onChange={handleChange}/>
           <br />
           <Button variant='warning' className="button-orange" type='submit'>Edit Comment</Button>
           </form>
@@ -77,11 +60,8 @@ const CommentTextEdit = (props) => {
         </Modal.Body>
         <Modal.Footer>
           <Button variant='warning' className="button-orange" onClick={props.onHide}>Close</Button>
-          
         </Modal.Footer>
-      </Modal>
-      
-
+      </Modal>   
     );
 }
 
