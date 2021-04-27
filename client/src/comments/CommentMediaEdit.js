@@ -22,32 +22,19 @@ const CommentMediaEdit = (props) => {
   const [editComment, setEditComment] = useState({
     user_id: user.id,
     streak_id: id,
-    // info: defaultInfo, 
     media: defaultMedia,
     comment_id: defaultCommentID
   })
 
-  useEffect(()=>{
-    getComments()
-  },[])
-
-  const getComments = async() => {
-    try {
-      let res =  await axios.get(`/api/comments/${defaultCommentID}`)
-      setEditComment(res.data)
-    }catch (err){
-      alert('error in getComments')
-    }
-  }
 
   const handleEditComment = async(e) => {
     e.preventDefault()
     let data = new FormData();
-
+ 
     data.append("media", editComment.media);
   
     try{
-      console.log('editcomment.media', editComment.media)
+      
       let res = await axios.put(`/api/commentmedia/${defaultCommentID}`, data)
      
       history.push(`/streaks/${id}`)
@@ -78,7 +65,7 @@ const CommentMediaEdit = (props) => {
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
-            Edit Comment Media
+            Edit Comment Media {defaultCommentID}
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>

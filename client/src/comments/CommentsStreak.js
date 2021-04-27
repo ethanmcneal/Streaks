@@ -23,6 +23,8 @@ const CommentsStreak = () => {
   const [totalPages, setTotalPages] = useState(null)
   const [modalEditMediaShow, setEditMediaModalShow] = useState(false)
   const [modalEditTextShow, setEditTextShow] = useState(false)
+  const [editComment, setEditComment] = useState({})
+  
 
   useEffect(()=>{
     getComments()
@@ -62,10 +64,14 @@ const CommentsStreak = () => {
     }  
 
     
-    
-    
-   
-
+    const showEditModal = (comment) => {
+      setEditComment(comment)
+      setEditMediaModalShow(true)
+    }
+    const showEditModalText = (comment) => {
+      setEditComment(comment)
+      setEditTextShow(true)
+    }
 
     const renderFullComments = () => {
       return (
@@ -81,7 +87,6 @@ const CommentsStreak = () => {
                   </Comment.Metadata>
                   
                   <Comment.Text>
-                    
                     {comment.info}
                   </Comment.Text>
                   <img className="comments-media-carousel" src={comment.media} />
@@ -100,40 +105,18 @@ const CommentsStreak = () => {
                   )}
                   {user.id === comment.user_id && (
                     <>
-                    <Button variant="primary" onClick={() => setEditMediaModalShow(true)} >
-                     Edit Comment Media
+                    <Button variant="primary" onClick={() => showEditModal(comment)} >
+                     Edit Media
                     </Button>
-
-                    <CommentMediaEdit
-                    defaultInfo={comment.info}
-                    defaultMedia={comment.media}
-                    defaultCheer={comment.cheer}
-                    defaultLaugh={comment.laugh}
-                    defaultCommentID={comment.comment_id}
-                    show={modalEditMediaShow}
-                    onHide={() => setEditMediaModalShow(false)}
-                  />
-                  </>
+                    </>
                   )}
                   {user.id === comment.user_id && (
                     <>
-                  
-                    <Button variant="primary" onClick={() => setEditTextShow(true)} >
-                     Edit Comment Text
+                    <Button variant="primary" onClick={() => showEditModalText(comment)} >
+                     Edit Comment
                     </Button>
-
-                    <CommentTextEdit
-                    defaultInfo={comment.info}
-                    defaultMedia={comment.media}
-                    defaultCheer={comment.cheer}
-                    defaultLaugh={comment.laugh}
-                    defaultCommentID={comment.comment_id}
-                    show={modalEditTextShow}
-                    onHide={() => setEditTextShow(false)}
-                  />
-                  </>
+                    </>
                   )}
-                  {console.log('comment.info garbage', comment.info)}
                   <Divider/>
                 </Comment.Content>
               </Comment> 
@@ -156,9 +139,20 @@ const CommentsStreak = () => {
             //   </div>
             // }
           >
-           
             {renderFullComments()}
           </InfiniteScroll>
+          <CommentMediaEdit
+            defaultMedia={editComment.media}
+            defaultCommentID={editComment.comment_id}
+            show={modalEditMediaShow}
+            onHide={() => setEditMediaModalShow(false)}
+          />
+          <CommentTextEdit
+            defaultInfo={editComment.info}   
+            defaultCommentID={editComment.comment_id}
+            show={modalEditTextShow}
+            onHide={() => setEditTextShow(false)}
+          />
         </div>
       </>
     );
