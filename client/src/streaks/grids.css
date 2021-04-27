@@ -1,0 +1,50 @@
+.streak-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: rgb(25 53 81);
+    border: 2px solid rgb(25 53 81);
+}
+
+.streak-card {
+    background-color: white;
+    margin: 2em;
+    border-radius: 9px;
+}
+
+.streak-card-upper {
+    background-color: white;
+    width: 300px;
+    height: 250px;
+}
+
+.streak-card-footer {
+    background-color: rgb(250 251 252);
+    width: 300px;
+    height: 100px;
+    border-bottom-left-radius: 9px;
+    border-bottom-right-radius: 9px;
+    border-top: 1px solid gray;
+    text-align: center;
+}
+
+/* .streak-card-footer button{
+    margin: auto;
+} */
+
+.streak-card p {
+    color: black;
+    margin: 0 1em;
+    text-align: left;
+}
+
+.link {
+    color: black
+    ;
+  }
+
+
+.link:hover {
+     color: rgb(245 155 13)
+  }
