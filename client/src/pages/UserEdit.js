@@ -7,6 +7,7 @@ import FilePondPluginImageExifOrientation from "filepond-plugin-image-exif-orien
 import FilePondPluginImagePreview from "filepond-plugin-image-preview";
 import "filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css";
 import UserImageEdit from './UserImageEdit';
+import '../style_components/UserEdit.css'
 
 registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview);
 
@@ -33,9 +34,11 @@ const UserEdit = (props) => {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
-        <Form.Group as={Col} style={{ width: "20em" }}>
-          <Form.Label>Username</Form.Label>
+    <Form onSubmit={handleSubmit} className='userEdit'>
+        <Form.Group as={Col} style={{ width: "25em" }}>
+          <Form.Label >
+            <h2>Username</h2>
+          </Form.Label>
           <Form.Control
             name="nickname"
             type="text"
@@ -44,34 +47,18 @@ const UserEdit = (props) => {
           />
         </Form.Group>
 
-      <Form.Group as={Col}>
-        <Form.Label>Email</Form.Label>
+      <Form.Group as={Col} style={{ width: "25em" }}>
+        <Form.Label style={{color:'white'}}>Email</Form.Label>
         <Form.Control
           name="email"
           value={userState.email}
           onChange={handleChange}
         />
       </Form.Group>
-      
-      <Form.Group as={Col}>
-          <Form.Label>Media</Form.Label>
-          <FilePond
-                files={files}
-                onupdatefiles={handleUpdate}
-                allowRemove={true}
-                allowMultiple={false}
-                allowRevert={true}
-                name="image"
-                labelIdle='Drag  Drop your files or <span class="filepond--label-action">Browse</span>'
-          />
-        </Form.Group>
-
       <br></br>
-      <Button type="submit"> Submit </Button>
-      
-      
+      <Button type="submit" style={{right:'30em'}}> Submit </Button>
       <>
-        <Button variant="primary" onClick={() => setModalShow(true)}>
+        <Button style={{textAlign:'center', marginLeft:'22px'}} variant="primary" onClick={() => setModalShow(true)} >
           Update User Image
         </Button>
         <UserImageEdit
@@ -84,14 +71,3 @@ const UserEdit = (props) => {
   );
 };
 export default UserEdit;
-
-{/* <Form.Label>Media</Form.Label>
-          <FilePond
-                files={files}
-                onupdatefiles={handleUpdate}
-                allowRemove={true}
-                allowMultiple={false}
-                allowRevert={true}
-                name="image"
-                labelIdle='Drag  Drop your files or <span class="filepond--label-action">Browse</span>'
-          /> */}
