@@ -1,10 +1,8 @@
-class Api::StaticController < ApplicationController
-
-    def api_test
-    render json: {hello: 'hello'}
+    require 'rails/application_controller'
+    class StaticController < Rails::ApplicationController
+       layout false
+    
+       def index
+         render file: Rails.root.join('public', 'index.html')
+       end
     end
-
-    def api_test_2
-        render json: [{hello: 'yo'}, {fizz: 'buzz'}]
-    end
-end
