@@ -11,6 +11,7 @@ import '../style_components/basicstyle.css'
 import InfiniteScroll from 'react-infinite-scroller'
 import moment from 'moment';
 import CommentMediaEdit from './CommentMediaEdit'
+import CommentTextEdit from './CommentTextEdit'
 
 const CommentsStreak = () => {
   const [comments, setComments] = useState('')
@@ -21,7 +22,7 @@ const CommentsStreak = () => {
   const [currentPage, setCurrentPage] = useState(1)
   const [totalPages, setTotalPages] = useState(null)
   const [modalEditMediaShow, setEditMediaModalShow] = useState(false)
-  const [modalEditCommentTextShow, setEditCommentTextShow] = useState(false)
+  const [modalEditTextShow, setEditTextShow] = useState(false)
 
   useEffect(()=>{
     getComments()
@@ -102,9 +103,6 @@ const CommentsStreak = () => {
                     <Button variant="primary" onClick={() => setEditMediaModalShow(true)} >
                      Edit Comment Media
                     </Button>
-                    <Button variant="primary" onClick={() => setEditCommentTextShow(true)} >
-                     Edit Comment Text
-                    </Button>
 
                     <CommentMediaEdit
                     defaultInfo={comment.info}
@@ -117,15 +115,24 @@ const CommentsStreak = () => {
                   />
                   </>
                   )}
-                  {/* {hideEditFields && (
-                    <CommentEdit
-                      defaultInfo={comment.info}
-                      defaultMedia={comment.media}
-                      defaultCheer={comment.cheer}
-                      defaultLaugh={comment.laugh}
-                      defaultCommentID={comment.comment_id}
-                    />
-                  )} */}
+                  {user.id === comment.user_id && (
+                    <>
+                  
+                    <Button variant="primary" onClick={() => setEditTextShow(true)} >
+                     Edit Comment Text
+                    </Button>
+
+                    <CommentTextEdit
+                    defaultInfo={comment.info}
+                    defaultMedia={comment.media}
+                    defaultCheer={comment.cheer}
+                    defaultLaugh={comment.laugh}
+                    defaultCommentID={comment.comment_id}
+                    show={modalEditTextShow}
+                    onHide={() => setEditTextShow(false)}
+                  />
+                  </>
+                  )}
                   {console.log('comment.info garbage', comment.info)}
                   <Divider/>
                 </Comment.Content>

@@ -92,12 +92,12 @@ const CommentMediaEdit = (props) => {
             name="media"
             labelIdle='Drag  Drop your files or <span class="filepond--label-action">Browse</span>'
           />
-          <Button onClick={props.onHide} type='submit'>Edit Comment</Button>
+          <Button variant='warning' className="button-orange" onClick={props.onHide} type='submit'>Edit Comment</Button>
           </form>
           </p>
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={props.onHide}>Close</Button>
+          <Button variant='warning' className="button-orange" onClick={props.onHide}>Close</Button>
         </Modal.Footer>
       </Modal>
       
