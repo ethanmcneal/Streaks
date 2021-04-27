@@ -58,10 +58,10 @@ const UserEdit = (props) => {
           onChange={handleChange}
         />
       </Form.Group>
-      <div style={{display: 'flex', justifyContent:'center', width:'25em', marginTop: '15px'}}>
+      <div style={{display: 'flex', justifyContent:'center', width:'25em', marginTop: '12px'}}>
       <Button type="submit" variant="warning" className="button-orange"> Submit </Button>
       <>
-        <Button style={{textAlign:'center', marginLeft:'10px'}} variant="warning" className="button-orange" onClick={() => setModalShow(true)} >
+        <Button style={{textAlign:'center', marginLeft:'12px'}} variant="warning" className="button-orange" onClick={() => setModalShow(true)} >
           Update User Image
         </Button>
         <UserImageEdit
