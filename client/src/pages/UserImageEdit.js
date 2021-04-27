@@ -7,6 +7,7 @@ import FilePondPluginImageExifOrientation from "filepond-plugin-image-exif-orien
 import FilePondPluginImagePreview from "filepond-plugin-image-preview";
 import "filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css";
 import { AuthContext } from "../providers/AuthProvider";
+import '../style_components/UserImageEdit.css'
 
 
 const UserImageEdit = (props) => {
@@ -40,19 +41,12 @@ const UserImageEdit = (props) => {
         aria-labelledby="contained-modal-title-vcenter"
         centered
       >
-        <Modal.Header closeButton>
+        <Modal.Header closeButton >
           <Modal.Title id="contained-modal-title-vcenter">
             Update User Image
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <h4>Update User Image</h4>
-          {/* <p>
-            Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-            dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
-            consectetur ac, vestibulum at eros.
-          </p> */}
-          {/* <Form.Label>Media</Form.Label> */}
           <Form onSubmit={handleSubmit}>
           <FilePond
                 files={files}
@@ -64,8 +58,8 @@ const UserImageEdit = (props) => {
                 name="image"
                 labelIdle='Drag  Drop your files or <span class="filepond--label-action">Browse</span>'
           />
-          <Button type="submit" style={{float:'right'}}> Submit </Button>
-          <Button onClick={refreshPage}>Abort</Button>
+          <Button type="submit" variant="warning" className="button-orange" style={{float:'right'}}> Submit </Button>
+          <Button variant="warning" className="button-orange" onClick={refreshPage}>Abort</Button>
           </Form>
         </Modal.Body>
         {/* <Modal.Footer>
