@@ -25,42 +25,236 @@ category_opt = [
 ]
 # category_opt.sample
 
-10.times do 
-    # num_category = rand(0..category_opt.length)
-    name = "Dont eat #{Faker::Food.dish}"
-    description = Faker::ChuckNorris.fact
-    reward = Faker::Games::ElderScrolls.weapon
-    punishment = Faker::Games::DnD.monster
-    timeline = Faker::Date.between(from: 2.years.ago, to: Date.today)
-    Streak.create(name: name, description: description, reward: reward, punishment: punishment, category: category_opt.sample(1), timeline: timeline, owner: rand(1..20) )
+Streak.create(name: "Coffee Break", 
+    description: "Do not drink coffee", 
+    reward: "$5 from all losing participants", 
+    punishment: "Pay the winner $5", 
+    category: "Health", 
+    timeline: Faker::Date.between(from: 2.months.ago, to: Date.today), 
+    owner: "1" )
+
+Streak.create(name: "5k Everyday", 
+    description: "Run a 5k every day!", 
+    reward: "Amazing gams", 
+    punishment: "Looking like you skip leg day, because you do.", 
+    category: "Physical Feat", 
+    timeline: Faker::Date.between(from: 2.months.ago, to: Date.today), 
+    owner: "2" )
+
+Streak.create(name: "No Smoking!", 
+    description: "Refrain from smoking all together", 
+    reward: "Having more time with your loved ones", 
+    punishment: "Start over until it sticks", 
+    category: "Habit", 
+    timeline: Faker::Date.between(from: 7.months.ago, to: Date.today), 
+    owner: "3" )
+
+Streak.create(name: "A Puzzle a Day Keeps the Dementia Away", 
+    description: "Complete the daily NY Times Crossword and Sudoku puzzles", 
+    reward: "Gloating rights and your picture on the wall of smart cookies", 
+    punishment: "Get your picture on the wall of shame", 
+    category: "Intellect", 
+    timeline: Faker::Date.between(from: 2.months.ago, to: Date.today), 
+    owner: "4" )
+
+Streak.create(name: "Inktober, but Forever", 
+    description: "Create one piece of art each day based on the prompt posted in this channel by the creator", 
+    reward: "Ability to pick from the losers and your artwork to display at the gallery once the streak ends", 
+    punishment: "Get a henna tattoo by the winner of their choice", 
+    category: "Art", 
+    timeline: Faker::Date.between(from: 2.months.ago, to: Date.today), 
+    owner: "5" )
+
+Streak.create(name: "Dungeons and Dragons 'til We Drop", 
+    description: "Play D&D every Monday without skipping a session", 
+    reward: "Gain a new free magical in game item every 5 weeks you don't miss", 
+    punishment: "Miss out on a fancy new magical item for your character", 
+    category: "Game", 
+    timeline: "F2021-04-30T18:00:00.000Z", 
+    owner: "6" )
+
+Streak.create(name: "Touch Football for Life", 
+    description: "Play touch football with the team every Saturday morning without missing a practice", 
+    reward: "Steak Dinner paid for by the losers", 
+    punishment: "Pay for the winner's dinner", 
+    category: "Sport", 
+    timeline: "2021-05-02T16:30:00.000Z", 
+    owner: "7" )
+    
+Streak.create(name: "Gormet Chef in the Making", 
+    description: "Make a homemade meal from scratch every other day", 
+    reward: "Get a professional cooking class paid for by the losers", 
+    punishment: "Pay for the winner's cooking class", 
+    category: "Cuisine", 
+    timeline: "2021-05-05T12:30:00.000Z", 
+    owner: "8" )
+
+9.times do
+    name = Faker::Name.name 
+    nickname = Faker::Internet.username(specifier: 7..9)
+    email = Faker::Internet.free_email
+    avatar = Faker::Avatar.image(slug: name, size: '100x100', set: "set5", bgset: 'bg1')
+    User.create(password:'123456Abc!', name: name, nickname: nickname, email: email, image: avatar)
 end
 
-20.times do
-    name = Faker::GreekPhilosophers.name
-    nickname = Faker::Internet.username
-    email = Faker::Internet.email
-    avatar = Faker::Avatar.image(slug: name, size: '100x100', set: "set#{rand(1..5)}", bgset: 'bg1')
-    User.create(password:'123456', name: name, nickname: nickname, email: email, image: avatar)
+UserStreak.create(user_id: "1", streak_id: "1", status: 'ongoing')
+UserStreak.create(user_id: "1", streak_id: "2", status: 'ongoing')
+UserStreak.create(user_id: "1", streak_id: "3", status: 'ongoing')
+UserStreak.create(user_id: "1", streak_id: "4", status: 'ongoing')
+UserStreak.create(user_id: "1", streak_id: "5", status: 'ongoing')
+UserStreak.create(user_id: "1", streak_id: "6", status: 'ongoing')
+
+UserStreak.create(user_id: "2", streak_id: "1", status: 'ongoing')
+UserStreak.create(user_id: "2", streak_id: "2", status: 'ongoing')
+UserStreak.create(user_id: "2", streak_id: "3", status: 'ongoing')
+UserStreak.create(user_id: "2", streak_id: "4", status: 'ongoing')
+UserStreak.create(user_id: "2", streak_id: "5", status: 'ongoing')
+UserStreak.create(user_id: "2", streak_id: "6", status: 'ongoing')
+UserStreak.create(user_id: "2", streak_id: "7", status: 'ongoing')
+
+UserStreak.create(user_id: "3", streak_id: "3", status: 'ongoing')
+UserStreak.create(user_id: "3", streak_id: "8", status: 'ongoing')
+UserStreak.create(user_id: "3", streak_id: "7", status: 'ongoing')
+UserStreak.create(user_id: "3", streak_id: "6", status: 'ongoing')
+UserStreak.create(user_id: "3", streak_id: "2", status: 'ongoing')
+UserStreak.create(user_id: "3", streak_id: "1", status: 'ongoing')
+
+UserStreak.create(user_id: "4", streak_id: "4", status: 'ongoing')
+UserStreak.create(user_id: "4", streak_id: "8", status: 'ongoing')
+UserStreak.create(user_id: "4", streak_id: "3", status: 'ongoing')
+
+UserStreak.create(user_id: "5", streak_id: "5", status: 'ongoing')
+UserStreak.create(user_id: "5", streak_id: "6", status: 'ongoing')
+
+UserStreak.create(user_id: "6", streak_id: "6", status: 'ongoing')
+UserStreak.create(user_id: "6", streak_id: "7", status: 'ongoing')
+UserStreak.create(user_id: "6", streak_id: "1", status: 'ongoing')
+
+UserStreak.create(user_id: "7", streak_id: "7", status: 'ongoing')
+UserStreak.create(user_id: "7", streak_id: "3", status: 'ongoing')
+
+UserStreak.create(user_id: "8", streak_id: "8", status: 'ongoing')
+UserStreak.create(user_id: "8", streak_id: "5", status: 'ongoing')
+
+UserStreak.create(user_id: "9", streak_id: "8", status: 'ongoing')
+UserStreak.create(user_id: "9", streak_id: "2", status: 'ongoing')
+
+
+6.times do |i|
+    comment = "So excited to get started on this! Let's go!"
+    Comment.create(user_id: "1", streak_id: i, info: comment, cheer: "0", laugh: "1")
 end
 
-10.times do |i|
-    status = 'ongoing'
-    UserStreak.create(user_id: i, streak_id: i, status: status)
+6.times do |i|
+    comment = "Ayyyy, I'm going to win, better show up to glow up!"
+    Comment.create(user_id: "2", streak_id: i, info: comment, cheer: "1", laugh: "0")
 end
 
-50.times do |i|
-    comment = Faker::Music::Rush.album 
-    Comment.create(user_id: i, streak_id: i, info: comment)
-    puts "seeded #{i} datas"
-end
+Comment.create(user_id: "3", streak_id: "3", info: "Watch out, I'm going to win", cheer: "1", laugh: "3")
+Comment.create(user_id: "3", streak_id: "8", info: "Watch out, I'm going to win", cheer: "2", laugh: "3")
+Comment.create(user_id: "3", streak_id: "7", info: "Watch out, I'm going to win", cheer: "0", laugh: "1")
+Comment.create(user_id: "3", streak_id: "6", info: "Watch out, I'm going to win", cheer: "3", laugh: "0")
+Comment.create(user_id: "3", streak_id: "2", info: "Watch out, I'm going to win", cheer: "0", laugh: "3")
+Comment.create(user_id: "3", streak_id: "1", info: "Watch out, I'm going to win", cheer: "2", laugh: "0")
 
-# 5.times do |i|
-#     comment = Faker::Music::Rush.album 
-#     Comment.create(user_id: i, streak_id: i, info: comment)
-#     puts "seeded #{i} datas"
-# end
+Comment.create(user_id: "4", streak_id: "4", info: "This is going to be so much fun!", cheer: "1", laugh: "0")
+Comment.create(user_id: "4", streak_id: "8", info: "This is going to be so much fun!", cheer: "1", laugh: "3")
+Comment.create(user_id: "4", streak_id: "3", info: "This is going to be so much fun!", cheer: "0", laugh: "3")
+
+Comment.create(user_id: "5", streak_id: "5", info: "I hope I do okay with this...", cheer: "1", laugh: "0")
+Comment.create(user_id: "5", streak_id: "6", info: "I hope I do okay with this...", cheer: "0", laugh: "3")
+
+Comment.create(user_id: "6", streak_id: "6", info: "Anyone else having problems sticking to this?", cheer: "7", laugh: "3")
+Comment.create(user_id: "6", streak_id: "7", info: "Anyone else having problems sticking to this?", cheer: "0", laugh: "3")
+Comment.create(user_id: "6", streak_id: "1", info: "Anyone else having problems sticking to this?", cheer: "1", laugh: "1")
+
+Comment.create(user_id: "7", streak_id: "7", info: "Let's get this party started!", cheer: "0", laugh: "3")
+Comment.create(user_id: "7", streak_id: "3", info: "Let's get this party started!", cheer: "1", laugh: "0")
+
+Comment.create(user_id: "8", streak_id: "8", info: "I want to win so badly!", cheer: "0", laugh: "3")
+Comment.create(user_id: "8", streak_id: "5", info: "I want to win so badly!", cheer: "3", laugh: "1")
+
+Comment.create(user_id: "9", streak_id: "8", info: "Time to see what everyone's made of.", cheer: "1", laugh: "3")
+Comment.create(user_id: "9", streak_id: "2", info: "Time to see what everyone's made of.", cheer: "0", laugh: "1")
+
+
+
+
+
+    puts "seeded #{Comment.all.length} comments"
+    puts "seeded #{User.all.length} users"
+    puts "seeded #{Streak.all.length} streaks"
+    puts "seeded #{UserStreak.all.length} user_streaks"
+
 
         
 # for when needing to reseed db. ex: streak_id: rand(16..20) instead of i
 
+# create_table "comments", force: :cascade do |t|
+#     t.bigint "user_id", null: false
+#     t.bigint "streak_id", null: false
+#     t.string "info"
+#     t.string "media"
+#     t.integer "cheer"
+#     t.integer "laugh"
+#     t.datetime "created_at", precision: 6, null: false
+#     t.datetime "updated_at", precision: 6, null: false
+#     t.index ["streak_id"], name: "index_comments_on_streak_id"
+#     t.index ["user_id"], name: "index_comments_on_user_id"
+#   end
 
+#   create_table "streaks", force: :cascade do |t|
+#     t.string "name"
+#     t.string "description"
+#     t.datetime "timeline"
+#     t.string "reward"
+#     t.string "punishment"
+#     t.string "category"
+#     t.boolean "open"
+#     t.datetime "created_at", precision: 6, null: false
+#     t.datetime "updated_at", precision: 6, null: false
+#     t.integer "owner"
+#   end
+
+#   create_table "user_streaks", force: :cascade do |t|
+#     t.bigint "user_id", null: false
+#     t.bigint "streak_id", null: false
+#     t.string "status"
+#     t.string "media"
+#     t.datetime "created_at", precision: 6, null: false
+#     t.datetime "updated_at", precision: 6, null: false
+#     t.index ["streak_id"], name: "index_user_streaks_on_streak_id"
+#     t.index ["user_id"], name: "index_user_streaks_on_user_id"
+#   end
+
+#   create_table "users", force: :cascade do |t|
+#     t.string "provider", default: "email", null: false
+#     t.string "uid", default: "", null: false
+#     t.string "encrypted_password", default: "", null: false
+#     t.string "reset_password_token"
+#     t.datetime "reset_password_sent_at"
+#     t.boolean "allow_password_change", default: false
+#     t.datetime "remember_created_at"
+#     t.string "confirmation_token"
+#     t.datetime "confirmed_at"
+#     t.datetime "confirmation_sent_at"
+#     t.string "unconfirmed_email"
+#     t.string "name"
+#     t.string "nickname"
+#     t.string "image"
+#     t.string "email"
+#     t.json "tokens"
+#     t.datetime "created_at", precision: 6, null: false
+#     t.datetime "updated_at", precision: 6, null: false
+#     t.integer "sign_in_count", default: 0
+#     t.datetime "current_sign_in_at"
+#     t.datetime "last_sign_in_at"
+#     t.string "current_sign_in_ip"
+#     t.string "last_sign_in_ip"
+#     t.integer "wins", default: 0
+#     t.integer "losses", default: 0
+#     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
+#     t.index ["email"], name: "index_users_on_email", unique: true
+#     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+#     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
+#   end

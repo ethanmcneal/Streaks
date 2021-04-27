@@ -26,6 +26,7 @@ const CommentTextEdit = (props) => {
   const getComments = async() => {
     try {
       let res =  await axios.get(`/api/comments/${defaultCommentID}`)
+
       setEditComment(res.data)
     }catch (err){
       alert('error in getComments for Comment Text Edit')
@@ -60,22 +61,22 @@ const CommentTextEdit = (props) => {
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
-            Edit Comment Media
+            Edit Comment Text
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <h4>Drag and drop new media</h4>
+       
           <p>
           <form onSubmit={handleEditComment}>
           <input value={editComment.info} label='Comment:' placeholder={editComment.info} name='info' onChange={handleChange}/>
           {console.log('edit comment', editComment)}
           <br />
-          <Button  type='submit'>Edit Comment</Button>
+          <Button variant='warning' className="button-orange" type='submit'>Edit Comment</Button>
           </form>
           </p>
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={props.onHide}>Close</Button>
+          <Button variant='warning' className="button-orange" onClick={props.onHide}>Close</Button>
           
         </Modal.Footer>
       </Modal>

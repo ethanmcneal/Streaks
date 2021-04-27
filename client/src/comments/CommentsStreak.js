@@ -133,15 +133,6 @@ const CommentsStreak = () => {
                   />
                   </>
                   )}
-                  {/* {hideEditFields && (
-                    <CommentEdit
-                      defaultInfo={comment.info}
-                      defaultMedia={comment.media}
-                      defaultCheer={comment.cheer}
-                      defaultLaugh={comment.laugh}
-                      defaultCommentID={comment.comment_id}
-                    />
-                  )} */}
                   {console.log('comment.info garbage', comment.info)}
                   <Divider/>
                 </Comment.Content>
