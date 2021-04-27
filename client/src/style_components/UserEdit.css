@@ -1,19 +1,19 @@
-.userEdit {
+/* .userEdit {
   padding: 4em 40em;
   
-}
+} */
 
-.userEdit h2, p{
+/* .userEdit h2, p{ */
   /* color: white;
   text-align: center; */
-  display: flex !important;
-  flex-direction: row !important;
-  justify-content: center !important;
-}
+  /* display: flex !important;
+  flex-direction: row !important; */
+  /* justify-content: center !important;} */
 
-.userEdit Button {
+
+/* .userEdit Button {
   margin-left: 3.75em;
-}
+} */
 .userEdit input {
   text-align: center;
 }

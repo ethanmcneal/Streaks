@@ -46,6 +46,7 @@ body {
     /* background: rgb(25, 53, 81) !important; */
     border-radius: 0px !important;
     margin: 0rem !important;
+    background: none !important;
 }
 div.ui.segments {
 
@@ -132,12 +133,13 @@ img.small-logo {
     align-items: stretch;
 }
 .about-right-content{
-    color: dodgerblue;
+    color: #ffffff;
     padding: 10%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     height: auto;
+    background:rgb(25, 53, 81) ;
 }
 .about-small-images{
     display: flex;
@@ -221,3 +223,58 @@ div.timer.card {
 div.ui.landing-menu.menu {
     margin-left: 12vw !important;
 }
+.style-white {
+    color: #ffffff;
+}
+.ui.inverted.menu {
+    background-color: white !important;
+}
+.ui.menu {
+    margin: 0% !important;
+    max-height: 5em;
+    border: 0px !important;
+    border-color: white;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    height: 4em;
+}
+
+.ui.search .prompt {
+    border-radius: 4px 4px 4px 4px !important;
+    padding: .2rem !important;
+}
+.ui.button {
+    background-color: rgb(245, 155, 13) !important;
+    border-style: solid !important;
+    border-width: .1em !important;
+    border-color: rgb(255, 255, 255) !important;
+    color: honeydew !important;
+    height: 2.5em;
+    padding-bottom: 24px !important;
+}
+
+.ui.input {
+    height: 2.5em;
+}
+
+span {
+    /* display: flex; */
+    align-self: center;
+    width: 0;
+    height: .8em;
+    /* border-left: .5px solid lightgray; */
+    opacity: 80%;
+    }
+.cheer-laugh {
+    border: none;
+    background: transparent;
+    color: rgb(144, 152, 161, 1) !important;
+}
+
+
+/* #boom:hover {
+    border: none !important;
+    border-color: white !important;
+    box-shadow: none !important;
+    color: red;
+} */
