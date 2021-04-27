@@ -34,10 +34,11 @@ const UserEdit = (props) => {
   };
 
   return (
+    <div style={{display: 'flex', justifyContent: 'center', marginTop: '1.5em'}}>
     <Form onSubmit={handleSubmit} className='userEdit'>
         <Form.Group as={Col} style={{ width: "25em" }}>
-          <Form.Label >
-            <h2>Username</h2>
+          <Form.Label style={{display: 'flex', justifyContent: 'center', color:'white'}}>
+            <h3>Username</h3>
           </Form.Label>
           <Form.Control
             name="nickname"
@@ -48,17 +49,19 @@ const UserEdit = (props) => {
         </Form.Group>
 
       <Form.Group as={Col} style={{ width: "25em" }}>
-        <Form.Label style={{color:'white'}}>Email</Form.Label>
+        <Form.Label style={{display: 'flex', justifyContent: 'center', color:'white'}}>
+          <h3>Email</h3>
+          </Form.Label>
         <Form.Control
           name="email"
           value={userState.email}
           onChange={handleChange}
         />
       </Form.Group>
-      <br></br>
-      <Button type="submit" style={{right:'30em'}}> Submit </Button>
+      <div style={{display: 'flex', justifyContent:'center', width:'25em', marginTop: '15px'}}>
+      <Button type="submit" variant="warning" className="button-orange"> Submit </Button>
       <>
-        <Button style={{textAlign:'center', marginLeft:'22px'}} variant="primary" onClick={() => setModalShow(true)} >
+        <Button style={{textAlign:'center', marginLeft:'10px'}} variant="warning" className="button-orange" onClick={() => setModalShow(true)} >
           Update User Image
         </Button>
         <UserImageEdit
@@ -66,8 +69,9 @@ const UserEdit = (props) => {
           onHide={() => setModalShow(false)}
         />
       </>
-
+      </div>
     </Form>
+    </div>
   );
 };
 export default UserEdit;
