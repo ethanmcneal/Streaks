@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useContext, useEffect, useState } from 'react'
-import { Segment, SegmentGroup, Tab } from 'semantic-ui-react'
+import { Menu, Segment, SegmentGroup, Tab } from 'semantic-ui-react'
 import { AuthContext } from '../providers/AuthProvider'
 import UserStreak from './UserStreak'
 import '../style_components/basicstyle.css'
@@ -36,12 +36,12 @@ const UserStreaks = () => {
 
   const panes = [
     {
-      menuItem: 'Active',
-      render: () => <Tab.Pane attached={true}>{renderUserStreak()}</Tab.Pane>,
+      menuItem: <Menu.Item style={{fontSize: '2em'}}>Active</Menu.Item>,
+      render: () => <Tab.Pane attached={false}>{renderUserStreak()}</Tab.Pane>,
     },
     {
-      menuItem: 'Completed',
-      render: () => <Tab.Pane attached={true}>{renderFinishedStreaks()}</Tab.Pane>,
+      menuItem: <Menu.Item style={{fontSize: '2em'}}>Completed</Menu.Item>,
+      render: () => <Tab.Pane attached={false}>{renderFinishedStreaks()}</Tab.Pane>,
     },
   ]
 
@@ -91,7 +91,7 @@ const UserStreaks = () => {
   
     {userStreaks && 
     <div>
-    <Tab style={{padding: '50px 0 0 0'}}menu={{ secondary: true, pointing: true }} panes={panes}  /> 
+    <Tab style={{padding: '10px 0 0 0'}} menu={{ secondary: true, pointing: true }} panes={panes}  /> 
     </div>}
     {/* <Segment.Group> */}
     {/* {userStreaks && <div className="orange">{renderUserStreak()} </div>} */}

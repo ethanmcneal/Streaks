@@ -15,3 +15,12 @@
 .register input {
     text-align: center;
 }
+
+.link {
+    color: #FFF;
+  }
+
+
+.link:hover {
+     color: #00F
+  }

@@ -56,7 +56,7 @@ const Streaks = (props)=>{
             <>
             <div className='streak-card'>
             <div className='streak-card-upper'>
-                <Link to={`streaks/${streak.id}`}>
+                <Link className='link' to={`streaks/${streak.id}`}>
                     <h3 style={{margin: '1em 0 0 1em'}}>{streak.name}</h3>
                  </Link>
                     <br/>
@@ -89,7 +89,7 @@ const Streaks = (props)=>{
         {streaks.map((streak) => usersStreakIds.includes(streak.id) == false && streak.open == true ? 
                 <div className='streak-card'>
                 <div className='streak-card-upper'>
-                     <Link to={`streaks/${streak.id}`}>
+                     <Link className='link' to={`streaks/${streak.id}`}>
                         <h3 style={{margin: '1em 0 0 1em'}}>{streak.name}</h3>
                      </Link>
                         <br/>
