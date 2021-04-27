@@ -10,7 +10,7 @@
 .streak-card {
     background-color: white;
     margin: 2em;
-    border-radius: 9px;
+    border-radius: 5px;
 }
 
 .streak-card-upper {
@@ -23,8 +23,8 @@
     background-color: rgb(250 251 252);
     width: 300px;
     height: 100px;
-    border-bottom-left-radius: 9px;
-    border-bottom-right-radius: 9px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
     border-top: 1px solid gray;
     text-align: center;
 }

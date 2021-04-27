@@ -149,7 +149,7 @@ const Streaks = (props)=>{
             <div>
                 <h4 style={{color: 'white'}}>Don't see a streak you like? click the button to Create your own!</h4>
                 <Link to='/streaks/form'>
-                <Button variant='light' className='button-orange'>+ Add Streak</Button>
+                <Button variant='light' className='button-orange'>+ New Streak</Button>
                 </Link>
             </div>
     </div>
