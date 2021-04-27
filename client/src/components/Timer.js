@@ -24,8 +24,6 @@ const Timer = (props) => {
         try {
             users.map(user => user.status == 'upcoming' && upcoming == false ? 
             axios.patch(`/api/user_streaks/${user.id}`, {status: 'ongoing'}) : '')
-            if(open && upcoming == false){
-            closeStreak()}
         } catch (error) {
             console.log(error)
         }

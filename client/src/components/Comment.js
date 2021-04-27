@@ -1,6 +1,6 @@
 const Comment = () => {
 return (
-    <p>ethan sux</p>
+    <p>Ethan is a cool guy, in fact, the coolest guy I know. </p>
 )
 }
  export default Comment

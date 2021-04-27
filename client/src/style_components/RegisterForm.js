@@ -1,3 +1,4 @@
+import axios from "axios"
 import { useState } from "react"
 import Button from "./Button"
 
@@ -16,7 +17,7 @@ const RegisterForm = () =>{
 
     const handleSubmit = () =>{
        
-       if (x.length <= 7) {
+       if (x.length <= 7 && x.match(pattern)) {
         setAlert(true)
         console.log(x)
     } else if(x.match(pattern)) {

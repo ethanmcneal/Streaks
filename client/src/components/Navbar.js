@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 import { Menu, MenuItem } from 'semantic-ui-react'
 import { AuthContext } from "../providers/AuthProvider"
 import HeaderDropdown from './HeaderDropdown'
-import img from './FakeLogo.png'
+import img from '../images/StreaksTransparentLogo.png'
 import '../style_components/NavBar.css'
 
 const NavBar = () => {
@@ -12,7 +12,7 @@ const NavBar = () => {
     return(
         <Menu inverted>
             <MenuItem>
-            <img src={img} className="small-logo"/>
+            <img src={img} style={{height: '80px', width: '80px'}}/>
             </MenuItem>
 
         {!user &&    <Menu.Menu position='right'>

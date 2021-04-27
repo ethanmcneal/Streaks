@@ -10,6 +10,8 @@ import { AuthContext } from '../providers/AuthProvider'
 import '../style_components/basicstyle.css'
 import InfiniteScroll from 'react-infinite-scroller'
 import moment from 'moment';
+import CommentMediaEdit from './CommentMediaEdit'
+import CommentTextEdit from './CommentTextEdit'
 
 const CommentsStreak = () => {
   const [comments, setComments] = useState('')
@@ -19,7 +21,11 @@ const CommentsStreak = () => {
   const {user} = useContext(AuthContext)
   const [currentPage, setCurrentPage] = useState(1)
   const [totalPages, setTotalPages] = useState(null)
+  const [modalEditMediaShow, setEditMediaModalShow] = useState(false)
+  const [modalEditTextShow, setEditTextShow] = useState(false)
+  const [editComment, setEditComment] = useState({})
   
+
   useEffect(()=>{
     getComments()
     },[])
@@ -56,6 +62,17 @@ const CommentsStreak = () => {
         setCurrentPage(pagex)
       }
     }  
+
+    
+    const showEditModal = (comment) => {
+      setEditComment(comment)
+      setEditMediaModalShow(true)
+    }
+    const showEditModalText = (comment) => {
+      setEditComment(comment)
+      setEditTextShow(true)
+    }
+
     const renderFullComments = () => {
       return (
         <Comment.Group>
@@ -68,14 +85,11 @@ const CommentsStreak = () => {
                   <Comment.Metadata>
                     <div>{moment(comment.created_at).fromNow()}</div>
                   </Comment.Metadata>
-                  {/* <img src={comment.image}/> */}
+                  
                   <Comment.Text>
-                    
                     {comment.info}
                   </Comment.Text>
                   <img className="comments-media-carousel" src={comment.media} />
-                  {/* <h1>cheers: {comment.cheer}</h1>
-               <h1><laughs: {comment.laugh}</h1> */}
                   <div>
                     <CheerLaughCounter
                       defaultCommentID={comment.comment_id}
@@ -83,7 +97,6 @@ const CommentsStreak = () => {
                       initLaugh={comment.laugh}
                     />
                   </div>
-                  {/* todo: make delete and edit only visible to curernt user for their comments */}
                   <br />
                   {user.id === comment.user_id && (
                     <Button onClick={() => deleteComment(comment.comment_id)}>
@@ -91,33 +104,27 @@ const CommentsStreak = () => {
                     </Button>
                   )}
                   {user.id === comment.user_id && (
-                    <Button
-                      onClick={() => {
-                        setHideEditFields(!hideEditFields);
-                      }}
-                    >
-                      {hideEditFields ? "Cancel Edit" : "Edit"}
+                    <>
+                    <Button variant="primary" onClick={() => showEditModal(comment)} >
+                     Edit Media
                     </Button>
+                    </>
                   )}
-                  {hideEditFields && (
-                    <CommentEdit
-                      defaultInfo={comment.info}
-                      defaultMedia={comment.media}
-                      defaultCheer={comment.cheer}
-                      defaultLaugh={comment.laugh}
-                      defaultCommentID={comment.comment_id}
-                    />
+                  {user.id === comment.user_id && (
+                    <>
+                    <Button variant="primary" onClick={() => showEditModalText(comment)} >
+                     Edit Comment
+                    </Button>
+                    </>
                   )}
                   <Divider/>
                 </Comment.Content>
-              </Comment>
+              </Comment> 
             ))}
         </Comment.Group>
       );
     };
   
-  
-
 
     return (
       <>
@@ -134,6 +141,18 @@ const CommentsStreak = () => {
           >
             {renderFullComments()}
           </InfiniteScroll>
+          <CommentMediaEdit
+            defaultMedia={editComment.media}
+            defaultCommentID={editComment.comment_id}
+            show={modalEditMediaShow}
+            onHide={() => setEditMediaModalShow(false)}
+          />
+          <CommentTextEdit
+            defaultInfo={editComment.info}   
+            defaultCommentID={editComment.comment_id}
+            show={modalEditTextShow}
+            onHide={() => setEditTextShow(false)}
+          />
         </div>
       </>
     );

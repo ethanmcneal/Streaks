@@ -2,6 +2,7 @@ import React, {useContext} from 'react'
 import { Link } from 'react-router-dom'
 import { Button, Container, Image, Menu } from 'semantic-ui-react'
 import { AuthContext } from '../providers/AuthProvider'
+import logo from '../images/3.png'
 
 
 
@@ -39,7 +40,7 @@ const Home = () =>{
 
    {/* <img src={img} className="circular-logo"/> */}
    <br></br>
-<h1>Streaks</h1>
+<img src={logo}/>
 <br></br>
 
 
