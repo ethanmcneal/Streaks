@@ -148,6 +148,7 @@ const CommentsStreak = () => {
             onHide={() => setEditMediaModalShow(false)}
           />
           <CommentTextEdit
+            editComment2 = {editComment}
             defaultInfo={editComment.info}   
             defaultCommentID={editComment.comment_id}
             show={modalEditTextShow}

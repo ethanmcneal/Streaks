@@ -12,28 +12,28 @@ const CommentTextEdit = (props) => {
   const history = useHistory()
   const {user} = useContext(AuthContext)
   const {id} = useParams()
-  const {defaultInfo, defaultCheer, defaultLaugh, defaultCommentID} = props
+  const {defaultInfo, editComment2, defaultCommentID} = props
 
-  const [editComment, setEditComment] = useState({
-    info: defaultInfo, 
+  const [editComment1, setEditComment] = useState({
+    info: editComment2.info, 
     comment_id: defaultCommentID
   })
 
   const handleEditComment = async(e) => {
     e.preventDefault()
     let data = new FormData();
-    data.append("info", editComment.info);
+    data.append("info", editComment1.info);
     try{
       let res = await axios.put(`/api/comments/${defaultCommentID}`, data)
       history.push(`/streaks/${id}`)
       window.location.reload()
     }catch(err){
-      alert('err in handleEditComment')
+      alert('err in handleEditComment in CommentTextEdit')
     }
   }
 
   const handleChange = (e) => {
-    setEditComment({...editComment, [e.target.name]: e.target.value})
+    setEditComment({...editComment1, [e.target.name]: e.target.value})
   }
 
     return (
@@ -44,7 +44,7 @@ const CommentTextEdit = (props) => {
         aria-labelledby="contained-modal-title-vcenter"
         centered
       >
-        <Modal.Header closeButton>
+        <Modal.Header >
           <Modal.Title id="contained-modal-title-vcenter">
             Edit Comment
           </Modal.Title>
@@ -52,7 +52,10 @@ const CommentTextEdit = (props) => {
         <Modal.Body>
           <p>
           <form onSubmit={handleEditComment}>
-          <input value={editComment.info} label='Comment:' placeholder={defaultInfo} name='info' onChange={handleChange}/>
+          <input value={editComment1.info} placeholder={editComment2.info} label='Comment:'  name='info' onChange={handleChange}/>
+            {console.log("editComment2", editComment2)}
+            {console.log('default info stuff', defaultInfo)}
+          <br />
           <br />
           <Button variant='warning' className="button-orange" type='submit'>Edit Comment</Button>
           </form>
