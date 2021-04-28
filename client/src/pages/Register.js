@@ -80,7 +80,7 @@ const Register = () => {
              onChange={(e)=> setPasswordConfirmation(e.target.value)}/>
              {alert && <FormattedMessage type='alert'>Password must be more than 7 characters and contain at least one symbol, one capital, and one number*</FormattedMessage> }
              {confirmationAlert && <FormattedMessage type='alert'>Passwords do not match*</FormattedMessage> }
-             <Button type='submit' style={{backgroundColor: 'rgb(245 155 13)', margin: '2em'}}>Register</Button>            
+             <Button variant='warning' type='submit' className='button-orange' style={{margin: '2em'}}>Register</Button>            
         </Form>
         </div>
         </>
