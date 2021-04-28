@@ -36,11 +36,11 @@ const UserStreaks = () => {
 
   const panes = [
     {
-      menuItem: <Menu.Item style={{fontSize: '2em'}}>Active</Menu.Item>,
+      menuItem: <Menu.Item color='teal' style={{fontSize: '1.5em', margin: '0'}}>Active</Menu.Item>,
       render: () => <Tab.Pane attached={false}>{renderUserStreak()}</Tab.Pane>,
     },
     {
-      menuItem: <Menu.Item style={{fontSize: '2em'}}>Completed</Menu.Item>,
+      menuItem: <Menu.Item color='teal' style={{fontSize: '1.5em', margin: '0'}}>Completed</Menu.Item>,
       render: () => <Tab.Pane attached={false}>{renderFinishedStreaks()}</Tab.Pane>,
     },
   ]
@@ -91,7 +91,7 @@ const UserStreaks = () => {
   
     {userStreaks && 
     <div>
-    <Tab style={{padding: '10px 0 0 0'}} menu={{ secondary: true, pointing: true }} panes={panes}  /> 
+    <Tab style={{padding: '8px 0 0 0'}} menu={{ secondary: true, pointing: true }} panes={panes}  /> 
     </div>}
     {/* <Segment.Group> */}
     {/* {userStreaks && <div className="orange">{renderUserStreak()} </div>} */}
