@@ -167,8 +167,7 @@ div.ui.segment.active.tab {
     padding: 0;
 }
  .blue-comments-fix{
-    background:  rgb(228, 238, 253) !important;
-    max-width: 1000px !important;
+    max-width: 650px !important;
     
  }
 
@@ -270,11 +269,11 @@ div.timer.card {
 span {
     /* display: flex; */
     align-self: center;
-    width: .075em;
+    width: .1em;
     height: .8em;
     /* background-color: #9e9e9e; */
     /* border-left: .5px solid lightgray; */
-    opacity: 30%;
+    opacity: 80%;
     }
 .cheer-laugh {
     border: none;
