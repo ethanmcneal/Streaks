@@ -10,10 +10,10 @@ const Home = () =>{
     const {user} = useContext(AuthContext)
     return(
     <>
-       {!user &&  <Menu className="landing-menu">
+       {!user &&  <Menu className="landing-menu" style={{margin: '-50px !important'}}>
             <Menu.Item>
-            {/* <img src={img} className="small-logo"/>Streaks */}
-            <button className='button-landing'>Streaks</button>
+            <img src={logo} className="small-logo"/>
+            {/* <button className='button-landing'>Streaks</button> */}
                 </Menu.Item>
 
         <Menu.Menu position='right'>
@@ -27,10 +27,6 @@ const Home = () =>{
                 Login
                 </Menu.Item>
             </Link>
-                <Menu.Item>
-                </Menu.Item>
-                <Menu.Item>
-                </Menu.Item>
             </Menu.Menu> 
         </Menu>}
 

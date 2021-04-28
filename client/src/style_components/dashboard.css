@@ -37,6 +37,19 @@
     color: white;
 }
 
+.won-background{
+    background-color: lime; 
+    max-height: 1.5em;
+    max-width:90px;
+    
+    border-radius:4px;
+    
+}
+.won-background p{
+    text-align: center;
+    color: black;
+}
+
 .streak-segment div{
     margin-right: 2em;
     text-align: left;

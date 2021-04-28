@@ -92,7 +92,7 @@ div.landing-menu {
     color: #3793fb !important;
     background: #ffffff !important;
     border: none !important;
-    width: 75vw;
+    /* width: 0; */
 }
 
 div.landing-menu.item {
@@ -220,9 +220,9 @@ div.timer.card {
     border-radius: 2px;
     padding: 3px;
 }
-div.ui.landing-menu.menu {
-    margin-left: 12vw !important;
-}
+/* div.ui.landing-menu.menu {
+    /* margin-left: 12vw !important; 
+} */
 .style-white {
     color: #ffffff;
 }

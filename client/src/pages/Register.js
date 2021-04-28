@@ -42,13 +42,14 @@ const Register = () => {
       <NavBar />
         <div className='register'>   
             <h1>Register</h1>
-        <Form onSubmit={handleSubmit}>
+        <Form onSubmit={handleSubmit} style={{width: '20em'}}>
             <p>UserName</p>
         <input
             label='UserName'
             value={nickname}
              autoFocus
              required
+             size='20'
              name='nickname'
              onChange={(e)=> setNickname(e.target.value)}/>
             <p>Email</p>
@@ -63,7 +64,7 @@ const Register = () => {
              <p>Password (minimum of 7 characters)</p>
              <input
             label='Password'
-            // type='password' <-------------------------------- commented out only for testing, keep valid for production -----
+            type='password' 
             value={password}
              autoFocus
              required
@@ -73,7 +74,7 @@ const Register = () => {
              <input
             label='Confirm Password'
             value={passwordConfirmation}
-            // type='password' <-------------------------------- commented out only for testing, keep valid for production -----
+            type='password' 
              autoFocus
              required
              name='passwordConfirmation'
