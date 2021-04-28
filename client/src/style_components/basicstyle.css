@@ -266,12 +266,12 @@ div.timer.card {
     height: 2.5em;
 }
 
-span {
+.Upright.Divider {
     /* display: flex; */
     align-self: center;
     width: .1em;
     height: .8em;
-    /* background-color: #9e9e9e; */
+    background-color: #9e9e9e;
     /* border-left: .5px solid lightgray; */
     opacity: 80%;
     }
