@@ -1,5 +1,5 @@
 import React,{useState,useContext} from 'react'
-import { Form, Button, Col } from "react-bootstrap";
+import { Form, Button, Col, Alert } from "react-bootstrap";
 import { AuthContext } from "../providers/AuthProvider";
 import { FilePond, registerPlugin } from "react-filepond";
 import "filepond/dist/filepond.min.css";
@@ -16,6 +16,7 @@ const UserEdit = (props) => {
   const { user, handleUserEdit } = useContext(AuthContext);
   const [userState, setUserState] = useState(user);
   const [modalShow, setModalShow] = useState(false);
+  const [infoAlert, setInfoAlert] = useState(false)
   
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -30,6 +31,8 @@ const UserEdit = (props) => {
   };
 
   const handleChange = (e) => {
+    if(e.target.name == 'email'){setInfoAlert(true)}
+      
     setUserState({ ...userState, [e.target.name]: e.target.value });
   };
 
@@ -57,8 +60,11 @@ const UserEdit = (props) => {
           value={userState.email}
           onChange={handleChange}
         />
+        {infoAlert && <Alert variant='warning'>Warning: Changing Email will log you out and require you to log back in.</Alert>}
       </Form.Group>
+      
       <div style={{display: 'flex', justifyContent:'center', width:'25em', marginTop: '12px'}}>
+        
       <Button type="submit" variant="warning" className="button-orange"> Submit </Button>
       <>
         <Button style={{textAlign:'center', marginLeft:'12px'}} variant="warning" className="button-orange" onClick={() => setModalShow(true)} >
