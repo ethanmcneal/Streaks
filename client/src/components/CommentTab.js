@@ -13,7 +13,7 @@ const panes = [
   },
   {
     menuItem: 'Comments',
-    render: () => <Tab.Pane attached={false}><CommentsStreak /><CommentNew /></Tab.Pane>,
+    render: () => <Tab.Pane className='blue-comments-fix'  attached={false}><CommentsStreak /><CommentNew /></Tab.Pane>,
   },
 ]
 
