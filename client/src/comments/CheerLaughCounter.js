@@ -20,6 +20,17 @@ const CheerLaughCounter = (props) => {
   //   laugh: initLaugh,
   //   // comment_id: defaultCommentID
   // })
+  const Emoji = props => (
+    <span
+        className="emoji"
+        role="img"
+        aria-label={props.label ? props.label : ""}
+        aria-hidden={props.label ? "false" : "true"}
+    >
+        {props.symbol}
+    </span>
+);
+
 
   const handleCheerLaugh = async(state) => {
     console.log('handleCheerLaugh called')
@@ -103,7 +114,7 @@ const CheerLaughCounter = (props) => {
         
         >
 
-          <strong><span role="img" aria-label="raising hands">🙌</span></strong>
+          <strong><Emoji symbol="🙌"/></strong>
           &nbsp;|&nbsp;
           {cheers}
 
@@ -118,7 +129,7 @@ const CheerLaughCounter = (props) => {
           name='laugh'
         >
 
-          <strong><span role="img" aria-label="grinning squinting face">😆</span></strong>
+          <strong><Emoji symbol="😆"/></strong>
           &nbsp;|&nbsp;
           {laughs}
         </button>
