@@ -10,6 +10,7 @@ import FilePondPluginImageExifOrientation from "filepond-plugin-image-exif-orien
 import FilePondPluginImagePreview from "filepond-plugin-image-preview";
 import "filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css";
 import { PADDING } from '../style_components/styles'
+import { Form } from 'react-bootstrap'
 
 registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview);
 
@@ -59,10 +60,9 @@ const CommentNew = () => {
   return (
     <>
       <div className='newComment'>
-        <h2>Add New Comment:</h2>
+        <h2>New Comment:</h2>
         <form onSubmit={handleNewComment}>
-          <input value={newComment.info} label='Comment:' placeholder='Comment' name='info' onChange={handleChange}/>
-          <br/>
+          <Form.Control value={newComment.info} label='Comment:' placeholder='Enter Your Comment Here' name='info' onChange={handleChange}/>
           <h4>Attach Media:</h4>
           <FilePond
                 files={files}

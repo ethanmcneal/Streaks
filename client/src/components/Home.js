@@ -1,6 +1,7 @@
 import React, {useContext} from 'react'
 import { Link } from 'react-router-dom'
-import { Button, Container, Image, Menu } from 'semantic-ui-react'
+import {  Container, Image, Menu } from 'semantic-ui-react'
+import {Button} from 'react-bootstrap'
 import { AuthContext } from '../providers/AuthProvider'
 import logo from '../images/3.png'
 
@@ -38,11 +39,11 @@ const Home = () =>{
             <br></br>
             {!user && 
             <Link to='/register'> 
-                                <Button   className='button-orange'>Sign up</Button>
+                                <Button  variant="warning" className='button-orange'>Sign up</Button>
                                 </Link>}
             {user && 
             <Link to='/streaks'> 
-                                <Button   className='button-orange'>Streaks</Button>
+                                <Button variant="warning" className='button-orange'>Streaks</Button>
                                 </Link>}
         </div>
 
