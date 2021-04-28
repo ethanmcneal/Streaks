@@ -147,7 +147,7 @@ const Streak = () => {
             {/* <Button className='button-orange' onClick={history.goBack}>Back</Button> */}
            
             <div>
-              <Card className="peopleList" style={{marginLeft: '10em'}}>
+              <Card className="peopleList" style={{marginLeft: '10em', borderRadius: '3px'}}>
             <h3>Participants</h3>
             {users && <ListGroup>{renderUsers()}</ListGroup>}
             </Card>

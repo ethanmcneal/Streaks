@@ -12,18 +12,18 @@ const NavBar = () => {
     return(
         <Menu inverted>
             <MenuItem>
-            <a href='/'><img src={img} style={{height: '80px', width: '80px'}}/></a>
+            <a href='/'><img src={img} style={{height: '80px', width: '80px', margin: '4px 0'}}/></a>
             </MenuItem>
 
         {!user &&    <Menu.Menu position='right'>
                 
         <Link to='/register'>
-            <Menu.Item style={{color:'rgb(43, 174, 173)'}}>
+            <Menu.Item style={{color:'rgb(141 129 140)', marginTop: '8px'}}>
                 Register
             </Menu.Item>
             </Link>
             <Link to='/login'>
-            <Menu.Item style={{color:'rgb(43, 174, 173)'}}>
+            <Menu.Item style={{color:'rgb(141 129 140)', marginTop: '8px'}}>
                 Login
             </Menu.Item>
             </Link>

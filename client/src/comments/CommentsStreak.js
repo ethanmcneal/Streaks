@@ -89,7 +89,7 @@ const CommentsStreak = () => {
                   <Comment.Text>
                     {comment.info}
                   </Comment.Text>
-                  <img className="comments-media-carousel" src={comment.media} />
+                  {comment.media && <img className="comments-media-carousel" src={comment.media} />}
                   <div>
                     <CheerLaughCounter
                       defaultCommentID={comment.comment_id}

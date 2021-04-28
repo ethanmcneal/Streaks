@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import axios from "axios"
-import { Icon, Segment } from "semantic-ui-react"
+import { Icon, Popup, Segment } from "semantic-ui-react"
 import { Link } from 'react-router-dom'
 import { Button } from 'react-bootstrap'
 import UploadMediaModal from '../components/UploadMediaModal'
@@ -80,7 +80,7 @@ const deleteStreak = async(id) => {
                 <div className='streak-segment'>
                {status !== 'quit' && status !== 'won' ? <div>
                 {/* {status !== 'upcoming' && <Icon onClick={()=>changeStatus(userStreakId, status)}name={status === 'ongoing' ? 'pause' : 'play'} /> } */}
-               { status == 'ongoing' ? <Icon name='times' onClick={()=>quitStreak(userStreakId)} /> : <Icon name='trash' onClick={()=>deleteStreak(userStreakId)} /> }
+               { status == 'ongoing' ? <Popup content='QUIT (you lose)' trigger={<Icon name='times' onClick={()=>quitStreak(userStreakId)}/>} /> : <Popup content='Delete' trigger={<Icon name='trash' onClick={()=>deleteStreak(userStreakId)} />} />  }
                 </div> : ''} 
                 {status == 'quit' && media == null ? <Button onClick={() => setModalShow(true)}>Upload Media</Button> : '' }
                 <UploadMediaModal 

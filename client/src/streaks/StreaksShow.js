@@ -101,7 +101,7 @@ const Streaks = (props)=>{
                 </div>
                     <div className='streak-card-footer'>
                     {streak.open ? '' : <p style={{margin: '3em'}}>In Progress</p>}
-                    {usersStreakIds.includes(streak.id) == false && streak.open == true ? <Button style={{margin: '2em 3em', width: '200px'}}  variant='light' className="button-orange" onClick={()=>addToUserStreaks(streak.id)}>Start Streak</Button> : ''}
+                    {usersStreakIds.includes(streak.id) == false && streak.open == true ? <Button style={{margin: '2em 3em', width: '200px'}}  variant='light' className="button-orange" onClick={()=>addToUserStreaks(streak.id)}>Start Streak</Button> : <p>Upcoming</p>}
                     </div> 
                 </div>: '')}
             
