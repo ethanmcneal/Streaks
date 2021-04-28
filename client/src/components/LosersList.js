@@ -24,10 +24,10 @@ const LosersList = () => {
   
   const notNullMedia = () => {
     if (losers){let filterMedia = losers.filter(loser => loser.media !== "")
-      console.log("filtermedia", filterMedia)
+      // console.log("filtermedia", filterMedia)
      return( 
         filterMedia.map( loser => 
-          <ListGroup.Item action href={loser.media}>{loser.user_name}: {loser.media}</ListGroup.Item>
+          <ListGroup.Item action target="_blank" href={loser.media}>{loser.user_name}: {loser.media}</ListGroup.Item>
         )
       )
     }
@@ -35,7 +35,7 @@ const LosersList = () => {
 
   return (
     <>
-    <h2>Losers List</h2>
+    <h2  style={{color:"rgb(141 129 140)", textAlign:"center"}} >Losers List</h2>
      <div>
       <ListGroup variant="flush">
        {notNullMedia()}

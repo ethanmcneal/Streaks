@@ -9,7 +9,7 @@ import LosersList from './LosersList'
 const panes = [
   {
     menuItem: 'Attachments',
-    render: () => <Tab.Pane attached={false}><LosersList /></Tab.Pane>,
+    render: () => <Tab.Pane  attached={false}><LosersList /></Tab.Pane>,
   },
   {
     menuItem: 'Comments',
