@@ -39,7 +39,7 @@ const LosersList = () => {
     <h2  style={{color:"rgb(141 129 140)", marginTop:"10px", textAlign:"center"}} >Losers List</h2>
      <div>
       <ListGroup variant="flush">
-        <ListGroup.Item style={{color:"rgb(141 129 140)", marginTop:"10px", textAlign:"center"}}>Feel free to click on the links below to see proof of loser punishment </ListGroup.Item>
+        <ListGroup.Item style={{color:"rgb(141 129 140)", marginTop:"10px", textAlign:"center"}}>Click on the links below to see proof of loser punishment! </ListGroup.Item>
        {notNullMedia()}
        </ListGroup>
      </div>
