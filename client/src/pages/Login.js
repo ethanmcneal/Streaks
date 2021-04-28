@@ -46,7 +46,7 @@ const Login = () => {
              required
              name='password'
              onChange={(e)=> setPassword(e.target.value)}/>
-             <Button style={{backgroundColor: 'rgb(245 155 13)', margin: '2em'}} type='submit'>Login</Button>
+             <Button variant='warning' className='button-orange' style={{margin: '2em'}} type='submit'>Login</Button>
              {loginAlert && <FormattedMessage type='alert'>No users match that email and password</FormattedMessage>}      
         </Form>
         </div>
