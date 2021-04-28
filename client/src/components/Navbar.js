@@ -12,7 +12,7 @@ const NavBar = () => {
     return(
         <Menu inverted>
             <MenuItem>
-            <img src={img} style={{height: '80px', width: '80px'}}/>
+            <a href='/'><img src={img} style={{height: '80px', width: '80px'}}/></a>
             </MenuItem>
 
         {!user &&    <Menu.Menu position='right'>

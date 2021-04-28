@@ -1,10 +1,8 @@
-import logo from './logo.svg';
 import './App.css';
 import { Route, Switch } from 'react-router-dom';
 import Home from './components/Home';
 import NavBar from './components/Navbar';
 import About from './components/About'
-import StyledComponents from './style_components/StyledComponents';
 import Register from './pages/Register';
 import Login from './pages/Login';
 import ProtectedRoute from './components/ProtectedRoute';
@@ -13,11 +11,8 @@ import Streaks from './streaks/StreaksShow';
 import StreakForm from './streaks/StreakForm';
 import StreakEditForm from './streaks/StreakEditForm';
 import Streak from './streaks/Streak';
-import UserStreakShow from './user_streak/UserStreaks';
 import UserStreak from './user_streak/UserStreaks'
 import MyDashBoard from './pages/MyDashBoard';
-// import Comment from './comments/Comment';
-import CommentsStreak from './comments/CommentsStreak';
 import DashHeader from './components/Secondheader';
 import { useContext } from 'react';
 import { AuthContext } from './providers/AuthProvider';

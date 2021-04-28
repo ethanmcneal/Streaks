@@ -17,10 +17,9 @@ const {streakName, streakReward, createdAt, status, userStreakId, streakId, stre
 const [modalShow, setModalShow] = useState(false)
 const [participants, setParticipants] = useState(0)
 
-const changeStatus = async(id, s) => {
+const deleteStreak = async(id) => {
     try {
-        let res = await axios.patch(`/api/user_streaks/${id}`, {status: s === 'ongoing' ? 'paused' : 'ongoing'})
-        console.log(res)
+        await axios.delete(`/api/user_streaks/${id}`)
         window.location.reload()
     } catch (error) {
         console.log(error)
@@ -73,15 +72,15 @@ const changeStatus = async(id, s) => {
                 <h4>{streakReward}</h4>
                 </div>
                 <div className='streak-segment'>
-                    <div className={status == 'ongoing' ? 'running-background' : 'upcoming-background'}>
+                    <div className={status == 'ongoing' ? 'running-background' : status== 'won' ? 'won-background' : 'upcoming-background'}>
                 <p> {status == 'ongoing' ? 'RUNNING' : status.toUpperCase()} </p>
                     </div>
                     
                 </div>
                 <div className='streak-segment'>
                {status !== 'quit' && status !== 'won' ? <div>
-                {status !== 'upcoming' && <Icon onClick={()=>changeStatus(userStreakId, status)}name={status === 'ongoing' ? 'pause' : 'play'} /> }
-                <Icon name='times' onClick={()=>quitStreak(userStreakId)} /> 
+                {/* {status !== 'upcoming' && <Icon onClick={()=>changeStatus(userStreakId, status)}name={status === 'ongoing' ? 'pause' : 'play'} /> } */}
+               { status == 'ongoing' ? <Icon name='times' onClick={()=>quitStreak(userStreakId)} /> : <Icon name='trash' onClick={()=>deleteStreak(userStreakId)} /> }
                 </div> : ''} 
                 {status == 'quit' && media == null ? <Button onClick={() => setModalShow(true)}>Upload Media</Button> : '' }
                 <UploadMediaModal 
