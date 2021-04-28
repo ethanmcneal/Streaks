@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap');
+
 .streak-segment{
     width: 16.4em;
     height: 4em;
@@ -40,4 +42,11 @@
 .streak-segment div{
     margin-right: 2em;
     text-align: left;
+}
+.ui.secondary.pointing.menu .active.item {
+    font-weight: 500 !important;
+}
+h1, h2, h3, h4, h5 {
+font-family: 'Rubik'!important;
+font-weight: 400 !important;
 }

@@ -2,6 +2,7 @@
 
 .btn {
     min-width: fit-content  !important;
+    font-family: 'Rubik'!important;
 }
 
 .ui.container {
@@ -237,11 +238,13 @@ div.ui.landing-menu.menu {
     border-radius: 0 !important;
     box-shadow: none !important;
     height: 4em;
+    font-family: 'Rubik' !important;
 }
 
 .ui.search .prompt {
     border-radius: 4px 4px 4px 4px !important;
     padding: .2rem !important;
+    font-family: 'Rubik'!important;
 }
 .ui.button {
     background-color: rgb(245, 155, 13) !important;
@@ -251,6 +254,8 @@ div.ui.landing-menu.menu {
     color: honeydew !important;
     height: 2.5em;
     padding-bottom: 24px !important;
+    font-family: 'Rubik'!important;
+    font-weight: 450 !important;
 }
 
 .ui.input {
@@ -269,6 +274,9 @@ span {
     border: none;
     background: transparent;
     color: rgb(144, 152, 161, 1) !important;
+}
+.form-control {
+    font-family: 'Rubik' !important;
 }
 
 
