@@ -71,6 +71,7 @@ Streak.create(name: "Dungeons and Dragons 'til We Drop",
     punishment: "Miss out on a fancy new magical item for your character", 
     category: "Game", 
     timeline: "F2021-04-30T18:00:00.000Z", 
+    open: "true",
     owner: "6" )
 
 Streak.create(name: "Touch Football for Life", 
@@ -79,6 +80,7 @@ Streak.create(name: "Touch Football for Life",
     punishment: "Pay for the winner's dinner", 
     category: "Sport", 
     timeline: "2021-05-02T16:30:00.000Z", 
+    open: "true",
     owner: "7" )
     
 Streak.create(name: "Gormet Chef in the Making", 
@@ -87,6 +89,7 @@ Streak.create(name: "Gormet Chef in the Making",
     punishment: "Pay for the winner's cooking class", 
     category: "Cuisine", 
     timeline: "2021-05-05T12:30:00.000Z", 
+    open: "true",
     owner: "8" )
 
 9.times do
@@ -97,47 +100,47 @@ Streak.create(name: "Gormet Chef in the Making",
     User.create(password:'123456Abc!', name: name, nickname: nickname, email: email, image: avatar)
 end
 
-UserStreak.create(user_id: "1", streak_id: "1", status: 'ongoing')
-UserStreak.create(user_id: "1", streak_id: "2", status: 'ongoing')
-UserStreak.create(user_id: "1", streak_id: "3", status: 'ongoing')
-UserStreak.create(user_id: "1", streak_id: "4", status: 'ongoing')
-UserStreak.create(user_id: "1", streak_id: "5", status: 'ongoing')
-UserStreak.create(user_id: "1", streak_id: "6", status: 'upcoming')
+UserStreak.create(user_id: "1", streak_id: "1", status: 'ongoing', media: "")
+UserStreak.create(user_id: "1", streak_id: "2", status: 'quit', media: "//imgur.com/YAPxCEB")
+UserStreak.create(user_id: "1", streak_id: "3", status: 'quit', media: "//imgur.com/YAPxCEB")
+UserStreak.create(user_id: "1", streak_id: "4", status: 'quit', media: "//imgur.com/YAPxCEB")
+UserStreak.create(user_id: "1", streak_id: "5", status: 'quit', media: "//imgur.com/YAPxCEB")
+UserStreak.create(user_id: "1", streak_id: "6", status: 'quit', media: "//imgur.com/YAPxCEB")
 
-UserStreak.create(user_id: "2", streak_id: "1", status: 'ongoing')
-UserStreak.create(user_id: "2", streak_id: "2", status: 'ongoing')
-UserStreak.create(user_id: "2", streak_id: "3", status: 'ongoing')
-UserStreak.create(user_id: "2", streak_id: "4", status: 'ongoing')
-UserStreak.create(user_id: "2", streak_id: "5", status: 'ongoing')
-UserStreak.create(user_id: "2", streak_id: "6", status: 'upcoming')
-UserStreak.create(user_id: "2", streak_id: "7", status: 'upcoming')
+UserStreak.create(user_id: "2", streak_id: "1", status: 'quit', media: "//imgur.com/zAP6moT")
+UserStreak.create(user_id: "2", streak_id: "2", status: 'ongoing', media: "")
+UserStreak.create(user_id: "2", streak_id: "3", status: 'quit', media: "//imgur.com/zAP6moT")
+UserStreak.create(user_id: "2", streak_id: "4", status: 'quit', media: "//imgur.com/zAP6moT")
+UserStreak.create(user_id: "2", streak_id: "5", status: 'quit', media: "//imgur.com/zAP6moT")
+UserStreak.create(user_id: "2", streak_id: "6", status: 'upcoming', media: "")
+UserStreak.create(user_id: "2", streak_id: "7", status: 'upcoming', media: "")
 
-UserStreak.create(user_id: "3", streak_id: "3", status: 'ongoing')
-UserStreak.create(user_id: "3", streak_id: "8", status: 'upcoming')
-UserStreak.create(user_id: "3", streak_id: "7", status: 'upcoming')
-UserStreak.create(user_id: "3", streak_id: "6", status: 'upcoming')
-UserStreak.create(user_id: "3", streak_id: "2", status: 'ongoing')
-UserStreak.create(user_id: "3", streak_id: "1", status: 'ongoing')
+UserStreak.create(user_id: "3", streak_id: "3", status: 'ongoing', media: "")
+UserStreak.create(user_id: "3", streak_id: "8", status: 'upcoming', media: "")
+UserStreak.create(user_id: "3", streak_id: "7", status: 'upcoming', media: "")
+UserStreak.create(user_id: "3", streak_id: "6", status: 'upcoming', media: "")
+UserStreak.create(user_id: "3", streak_id: "2", status: 'ongoing', media: "")
+UserStreak.create(user_id: "3", streak_id: "1", status: 'ongoing', media: "")
 
-UserStreak.create(user_id: "4", streak_id: "4", status: 'ongoing')
-UserStreak.create(user_id: "4", streak_id: "8", status: 'upcoming')
-UserStreak.create(user_id: "4", streak_id: "3", status: 'ongoing')
+UserStreak.create(user_id: "4", streak_id: "4", status: 'ongoing', media: "")
+UserStreak.create(user_id: "4", streak_id: "8", status: 'upcoming', media: "")
+UserStreak.create(user_id: "4", streak_id: "3", status: 'quit', media: "//imgur.com/zAP6moT")
 
-UserStreak.create(user_id: "5", streak_id: "5", status: 'ongoing')
-UserStreak.create(user_id: "5", streak_id: "6", status: 'upcoming')
+UserStreak.create(user_id: "5", streak_id: "5", status: 'ongoing', media: "")
+UserStreak.create(user_id: "5", streak_id: "6", status: 'upcoming', media: "")
 
-UserStreak.create(user_id: "6", streak_id: "6", status: 'upcoming')
-UserStreak.create(user_id: "6", streak_id: "7", status: 'upcoming')
-UserStreak.create(user_id: "6", streak_id: "1", status: 'ongoing')
+UserStreak.create(user_id: "6", streak_id: "6", status: 'upcoming', media: "")
+UserStreak.create(user_id: "6", streak_id: "7", status: 'upcoming', media: "")
+UserStreak.create(user_id: "6", streak_id: "1", status: 'ongoing', media: "")
 
-UserStreak.create(user_id: "7", streak_id: "7", status: 'upcoming')
-UserStreak.create(user_id: "7", streak_id: "3", status: 'ongoing')
+UserStreak.create(user_id: "7", streak_id: "7", status: 'upcoming', media: "")
+UserStreak.create(user_id: "7", streak_id: "3", status: 'ongoing', media: "")
 
-UserStreak.create(user_id: "8", streak_id: "8", status: 'upcoming')
-UserStreak.create(user_id: "8", streak_id: "5", status: 'ongoing')
+UserStreak.create(user_id: "8", streak_id: "8", status: 'upcoming', media: "")
+UserStreak.create(user_id: "8", streak_id: "5", status: 'ongoing', media: "")
 
-UserStreak.create(user_id: "9", streak_id: "8", status: 'upcoming')
-UserStreak.create(user_id: "9", streak_id: "2", status: 'ongoing')
+UserStreak.create(user_id: "9", streak_id: "8", status: 'upcoming', media: "")
+UserStreak.create(user_id: "9", streak_id: "2", status: 'ongoing', media: "")
 
 
 6.times do |i|
