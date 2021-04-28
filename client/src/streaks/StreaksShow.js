@@ -110,8 +110,8 @@ const Streaks = (props)=>{
 
     const panes = [
         {
-          menuItem: <Menu.Item style={{color: 'white', marginLeft: '5em'}}>All Streaks</Menu.Item>,
-          render: () => <Tab.Pane style={{backgroundColor: 'rgb(25 53 81)', border: '0'}} attached={false}>
+          menuItem: <Menu.Item style={{color: 'white', marginLeft: '7em'}}>All Streaks</Menu.Item>,
+          render: () => <Tab.Pane style={{backgroundColor: 'rgb(25 53 81)', border: '0', boxShadow: '0 0 0 0'}} attached={false}>
                 <div className='streak-container'>
                   {renderStreak()}
                   </div>
@@ -132,13 +132,15 @@ const Streaks = (props)=>{
 
     return (
         <div>
-         <h1 className='new-streak-title' style={{margin: '3em 0 0 3em'}}>Challenges</h1>
+         <h1 className='new-streak-title' style={{margin: '3em 0 0 4em'}}>Challenges</h1>
              {streaks && <Tab  menu={{ color, secondary: true, pointing: true }} panes={panes} />}
             <div>
-                <h4 style={{color: 'white'}}>Don't see a streak you like? click the button to Create your own!</h4>
+                <h4 style={{display: 'flex', color: 'white', margin: '2em'}}>Don't see a streak you like? click the button to Create your own!</h4>
+                <div style={{display: 'flex', margin: '2em', paddingBottom: '2em'}}>
                 <Link to='/streaks/form'>
-                <Button variant='light' className='button-orange'>+ New Streak</Button>
+                <Button variant='warning' className='button-orange'>+ &nbsp; New Streak</Button>
                 </Link>
+                </div>
             </div>
     </div>
      )
