@@ -75,7 +75,7 @@ const CommentsStreak = () => {
 
     const renderFullComments = () => {
       return (
-        <Comment.Group>
+        <Comment.Group >
           {comments &&
             comments.map((comment) => (
               <Comment>
