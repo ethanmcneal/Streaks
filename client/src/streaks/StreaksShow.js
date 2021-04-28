@@ -1,4 +1,3 @@
-
 import {Link, useHistory} from 'react-router-dom'
 import axios from 'axios'
 import { useContext, useEffect, useState } from 'react';
@@ -10,20 +9,15 @@ import skull from '../images/risk-skull.png'
 import './grids.css'
 
 
-
-
 const Streaks = (props)=>{
     const { user } = useContext(AuthContext)
     const [streaks, setStreaks] = useState(null);
     const [usersStreakIds, setUsersStreakIds] = useState(null)
-
     const history = useHistory()
-
 
     useEffect(() => {
         getStreaks()
     },[])
-
 
     const getStreaks = async()=>{
     try{
@@ -47,7 +41,6 @@ const Streaks = (props)=>{
             console.log(error)
         }
     }
-
 
     const renderStreak = () => {
         
@@ -140,12 +133,7 @@ const Streaks = (props)=>{
     return (
         <div>
          <h1 className='new-streak-title' style={{margin: '3em 0 0 3em'}}>Challenges</h1>
-         
-       
              {streaks && <Tab  menu={{ color, secondary: true, pointing: true }} panes={panes} />}
-       
-       
-        
             <div>
                 <h4 style={{color: 'white'}}>Don't see a streak you like? click the button to Create your own!</h4>
                 <Link to='/streaks/form'>
