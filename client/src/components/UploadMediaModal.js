@@ -44,11 +44,11 @@ const UploadMediaModal = (props) => {
                 <Form.Label>Media URL</Form.Label>
                 <Form.Control required style={{width: '500px'}} 
                 onChange={handleChange}/>
-                <Button type='submit'>Submit</Button>
+                <Button variant="warning" className='button-orange' type='submit'>Submit</Button>
             </Form>
           </Modal.Body>
           <Modal.Footer>
-            <Button onClick={props.onHide}>Close</Button>
+            <Button variant="warning" className='button-orange' onClick={props.onHide}>Close</Button>
           </Modal.Footer>
         </Modal>
       );
