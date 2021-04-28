@@ -4,12 +4,12 @@ import UserStreaks from '../user_streak/UserStreaks'
 import CommentNew from "../comments/CommentNew"
 import CommentsStreak from "../comments/CommentsStreak"
 import CommentMedia from './CommentMedia'
-import WinnersLosers from './WinnersLosers'
+import LosersList from './LosersList'
 
 const panes = [
   {
     menuItem: 'Attachments',
-    render: () => <Tab.Pane attached={false}>1 winners and losers media on top, comment media on bottom <WinnersLosers /><CommentMedia /></Tab.Pane>,
+    render: () => <Tab.Pane attached={false}><LosersList /></Tab.Pane>,
   },
   {
     menuItem: 'Comments',
