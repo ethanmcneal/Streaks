@@ -56,7 +56,7 @@ const About = () => {
                     </div>
                     <div>
                         <h1>Ethan McNeal</h1>
-                        <div>parts on website worked on here</div>
+                       
                         <div>
                            I have years of customer service since the day I turned 16, working in many different slices from retail, dining, and an inbound call center. Excellent customer service is something I excel at and past employers can vouch for that. I also succeeded very well in a sales environment when working with Extra Space. I am very proud of my strong work ethic and reliability as an employee.
                             </div>
@@ -82,7 +82,7 @@ const About = () => {
                     </div>
                     <div>
                         <h1>Jedediah Wood</h1>
-                        <div>parts on website worked on here</div>
+                       
                         <div>
                         To finance my education, for the past 10 years I have largely worked in construction; an opportunity to apply my hands-on, technical, practical mechanical skills. With a newly earned Political Science B.S. degree with an engineering background, I am now seeking to apply my developed mathematical, analytical, research, writing, teamwork, and leadership skills to an exiting new career in technology!
                             </div>
@@ -108,7 +108,7 @@ const About = () => {
                     </div>
                     <div>
                         <h1>Callice Austin</h1>
-                        <div>parts on website worked on here</div>
+                        
                         <div>
                             I have just begun my venture into the tech world. It is something that I am very passionate about, because I am a creative problem-solver.
                              I fell in love with it from my first class in high school, and its been what I've wanted to do since then.
@@ -139,7 +139,7 @@ const About = () => {
                     </div>
                     <div>
                         <h1>Erin Zimmerman</h1>
-                        <div>parts on website worked on here</div>
+                       
                         <div>
                         I have found a passion in web development and feels I can make a difference while leading a fulfilling work-life balance. Previously a Training Specialist at UHEAA and a Trainer at Cotiviti. Experience training call center agents and record evaluation systems agents. Experience in public speaking, basic data analysis, technical writing, instructional design, leadership, and more.
                             </div>
