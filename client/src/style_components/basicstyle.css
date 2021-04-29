@@ -170,6 +170,10 @@ div.ui.segment.active.tab {
     max-width: 650px !important;
     
  }
+ .comments-div-annoying{
+     display: flex;
+     flex-direction: column;
+ }
 
 .table-streak-form{
     font-family: 'Rubik' !important;

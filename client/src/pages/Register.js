@@ -21,7 +21,7 @@ const Register = () => {
 
     const handleSubmit=(e)=>{
         e.preventDefault()
-        console.log({nickname, email, password, passwordConfirmation})
+        // console.log({nickname, email, password, passwordConfirmation})
         let pattern = new RegExp(
             /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/
           )

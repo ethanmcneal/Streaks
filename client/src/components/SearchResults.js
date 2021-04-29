@@ -20,9 +20,7 @@ const SearchResults = () => {
 
   const getStreaks = async() => {
     try{
-      // debugger
-      let res = await axios.get(`/api/users_streaks/${user.id}`)
-      // console.log(res.data)
+      let res = await axios.get(`/api/users_streaks/${user.id}`) 
       setUserStreakId([...new Set(res.data.map(us => us.streak_id))])
     } catch(err){
       alert("Error in axios call in getStreaks in SearchResults")
@@ -32,7 +30,6 @@ const SearchResults = () => {
   const addToUserStreaks = async(id) => {
     try {
         let resh = await axios.post(`/api/user_streaks/`, {status: 'upcoming', user_id: user.id, streak_id: id})
-        console.log(resh)
         // history.push('/dashboard')
     } catch (error) {
         console.log(error)
@@ -41,7 +38,7 @@ const SearchResults = () => {
 
   const renderResults = () => {
     if (results.length > 0) {
-      console.log(results);
+      
       return results.map((r) => {
         const prettyDate = new Date(r.created_at)
         return (

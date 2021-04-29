@@ -9,13 +9,11 @@ const UploadMediaModal = (props) => {
 
    const handleChange = (e) => {
         setMedia(e.target.value)
-        console.log(e.target.value)
    }
 
    const handleSubmit = async() => {
        try {
            let res = await axios.patch(`api/user_streaks/${userStreakId}`, {media: media})
-           console.log(res.data)
        } catch (error) {
            console.log(error)
        }

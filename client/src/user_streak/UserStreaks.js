@@ -24,11 +24,11 @@ const UserStreaks = () => {
 
   const getData = async() => {
     try {
-      console.log(user.id)
+      
       let res = await axios.get(`/api/users_streaks/${user.id}`)
       setUserStreaks(res.data)
-      // console.log(userStreaks)
-      console.log(res.data)
+      
+      
     } catch (error) {
       console.log(error)
     }

@@ -33,10 +33,10 @@ const CheerLaughCounter = (props) => {
 
 
   const handleCheerLaugh = async(state) => {
-    console.log('handleCheerLaugh called')
+    
     // e.preventDefault()
     try{
-      console.log('def comm id', defaultCommentID)
+      
       let res = await axios.put(`/api/comments/${defaultCommentID}`, {cheer: state.cheers, laugh: state.laughs})
       // history.push(`/streaks/${id}`)
       // window.location.reload()

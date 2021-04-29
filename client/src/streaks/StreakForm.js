@@ -41,7 +41,7 @@ const StreakForm = () => {
           try {
               let res = await axios.post('/api/streaks/', streak)
               let res2 = await axios.post(`/api/user_streaks/`, {user_id: user.id, streak_id: res.data.id, status: 'upcoming'} )
-              console.log(res)
+              
               setValidated(true) 
               history.push(`/dashboard`);  
           } catch (error) {
@@ -57,13 +57,13 @@ const StreakForm = () => {
 
       const handleDropDown = (data) => {
           setStreak({...streak, ['category']: data})
-          console.log(data)
+          
       }
 
       const handleChange = (e) => {
         setStreak({...streak, [e.target.name]: e.target.value})
         // console.log(e.target.value.length)
-        console.log(streak.description)
+       
         if(e.target.value.length >= 2){
             setValidated(true)
         }else{
