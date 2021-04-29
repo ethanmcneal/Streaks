@@ -55,8 +55,8 @@ const CommentEdit = (props) => {
     data.append("laugh", editComment.laugh); 
     try{
       // todo fix the axios garbage
-      console.log('def comm id', defaultCommentID)
-      console.log('editcommenttttt', data)
+      // console.log('def comm id', defaultCommentID)
+      // console.log('editcommenttttt', data)
 
       let res = await axios.put(`/api/comments/${defaultCommentID}`, data)
       history.push(`/streaks/${id}`)
@@ -82,7 +82,7 @@ const CommentEdit = (props) => {
     <div>
       <form onSubmit={handleEditComment}>
       <input value={editComment.info} label='Comment:' placeholder={editComment.info} name='info' onChange={handleChange}/>
-      {console.log('edit comment', editComment)}
+      
       <br/>
       <FilePond
             files={files}

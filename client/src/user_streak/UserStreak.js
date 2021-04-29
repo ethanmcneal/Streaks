@@ -45,7 +45,7 @@ const deleteStreak = async(id) => {
     const quitStreak = async(id) => {
         try {
             let res = await axios.patch(`/api/user_streaks/${id}`, {status: 'quit'})
-            console.log(res)
+            
             window.location.reload()
         } catch (error) {
             console.log(error)

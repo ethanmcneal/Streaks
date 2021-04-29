@@ -11,13 +11,13 @@ const useAxiosOnMount = (url) => {
        getData()
    },[])
    const getData = async()=>{
-       console.log('here')
+    //    console.log('here')
        try{
          let res = await axios.get(url)
          // if res comes back as something other than res.data or res.data.data
          // this will break not 100%
          setData(res.data.data ? res.data.data : res.data)
-         console.log(res.data)
+        //  console.log(res.data)
          setLoading(false)
        } catch(err){
            setError(err)

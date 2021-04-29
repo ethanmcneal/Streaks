@@ -21,7 +21,7 @@ const Register = () => {
 
     const handleSubmit=(e)=>{
         e.preventDefault()
-        console.log({nickname, email, password, passwordConfirmation})
+        // console.log({nickname, email, password, passwordConfirmation})
         let pattern = new RegExp(
             /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/
           )
@@ -41,6 +41,7 @@ const Register = () => {
        <>
       <NavBar />
         <div className='register'>   
+        <br />
             <h1>Register</h1>
         <Form onSubmit={handleSubmit} style={{width: '20em'}}>
             <p>UserName</p>

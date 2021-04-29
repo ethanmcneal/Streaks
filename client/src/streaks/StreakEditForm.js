@@ -20,14 +20,14 @@ const StreakEditForm = () => {
 
     useEffect(() => {
             getStreak()
-            console.log(id)
+           
         },[])
 
     const getStreak = async() => {
         try {
             let res = await axios.get(`/api/streaks/${id}`)
             setStreak(res.data)
-            console.log(res.data)
+            
         } catch (error) {
             console.log(error)
         }}
@@ -48,7 +48,7 @@ const StreakEditForm = () => {
         if(streak.name && streak.description && streak.reward && streak.punishment && streak.timeline){
             try {
                 let res = await axios.put(`/api/streaks/${id}`, streak)
-                console.log(res)
+               
                 setValidated(true) 
                 history.push(`/streaks/${id}`)
             } catch (error) {
@@ -61,12 +61,12 @@ const StreakEditForm = () => {
 
     const handleDropDown = (data) => {
         setStreak({...streak, ['category']: data})
-        console.log('handleDropdown streakeditform', data)
+        
         }
 
     const handleChange = (e) => {
         setStreak({...streak, [e.target.name]: e.target.value})
-        console.log(streak.description)
+        
         if(e.target.value.length >= 2){
             setValidated(true)
         }else{

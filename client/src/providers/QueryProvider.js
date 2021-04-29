@@ -15,7 +15,7 @@ const getResults = (query) => {
   axios.get(`/api/search_streaks/?query=${query}`)
     .then((res) => {
       setResults(res.data);
-      console.log("Results", res.data);
+      // console.log("Results", res.data);
       setError(null);
     })
     .catch((err) => {

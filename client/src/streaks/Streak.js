@@ -39,9 +39,9 @@ const Streak = () => {
     const getStreak = async() => {
         try {
             let res = await axios.get(`/api/streaks_users/${id}`)
-            console.log('getstreak', res.data)
+            // console.log('getstreak', res.data)
             setStreak({name: res.data[0].streak_name, description:res.data[0].description, reward:res.data[0].reward, punishment:res.data[0].punishment, timeline:res.data[0].timeline, owner:res.data[0].owner, open:res.data[0].public, streak_id:res.data[0].streak_id})
-            console.log(res.data)
+            // console.log(res.data)
             setUsers(res.data)
             winnerCheck(res.data)
             getCreator(res.data[0].owner)
@@ -57,7 +57,7 @@ const Streak = () => {
     const closeStreak = async(b) => {
         try {
             let res = axios.patch(`/api/streaks/${streak.streak_id}`, {open: b})
-            console.log('in gere', b)
+            // console.log('in gere', b)
             window.location.reload()
         } catch (error) {
             console.log(error)
@@ -87,7 +87,7 @@ const Streak = () => {
     const getCreator = async(id) => {
         try {
             let res = await axios.get(`/api/user/${id}`)
-            console.log(res.data)
+            // console.log(res.data)
             setCreator(res.data)
         } catch (error) {
             console.log(error)

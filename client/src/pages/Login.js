@@ -18,19 +18,20 @@ const Login = () => {
 
     const handleSubmit=(e)=>{
         e.preventDefault()
-        console.log({email, password})
+        // console.log({email, password})
         handleLogin({ email, password}, history)
     } 
     return(
       
           <>
       <NavBar />
+      <br />
         <div className='register'>      
         
             <h1>Login</h1>
         <Form onSubmit={handleSubmit}>
             <p>Email</p>
-            <input
+            <input style={{minWidth: "300px"}}
             label='Email'
             value={email}
              autoFocus
