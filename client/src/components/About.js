@@ -58,7 +58,7 @@ const About = () => {
                         <h1>Ethan McNeal</h1>
                        
                         <div>
-                           I have years of customer service since the day I turned 16, working in many different slices from retail, dining, and an inbound call center. Excellent customer service is something I excel at and past employers can vouch for that. I also succeeded very well in a sales environment when working with Extra Space. I am very proud of my strong work ethic and reliability as an employee.
+                           I am a prospective web developer with a passion for music, the outdoors, and video games. My favorite place in the world is Montana and I want to live there someday, my favorite web language is react and I hope to be a frontend developer that includes react in it's frontend stack.
                             </div>
                             <div>
                             <a target="_blank" href='https://www.linkedin.com/in/ethan-mcneal-16265b1a0'><Icon link size="large" color="blue" name="linkedin square" /></a>
