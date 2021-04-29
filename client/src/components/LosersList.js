@@ -17,7 +17,7 @@ const LosersList = () => {
   const getLoserMedia = async() =>{
     try{let res =  await axios.get(`/api/streaks_users/${id}`)
       setLosers(res.data)
-      console.log('res.data for losers list', res.data)
+      
     } catch(err) {
       alert(err)
     }
@@ -25,7 +25,7 @@ const LosersList = () => {
   
   const notNullMedia = () => {
     if (losers){let filterMedia = losers.filter(loser => loser.media !== null)
-      console.log("filtermedia", filterMedia)
+      
      return( 
         filterMedia.map( loser => 
           <ListGroup.Item action target="_blank" href={loser.media}> {loser.nickname}: {loser.media}</ListGroup.Item>

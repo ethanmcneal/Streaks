@@ -53,8 +53,7 @@ const CommentTextEdit = (props) => {
           <p>
           <form onSubmit={handleEditComment}>
           <input value={editComment1.info} placeholder={editComment2.info} label='Comment:'  name='info' onChange={handleChange}/>
-            {console.log("editComment2", editComment2)}
-            {console.log('default info stuff', defaultInfo)}
+           
           <br />
           <br />
           <Button variant='warning' className="button-orange" type='submit'>Edit Comment</Button>

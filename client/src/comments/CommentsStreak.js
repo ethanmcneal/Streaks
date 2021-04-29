@@ -35,11 +35,11 @@ const CommentsStreak = () => {
       setComments(res.data.comments)
       setCurrentPage(page)
       setTotalPages(res.data.total_pages)
-      console.log('res.data in comments streak', res.data)
+      
       
     } catch(err) {
-      console.log('get comments id for commentsstreak in getcomments', id)
-      alert(err)
+      
+      console.log(err)
     }
   }
   // /api/comments/:id
@@ -75,7 +75,8 @@ const CommentsStreak = () => {
 
     const renderFullComments = () => {
       return (
-        <Comment.Group>
+        <div className='comments-div-annoying'>
+        <Comment.Group >
           {comments &&
             comments.map((comment) => (
               <Comment>
@@ -122,6 +123,7 @@ const CommentsStreak = () => {
               </Comment> 
             ))}
         </Comment.Group>
+        </div>
       );
     };
   

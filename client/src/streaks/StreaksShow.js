@@ -27,7 +27,7 @@ const Streaks = (props)=>{
         // console.log([...new Set(res2.data.map(us => us.streak_id))])
         setStreaks(res.data)
 
-        console.log(res.data)
+        
     }catch(err){
         alert(err)
     }}
@@ -35,7 +35,7 @@ const Streaks = (props)=>{
     const addToUserStreaks = async(id) => {
         try {
             let res = await axios.post(`/api/user_streaks/`, {status: 'upcoming', user_id: user.id, streak_id: id})
-            console.log(res)
+          
             history.push('/dashboard')
         } catch (error) {
             console.log(error)

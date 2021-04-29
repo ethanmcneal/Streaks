@@ -16,7 +16,7 @@ const CommentMedia = () => {
   const getCommentMedia = async() =>{
     try{let res =  await axios.get(`/api/streak/${id}`)
       setComments(res.data.comments)
-      console.log('res.data', res.data)
+     
     } catch(err) {
       alert(err)
     }
@@ -24,7 +24,7 @@ const CommentMedia = () => {
   
   const notNullMedia = () => {
     if (comments){let filterMedia = comments.filter(comment => comment.media !== "")
-      console.log("filtermedia", filterMedia)
+     
      return( filterMedia.map( comment => 
         <Carousel.Item>
             <Image
