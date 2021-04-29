@@ -133,6 +133,15 @@ img.small-logo {
     display: flex;
     align-items: stretch;
 }
+
+/* .carousel.inner{
+    border-radius: 5px !important;
+} */
+
+.carousel-inner{
+    border-radius: 5px;
+}
+
 .about-right-content{
     color: #ffffff;
     padding: 10%;
@@ -232,6 +241,7 @@ div.timer.card {
 }
 .ui.inverted.menu {
     background-color: white !important;
+    margin: 5px;
 }
 .ui.menu {
     margin: 0% !important;

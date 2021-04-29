@@ -39,7 +39,7 @@ const About = () => {
             <h1 className='style-white'>The Team</h1>
         </Container>
             <br />
-       
+            <div style={{borderRadius: '20px !important'}}>
         <Container>
         <Carousel  fade background="rgb(245, 245, 245)">
             <Carousel.Item>
@@ -153,6 +153,7 @@ const About = () => {
             
             </Carousel> 
             </Container>
+            </div>
         </>
     )
 }
