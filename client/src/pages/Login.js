@@ -25,12 +25,13 @@ const Login = () => {
       
           <>
       <NavBar />
+      <br />
         <div className='register'>      
         
             <h1>Login</h1>
         <Form onSubmit={handleSubmit}>
             <p>Email</p>
-            <input
+            <input style={{minWidth: "300px"}}
             label='Email'
             value={email}
              autoFocus

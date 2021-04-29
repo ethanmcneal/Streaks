@@ -41,6 +41,7 @@ const Register = () => {
        <>
       <NavBar />
         <div className='register'>   
+        <br />
             <h1>Register</h1>
         <Form onSubmit={handleSubmit} style={{width: '20em'}}>
             <p>UserName</p>
