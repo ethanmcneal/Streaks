@@ -162,6 +162,8 @@ img.small-logo {
 }
 .small-img-about{
     border-radius: 50%;
+    padding: 8px;
+    height: 90px;
 }
 .comments-media-carousel{
     display: block;
