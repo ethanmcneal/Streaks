@@ -1,8 +1,6 @@
-import React, {useState, useEffect, useReducer} from 'react'
+import React, {useReducer} from 'react'
 import axios from 'axios'
-import {Link, useHistory, useParams} from 'react-router-dom'
-import {Button, Header} from 'semantic-ui-react'
-import CardContainer from '../style_components/CardContainer'
+import {useHistory, useParams} from 'react-router-dom'
 
 const CheerLaughCounter = (props) => {
   let history = useHistory()
@@ -15,11 +13,6 @@ const CheerLaughCounter = (props) => {
     laughs: initLaugh,
     active: null
   };
-  // const [editCheerLaugh, setEditCheerLaugh] = useState({
-  //   cheer: initCheer, 
-  //   laugh: initLaugh,
-  //   // comment_id: defaultCommentID
-  // })
   const Emoji = props => (
     <span
         className="emoji"
@@ -33,27 +26,13 @@ const CheerLaughCounter = (props) => {
 
 
   const handleCheerLaugh = async(state) => {
-    
-    // e.preventDefault()
     try{
       
       let res = await axios.put(`/api/comments/${defaultCommentID}`, {cheer: state.cheers, laugh: state.laughs})
-      // history.push(`/streaks/${id}`)
-      // window.location.reload()
     }catch(err){
       alert('err in handleEditComment')
     }
   }
-
-  // TODO fix state line 40, button not working!
-  // const handleChange = (state) => {
-  //   console.log('handle change called')
-  //   setEditCheerLaugh({...state, [e.target.name]: e.target.value})
-  //   console.log('cheere', editCheerLaugh.cheer)
-  //   console.log('laugh', editCheerLaugh.laugh)
-  //   handleCheerLaugh()
-  // }
- 
 
 
   const reducer = (state, action) => {
@@ -144,24 +123,6 @@ const CheerLaughCounter = (props) => {
     </>
   )
 
-  // 
 }
 
 export default CheerLaughCounter
-
-// return (
-//     <>
-//     <div>
-//       <form onSubmit={handleEditComment}>
-//       <input value={editComment.info} label='Comment:' placeholder={editComment.info} name='info' onChange={handleChange}/>
-//       {console.log('edit comment', editComment)}
-//       <br/>
-//       <input value={editComment.media} label='Other Media:' placeholder='media' name='media' onChange={handleChange}/>
-//       <Button type='submit'>Edit Comment</Button>
-//       </form>
-//     </div>
-//     </>
-//   )
-
-//todo maybe something here place in teh other function somehow? halp
-  // 

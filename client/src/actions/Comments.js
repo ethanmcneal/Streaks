@@ -10,7 +10,7 @@ export const getComments = (page = 1) => {
             dispatch({ type:'SET_COMMENTS', comments, pagination: { totalPages}, headers})
         })
         .catch( res => {
-            alert('appley boi')
+            alert('error')
         });
     }
 }

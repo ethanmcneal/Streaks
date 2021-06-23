@@ -54,10 +54,6 @@ const CommentEdit = (props) => {
     data.append("cheer", editComment.cheer);
     data.append("laugh", editComment.laugh); 
     try{
-      // todo fix the axios garbage
-      // console.log('def comm id', defaultCommentID)
-      // console.log('editcommenttttt', data)
-
       let res = await axios.put(`/api/comments/${defaultCommentID}`, data)
       history.push(`/streaks/${id}`)
       window.location.reload()
@@ -91,7 +87,6 @@ const CommentEdit = (props) => {
             name="media"
             labelIdle='Drag  Drop your files or <span class="filepond--label-action">Browse</span>'
           />
-      {/* <input value={editComment.media} label='Other Media:' placeholder='media' name='media' onChange={handleChange}/> */}
       <Button type='submit'>Edit Comment</Button>
       </form>
     </div>
